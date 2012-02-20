@@ -1,6 +1,6 @@
 Ti.UI.backgroundColor = '#dddddd';
  
-var url = "http://www.gwahir.com:3000/api/projects.json";
+var url = "http://www.gwahir.com:3000/api/projects.json?event_id=5";
 var win = Ti.UI.createWindow();
 var table = Ti.UI.createTableView();
 var tableData = [];

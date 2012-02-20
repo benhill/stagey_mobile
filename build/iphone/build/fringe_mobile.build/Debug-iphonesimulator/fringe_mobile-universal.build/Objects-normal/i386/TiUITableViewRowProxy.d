@@ -1,43 +1,43 @@
 dependencies: \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/TiUITableViewRowProxy.m \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/TiUITableViewRowProxy.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/TiViewProxy.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/TiProxy.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/TiBase.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/TiThreading.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/TiPublicAPI.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/TiEvaluator.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/KrollContext.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/headers/TiCore/TiCore.h \
+  /src/fringe_mobile/build/iphone/Classes/TiUITableViewRowProxy.m \
+  /src/fringe_mobile/build/iphone/Classes/TiUITableViewRowProxy.h \
+  /src/fringe_mobile/build/iphone/Classes/TiViewProxy.h \
+  /src/fringe_mobile/build/iphone/Classes/TiProxy.h \
+  /src/fringe_mobile/build/iphone/Classes/TiBase.h \
+  /src/fringe_mobile/build/iphone/Classes/TiThreading.h \
+  /src/fringe_mobile/build/iphone/Classes/TiPublicAPI.h \
+  /src/fringe_mobile/build/iphone/Classes/TiEvaluator.h \
+  /src/fringe_mobile/build/iphone/Classes/KrollContext.h \
+  /src/fringe_mobile/build/iphone/headers/TiCore/TiCore.h \
   headers/TiCore/Ti.h headers/TiCore/TiBase.h \
   headers/TiCore/TiContextRef.h headers/TiCore/TiObjectRef.h \
   headers/TiCore/TiValueRef.h headers/TiCore/WebKitAvailability.h \
   headers/TiCore/TiStringRef.h headers/TiCore/TiStringRefCF.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/headers/TiCore/TiContextRefPrivate.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/KrollCallback.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/KrollObject.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/TiUIView.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/TiAnimation.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/TiPoint.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/TiDimension.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/TiColor.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/ListenerEntry.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/TiModule.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/TiUtils.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/WebFont.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/TiFile.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/TiBuffer.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/TiBlob.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/LayoutConstraint.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/TiGradient.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/TiUITableViewAction.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/TiUITableViewSectionProxy.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/TiUITableView.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/TiUISearchBarProxy.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/Webcolor.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/ImageLoader.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/ASI/ASIHTTPRequest.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/ASI/ASIHTTPRequestConfig.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/ASI/ASIHTTPRequestDelegate.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/ASI/ASIProgressDelegate.h \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/ASI/ASINetworkQueue.h
+  /src/fringe_mobile/build/iphone/headers/TiCore/TiContextRefPrivate.h \
+  /src/fringe_mobile/build/iphone/Classes/KrollCallback.h \
+  /src/fringe_mobile/build/iphone/Classes/KrollObject.h \
+  /src/fringe_mobile/build/iphone/Classes/TiUIView.h \
+  /src/fringe_mobile/build/iphone/Classes/TiAnimation.h \
+  /src/fringe_mobile/build/iphone/Classes/TiPoint.h \
+  /src/fringe_mobile/build/iphone/Classes/TiDimension.h \
+  /src/fringe_mobile/build/iphone/Classes/TiColor.h \
+  /src/fringe_mobile/build/iphone/Classes/ListenerEntry.h \
+  /src/fringe_mobile/build/iphone/Classes/TiModule.h \
+  /src/fringe_mobile/build/iphone/Classes/TiUtils.h \
+  /src/fringe_mobile/build/iphone/Classes/WebFont.h \
+  /src/fringe_mobile/build/iphone/Classes/TiFile.h \
+  /src/fringe_mobile/build/iphone/Classes/TiBuffer.h \
+  /src/fringe_mobile/build/iphone/Classes/TiBlob.h \
+  /src/fringe_mobile/build/iphone/Classes/LayoutConstraint.h \
+  /src/fringe_mobile/build/iphone/Classes/TiGradient.h \
+  /src/fringe_mobile/build/iphone/Classes/TiUITableViewAction.h \
+  /src/fringe_mobile/build/iphone/Classes/TiUITableViewSectionProxy.h \
+  /src/fringe_mobile/build/iphone/Classes/TiUITableView.h \
+  /src/fringe_mobile/build/iphone/Classes/TiUISearchBarProxy.h \
+  /src/fringe_mobile/build/iphone/Classes/Webcolor.h \
+  /src/fringe_mobile/build/iphone/Classes/ImageLoader.h \
+  /src/fringe_mobile/build/iphone/Classes/ASI/ASIHTTPRequest.h \
+  /src/fringe_mobile/build/iphone/Classes/ASI/ASIHTTPRequestConfig.h \
+  /src/fringe_mobile/build/iphone/Classes/ASI/ASIHTTPRequestDelegate.h \
+  /src/fringe_mobile/build/iphone/Classes/ASI/ASIProgressDelegate.h \
+  /src/fringe_mobile/build/iphone/Classes/ASI/ASINetworkQueue.h

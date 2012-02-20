@@ -1,3 +1,2 @@
-dependencies: \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/TiThreading.m \
-  /src/Titanium\ Studio\ Workspace/fringe_mobile/build/iphone/Classes/TiThreading.h
+dependencies: /src/fringe_mobile/build/iphone/Classes/TiThreading.m \
+  /src/fringe_mobile/build/iphone/Classes/TiThreading.h

@@ -19,7 +19,7 @@ NSString * const TI_APPLICATION_GUID = @"2fe7b58d-5c1b-43e3-abd8-a2d1655e8c8e";
 BOOL const TI_APPLICATION_ANALYTICS = true;
 
 #ifdef TARGET_IPHONE_SIMULATOR
-NSString * const TI_APPLICATION_RESOURCE_DIR = @"/src/Titanium Studio Workspace/fringe_mobile/Resources";
+NSString * const TI_APPLICATION_RESOURCE_DIR = @"/src/fringe_mobile/Resources";
 #endif
 
 int main(int argc, char *argv[]) {
