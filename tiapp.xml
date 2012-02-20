@@ -9,13 +9,13 @@
         <target device="blackberry">false</target>
     </deployment-targets>
     <id>com.fringe.fringe_mobile</id>
-    <name>fringe_mobile</name>
+    <name>fringe_mobile</name>    
     <version>1.0</version>
     <publisher>benhill</publisher>
     <url>http://hollywoodfringe.org</url>
     <description>not specified</description>
-    <copyright>2011 by benhill</copyright>
-    <icon>FRINGE_BUTTON_021112.jpg</icon>
+    <copyright>2012 by hatchery arts</copyright>
+    <icon>appicon.png</icon>
     <persistent-wifi>false</persistent-wifi>
     <prerendered-icon>false</prerendered-icon>
     <statusbar-style>default</statusbar-style>

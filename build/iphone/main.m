@@ -14,7 +14,7 @@ NSString * const TI_APPLICATION_URL = @"http://hollywoodfringe.org";
 NSString * const TI_APPLICATION_NAME = @"fringe_mobile";
 NSString * const TI_APPLICATION_VERSION = @"1.0";
 NSString * const TI_APPLICATION_DESCRIPTION = @"not specified";
-NSString * const TI_APPLICATION_COPYRIGHT = @"2011 by benhill";
+NSString * const TI_APPLICATION_COPYRIGHT = @"2012 by hatchery arts";
 NSString * const TI_APPLICATION_GUID = @"2fe7b58d-5c1b-43e3-abd8-a2d1655e8c8e";
 BOOL const TI_APPLICATION_ANALYTICS = true;
 
