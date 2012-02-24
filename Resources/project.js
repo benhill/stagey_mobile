@@ -6,6 +6,12 @@ var xhr = Ti.Network.createHTTPClient({
 
     project = JSON.parse(this.responseText);
 
+    var projectImage = Titanium.UI.createImageView({
+      image:project.image_url
+    })
+
+    win.add(projectImage);
+
     var title = Titanium.UI.createLabel({
       id:'font_label_test',
       text:project.title,
