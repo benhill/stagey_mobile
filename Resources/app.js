@@ -33,7 +33,7 @@ tabGroup.addTab(venuesTab);
 tabGroup.open();
   
 var xhr = Ti.Network.createHTTPClient({
-  onload: function(){      
+  onload: function(){  
     json = JSON.parse(this.responseText);
     for (i = 0; i < json.projects.length; i++) {
       project = json.projects[i];
@@ -93,7 +93,7 @@ function showClickEventInfo(e, islongclick) {
     newWindow = Titanium.UI.createWindow({
       url:e.rowData.link,
       project_id: project.id,
-      title: project.title
+      title: project.cat_name
     });
   }
   projectsTab.open(newWindow);
