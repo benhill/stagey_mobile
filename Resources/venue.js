@@ -90,6 +90,7 @@ var xhr = Ti.Network.createHTTPClient({
       height:'auto',
       width: '95%'
     });
+    venueWin.add(projectsLabel);    
 
     projectsLabel.addEventListener('click', function(e){
       var projectsWin = Titanium.UI.createWindow({
@@ -100,6 +101,26 @@ var xhr = Ti.Network.createHTTPClient({
       venuesTab.open(projectsWin);
     });
 
+    var mapLabel = Ti.UI.createLabel({
+      text: "map",
+      top:5,
+      left:5,
+      font:{fontSize:16},
+      height:'auto',
+      width: '95%'
+    });
+    venueWin.add(mapLabel);
+
+    mapLabel.addEventListener('click', function(e){
+      var mapWin = Titanium.UI.createWindow({
+        backgroundColor:'white',
+        venue_id: venue.id,
+        url:'map.js',
+        venue:venue
+      });              
+      venuesTab.open(mapWin);
+    });
+    
     venueWin.add(projectsLabel);    
 
     venueWin.open();    
