@@ -1,9 +1,15 @@
-var url = "http://www.gwahir.com:3000/api/projects.json?event_id=5";
 var table = Ti.UI.createTableView();
 var tableData = [];
 var i, row, title;
 var projectsWin = Titanium.UI.currentWindow;
 var projectsTab = Titanium.UI.currentTab;
+
+if(projectsWin.venue_id){
+  var url = "http://www.gwahir.com:3000/api/projects.json?event_id=5&venue_id=" + projectsWin.venue_id; 
+}
+else {
+  var url = "http://www.gwahir.com:3000/api/projects.json?event_id=5";
+}
 
 var xhr = Ti.Network.createHTTPClient({
   onload: function(){  
@@ -17,7 +23,7 @@ var xhr = Ti.Network.createHTTPClient({
       row.project = project;
       (project.title.length >= 22) ? title = project.title.substr(0,22) + "..." : title = project.title;  
       var nameLabel = Ti.UI.createLabel({
-          text:title,
+          text:title.toLowerCase(),
           font:{
               fontSize:'24dp',
               fontWeight:'bold'

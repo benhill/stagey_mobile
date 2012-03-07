@@ -1,4 +1,5 @@
 var venueWin = Titanium.UI.currentWindow;
+var venuesTab = Titanium.UI.currentTab;
 var url = "http://www.gwahir.com:3000/api/venue/" + venueWin.venue_id + ".json";
 var json, venue;
 var image_top = 0;
@@ -80,6 +81,26 @@ var xhr = Ti.Network.createHTTPClient({
       width: '95%'
     });
     venueWin.add(description);
+
+    var projectsLabel = Ti.UI.createLabel({
+      text: "view projects",
+      top:5,
+      left:5,
+      font:{fontSize:16},
+      height:'auto',
+      width: '95%'
+    });
+
+    projectsLabel.addEventListener('click', function(e){
+      var projectsWin = Titanium.UI.createWindow({
+        backgroundColor:'white',        
+        url: 'projects.js',
+        venue_id: venue.id
+      });        
+      venuesTab.open(projectsWin);
+    });
+
+    venueWin.add(projectsLabel);    
 
     venueWin.open();    
   },
