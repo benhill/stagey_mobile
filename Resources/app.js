@@ -5,7 +5,8 @@ var tabGroup = Titanium.UI.createTabGroup();
 var nowWin = Titanium.UI.createWindow({
   title:'Now Playing',
   backgroundColor:'#fff',
-  url:'now.js'    
+  url:'now.js',
+  layout:'vertical'    
 });
 
 var nowTab = Titanium.UI.createTab({
