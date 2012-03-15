@@ -41,7 +41,7 @@ var xhr = Ti.Network.createHTTPClient({
       url:'projects.js',      
       projects: projects
     });
-    projectsWin.open();
+    searchWin.activeTab.open(projectsWin);
   },
   onerror: function(e) {
     Ti.API.debug("STATUS: " + this.status);

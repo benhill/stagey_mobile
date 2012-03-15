@@ -2,20 +2,22 @@ Ti.UI.backgroundColor = '#dddddd';
  
 var tabGroup = Titanium.UI.createTabGroup(); 
 
- var titleButton =  Ti.UI.createButton({
-    title:'search',
-    style:Ti.UI.iPhone.SystemButtonStyle.BORDERED,
-    height:40,
-    width: 40
+var titleButton =  Ti.UI.createButton({
+  title:'search',
+  style:Ti.UI.iPhone.SystemButtonStyle.BORDERED,
+  height:40,
+  width: 40,
+  tabGroup: tabGroup
 });
 
- titleButton.addEventListener('click', function(){   
-    var searchWin = Ti.UI.createWindow({url:'search.js', layout:'vertical'});    
-    searchWin.open({modal:true, navBarHidden:true});
+titleButton.addEventListener('click', function(e){       
+  var activeTab = e.source.tabGroup.activeTab;
+  var searchWin = Ti.UI.createWindow({url:'search.js', layout:'vertical', activeTab: activeTab});    
+  activeTab.open(searchWin);  
 });
 
 var nowWin = Titanium.UI.createWindow({
-  title:'Now Playing',
+  title:'Coming Next',
   backgroundColor:'#fff',
   url:'now.js',
   layout:'vertical',
@@ -31,7 +33,8 @@ var nowTab = Titanium.UI.createTab({
 var projectsWin = Ti.UI.createWindow({
   title:'Projects',
   backgroundColor:'#fff',
-  url:'projects.js'
+  url:'projects.js',
+  rightNavButton: titleButton
 });
   
 var projectsTab = Titanium.UI.createTab({
@@ -43,7 +46,8 @@ var projectsTab = Titanium.UI.createTab({
 var venuesWin = Titanium.UI.createWindow({
   title:'Venues',
   backgroundColor:'#fff',
-  url:'venues.js'
+  url:'venues.js',
+  rightNavButton: titleButton
 });
 
 var venuesTab = Titanium.UI.createTab({
@@ -55,7 +59,8 @@ var venuesTab = Titanium.UI.createTab({
 var mapWin = Titanium.UI.createWindow({
   title:'Fringe Map',
   backgroundColor:'#fff',
-  url:'map.js'
+  url:'map.js',
+  rightNavButton: titleButton
 });
 
 var mapTab = Titanium.UI.createTab({
