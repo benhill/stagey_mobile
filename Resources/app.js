@@ -69,7 +69,6 @@ var mapTab = Titanium.UI.createTab({
   window:mapWin
 });
 
-
 tabGroup.addTab(nowTab);
 tabGroup.addTab(projectsTab);
 tabGroup.addTab(venuesTab);

@@ -1,4 +1,4 @@
-var table = Ti.UI.createTableView();
+var table = Titanium.UI.createTableView();
 var tableData = [];
 var i, row, title;
 var projectsWin = Titanium.UI.currentWindow;

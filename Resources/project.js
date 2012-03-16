@@ -6,9 +6,10 @@ var image_place = 0;
 var xhr = Ti.Network.createHTTPClient({
   onload: function(){     
     var projectScroll = Titanium.UI.createScrollView({
-      contentWidth:'auto',
+      contentWidth:'95%',
       contentHeight:1100,
-      top:0,
+      top:5,
+      left:0,
       height:800,
       showVerticalScrollIndicator:true,
       showHorizontalScrollIndicator:true,
@@ -72,7 +73,7 @@ var xhr = Ti.Network.createHTTPClient({
     });
     projectScroll.add(description);
     var performances = Ti.UI.createView({
-      top:10,
+      top:5,
       layout:'vertical'
     });
     var last_space;
@@ -82,10 +83,22 @@ var xhr = Ti.Network.createHTTPClient({
         text:performance.venue + " (" + performance.space + ")",
         font:{fontSize:10, fontWeight:'bold'},
         height:'auto',
-        width: '95%',
-        top:5
+        width: 'auto',
+        top:10,
+        left:5
       });
-      if(performance.space != last_space){performances.add(spaceLabel)}
+      var venueAddress = Ti.UI.createLabel({
+        text:project.performances[i].venue_address,
+        top:0,
+        left:5,
+        font:{fontSize:9},
+        height:'auto',
+        width: 'auto'
+      });      
+      if(performance.space != last_space){
+        performances.add(spaceLabel);
+        performances.add(venueAddress);
+      }
       var performanceLabel = Ti.UI.createLabel({
         text:performance.date + "@" + performance.time + " \u00B7 " + performance.cost + " \u00B7 " + performance.duration, 
         font:{fontSize:10},

@@ -39,7 +39,7 @@ function createAnnotation(venue){
     title: venue.name,
     subtitle: venue.address,
     animate: true,
-    pincolor: Ti.Map.ANNOTATION_GREEN,
+    pincolor:  Titanium.Map.ANNOTATION_PURPLE,
     leftView: viewButton
   })
   return annotation;

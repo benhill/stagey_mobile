@@ -6,6 +6,17 @@ var image_top = 0;
 var image_place = 0;
 var xhr = Ti.Network.createHTTPClient({
   onload: function(){     
+    var venueScroll = Titanium.UI.createScrollView({
+      contentWidth:'auto',
+      contentHeight:1100,
+      top:5,
+      height:800,
+      width:'95%',
+      showVerticalScrollIndicator:true,
+      showHorizontalScrollIndicator:true,
+      layout:'vertical',
+      left:0
+    });
     venue = JSON.parse(this.responseText);
     var name = Titanium.UI.createLabel({
       text:venue.name,
@@ -14,16 +25,7 @@ var xhr = Ti.Network.createHTTPClient({
       font:{fontSize:20},
       left:5
     });    
-    venueWin.add(name);
-    var address = Ti.UI.createLabel({
-      text: venue.address + ", " + venue.city + ", " + venue.state + " " + venue.postal,
-      top:1,
-      left:5,
-      font:{fontSize:10},
-      height:'auto',
-      width: '95%'
-    });
-    venueWin.add(address);
+    venueScroll.add(name);
     var presenter = Ti.UI.createLabel({
       text: "presented by " + venue.presenter,
       top:0,
@@ -32,7 +34,16 @@ var xhr = Ti.Network.createHTTPClient({
       height:'auto',
       width: '95%'
     });
-    if(venue.presenter){venueWin.add(presenter)};
+    if(venue.presenter){venueScroll.add(presenter)};
+    var address = Ti.UI.createLabel({
+      text: venue.address + ", " + venue.city + ", " + venue.state + " " + venue.postal,
+      top:1,
+      left:5,
+      font:{fontSize:10},
+      height:'auto',
+      width: '95%'
+    });
+    venueScroll.add(address);
     var galleryView = Ti.UI.createView({
       height:'auto',
       width:'auto',
@@ -55,33 +66,33 @@ var xhr = Ti.Network.createHTTPClient({
       image_place ++;
       galleryView.add(img);            
       img.addEventListener('click', function(e){
-        var venueWin = Titanium.UI.createWindow({
+        var imageWin = Titanium.UI.createWindow({
           backgroundColor:'white',
           url: 'image.js',
           image: e.source.full_image_path
         });        
-        venueWin.open();
+        imageWin.open();
       });
     }    
-    venueWin.add(galleryView);
+    venueScroll.add(galleryView);
     var description = Ti.UI.createLabel({
       text: venue.description,
-      top:5,
+      top:10,
       left:5,
       font:{fontSize:10},
       height:'auto',
       width: '95%'
     });
-    venueWin.add(description);
+    venueScroll.add(description);
     var projectsLabel = Ti.UI.createLabel({
       text: "view projects",
-      top:5,
+      top:20,
       left:5,
       font:{fontSize:16},
       height:'auto',
       width: '95%'
-    });
-    venueWin.add(projectsLabel);    
+    });    
+    venueScroll.add(projectsLabel);    
     projectsLabel.addEventListener('click', function(e){
       var projectsWin = Titanium.UI.createWindow({
         backgroundColor:'white',        
@@ -98,7 +109,7 @@ var xhr = Ti.Network.createHTTPClient({
       height:'auto',
       width: '95%'
     });
-    venueWin.add(mapLabel);
+    venueScroll.add(mapLabel);
     mapLabel.addEventListener('click', function(e){
       var mapWin = Titanium.UI.createWindow({
         backgroundColor:'white',
@@ -107,8 +118,8 @@ var xhr = Ti.Network.createHTTPClient({
         venue:venue
       });              
       venuesTab.open(mapWin);
-    });
-    venueWin.add(projectsLabel);    
+    });    
+    venueWin.add(venueScroll);
     venueWin.open();    
   },
   onerror: function(e) {

@@ -25,7 +25,7 @@ var xhr = Ti.Network.createHTTPClient({
         borderWidth:1
       });      
       var name;
-      (venue.name.length >= 22) ? name = venue.name.substr(0,22) + "..." : name = venue.name;
+      (venue.name.length >= 30) ? name = venue.name.substr(0,30) + "..." : name = venue.name;
       var nameLabel = Ti.UI.createLabel({
         text:name,
         font:{fontSize:16,fontWeight:'bold'},
