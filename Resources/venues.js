@@ -1,4 +1,4 @@
-var url = "http://www.gwahir.com:3000/api/venues.json?event_id=5";
+var url = "http://www.gwahir.com:3000/api/venues.json";
 var table = Ti.UI.createTableView();
 var tableData = [];
 var i, row, title;
@@ -14,20 +14,39 @@ var xhr = Ti.Network.createHTTPClient({
           height:'60dp'
       });      
       row.link = "venue.js";
-      row.venue = venue;
-      var name;           
-      (venue.name.length >= 22) ? name = venue.name.substr(0,22) + "..." : name = venue.name;              
+      row.venue = venue;      
+      var venueThumb = Titanium.UI.createImageView({
+        image:venue.thumbnail,
+        width:45,
+        height:45,
+        left:5,
+        top:10,
+        borderColor:'black',
+        borderWidth:1
+      });      
+      var name;
+      (venue.name.length >= 22) ? name = venue.name.substr(0,22) + "..." : name = venue.name;
       var nameLabel = Ti.UI.createLabel({
         text:name,
-        font:{fontSize:'24dp',fontWeight:'bold'},
+        font:{fontSize:16,fontWeight:'bold'},
         height:'auto',
-        left:'10dp',
-        top:'5dp',
+        left:'55dp',
+        top:10,
         color:'#000',
         touchEnabled:false
       });
-
+      var addressLabel = Ti.UI.createLabel({
+        text:venue.address,
+        font:{fontSize:'12dp'},
+        height:'auto',
+        left:'55dp',
+        top:30,
+        color:'#000',
+        touchEnabled:false
+      });
+      row.add(venueThumb);
       row.add(nameLabel);
+      row.add(addressLabel);
       tableData.push(row);
     }
 

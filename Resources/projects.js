@@ -5,10 +5,10 @@ var projectsWin = Titanium.UI.currentWindow;
 var projectsTab = Titanium.UI.currentTab;
 
 if(projectsWin.venue_id){
-  var url = "http://www.gwahir.com:3000/api/projects.json?event_id=5&venue_id=" + projectsWin.venue_id; 
+  var url = "http://www.gwahir.com:3000/api/projects.json?venue_id=" + projectsWin.venue_id; 
 }
 else {
-  var url = "http://www.gwahir.com:3000/api/projects.json?event_id=5";
+  var url = "http://www.gwahir.com:3000/api/projects.json";
 }
 
 var xhr = Ti.Network.createHTTPClient({
@@ -22,36 +22,39 @@ var xhr = Ti.Network.createHTTPClient({
       });
       row.link = "project.js";
       row.project = project;
-      (project.title.length >= 22) ? title = project.title.substr(0,22) + "..." : title = project.title;  
+      var projectThumb = Titanium.UI.createImageView({
+        image:project.thumbnail,
+        width:45,
+        height:45,
+        left:5,
+        top:10,
+        borderColor:'black',
+        borderWidth:1
+      });            
+      (project.title.length >= 30) ? title = project.title.substr(0,30) + "..." : title = project.title;  
       var nameLabel = Ti.UI.createLabel({
-          text:title.toLowerCase(),
-          font:{
-              fontSize:'24dp',
-              fontWeight:'bold'
-      },
-      height:'auto',
-      left:'10dp',
-      top:'5dp',
-      color:'#000',
-      touchEnabled:false
+        text:title.toLowerCase(),
+        font:{fontSize:16,fontWeight:'bold'},
+        height:'auto',
+        left:55,
+        top:10,
+        color:'#000',
+        touchEnabled:false
       });
       var catLabel = Ti.UI.createLabel({
-      text:project.cat_name,
-      font:{
-          fontSize:'16dp'
-      },
-      height:'auto',
-      left:'10dp',
-      bottom:'5dp',
-      color:'#000',
-      touchEnabled:false
+        text:project.cat_name,
+        font:{fontSize:'14dp'},
+        height:'auto',
+        left:'55dp',
+        bottom:'10dp',
+        color:'#000',
+        touchEnabled:false
       });
-
+      row.add(projectThumb);
       row.add(nameLabel);
       row.add(catLabel);
       tableData.push(row);
     }
-
     table.setData(tableData); 
   },
   onerror: function(e) {

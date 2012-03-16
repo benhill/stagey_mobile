@@ -40,13 +40,19 @@ var xhr = Ti.Network.createHTTPClient({
       projectThumb.addEventListener('click', function(e){
         openProject(e);
       });
+      var title;
+      (performance.project_name.length >= 35) ? title = performance.project_name.substr(0,35) + "..." : title = performance.project_name;  
       var projectTitle = Titanium.UI.createLabel({
-        text:performance.project_name,
+        text:title,
         height:'auto',
         width:'auto',            
         top:-45,  
         left:60,
-        font:{fontSize:14}      
+        font:{fontSize:14},
+        project_id:performance.project_id
+      });
+      projectTitle.addEventListener('click', function(e){
+        openProject(e);
       });   
       nowView.add(projectTitle);      
       var projectInfo = Titanium.UI.createLabel({
@@ -72,7 +78,6 @@ var xhr = Ti.Network.createHTTPClient({
         openMap(e);
       });              
     }
-
     nowScroll.add(nowView);
     nowWin.add(nowScroll);
     nowWin.open();    

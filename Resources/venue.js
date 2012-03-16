@@ -4,11 +4,9 @@ var url = "http://www.gwahir.com:3000/api/venue/" + venueWin.venue_id + ".json";
 var json, venue;
 var image_top = 0;
 var image_place = 0;
-
 var xhr = Ti.Network.createHTTPClient({
   onload: function(){     
     venue = JSON.parse(this.responseText);
-    
     var name = Titanium.UI.createLabel({
       text:venue.name,
       height:'auto',
@@ -17,7 +15,6 @@ var xhr = Ti.Network.createHTTPClient({
       left:5
     });    
     venueWin.add(name);
-
     var address = Ti.UI.createLabel({
       text: venue.address + ", " + venue.city + ", " + venue.state + " " + venue.postal,
       top:1,
@@ -27,7 +24,6 @@ var xhr = Ti.Network.createHTTPClient({
       width: '95%'
     });
     venueWin.add(address);
-    
     var presenter = Ti.UI.createLabel({
       text: "presented by " + venue.presenter,
       top:0,
@@ -37,14 +33,12 @@ var xhr = Ti.Network.createHTTPClient({
       width: '95%'
     });
     if(venue.presenter){venueWin.add(presenter)};
-            
     var galleryView = Ti.UI.createView({
       height:'auto',
       width:'auto',
       top:5,
       left:5   
     });
-
     var imageCollection = venue.images;        
     for (var i = 0; i < imageCollection.length; i++) {      
       if(i > 0 && i % 6 === 0){image_place = 0;image_top += 50;}
@@ -60,7 +54,6 @@ var xhr = Ti.Network.createHTTPClient({
       });
       image_place ++;
       galleryView.add(img);            
-
       img.addEventListener('click', function(e){
         var venueWin = Titanium.UI.createWindow({
           backgroundColor:'white',
@@ -71,7 +64,6 @@ var xhr = Ti.Network.createHTTPClient({
       });
     }    
     venueWin.add(galleryView);
-
     var description = Ti.UI.createLabel({
       text: venue.description,
       top:5,
@@ -81,7 +73,6 @@ var xhr = Ti.Network.createHTTPClient({
       width: '95%'
     });
     venueWin.add(description);
-
     var projectsLabel = Ti.UI.createLabel({
       text: "view projects",
       top:5,
@@ -91,7 +82,6 @@ var xhr = Ti.Network.createHTTPClient({
       width: '95%'
     });
     venueWin.add(projectsLabel);    
-
     projectsLabel.addEventListener('click', function(e){
       var projectsWin = Titanium.UI.createWindow({
         backgroundColor:'white',        
@@ -100,7 +90,6 @@ var xhr = Ti.Network.createHTTPClient({
       });        
       venuesTab.open(projectsWin);
     });
-
     var mapLabel = Ti.UI.createLabel({
       text: "map",
       top:5,
@@ -110,7 +99,6 @@ var xhr = Ti.Network.createHTTPClient({
       width: '95%'
     });
     venueWin.add(mapLabel);
-
     mapLabel.addEventListener('click', function(e){
       var mapWin = Titanium.UI.createWindow({
         backgroundColor:'white',
@@ -120,9 +108,7 @@ var xhr = Ti.Network.createHTTPClient({
       });              
       venuesTab.open(mapWin);
     });
-    
     venueWin.add(projectsLabel);    
-
     venueWin.open();    
   },
   onerror: function(e) {
