@@ -4,7 +4,7 @@ var i, row, title;
 var projectsWin = Titanium.UI.currentWindow;
 var projectsTab = Titanium.UI.currentTab;
 if(projectsWin.venue_id){
-  var url = "http://www.gwahir.com:3000/api/projects.json?venue_id=" + projectsWin.venue_id; 
+  var url = "http://www.gwahir.com:3000/api/projects.json?venue_id=" + projectsWin.venue_id;
 }
 else {
   var url = "http://www.gwahir.com:3000/api/projects.json";
@@ -13,7 +13,7 @@ var xhr = Ti.Network.createHTTPClient({
   onload: function(){  
     var projects;
     projectsWin.projects ? projects = projectsWin.projects : projects = JSON.parse(this.responseText).projects;
-    for (i = 0; i < projects.length; i++) {
+    for (i = 0; i < projects.length; i++){
       var project = projects[i];
       var row = Ti.UI.createTableViewRow({
           height:'60dp'

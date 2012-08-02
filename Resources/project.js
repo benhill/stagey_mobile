@@ -65,7 +65,7 @@ var xhr = Ti.Network.createHTTPClient({
       });
     }    
     projectScroll.add(galleryView);
-    var description = Ti.UI.createLabel({
+    var descriptionLabel = Ti.UI.createLabel({
       text:project.description,
       top:5,
       left:5,
@@ -73,7 +73,7 @@ var xhr = Ti.Network.createHTTPClient({
       height:'45',
       width: '95%'
     });
-    projectScroll.add(description);    
+    projectScroll.add(descriptionLabel);    
     performancesLabel = Ti.UI.createLabel({
       text:"View Performances",
       top:10,
@@ -85,12 +85,30 @@ var xhr = Ti.Network.createHTTPClient({
     projectScroll.add(performancesLabel);    
     performancesLabel.addEventListener('click', function(e){
       perfWin = Titanium.UI.createWindow({
-        title: project.title,
+        title:project.title,
         backgroundColor:'white',
         url:'performances.js',
         project:project
       });
       projectTab.open(perfWin);
+    });
+    var reviewsLabel = Ti.UI.createLabel({
+      text:"View Reviews",
+      font:{fontSize:14},
+      left:5,
+      top:10,
+      height:'auto',
+      width:'95%'
+    });
+    projectScroll.add(reviewsLabel);
+    reviewsLabel.addEventListener('click', function(e){
+      reviewsWin = Ti.UI.createWindow({        
+        title:project.title,
+        url:'reviews.js',
+        backgroundColor:'white',
+        project:project
+      });
+      projectTab.open(reviewsWin);
     });
     projectWin.add(projectScroll);
     projectWin.open();    
