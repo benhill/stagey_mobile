@@ -1,3 +1,4 @@
+Ti.include("helper.js");
 var venueWin = Titanium.UI.currentWindow;
 var venuesTab = Titanium.UI.currentTab;
 var url = "http://www.gwahir.com:3000/api/venue/" + venueWin.venue_id + ".json";
@@ -112,8 +113,7 @@ var xhr = Ti.Network.createHTTPClient({
     venueScroll.add(mapLabel);
     mapLabel.addEventListener('click', function(e){
       var mapWin = Titanium.UI.createWindow({
-        backgroundColor:'white',
-        venue_id: venue.id,
+        backgroundColor:'white',        
         url:'map.js',
         venue:venue
       });              

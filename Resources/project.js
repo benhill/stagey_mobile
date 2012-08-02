@@ -1,3 +1,5 @@
+Ti.include("helper.js");
+var projectTab = Ti.UI.currentTab;
 var projectWin = Titanium.UI.currentWindow;
 var url = "http://www.gwahir.com:3000/api/project/" + projectWin.project_id + ".json";
 var json, project;
@@ -64,52 +66,32 @@ var xhr = Ti.Network.createHTTPClient({
     }    
     projectScroll.add(galleryView);
     var description = Ti.UI.createLabel({
-      text: project.description,
+      text:project.description,
       top:5,
       left:5,
       font:{fontSize:10},
-      height:'auto',
+      height:'45',
       width: '95%'
     });
-    projectScroll.add(description);
-    var performances = Ti.UI.createView({
-      top:5,
-      layout:'vertical'
-    });
-    var last_space;
-    for (var i = 0; i < project.performances.length; i++) {      
-      var performance = project.performances[i];
-      var spaceLabel = Ti.UI.createLabel({
-        text:performance.venue + " (" + performance.space + ")",
-        font:{fontSize:10, fontWeight:'bold'},
-        height:'auto',
-        width: 'auto',
-        top:10,
-        left:5
+    projectScroll.add(description);    
+    performancesLabel = Ti.UI.createLabel({
+      text:"View Performances",
+      top:10,
+      left:5,
+      font:{fontSize:14},
+      height:'auto',
+      width:'95%'
+    });        
+    projectScroll.add(performancesLabel);    
+    performancesLabel.addEventListener('click', function(e){
+      perfWin = Titanium.UI.createWindow({
+        title: project.title,
+        backgroundColor:'white',
+        url:'performances.js',
+        project:project
       });
-      var venueAddress = Ti.UI.createLabel({
-        text:project.performances[i].venue_address,
-        top:0,
-        left:5,
-        font:{fontSize:9},
-        height:'auto',
-        width: 'auto'
-      });      
-      if(performance.space != last_space){
-        performances.add(spaceLabel);
-        performances.add(venueAddress);
-      }
-      var performanceLabel = Ti.UI.createLabel({
-        text:performance.date + "@" + performance.time + " \u00B7 " + performance.cost + " \u00B7 " + performance.duration, 
-        font:{fontSize:10},
-        height:'auto',
-        width:'95%',
-        top:5
-      });      
-      performances.add(performanceLabel);
-      last_space = performance.space;
-    }    
-    projectScroll.add(performances);
+      projectTab.open(perfWin);
+    });
     projectWin.add(projectScroll);
     projectWin.open();    
   },

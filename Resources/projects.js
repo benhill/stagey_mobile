@@ -3,14 +3,12 @@ var tableData = [];
 var i, row, title;
 var projectsWin = Titanium.UI.currentWindow;
 var projectsTab = Titanium.UI.currentTab;
-
 if(projectsWin.venue_id){
   var url = "http://www.gwahir.com:3000/api/projects.json?venue_id=" + projectsWin.venue_id; 
 }
 else {
   var url = "http://www.gwahir.com:3000/api/projects.json";
 }
-
 var xhr = Ti.Network.createHTTPClient({
   onload: function(){  
     var projects;
@@ -65,11 +63,9 @@ var xhr = Ti.Network.createHTTPClient({
   },
   timeout:5000
 });
-
 table.addEventListener('click', function(e){
   showClickEventInfo(e);
 });
-
 function showClickEventInfo(e, islongclick) { 
   var project = e.rowData.project;
   if (e.rowData.link){
@@ -82,7 +78,6 @@ function showClickEventInfo(e, islongclick) {
   }
   projectsTab.open(newWindow);
 }
- 
 xhr.open("GET", url);
 xhr.send();
 projectsWin.add(table);

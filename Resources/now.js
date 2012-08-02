@@ -1,9 +1,7 @@
+Ti.include("helper.js");
 var url = "http://www.gwahir.com:3000/api/performances/7.json";
-
 var nowWin = Titanium.UI.currentWindow;
-
 var nowTab = Titanium.UI.currentTab;
-
 var nowScroll = Titanium.UI.createScrollView({
   contentWidth:'auto',
   contentHeight:1100,
@@ -13,7 +11,6 @@ var nowScroll = Titanium.UI.createScrollView({
   showHorizontalScrollIndicator:true,
   layout:'vertical'
 });
-
 var xhr = Ti.Network.createHTTPClient({
   onload: function(){      
     var performances = JSON.parse(this.responseText).performances;
@@ -46,7 +43,7 @@ var xhr = Ti.Network.createHTTPClient({
         text:title,
         height:'auto',
         width:'auto',            
-        top:-45,  
+        top:-35,  
         left:60,
         font:{fontSize:14},
         project_id:performance.project_id
@@ -63,20 +60,7 @@ var xhr = Ti.Network.createHTTPClient({
         left:60,
         font:{fontSize:10}      
       });   
-      nowView.add(projectInfo);    
-      var mapLabel = Ti.UI.createLabel({
-        text: "map",
-        top:0,
-        left:60,
-        font:{fontSize:12},
-        height:'auto',
-        width:'auto',
-        venue_id:performance.venue_id
-      });
-      nowView.add(mapLabel);
-      mapLabel.addEventListener('click', function(e){
-        openMap(e);
-      });              
+      nowView.add(projectInfo);      
     }
     nowScroll.add(nowView);
     nowWin.add(nowScroll);
@@ -98,30 +82,6 @@ function openProject(e, islongclick){
     project_id:e.source.project_id
   });
   nowTab.open(newWindow)  
-}
-
-function openMap(e,islongclick){
-  var venue_xhr = Ti.Network.createHTTPClient({
-    onload: function(){     
-      var venue = JSON.parse(this.responseText);  
-      var mapWin = Titanium.UI.createWindow({
-        backgroundColor:'white',
-        venue_id: venue.id,
-        url:'map.js',
-        venue:venue
-      });              
-      nowTab.open(mapWin);
-    },
-    onerror: function(e) {
-      Ti.API.debug("STATUS: " + this.status);
-      Ti.API.debug("TEXT:   " + this.responseText);
-      Ti.API.debug("ERROR:  " + e.error);
-    },
-    timeout:5000
-  });
-  var venue_url = "http://www.gwahir.com:3000/api/venue/" + e.source.venue_id + ".json";
-  venue_xhr.open("GET", venue_url);
-  venue_xhr.send();  
 }
 
 xhr.open("GET", url);
