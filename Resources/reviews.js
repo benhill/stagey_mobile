@@ -14,7 +14,7 @@ var xhr =  Ti.Network.createHTTPClient({
         height:'70dp'
       });
       row.link = 'review.js';
-      row.review = review;
+      row.review = review;      
       var image = Ti.UI.createImageView({
         image:review.reviewer_image_url,
         width:45,
@@ -43,7 +43,7 @@ var xhr =  Ti.Network.createHTTPClient({
       });
       row.add(date);
       var blurb = Ti.UI.createLabel({
-        text:review.body.substr(0,80) + '...',
+        text:review.body.substr(0,80).replace(/\n/gm, '').replace(/\r/gm, ' ') + '...',
         height:45,
         left:60,
         top:17,
