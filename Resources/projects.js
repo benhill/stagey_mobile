@@ -18,7 +18,7 @@ var xhr = Ti.Network.createHTTPClient({
       var row = Ti.UI.createTableViewRow({
           height:'60dp'
       });
-      row.link = "project.js";
+      row.link = 'project.js';
       row.project = project;
       var projectThumb = Titanium.UI.createImageView({
         image:project.thumbnail,

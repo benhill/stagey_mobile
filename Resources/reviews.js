@@ -11,16 +11,46 @@ var xhr =  Ti.Network.createHTTPClient({
     for(i = 0; i < reviews.length; i++){
       review = reviews[i];
       var row = Ti.UI.createTableViewRow({
-        height:'60dp'
+        height:'70dp'
       });
-      var nameLabel = Ti.UI.createLabel({
-        text: review.reviewer_name,
-        width:'100%',
+      row.link = 'review.js';
+      row.review = review;
+      var image = Ti.UI.createImageView({
+        image:review.reviewer_image_url,
+        width:45,
         height:45,
         left:5,
         top:10,
+        borderColor:'black',
+        borderWidth:1
+      });
+      row.add(image);
+      var nameLabel = Ti.UI.createLabel({
+        text:review.reviewer_first_name + " " + review.reviewer_last_name.substr(0,1),
+        width:'100%',
+        height:45,
+        left:60,
+        top:-7,
+        font:{fontSize:'13', fontWeight:'bold'}
       });
       row.add(nameLabel);
+      var date = Ti.UI.createLabel({
+        text:review.time_passed + " ago",
+        height:45,
+        left:225,
+        top:-7,
+        font:{fontSize:'10'}
+      });
+      row.add(date);
+      var blurb = Ti.UI.createLabel({
+        text:review.body.substr(0,80) + '...',
+        height:45,
+        left:60,
+        top:17,
+        width:250,
+        font:{fontSize:'11'}
+      });
+      row.add(blurb);
       reviewsData.push(row);
     };
     reviewsTable.setData(reviewsData);
@@ -33,6 +63,22 @@ var xhr =  Ti.Network.createHTTPClient({
   },
   timeout:5000
 });
+reviewsTable.addEventListener('click', function(e){
+  showClickEventInfo(e);
+});
+function showClickEventInfo(e, islongclick) { 
+  var review = e.rowData.review;
+  if (e.rowData.link){
+    var reviewWindow = Titanium.UI.createWindow({
+      url:e.rowData.link,
+      backButtonTitle:'back',
+      layout:'vertical',
+      title:project.title,
+      review:review
+    });
+  }
+  projectsTab.open(reviewWindow);
+}
 xhr.open("GET", url);
 xhr.send();
 reviewsWin.add(reviewsTable);

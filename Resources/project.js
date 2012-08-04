@@ -21,7 +21,7 @@ var xhr = Ti.Network.createHTTPClient({
     var title = Titanium.UI.createLabel({
       text:project.title,
       height:'auto',
-      width:'auto',            
+      width:'auto',
       font:{fontSize:20},
       left:5
     });    
