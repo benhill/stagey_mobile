@@ -43,7 +43,7 @@ var xhr = Ti.Network.createHTTPClient({
         text:title,
         height:'auto',
         width:'auto',            
-        top:-35,  
+        top:-45,  
         left:60,
         font:{fontSize:14},
         project_id:performance.project_id
@@ -57,6 +57,7 @@ var xhr = Ti.Network.createHTTPClient({
         height:'auto',
         width:'auto',            
         top:0,  
+        bottom:10,
         left:60,
         font:{fontSize:10}      
       });   

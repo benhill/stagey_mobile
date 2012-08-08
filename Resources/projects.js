@@ -35,7 +35,7 @@ var xhr = Ti.Network.createHTTPClient({
         font:{fontSize:16,fontWeight:'bold'},
         height:'auto',
         left:55,
-        top:10,
+        top:7,
         color:'#000',
         touchEnabled:false
       });

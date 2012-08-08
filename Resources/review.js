@@ -59,7 +59,7 @@ var body = Ti.UI.createLabel({
   height:'auto',
   width:'245',
   left:60,
-  top:40,
+  top:45,
   font:{fontSize:'11'}
 });
 wrapper.add(body);

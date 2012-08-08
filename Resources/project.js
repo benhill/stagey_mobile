@@ -67,10 +67,11 @@ var xhr = Ti.Network.createHTTPClient({
     projectScroll.add(galleryView);
     var descriptionLabel = Ti.UI.createLabel({
       text:project.description,
-      top:5,
+      top:10,
+      bottom:10,
       left:5,
       font:{fontSize:10},
-      height:'45',
+      height:'auto',
       width: '95%'
     });
     projectScroll.add(descriptionLabel);    
@@ -107,6 +108,24 @@ var xhr = Ti.Network.createHTTPClient({
         url:'reviews.js',
         backgroundColor:'white',
         project:project
+      });
+      projectTab.open(reviewsWin);
+    });
+    var teamLabel = Ti.UI.createLabel({
+      text:"Project Team",
+      font:{fontSize:14},
+      left:5,
+      top:10,
+      height:'auto',
+      width:'95%'
+    });
+    projectScroll.add(teamLabel);
+    teamLabel.addEventListener('click', function(e){
+      reviewsWin = Ti.UI.createWindow({        
+        title:project.title,
+        url:'users.js',
+        backgroundColor:'white',
+        users:project.team
       });
       projectTab.open(reviewsWin);
     });

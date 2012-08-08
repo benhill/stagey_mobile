@@ -7,7 +7,7 @@ var project = reviewsWin.project;
 var url = "http://www.gwahir.com:3000/api/reviews/" + project.id + ".json"
 var xhr =  Ti.Network.createHTTPClient({
 	onload: function(){    
-    reviews = JSON.parse(this.responseText).reviews;    
+    reviews = JSON.parse(this.responseText).reviews;
     for(i = 0; i < reviews.length; i++){
       review = reviews[i];
       var row = Ti.UI.createTableViewRow({
