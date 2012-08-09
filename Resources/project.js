@@ -3,10 +3,9 @@ var projectTab = Ti.UI.currentTab;
 var projectWin = Titanium.UI.currentWindow;
 var url = "http://www.gwahir.com:3000/api/project/" + projectWin.project_id + ".json";
 var json, project;
-var image_top = 0;
 var image_place = 0;
 var xhr = Ti.Network.createHTTPClient({
-  onload: function(){     
+  onload: function(){    
     var projectScroll = Titanium.UI.createScrollView({
       contentWidth:'95%',
       contentHeight:1100,
@@ -29,42 +28,63 @@ var xhr = Ti.Network.createHTTPClient({
     var subTitle = Titanium.UI.createLabel({
       text:project.company + " \u00B7 ages " + project.age_restriction + "+ \u00B7 " + project.duration + " \u00B7 " + project.cost_range,
       height:'auto',
-      width:'auto',            
+      width:'auto',       
       left:5,
-      font:{fontSize:10}      
+      font:{fontSize:10}
     });
-    projectScroll.add(subTitle);
+    projectScroll.add(subTitle);    
     var galleryView = Ti.UI.createView({
       height:'auto',
       width:'auto',
       top:5,
       left:5   
     });
-    var imageCollection = project.images;        
+    var imageCollection = project.images.slice(0,4);
     for (var i = 0; i < imageCollection.length; i++) {      
-      if(i > 0 && i % 6 === 0){image_place = 0;image_top += 50;}
+      if(i > 0 && i % 6 === 0){image_place = 0;}
       var img = Ti.UI.createImageView({
         maxZoomScale:5,
-        image: project.images[i].thumbnail_path,
-        width: 45,
-        height: 45,
-        left: image_place * 50,
-        top: image_top,
+        image: imageCollection[i].thumbnail_path,
+        width:70,
+        height:70,
+        left:image_place * 77,        
         layout:'absolute',
-        full_image_path: project.images[i].image_path
+        full_image_path: imageCollection[i].image_path,
+        borderRadius:10,
+        borderWidth:0
       });
       image_place ++;
       galleryView.add(img);            
       img.addEventListener('click', function(e){
         var imageWin = Titanium.UI.createWindow({
-          backgroundColor: 'white',
-          url: 'image.js',
-          image: e.source.full_image_path
+          backgroundColor:'white',
+          url:'image.js',
+          image:e.source.full_image_path
         });                
         imageWin.open();
       });
-    }    
+    }
     projectScroll.add(galleryView);
+    var moreImagesLabel = Ti.UI.createLabel({
+      top:9,
+      left:220,
+      text:'more images',
+      width:'auto',
+      height:'auto',
+      font:{fontSize:14}
+    }); 
+    if(project.images.length > 4){
+      projectScroll.add(moreImagesLabel);
+      moreImagesLabel.addEventListener('click', function(e){
+        galleryWin = Ti.UI.createWindow({
+          images:project.images,
+          title:project.title,
+          backgroundColor:'white',
+          url:'gallery.js'
+        });
+        projectTab.open(galleryWin);
+      });
+    }
     var descriptionLabel = Ti.UI.createLabel({
       text:project.description,
       top:10,
@@ -74,7 +94,7 @@ var xhr = Ti.Network.createHTTPClient({
       height:'auto',
       width: '95%'
     });
-    projectScroll.add(descriptionLabel);    
+    projectScroll.add(descriptionLabel);
     performancesLabel = Ti.UI.createLabel({
       text:"View Performances",
       top:10,
@@ -92,7 +112,7 @@ var xhr = Ti.Network.createHTTPClient({
         project:project
       });
       projectTab.open(perfWin);
-    });
+    });    
     var reviewsLabel = Ti.UI.createLabel({
       text:"View Reviews",
       font:{fontSize:14},
@@ -129,6 +149,20 @@ var xhr = Ti.Network.createHTTPClient({
       });
       projectTab.open(reviewsWin);
     });
+    var tagsList = 'tagged under:\n'
+    for(i=0;i < project.tags.length;i++){
+      tagsList += project.tags[i].name;
+      if(i != project.tags.length-1){tagsList +=  ' ' + String.fromCharCode(183) + ' '}
+    }
+    var tagsLabel = Ti.UI.createLabel({
+      text:tagsList,
+      height:'auto',
+      width:'auto',
+      top:10,
+      left:5,
+      font:{fontSize:10}
+    })    
+    projectScroll.add(tagsLabel);
     projectWin.add(projectScroll);
     projectWin.open();    
   },
