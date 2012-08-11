@@ -5,7 +5,7 @@ var url = "http://www.gwahir.com:3000/api/project/" + projectWin.project_id + ".
 var json, project;
 var image_place = 0;
 var xhr = Ti.Network.createHTTPClient({
-  onload: function(){    
+  onload: function(){
     var projectScroll = Titanium.UI.createScrollView({
       contentWidth:'95%',
       contentHeight:1100,
@@ -86,7 +86,7 @@ var xhr = Ti.Network.createHTTPClient({
       });
     }
     var descriptionLabel = Ti.UI.createLabel({
-      text:project.description,
+      text:project.description + '...read full description.',
       top:10,
       bottom:10,
       left:5,
@@ -94,7 +94,16 @@ var xhr = Ti.Network.createHTTPClient({
       height:'auto',
       width: '95%'
     });
-    projectScroll.add(descriptionLabel);
+    projectScroll.add(descriptionLabel);        
+    descriptionLabel.addEventListener('click', function(e){
+      var descWin = Ti.UI.createWindow({
+        title:project.title,
+        backgroundColor:'white',
+        url:'project_description.js',
+        project_id:project.id
+      });
+      projectTab.open(descWin);
+    });
     performancesLabel = Ti.UI.createLabel({
       text:"View Performances",
       top:10,
@@ -105,7 +114,7 @@ var xhr = Ti.Network.createHTTPClient({
     });        
     projectScroll.add(performancesLabel);    
     performancesLabel.addEventListener('click', function(e){
-      perfWin = Titanium.UI.createWindow({
+      var perfWin = Ti.UI.createWindow({
         title:project.title,
         backgroundColor:'white',
         url:'performances.js',

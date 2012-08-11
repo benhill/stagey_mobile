@@ -3,15 +3,15 @@ var projectTab = Ti.UI.currentTab;
 var reviewWin = Ti.UI.currentWindow;
 var review = reviewWin.review;
 var reviewScroll = Titanium.UI.createScrollView({
-    contentWidth:'auto',
-    contentHeight:'auto',
-    touchEnabled:true,
-    scrollType:'vertical',
-    verticalBounce:true,
-    showVerticalScrollIndicator:true,
-    width:'auto',
-    height:350,
-    top:0
+  contentWidth:'auto',
+  contentHeight:'auto',
+  touchEnabled:true,
+  scrollType:'vertical',
+  verticalBounce:true,
+  showVerticalScrollIndicator:true,
+  width:'auto',
+  height:350,
+  top:0
 });
 var wrapper = Ti.UI.createView({
   height:'auto',
