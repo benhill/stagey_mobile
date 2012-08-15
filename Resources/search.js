@@ -1,5 +1,4 @@
 var searchWin = Titanium.UI.currentWindow;
-
 var searchTitle = Titanium.UI.createLabel({
   text: "Search Terms",
   height:'auto',
@@ -9,7 +8,6 @@ var searchTitle = Titanium.UI.createLabel({
   top:100
 });    
 searchWin.add(searchTitle);
-
 var searchField = Titanium.UI.createTextField({  
   height:35,
   top:10,
@@ -18,7 +16,6 @@ var searchField = Titanium.UI.createTextField({
   borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
 });
 searchWin.add(searchField);
-
 var searchButton =  Ti.UI.createButton({
   title:'search',
   style:Ti.UI.iPhone.SystemButtonStyle.BORDERED,
@@ -27,13 +24,11 @@ var searchButton =  Ti.UI.createButton({
   left:5
 });
 searchWin.add(searchButton);
-
 searchButton.addEventListener('click', function(e){  
   var url = "http://www.gwahir.com:3000/api/search_projects.json?search_terms=" + searchField.value;
   xhr.open("GET", url);
   xhr.send();
 });
-
 var xhr = Ti.Network.createHTTPClient({
   onload: function(){     
     projects = JSON.parse(this.responseText).projects;

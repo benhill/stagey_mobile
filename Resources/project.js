@@ -23,7 +23,7 @@ var xhr = Ti.Network.createHTTPClient({
       width:'auto',
       font:{fontSize:20},
       left:5
-    });    
+    });
     projectScroll.add(title);
     var subTitle = Titanium.UI.createLabel({
       text:project.company + " \u00B7 ages " + project.age_restriction + "+ \u00B7 " + project.duration + " \u00B7 " + project.cost_range,
