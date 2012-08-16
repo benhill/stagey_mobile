@@ -7,7 +7,7 @@ var homeWin = Titanium.UI.createWindow({
   layout:'vertical'
 });
 var homeTab = Titanium.UI.createTab({
-  icon:'homeTabicon.png',
+  icon:'icons/home_30.png',
   title:'Home',
   window:homeWin
 });
@@ -18,31 +18,31 @@ var projectsWin = Ti.UI.createWindow({
   url:'projects.js'
 });
 var projectsTab = Titanium.UI.createTab({
-  icon:'projectsTabicon.png',
+  icon:'icons/all_shows_30.png',
   title:'Projects',
   window:projectsWin
 });
 tabGroup.addTab(projectsTab);
-var venuesWin = Titanium.UI.createWindow({
-  title:'Venues',
-  backgroundColor:'#fff',
-  url:'venues.js'
-});
-var venuesTab = Titanium.UI.createTab({
-  icon:'venuesTabicon.png',
-  title:'Venues',
-  window:venuesWin
-});
-tabGroup.addTab(venuesTab);
-var mapWin = Titanium.UI.createWindow({
-  title:'Fringe Map',
+var nearbyWin = Titanium.UI.createWindow({
+  title:'Nearby',
   backgroundColor:'#fff',
   url:'map.js'
 });
-var mapTab = Titanium.UI.createTab({
-  icon:'venuesTabicon.png',
-  title:'Map',
-  window:mapWin
+var nearbyTab = Titanium.UI.createTab({
+  icon:'icons/nearby_30.png',
+  title:'Nearby',
+  window:nearbyWin
 });
-tabGroup.addTab(mapTab);
+tabGroup.addTab(nearbyTab);
+var searchWin = Titanium.UI.createWindow({
+  title:'Search',
+  backgroundColor:'#fff',
+  url:'search.js'
+});
+var searchTab = Titanium.UI.createTab({
+  icon:'icons/search_30.png',
+  title:'Search',
+  window:searchWin
+});
+tabGroup.addTab(searchTab);
 tabGroup.open();

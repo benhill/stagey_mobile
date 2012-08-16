@@ -1,18 +1,28 @@
+Ti.include("helper.js");
 function Icon(text, image, window){
    this.text = text;
    this.image = image;
    this.window = window;   
 }
 icons = [];
-var nearby = new Icon('Nearby', 'image', 'neaby.js');
+var whats_next = new Icon('Next Up', 'icons/whats_next_48.png', 'whats_next.js');
+icons.push(whats_next);
+var nearby = new Icon('Nearby', 'icons/nearby_48.png', 'icons/nearby.js');
 icons.push(nearby);
-var projects = new Icon('Projects', 'image', 'projects.js');
+var projects = new Icon('All Shows', 'icons/all_shows_48.png', 'projects.js');
 icons.push(projects);
-var venues = new Icon('Venues', 'image', 'projects.js');
+var venues = new Icon('Venues', 'icons/venues_48.png', 'projects.js');
 icons.push(venues);
-var profile = new Icon('Profile', 'image', 'projects.js');
+var profile = new Icon('Reviews', 'icons/reviews_48.png', 'projects.js');
 icons.push(profile);
-
+var profile = new Icon('Favorites', 'icons/favorites_48.png', 'projects.js');
+icons.push(profile);
+var profile = new Icon('My Schedule', 'icons/schedule_48.png', 'projects.js');
+icons.push(profile);
+var profile = new Icon('Purchases', 'icons/purchase_48.png', 'projects.js');
+icons.push(profile);
+var profile = new Icon('Me', 'icons/my_account_48.png', 'projects.js');
+icons.push(profile);
 var homeWin = Ti.UI.currentWindow;
 var searchView = Ti.UI.createView({
   top:0,
@@ -20,20 +30,22 @@ var searchView = Ti.UI.createView({
   height:50,
   layout:'absolute'
 });
-var searchField = Titanium.UI.createTextField({  
-  height:35,
+var searchField = Titanium.UI.createTextField({
+  value:'search for a show',
+  height:30,
+  clearOnEdit:true,
   top:10,
   left:5,
   width:'80%',
   borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
 });
+addKeyboardToolbar(searchField);
 searchView.add(searchField);
-var searchButton =  Ti.UI.createButton({
-  top:10,  
-  title:'GO',
-  style:Ti.UI.iPhone.SystemButtonStyle.BORDERED,
-  height:35,
-  width: 40,
+var searchButton =  Ti.UI.createImageView({
+  image:'icons/search_24.png',
+  width:24,
+  height:24,
+  top:12,    
   left:270
 });
 searchView.add(searchButton);
@@ -42,6 +54,7 @@ searchButton.addEventListener('click', function(e){
   xhr.open("GET", url);
   xhr.send();
 });
+
 var xhr = Ti.Network.createHTTPClient({
   onload: function(){     
     projects = JSON.parse(this.responseText).projects;
@@ -69,25 +82,34 @@ var iconsView = Ti.UI.createView({
 var top = 0;
 var left = 0;
 for(var i = 0;i < icons.length; i++){
-  if(i > 0 && i % 3 === 0){left = 0;top += 75;}
+  if(i > 0 && i % 3 === 0){left = 0;top += 85;}
   icon = icons[i];
   var iconView = Ti.UI.createView({
     top:top,
     left:left,
     width:100,
-    height:100,
+    height:85,
     layout:'vertical'
+  });  
+  var iconImage = Ti.UI.createImageView({
+    image:icon.image,
+    height:40,
+    width:40,
+    top:10
   });
+  iconView.add(iconImage);
   var iconText = Ti.UI.createLabel({
     text:icon.text,
     height:'auto',
-    width:'auto',
-    font:{fontSize:20},
-    left:5,
+    width:100,
+    font:{fontSize:12},
+    left:0,
+    top:5,
+    textAlign:'center'
   });
-  iconView.add(iconText);
+  iconView.add(iconText);  
   iconsView.add(iconView);
-  left += 105;  
+  left += 100;  
 }
 homeWin.add(iconsView);
 var url = "http://www.gwahir.com:3000/api/mobile_ad.json";
