@@ -1,27 +1,28 @@
 Ti.include("helper.js");
+currentTab = Titanium.UI.currentTab;
 function Icon(text, image, window){
    this.text = text;
    this.image = image;
-   this.window = window;   
+   this.window = window;
 }
 icons = [];
-var whats_next = new Icon('Next Up', 'icons/whats_next_48.png', 'whats_next.js');
+var whats_next = new Icon('Next Up', 'icons/whats_next_48.png', 'now.js');
 icons.push(whats_next);
-var nearby = new Icon('Nearby', 'icons/nearby_48.png', 'icons/nearby.js');
+var nearby = new Icon('Nearby', 'icons/nearby_48.png', 'nearby.js');
 icons.push(nearby);
 var projects = new Icon('All Shows', 'icons/all_shows_48.png', 'projects.js');
 icons.push(projects);
-var venues = new Icon('Venues', 'icons/venues_48.png', 'projects.js');
+var venues = new Icon('Venues', 'icons/venues_48.png', 'venues.js');
 icons.push(venues);
-var profile = new Icon('Reviews', 'icons/reviews_48.png', 'projects.js');
-icons.push(profile);
-var profile = new Icon('Favorites', 'icons/favorites_48.png', 'projects.js');
-icons.push(profile);
-var profile = new Icon('My Schedule', 'icons/schedule_48.png', 'projects.js');
-icons.push(profile);
-var profile = new Icon('Purchases', 'icons/purchase_48.png', 'projects.js');
-icons.push(profile);
-var profile = new Icon('Me', 'icons/my_account_48.png', 'projects.js');
+var reviews = new Icon('Reviews', 'icons/reviews_48.png', 'reviews_all.js');
+icons.push(reviews);
+var favorites = new Icon('Favorites', 'icons/favorites_48.png', 'favorites.js');
+icons.push(favorites);
+var schedule = new Icon('My Schedule', 'icons/schedule_48.png', 'schedule.js');
+icons.push(schedule);
+var purchases = new Icon('Purchases', 'icons/purchase_48.png', 'purchases.js');
+icons.push(purchases);
+var profile = new Icon('Me', 'icons/my_account_48.png', 'profile.js');
 icons.push(profile);
 var homeWin = Ti.UI.currentWindow;
 var searchView = Ti.UI.createView({
@@ -35,9 +36,16 @@ var searchField = Titanium.UI.createTextField({
   height:30,
   clearOnEdit:true,
   top:10,
-  left:5,
-  width:'80%',
-  borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
+  left:15,
+  width:'82%',
+  borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
+  color:'gray'
+});
+searchField.addEventListener('focus', function(e){
+  e.source.color = 'black'
+});
+searchField.addEventListener('return', function(e){
+  runSearch(searchField.value);
 });
 addKeyboardToolbar(searchField);
 searchView.add(searchField);
@@ -46,21 +54,19 @@ var searchButton =  Ti.UI.createImageView({
   width:24,
   height:24,
   top:12,    
-  left:270
+  left:285
 });
 searchView.add(searchButton);
-searchButton.addEventListener('click', function(e){  
-  var url = "http://www.gwahir.com:3000/api/search_projects.json?search_terms=" + searchField.value;
-  xhr.open("GET", url);
-  xhr.send();
+searchButton.addEventListener('click', function(e){
+  runSearch(searchField.value);
 });
-
 var xhr = Ti.Network.createHTTPClient({
   onload: function(){     
     projects = JSON.parse(this.responseText).projects;
     projectsWin = Titanium.UI.createWindow({
       url:'projects.js',      
-      projects: projects
+      projects: projects,
+      barColor:barColor
     });
     searchWin.activeTab.open(projectsWin);
   },
@@ -89,13 +95,17 @@ for(var i = 0;i < icons.length; i++){
     left:left,
     width:100,
     height:85,
-    layout:'vertical'
+    layout:'vertical',
+    window:icon.window,
+    text:icon.text
   });  
   var iconImage = Ti.UI.createImageView({
     image:icon.image,
     height:40,
     width:40,
-    top:10
+    top:10,
+    window:icon.window,
+    text:icon.text
   });
   iconView.add(iconImage);
   var iconText = Ti.UI.createLabel({
@@ -105,11 +115,28 @@ for(var i = 0;i < icons.length; i++){
     font:{fontSize:12},
     left:0,
     top:5,
-    textAlign:'center'
+    textAlign:'center',
+    window:icon.window,
+    text:icon.text
   });
   iconView.add(iconText);  
-  iconsView.add(iconView);
+  iconsView.add(iconView);  
   left += 100;  
+  iconView.addEventListener('click', function(e){
+    showClickEventInfo(e);
+  });  
+}
+function runSearch(terms, e, islongclick){
+  alert(terms);
+}
+function showClickEventInfo(e, islongclick){ 
+  var newWindow = Titanium.UI.createWindow({
+    title:e.source.text,
+    backgroundColor:'#fff',
+    url:e.source.window,
+    barColor:barColor
+  });  
+  currentTab.open(newWindow);
 }
 homeWin.add(iconsView);
 var url = "http://www.gwahir.com:3000/api/mobile_ad.json";

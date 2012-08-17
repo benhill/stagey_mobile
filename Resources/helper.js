@@ -16,3 +16,5 @@ function addKeyboardToolbar(textbox){
     e.source.activeFld.blur();
   });
 };
+
+var barColor = 'black'

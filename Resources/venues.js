@@ -1,13 +1,13 @@
+Ti.include("helper.js");
 var url = "http://www.gwahir.com:3000/api/venues.json";
 var table = Ti.UI.createTableView();
 var tableData = [];
 var i, row, title;
 var venuesWin = Titanium.UI.currentWindow;
 var venuesTab = Titanium.UI.currentTab;
-
 var xhr = Ti.Network.createHTTPClient({
-  onload: function(){  
-    var json = JSON.parse(this.responseText);
+  onload: function(){      
+    var json = JSON.parse(this.responseText);    
     for (i = 0; i < json.venues.length; i++) {
       var venue = json.venues[i];
       var row = Ti.UI.createTableViewRow({
@@ -49,8 +49,7 @@ var xhr = Ti.Network.createHTTPClient({
       row.add(addressLabel);
       tableData.push(row);
     }
-
-    table.setData(tableData); 
+    table.setData(tableData);    
   },
   onerror: function(e) {
     Ti.API.debug("STATUS: " + this.status);
@@ -64,7 +63,6 @@ var xhr = Ti.Network.createHTTPClient({
 table.addEventListener('click', function(e){
   showClickEventInfo(e);
 });
-
 function showClickEventInfo(e, islongclick) { 
   var venue = e.rowData.venue;
   var venueWindow;
@@ -78,7 +76,6 @@ function showClickEventInfo(e, islongclick) {
   }
   venuesTab.open(venueWindow);
 }
- 
 xhr.open("GET", url);
 xhr.send();
 venuesWin.add(table);
