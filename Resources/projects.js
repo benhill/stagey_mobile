@@ -1,3 +1,4 @@
+Ti.include("helper.js");
 var table = Titanium.UI.createTableView();
 var tableData = [];
 var i, row, title;
@@ -28,7 +29,8 @@ var xhr = Ti.Network.createHTTPClient({
         top:10,
         borderColor:'black',
         borderWidth:1
-      });            
+      });   
+      row.add(projectThumb);         
       (project.title.length >= 30) ? title = project.title.substr(0,30) + "..." : title = project.title;  
       var nameLabel = Ti.UI.createLabel({
         text:title.toLowerCase(),
@@ -39,6 +41,7 @@ var xhr = Ti.Network.createHTTPClient({
         color:'#000',
         touchEnabled:false
       });
+      row.add(nameLabel);
       var catLabel = Ti.UI.createLabel({
         text:project.cat_name,
         font:{fontSize:'14dp'},
@@ -48,8 +51,6 @@ var xhr = Ti.Network.createHTTPClient({
         color:'#000',
         touchEnabled:false
       });
-      row.add(projectThumb);
-      row.add(nameLabel);
       row.add(catLabel);
       tableData.push(row);
     }
@@ -73,7 +74,8 @@ function showClickEventInfo(e, islongclick) {
       url:e.rowData.link,
       layout:'vertical',
       project_id: project.id,
-      title: project.cat_name
+      title: project.cat_name,
+      barColor:barColor
     });
   }
   projectsTab.open(newWindow);

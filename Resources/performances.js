@@ -1,10 +1,9 @@
 Ti.include("helper.js");
 var perfsWin = Ti.UI.currentWindow;
 var projectsTab = Ti.UI.currentTab;
-var project = perfsWin.project;
+var project = perfsWin.object;
 var perfsTable = Ti.UI.createTableView();
 var perfData = [];
-
 var performances = Ti.UI.createView({
   top:5,
   layout:'vertical'

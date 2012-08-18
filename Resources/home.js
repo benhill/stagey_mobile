@@ -1,10 +1,5 @@
 Ti.include("helper.js");
-currentTab = Titanium.UI.currentTab;
-function Icon(text, image, window){
-   this.text = text;
-   this.image = image;
-   this.window = window;
-}
+var currentTab = Titanium.UI.currentTab;
 icons = [];
 var whats_next = new Icon('Next Up', 'icons/whats_next_48.png', 'now.js');
 icons.push(whats_next);
@@ -32,7 +27,7 @@ var searchView = Ti.UI.createView({
   layout:'absolute'
 });
 var searchField = Titanium.UI.createTextField({
-  value:'search for a show',
+  value:default_search_text,
   height:30,
   clearOnEdit:true,
   top:10,
@@ -98,7 +93,7 @@ for(var i = 0;i < icons.length; i++){
     layout:'vertical',
     window:icon.window,
     text:icon.text
-  });  
+  });
   var iconImage = Ti.UI.createImageView({
     image:icon.image,
     height:40,
@@ -123,13 +118,20 @@ for(var i = 0;i < icons.length; i++){
   iconsView.add(iconView);  
   left += 100;  
   iconView.addEventListener('click', function(e){
-    showClickEventInfo(e);
+    runIconEvent(e);
   });  
 }
 function runSearch(terms, e, islongclick){
-  alert(terms);
+  var searchWindow = Titanium.UI.createWindow({
+    title:'Search Shows',
+    backgroundColor:'#fff',
+    url:'search.js',
+    barColor:barColor,
+    search_terms:terms
+  });
+  currentTab.open(searchWindow);
 }
-function showClickEventInfo(e, islongclick){ 
+function runIconEvent(e, islongclick){ 
   var newWindow = Titanium.UI.createWindow({
     title:e.source.text,
     backgroundColor:'#fff',

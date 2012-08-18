@@ -1,3 +1,5 @@
+var barColor = 'black';
+var default_search_text = 'search for a show';
 function addKeyboardToolbar(textbox){
   var flexSpace = Ti.UI.createButton({
     systemButton:Ti.UI.iPhone.SystemButton.FLEXIBLE_SPACE,
@@ -16,5 +18,9 @@ function addKeyboardToolbar(textbox){
     e.source.activeFld.blur();
   });
 };
-
-var barColor = 'black'
+function Icon(text, image, window, object){
+   this.text = text;
+   this.image = image;
+   this.window = window;
+   this.object = object;
+}
