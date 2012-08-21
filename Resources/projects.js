@@ -2,14 +2,15 @@ Ti.include("helper.js");
 var table = Titanium.UI.createTableView();
 var tableData = [];
 var i, row, title;
-var projectsWin = Titanium.UI.currentWindow;
-var projectsTab = Titanium.UI.currentTab;
+var projectsWin = Ti.UI.currentWindow;
+var projectsTab = Ti.UI.currentTab;
 if(projectsWin.venue_id){
   var url = "http://www.gwahir.com:3000/api/projects.json?venue_id=" + projectsWin.venue_id;
 }
 else {
   var url = "http://www.gwahir.com:3000/api/projects.json";
 }
+projectsWin.open();
 var xhr = Ti.Network.createHTTPClient({
   onload: function(){  
     var projects;
@@ -54,7 +55,9 @@ var xhr = Ti.Network.createHTTPClient({
       row.add(infoLabel);
       tableData.push(row);
     }
-    table.setData(tableData); 
+    table.setData(tableData);
+    projectsWin.add(table);
+    spinner.hide();    
   },
   onerror: function(e) {
     Ti.API.debug("STATUS: " + this.status);
@@ -82,5 +85,6 @@ function showClickEventInfo(e, islongclick) {
 }
 xhr.open("GET", url);
 xhr.send();
-projectsWin.add(table);
+spinner.show();
+projectsWin.add(spinner);
 projectsWin.open();

@@ -201,7 +201,8 @@ var xhr = Ti.Network.createHTTPClient({
       venueScroll.add(line);
     }
     venueWin.add(venueScroll);
-    venueWin.open();    
+    venueWin.open();
+    venueWin.remove(spinner);
   },
   onerror: function(e) {
     Ti.API.debug("STATUS: " + this.status);
@@ -213,3 +214,5 @@ var xhr = Ti.Network.createHTTPClient({
 });
 xhr.open("GET", url);
 xhr.send();
+venueWin.add(spinner);
+spinner.show();

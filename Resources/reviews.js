@@ -54,6 +54,8 @@ var xhr =  Ti.Network.createHTTPClient({
       reviewsData.push(row);
     };
     reviewsTable.setData(reviewsData);
+    reviewsWin.add(reviewsTable);
+    spinner.hide();
   },
   onerror: function(){
     Ti.API.debug("STATUS: " + this.status);
@@ -82,5 +84,6 @@ function showClickEventInfo(e, islongclick) {
 }
 xhr.open("GET", url);
 xhr.send();
-reviewsWin.add(reviewsTable);
+reviewsWin.add(spinner);
+spinner.show();
 reviewsWin.open();

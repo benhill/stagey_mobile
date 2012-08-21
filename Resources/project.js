@@ -287,8 +287,8 @@ var xhr = Ti.Network.createHTTPClient({
         backgroundColor:'#fff',
         url:e.source.window,
         barColor:barColor
-      });  
-      currentTab.open(newWindow);
+      });      
+      currentTab.open(newWindow);      
     }
     var line = Ti.UI.createView({
       width:320,
@@ -312,6 +312,7 @@ var xhr = Ti.Network.createHTTPClient({
     })
     projectScroll.add(tagsLabel);    
     projectWin.add(projectScroll);
+    projectWin.remove(spinner);
     projectWin.open();    
   },
   onerror: function(e) {
@@ -324,3 +325,5 @@ var xhr = Ti.Network.createHTTPClient({
 });
 xhr.open("GET", url);
 xhr.send();
+spinner.show();
+projectWin.add(spinner);

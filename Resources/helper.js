@@ -24,3 +24,11 @@ function Icon(text, image, window, object){
    this.window = window;
    this.object = object;
 }
+var spinner = Ti.UI.createActivityIndicator({
+  width:50,
+  height:50,  
+  top:150,
+  message: 'loading...',
+  color: 'black',
+  style: Titanium.UI.iPhone.ActivityIndicatorStyle.DARK
+})

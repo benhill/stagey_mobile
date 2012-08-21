@@ -49,7 +49,9 @@ var xhr = Ti.Network.createHTTPClient({
       row.add(addressLabel);
       tableData.push(row);
     }
-    table.setData(tableData);    
+    table.setData(tableData);
+    venuesWin.add(table);
+    spinner.hide();
   },
   onerror: function(e) {
     Ti.API.debug("STATUS: " + this.status);
@@ -78,5 +80,6 @@ function showClickEventInfo(e, islongclick) {
 }
 xhr.open("GET", url);
 xhr.send();
-venuesWin.add(table);
+venuesWin.add(spinner);
+spinner.show();
 venuesWin.open();
