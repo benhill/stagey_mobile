@@ -47,7 +47,7 @@ var xhr = Ti.Network.createHTTPClient({
         image: imageCollection[i].thumbnail_path,
         width:70,
         height:70,
-        left:image_place * 77,        
+        left:image_place * 77,
         layout:'absolute',
         full_image_path: imageCollection[i].image_path,
         borderRadius:10,
@@ -73,7 +73,7 @@ var xhr = Ti.Network.createHTTPClient({
       width:'auto',
       height:'auto',
       font:{fontSize:14}
-    }); 
+    });
     if(project.images.length > 4){
       projectScroll.add(moreImagesLabel);
       moreImagesLabel.addEventListener('click', function(e){
@@ -188,30 +188,32 @@ var xhr = Ti.Network.createHTTPClient({
     projectScroll.add(line);
     var reviewView = Ti.UI.createView({      
       width:320,
-      height:60,
+      height:65,
       top:5
     });
     var reviewUserThumb = Ti.UI.createImageView({
-      width:45,
-      height:45,
+      width:50,
+      height:50,
       image:project.top_review_user_thumbnail_path,
       left:5,
-      top:8
+      top:8,
+      borderWidth:1,
+      borderColor:'black'
     });
     reviewView.add(reviewUserThumb);
     var reviewsLabel = Ti.UI.createLabel({
       text:"View All Reviews",
       font:{fontSize:14},
-      left:60,
+      left:65,
       top:5,
       height:'auto',
-      width:'95%'
+      width:'90%'
     });
     reviewView.add(reviewsLabel);
     var reviewsLabel = Ti.UI.createLabel({
-      text:'\"' + project.top_review_blurb + '\"',
+      text:project.top_review_user_full_name + ': \"' + project.top_review_blurb + '\"',
       font:{fontSize:10},
-      left:60,
+      left:65,
       top:23,
       height:'auto',
       width:250
@@ -241,26 +243,28 @@ var xhr = Ti.Network.createHTTPClient({
       top:5
     });
     var teamThumb = Ti.UI.createImageView({
-      width:45,
-      height:45,
+      width:50,
+      height:50,
       image:project.fringe_user.picture_url,
       left:5,
-      top:8
+      top:8,
+      borderWidth:1,
+      borderColor:'black'
     });
     teamView.add(teamThumb);
     var teamLabel = Ti.UI.createLabel({
       text:"View Project Team",
       font:{fontSize:14},
-      left:60,
+      left:65,
       top:5,
       height:'auto',
-      width:'95%'
+      width:'90%'
     });
     teamView.add(teamLabel);
     var teamLabel = Ti.UI.createLabel({
       text:'including ' + project.fringe_user.full_name,
       font:{fontSize:10},
-      left:60,
+      left:65,
       top:23,
       height:'auto',
       width:250

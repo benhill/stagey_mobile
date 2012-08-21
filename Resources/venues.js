@@ -71,7 +71,7 @@ function showClickEventInfo(e, islongclick) {
       url:e.rowData.link,
       layout:'vertical',
       venue_id: venue.id,
-      title: "Fringe Venue"
+      title: "Venue"
     });
   }
   venuesTab.open(venueWindow);

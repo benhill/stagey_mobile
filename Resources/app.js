@@ -14,18 +14,6 @@ var homeTab = Titanium.UI.createTab({
   window:homeWin
 });
 tabGroup.addTab(homeTab);
-var projectsWin = Ti.UI.createWindow({
-  title:'Projects',
-  backgroundColor:'#fff',
-  url:'projects.js',
-  barColor:barColor
-});
-var projectsTab = Titanium.UI.createTab({
-  icon:'icons/all_shows_30.png',
-  title:'Projects',
-  window:projectsWin
-});
-tabGroup.addTab(projectsTab);
 var nearbyWin = Titanium.UI.createWindow({
   title:'Nearby',
   backgroundColor:'#fff',
@@ -38,6 +26,18 @@ var nearbyTab = Titanium.UI.createTab({
   window:nearbyWin
 });
 tabGroup.addTab(nearbyTab);
+var favoritesWin = Ti.UI.createWindow({
+  title:'Favorites',
+  backgroundColor:'#fff',
+  url:'projects.js',
+  barColor:barColor
+});
+var favoritesTab = Titanium.UI.createTab({
+  icon:'icons/favorites_30.png',
+  title:'Favorites',
+  window:favoritesWin
+});
+tabGroup.addTab(favoritesTab);
 var searchWin = Titanium.UI.createWindow({
   title:'Search',
   backgroundColor:'#fff',
