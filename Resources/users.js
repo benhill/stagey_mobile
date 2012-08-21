@@ -51,7 +51,7 @@ function showClickEventInfo(e, islongclick) {
       url:e.rowData.link,
       backButtonTitle:'back',
       layout:'vertical',
-      title:user.first_name + ' ' + user.last_name,
+      title:'User Profile',
       user_id:user.id
     });
   }

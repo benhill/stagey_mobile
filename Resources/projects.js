@@ -17,7 +17,7 @@ var xhr = Ti.Network.createHTTPClient({
     for (i = 0; i < projects.length; i++){
       var project = projects[i];
       var row = Ti.UI.createTableViewRow({
-          height:'60dp'
+          height:60
       });
       row.link = 'project.js';
       row.project = project;
@@ -42,16 +42,16 @@ var xhr = Ti.Network.createHTTPClient({
         touchEnabled:false
       });
       row.add(nameLabel);
-      var catLabel = Ti.UI.createLabel({
-        text:project.cat_name,
-        font:{fontSize:'14dp'},
+      var infoLabel = Ti.UI.createLabel({
+        text:project.cat_name + " \u00B7 " + project.cost_range + " \u00B7 " + project.duration,
+        font:{fontSize:12},
         height:'auto',
-        left:'55dp',
-        bottom:'10dp',
+        left:55,
+        top:25,
         color:'#000',
         touchEnabled:false
       });
-      row.add(catLabel);
+      row.add(infoLabel);
       tableData.push(row);
     }
     table.setData(tableData); 

@@ -25,7 +25,7 @@ var xhr =  Ti.Network.createHTTPClient({
   	  image:user.thumbnail_url,
   	  width:45,
   	  height:45,
-  	  left:5,
+  	  left:10,
   	  top:10,
   	  borderColor:'black',
   	  borderWidth:1
@@ -39,13 +39,22 @@ var xhr =  Ti.Network.createHTTPClient({
       imageWin.open();
     });
   	wrapper.add(image);  	
+    var name = Ti.UI.createLabel({
+      text:(user.first_name + " " + user.last_name),
+      height:'auto',
+      width:300,
+      left:70,
+      top:20,
+      font:{fontSize:'14', fontWeight:'bold'}
+    });
+    wrapper.add(name);
   	var profile = Ti.UI.createLabel({
   	  text:(user.profile ? user.profile : 'No profile information available.'),
   	  height:'auto',
-  	  width:'245',
-  	  left:65,
-  	  top:10,
-  	  font:{fontSize:'11'}
+  	  width:300,
+  	  left:10,
+  	  top:70,
+  	  font:{fontSize:'12'}
   	});
   	wrapper.add(profile);
   	userScroll.add(wrapper);

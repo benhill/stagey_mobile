@@ -73,7 +73,8 @@ function showClickEventInfo(e, islongclick) {
       url:e.rowData.link,
       backButtonTitle:'back',
       layout:'vertical',
-      title:project.title,
+      title:'Show Review',
+      project:project,
       review:review
     });
   }
