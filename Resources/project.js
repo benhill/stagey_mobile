@@ -20,23 +20,23 @@ var xhr = Ti.Network.createHTTPClient({
     project = JSON.parse(this.responseText);
     var title = Titanium.UI.createLabel({
       text:project.title,
-      height:'auto',
-      width:'auto',
+      height:Titanium.UI.SIZE,
+      width:Titanium.UI.SIZE,
       font:{fontSize:20},
       left:5
     });
     projectScroll.add(title);
     var subTitle = Titanium.UI.createLabel({
       text:project.company + " \u00B7 ages " + project.age_restriction + "+ \u00B7 " + project.duration + " \u00B7 " + project.cost_range,
-      height:'auto',
+      height:Titanium.UI.SIZE,
       width:'95%',       
       left:5,
       font:{fontSize:10}
     });
     projectScroll.add(subTitle);    
     var galleryView = Ti.UI.createView({
-      height:'auto',
-      width:'auto',
+      height:Titanium.UI.SIZE,
+      width:'100%',
       top:5,
       left:5
     });
@@ -71,8 +71,8 @@ var xhr = Ti.Network.createHTTPClient({
       top:9,
       left:220,
       text:'more images',
-      width:'auto',
-      height:'auto',
+      width:Titanium.UI.SIZE,
+      height:Titanium.UI.SIZE,
       font:{fontSize:14}
     });
     if(project.images.length > 4){
@@ -94,7 +94,7 @@ var xhr = Ti.Network.createHTTPClient({
       bottom:7,
       left:5,
       font:{fontSize:10},
-      height:'auto',
+      height:Titanium.UI.SIZE,
       width: '95%'
     });
     projectScroll.add(descriptionLabel);
@@ -136,7 +136,7 @@ var xhr = Ti.Network.createHTTPClient({
       var iconView = Ti.UI.createView({
         left:left,
         width:90,
-        height:35,
+        height:45,
         layout:'vertical',
         window:icon.window,
         object:icon.object,
@@ -154,7 +154,7 @@ var xhr = Ti.Network.createHTTPClient({
       iconView.add(iconImage);
       var iconText = Ti.UI.createLabel({
         text:icon.text,
-        height:'auto',
+        height:Titanium.UI.SIZE,
         width:100,
         font:{fontSize:10},
         left:0,
@@ -218,7 +218,7 @@ var xhr = Ti.Network.createHTTPClient({
       font:{fontSize:14},
       left:65,
       top:5,
-      height:'auto',
+      height:Titanium.UI.SIZE,
       width:'90%'
     });
     reviewView.add(reviewsLabel);
@@ -227,7 +227,7 @@ var xhr = Ti.Network.createHTTPClient({
       font:{fontSize:10},
       left:65,
       top:23,
-      height:'auto',
+      height:Titanium.UI.SIZE,
       width:250
     });
     reviewView.add(reviewsLabel);
@@ -269,7 +269,7 @@ var xhr = Ti.Network.createHTTPClient({
       font:{fontSize:14},
       left:65,
       top:5,
-      height:'auto',
+      height:Titanium.UI.SIZE,
       width:'90%'
     });
     teamView.add(teamLabel);
@@ -278,7 +278,7 @@ var xhr = Ti.Network.createHTTPClient({
       font:{fontSize:10},
       left:65,
       top:23,
-      height:'auto',
+      height:Titanium.UI.SIZE,
       width:250
     });
     teamView.add(teamLabel);
@@ -316,8 +316,8 @@ var xhr = Ti.Network.createHTTPClient({
     }
     var tagsLabel = Ti.UI.createLabel({
       text:tagsList,
-      height:'auto',
-      width:'auto',
+      height:Titanium.UI.SIZE,
+      width:Titanium.UI.SIZE,
       top:10,
       left:5,
       font:{fontSize:10}

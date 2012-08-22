@@ -52,7 +52,8 @@ function showClickEventInfo(e, islongclick) {
       backButtonTitle:'back',
       layout:'vertical',
       title:'User Profile',
-      user_id:user.id
+      user_id:user.id,
+      barColor:barColor
     });
   }
   projectsTab.open(userWin);

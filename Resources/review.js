@@ -4,26 +4,26 @@ var reviewWin = Ti.UI.currentWindow;
 var review = reviewWin.review;
 var project = reviewWin.project;
 var reviewScroll = Titanium.UI.createScrollView({
-  contentWidth:'auto',
-  contentHeight:'auto',
+  contentWidth:Titanium.UI.SIZE,
+  contentHeight:Titanium.UI.SIZE,
   touchEnabled:true,
   scrollType:'vertical',
   verticalBounce:true,
   showVerticalScrollIndicator:true,
-  width:'auto',
+  width:Titanium.UI.SIZE,
   height:350,
   top:0,
   left:0
 });
 var wrapper = Ti.UI.createView({
-  height:'auto',
-  width:'auto',
+  height:Titanium.UI.SIZE,
+  width:Titanium.UI.SIZE,
   top:0,
   left:0
 });
 var reviewerWrapper = Ti.UI.createView({
-  height:'auto',
-  width:'auto',
+  height:Titanium.UI.SIZE,
+  width:Titanium.UI.SIZE,
   top:0,
   left:0
 });
@@ -68,6 +68,7 @@ var line = Ti.UI.createView({
   width:320,
   height:1,
   top:72,
+  left:0,
   backgroundColor:'gray'
 });
 reviewerWrapper.add(line);
@@ -77,14 +78,15 @@ reviewerWrapper.addEventListener('click', function(e){
     backButtonTitle:'back',
     layout:'vertical',
     user_id:review.fringe_user_id,
-    title:"User Profile"
+    title:"User Profile",
+    barColor:barColor
   });
   projectTab.open(userWin);  
 });
 wrapper.add (reviewerWrapper);
 var body = Ti.UI.createLabel({
   text:review.body,
-  height:'auto',
+  height:Titanium.UI.SIZE,
   width:300,
   left:10,
   top:77,

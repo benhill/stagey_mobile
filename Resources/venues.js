@@ -29,7 +29,7 @@ var xhr = Ti.Network.createHTTPClient({
       var nameLabel = Ti.UI.createLabel({
         text:name,
         font:{fontSize:16,fontWeight:'bold'},
-        height:'auto',
+        height:Titanium.UI.SIZE,
         left:'55dp',
         top:10,
         color:'#000',
@@ -38,7 +38,7 @@ var xhr = Ti.Network.createHTTPClient({
       var addressLabel = Ti.UI.createLabel({
         text:venue.address,
         font:{fontSize:'12dp'},
-        height:'auto',
+        height:Titanium.UI.SIZE,
         left:'55dp',
         top:30,
         color:'#000',
@@ -73,7 +73,8 @@ function showClickEventInfo(e, islongclick) {
       url:e.rowData.link,
       layout:'vertical',
       venue_id: venue.id,
-      title: "Venue"
+      title: "Venue",
+      barColor:barColor
     });
   }
   venuesTab.open(venueWindow);

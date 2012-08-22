@@ -20,8 +20,8 @@ var xhr = Ti.Network.createHTTPClient({
     venue = JSON.parse(this.responseText);
     var name = Titanium.UI.createLabel({
       text:venue.name,
-      height:'auto',
-      width:'auto',            
+      height:Titanium.UI.SIZE,
+      width:Titanium.UI.SIZE,            
       font:{fontSize:20},
       left:5
     });    
@@ -31,14 +31,14 @@ var xhr = Ti.Network.createHTTPClient({
       top:0,
       left:5,
       font:{fontSize:10},
-      height:'auto',
+      height:Titanium.UI.SIZE,
       width: '95%'
     });
     if(venue.presenter){venueScroll.add(presenter)};
 
     var galleryView = Ti.UI.createView({
-      height:'auto',
-      width:'auto',
+      height:Titanium.UI.SIZE,
+      width:Titanium.UI.SIZE,
       top:5,
       left:5   
     });    
@@ -73,8 +73,8 @@ var xhr = Ti.Network.createHTTPClient({
       top:9,
       left:220,
       text:'more images',
-      width:'auto',
-      height:'auto',
+      width:Titanium.UI.SIZE,
+      height:Titanium.UI.SIZE,
       font:{fontSize:14}
     });
     if(venue.images.length > 4){
@@ -95,7 +95,7 @@ var xhr = Ti.Network.createHTTPClient({
       top:10,
       left:5,
       font:{fontSize:10},
-      height:'auto',
+      height:Titanium.UI.SIZE,
       width: '95%'
     });
     venueScroll.add(description);
@@ -118,7 +118,7 @@ var xhr = Ti.Network.createHTTPClient({
       top:3,
       left:5,
       font:{fontSize:13},
-      height:'auto',
+      height:Titanium.UI.SIZE,
       width: '95%'
     });
     mapView.add(mapLabel);
@@ -127,7 +127,7 @@ var xhr = Ti.Network.createHTTPClient({
       top:3,
       left:70,
       font:{fontSize:10},
-      height:'auto',
+      height:Titanium.UI.SIZE,
       width: '95%'
     });
     mapView.add(address);
@@ -136,7 +136,8 @@ var xhr = Ti.Network.createHTTPClient({
       var mapWin = Titanium.UI.createWindow({
         backgroundColor:'white',        
         url:'map.js',
-        venue:venue
+        venue:venue,
+        barColor:barColor
       });              
       venuesTab.open(mapWin);
     });
@@ -169,7 +170,7 @@ var xhr = Ti.Network.createHTTPClient({
         font:{fontSize:14},
         left:65,
         top:5,
-        height:'auto',
+        height:Titanium.UI.SIZE,
         width:'90%'
       });
       projectsView.add(projectLabel);
@@ -178,7 +179,7 @@ var xhr = Ti.Network.createHTTPClient({
         font:{fontSize:10},
         left:65,
         top:23,
-        height:'auto',
+        height:Titanium.UI.SIZE,
         width:250
       });
       projectsView.add(titleLabel);
@@ -187,7 +188,8 @@ var xhr = Ti.Network.createHTTPClient({
         var projectsWin = Titanium.UI.createWindow({
           backgroundColor:'white',        
           url:'projects.js',
-          venue_id:venue.id
+          venue_id:venue.id,
+          barColor:barColor
         });        
         venuesTab.open(projectsWin);
       });

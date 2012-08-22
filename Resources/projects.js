@@ -65,7 +65,7 @@ var xhr = Ti.Network.createHTTPClient({
     Ti.API.debug("ERROR:  " + e.error);
     alert('There was an error retrieving the remote data. Try again.');
   },
-  timeout:5000
+  timeout:6000
 });
 table.addEventListener('click', function(e){
   showClickEventInfo(e);
@@ -75,7 +75,6 @@ function showClickEventInfo(e, islongclick) {
   if (e.rowData.link){
     var newWindow = Titanium.UI.createWindow({
       url:e.rowData.link,
-      layout:'vertical',
       project_id: project.id,
       title: project.cat_name,
       barColor:barColor

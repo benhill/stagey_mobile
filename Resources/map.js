@@ -1,3 +1,4 @@
+Ti.include("helper.js");
 var mapWin = Titanium.UI.currentWindow;
 var mapTab = Titanium.UI.currentTab;
 var venue = mapWin.venue
@@ -28,7 +29,8 @@ function createAnnotation(venue){
       url:'venue.js',
       layout:'vertical',
       venue_id: venue.id,
-      backgroundColor: 'white'
+      backgroundColor: 'white',
+      barColor:barColor
     });
     mapTab.open(venueWindow);
   });

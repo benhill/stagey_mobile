@@ -77,7 +77,8 @@ function showClickEventInfo(e, islongclick) {
       layout:'vertical',
       title:'Show Review',
       project:project,
-      review:review
+      review:review,
+      barColor:barColor
     });
   }
   projectsTab.open(reviewWindow);
