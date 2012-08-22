@@ -1,6 +1,7 @@
 Ti.include("helper.js");
+var sharekit = require('com.0x82.sharekit');
 var projectTab = Ti.UI.currentTab;
-var projectWin = Titanium.UI.currentWindow;
+var projectWin = Ti.UI.currentWindow;
 var url = "http://www.gwahir.com:3000/api/project/" + projectWin.project_id + ".json";
 var json, project;
 var image_place = 0;
@@ -121,7 +122,9 @@ var xhr = Ti.Network.createHTTPClient({
     var add_review = new Icon('Add Review', 'icons/reviews_24.png', 'add_review.js', project);
     icons.push(add_review);
     var make_favorite = new Icon('Make Favorite', 'icons/favorite_24.png', 'make_favorite.js', project);
-    icons.push(make_favorite);    
+    icons.push(make_favorite);
+    var share = new Icon('Share', 'icons/share_24.png', 'make_favorite.js', project);
+    icons.push(share);    
     var iconsView = Ti.UI.createView({
       top:0,
       left:0,
@@ -132,7 +135,7 @@ var xhr = Ti.Network.createHTTPClient({
       icon = icons[i];
       var iconView = Ti.UI.createView({
         left:left,
-        width:100,
+        width:90,
         height:35,
         layout:'vertical',
         window:icon.window,
@@ -166,17 +169,26 @@ var xhr = Ti.Network.createHTTPClient({
        runIconEvent(e)
       })
       iconsView.add(iconView);
-      left += 100; 
+      left += 75; 
     }
     function runIconEvent(e, islongclick){ 
-      var newWindow = Titanium.UI.createWindow({
-        title:e.source.text,
-        backgroundColor:'#fff',
-        url:e.source.window,
-        object:e.source.object,
-        barColor:barColor
-      });  
-      projectTab.open(newWindow);
+      if(e.source.text == 'Share'){
+        sharekit.share({
+          title:'I am checking out this show a show on stagey.net',
+          view:e.source,
+          link:'www.gwahir.com:3000/projects/' + e.source.object.id
+        });
+      }
+      else{
+        var newWindow = Titanium.UI.createWindow({
+          title:e.source.text,
+          backgroundColor:'#fff',
+          url:e.source.window,
+          object:e.source.object,
+          barColor:barColor
+        });  
+        projectTab.open(newWindow);
+      }
     }
     projectScroll.add(iconsView);
     var line = Ti.UI.createView({

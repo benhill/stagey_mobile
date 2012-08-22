@@ -58,6 +58,8 @@ var xhr =  Ti.Network.createHTTPClient({
   	});
   	wrapper.add(profile);
   	userScroll.add(wrapper);
+    userWin.add(userScroll);
+    userWin.remove(spinner);
   },
   onerror: function(){
     Ti.API.debug("STATUS: " + this.status);
@@ -69,5 +71,6 @@ var xhr =  Ti.Network.createHTTPClient({
 });
 xhr.open("GET", url);
 xhr.send();
-userWin.add(userScroll);
+userWin.add(spinner);
+spinner.show();
 userWin.open();
