@@ -200,7 +200,7 @@ var xhr = Ti.Network.createHTTPClient({
     projectScroll.add(line);
     var reviewView = Ti.UI.createView({      
       width:320,
-      height:65,
+      height:75,
       top:5
     });
     var reviewUserThumb = Ti.UI.createImageView({
@@ -225,13 +225,20 @@ var xhr = Ti.Network.createHTTPClient({
     var reviewsLabel = Ti.UI.createLabel({
       text:project.top_review_user_full_name + ': \"' + project.top_review_blurb + '\"',
       font:{fontSize:10},
-      left:65,
+      left:70,
       top:23,
       height:Ti.UI.SIZE,
       width:250
     });
     reviewView.add(reviewsLabel);
-    projectScroll.add(reviewView);
+    var line = Ti.UI.createView({
+      width:320,
+      height:1,
+      top:70,
+      backgroundColor:'gray'
+    });
+    reviewView.add(line);
+    if(project.top_review_blurb){projectScroll.add(reviewView);}
     reviewView.addEventListener('click', function(e){
       reviewsWin = Ti.UI.createWindow({        
         title:project.title,
@@ -241,14 +248,7 @@ var xhr = Ti.Network.createHTTPClient({
         barColor:barColor
       });
       projectTab.open(reviewsWin);
-    });
-    var line = Ti.UI.createView({
-      width:320,
-      height:1,
-      top:5,
-      backgroundColor:'gray'
-    });
-    projectScroll.add(line);
+    });    
     var teamView = Ti.UI.createView({      
       width:320,
       height:60,

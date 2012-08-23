@@ -1,12 +1,12 @@
 Ti.include("helper.js");
 var currentTab = Titanium.UI.currentTab;
 icons = [];
+var projects = new Icon('Browse Shows', 'icons/all_shows_48.png', 'cats.js');
+icons.push(projects);
 var whats_next = new Icon('Coming Next', 'icons/whats_next_48.png', 'now.js');
 icons.push(whats_next);
 var nearby = new Icon('Nearby', 'icons/nearby_48.png', 'map.js');
 icons.push(nearby);
-var projects = new Icon('All Shows', 'icons/all_shows_48.png', 'projects.js');
-icons.push(projects);
 var venues = new Icon('Venues', 'icons/venues_48.png', 'venues.js');
 icons.push(venues);
 var reviews = new Icon('Reviews', 'icons/reviews_48.png', 'reviews_all.js');

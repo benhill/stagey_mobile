@@ -14,7 +14,7 @@ var xhr = Ti.Network.createHTTPClient({
       var row = Ti.UI.createTableViewRow({
         height:60
       });
-      row.project_id = performance.project_id;
+      row.project_id = performance.project_id;      
       var projectThumb = Titanium.UI.createImageView({
         image:performance.project_thumbnail,
         width:45,
@@ -25,10 +25,7 @@ var xhr = Ti.Network.createHTTPClient({
         borderWidth:1,
         project_id:performance.project_id
       });      
-      row.add(projectThumb);      
-      projectThumb.addEventListener('click', function(e){
-        openProject(e);
-      });
+      row.add(projectThumb);            
       var title;
       (performance.project_name.length >= 35) ? title = performance.project_name.substr(0,35) + "..." : title = performance.project_name;  
       var projectTitle = Titanium.UI.createLabel({
@@ -41,20 +38,20 @@ var xhr = Ti.Network.createHTTPClient({
         project_id:performance.project_id
       });      
       row.add(projectTitle);      
-      var projectInfo = Titanium.UI.createLabel({
+      var projectInfo = Ti.UI.createLabel({
         text:performance.info,
         height:Ti.UI.SIZE,
-        width:Ti.UI.SIZE,            
-        top:30,  
-        bottom:10,
+        width:Ti.UI.SIZE,
+        top:30,       
         left:60,
-        font:{fontSize:10}      
-      });  
-      projectTitle.addEventListener('click', function(e){
-        loadProject(e);
-      });    
+        font:{fontSize:10},
+        project_id:performance.project_id
+      });
       row.add(projectInfo);
-      tableData.push(row);
+      row.addEventListener('click', function(e){
+        loadProject(e);
+      });
+      tableData.push(row);      
     }
     var row = Ti.UI.createTableViewRow({
       height:60
@@ -78,7 +75,7 @@ var xhr = Ti.Network.createHTTPClient({
       for(var i = 0; i < tableData.length; i++){
         table.appendRow(tableData[i]);
       }
-      table.scrollToIndex((page * rows_per_page) - (rows_per_page - 1));
+      table.scrollToIndex((page * rows_per_page) - rows_per_page);
     }
     else {
       table.setData(tableData);
@@ -99,7 +96,8 @@ function loadProject(e, islongclick) {
   var newWindow = Titanium.UI.createWindow({
     url:"project.js",
     layout:'vertical',
-    project_id:e.source.project_id
+    project_id:e.source.project_id,
+    barColor:barColor
   });
   nowTab.open(newWindow)  
 }

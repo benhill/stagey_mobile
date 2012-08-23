@@ -1,27 +1,36 @@
 Ti.include("helper.js");
 var table = Titanium.UI.createTableView();
-var tableData = [];
 var i, row, title;
-var projectsWin = Ti.UI.currentWindow;
-var projectsTab = Ti.UI.currentTab;
-if(projectsWin.venue_id){
-  var url = "http://www.gwahir.com:3000/api/projects.json?venue_id=" + projectsWin.venue_id;
+var currentWin = Ti.UI.currentWindow;
+var currentTab = Ti.UI.currentTab;
+var page = 1
+var rows_per_page = 9
+var seed;
+if(currentWin.venue_id){
+  var url = "http://www.gwahir.com:3000/api/projects.json?venue_id=" + currentWin.venue_id + "&event_id=7";
+}
+else if(currentWin.cat_id){
+  var url = "http://www.gwahir.com:3000/api/projects.json?cat_id=" + currentWin.cat_id + "&event_id=7";
 }
 else {
-  var url = "http://www.gwahir.com:3000/api/projects.json";
+  var url = "http://www.gwahir.com:3000/api/projects.json&event_id=7";
 }
-projectsWin.open();
+currentWin.open();
 var xhr = Ti.Network.createHTTPClient({
   onload: function(){  
     var projects;
-    projectsWin.projects ? projects = projectsWin.projects : projects = JSON.parse(this.responseText).projects;
+    var tableData = [];
+    currentWin.projects ? projects = currentWin.projects : projects = JSON.parse(this.responseText).projects;
+    if (projects.length > 0){
+      var total_results = projects[0].total_results;
+      var seed = projects[0].seed;
+    }
     for(i = 0; i < projects.length; i++){
-      var project = projects[i];
+      var project = projects[i];      
       var row = Ti.UI.createTableViewRow({
           height:60
       });
-      row.link = 'project.js';
-      row.project = project;
+      row.project_id = project.id;
       var projectThumb = Titanium.UI.createImageView({
         image:project.thumbnail,
         width:45,
@@ -29,10 +38,11 @@ var xhr = Ti.Network.createHTTPClient({
         left:5,
         top:10,
         borderColor:'black',
-        borderWidth:1
+        borderWidth:1,
+        project_id:project.id
       });   
       row.add(projectThumb);         
-      (project.title.length >= 30) ? title = project.title.substr(0,30) + "..." : title = project.title;  
+      (project.title.length >= 30) ? title = project.title.substr(0,25) + "..." : title = project.title;  
       var nameLabel = Ti.UI.createLabel({
         text:title.toLowerCase(),
         font:{fontSize:16,fontWeight:'bold'},
@@ -40,7 +50,8 @@ var xhr = Ti.Network.createHTTPClient({
         left:55,
         top:7,
         color:'#000',
-        touchEnabled:false
+        touchEnabled:false,
+        project_id:project.id
       });
       row.add(nameLabel);
       var infoLabel = Ti.UI.createLabel({
@@ -50,16 +61,48 @@ var xhr = Ti.Network.createHTTPClient({
         left:55,
         top:25,
         color:'#000',
-        touchEnabled:false
+        touchEnabled:false,
+        project_id:project.id
       });
       row.add(infoLabel);
       tableData.push(row);
+      row.addEventListener('click', function(e){
+        loadProject(e);
+      });
     }
-    table.setData(tableData);
-    projectsWin.add(table);
+    var row = Ti.UI.createTableViewRow({
+      height:60
+    });
+    var moreLabel = Ti.UI.createLabel({
+      text:"LOAD MORE",
+      height:Ti.UI.SIZE,
+      width:Ti.UI.SIZE,            
+      top:20,        
+      left:100,
+      font:{fontSize:14, fontWeight:'bold'}
+    });
+    row.add(moreLabel);
+    row.addEventListener('click', function(e){
+      page += 1;
+      loadMore(e);
+    });
+    if(page * rows_per_page < total_results){
+      tableData.push(row);
+    }
+    if(page > 1){      
+      table.deleteRow(rows_per_page * (page-1),{animationStyle:Titanium.UI.iPhone.RowAnimationStyle.NONE})
+      for(var i = 0; i < tableData.length; i++){
+        table.appendRow(tableData[i]);
+      }
+      table.scrollToIndex((page * rows_per_page) - rows_per_page);
+    }
+    else {
+      table.setData(tableData);
+      currentWin.add(table);
+    }    
     spinner.hide();    
   },
-  onerror: function(e) {
+  onerror: function(e){
     Ti.API.debug("STATUS: " + this.status);
     Ti.API.debug("TEXT:   " + this.responseText);
     Ti.API.debug("ERROR:  " + e.error);
@@ -67,23 +110,46 @@ var xhr = Ti.Network.createHTTPClient({
   },
   timeout:6000
 });
-table.addEventListener('click', function(e){
-  showClickEventInfo(e);
-});
-function showClickEventInfo(e, islongclick) { 
-  var project = e.rowData.project;
-  if (e.rowData.link){
-    var newWindow = Titanium.UI.createWindow({
-      url:e.rowData.link,
-      project_id: project.id,
-      title: project.cat_name,
-      barColor:barColor
-    });
+function loadProject(e, islongclick){
+  var newWindow = Titanium.UI.createWindow({
+    url:"project.js",
+    layout:'vertical',
+    project_id:e.source.project_id,
+    barColor:barColor
+  });
+  currentTab.open(newWindow)  
+}
+function loadMore(e,islongclick){
+  table.deleteRow(rows_per_page * (page-1),{animationStyle:Titanium.UI.iPhone.RowAnimationStyle.NONE})
+  var row = Ti.UI.createTableViewRow({
+    height:60
+  });
+  var spinner = Ti.UI.createActivityIndicator({
+    width:50,
+    height:50,      
+    message: 'loading...',
+    color: 'black',
+    style: Titanium.UI.iPhone.ActivityIndicatorStyle.DARK
+  })
+  row.add(spinner);
+  spinner.show();
+  table.appendRow(row);
+  table.scrollToIndex((page * rows_per_page) - rows_per_page);
+  if(currentWin.venue_id){
+    var url = "http://www.gwahir.com:3000/api/projects.json?venue_id=" + currentWin.venue_id + "&event_id=7&page=" + page;
   }
-  projectsTab.open(newWindow);
+  else if(currentWin.cat_id){
+    var url = "http://www.gwahir.com:3000/api/projects.json?cat_id=" + currentWin.cat_id + "&event_id=7&page=" + page;
+  }
+  else {
+    var url = "http://www.gwahir.com:3000/api/projects.json&event_id=7&page=" + page;
+  }
+  url += "&seed=" + seed;
+  xhr.open("GET", url);
+  xhr.send();
 }
 xhr.open("GET", url);
 xhr.send();
 spinner.show();
-projectsWin.add(spinner);
-projectsWin.open();
+currentWin.add(spinner);
+currentWin.open();
