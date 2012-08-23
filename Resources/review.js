@@ -10,20 +10,17 @@ var reviewScroll = Titanium.UI.createScrollView({
   scrollType:'vertical',
   verticalBounce:true,
   showVerticalScrollIndicator:true,
-  width:Titanium.UI.SIZE,
   height:350,
   top:0,
   left:0
 });
 var wrapper = Ti.UI.createView({
   height:Titanium.UI.SIZE,
-  width:Titanium.UI.SIZE,
   top:0,
   left:0
 });
 var reviewerWrapper = Ti.UI.createView({
   height:Titanium.UI.SIZE,
-  width:Titanium.UI.SIZE,
   top:0,
   left:0
 });
@@ -39,7 +36,6 @@ var image = Ti.UI.createImageView({
 reviewerWrapper.add(image);
 var nameLabel = Ti.UI.createLabel({
   text:review.reviewer_first_name + " " + review.reviewer_last_name,
-  width:'100%',
   height:45,
   left:75,
   top:-7,
@@ -65,7 +61,7 @@ var info = Ti.UI.createLabel({
 });
 reviewerWrapper.add(info);
 var line = Ti.UI.createView({
-  width:320,
+  width:Titanium.UI.SIZE,
   height:1,
   top:72,
   left:0,
@@ -87,7 +83,7 @@ wrapper.add (reviewerWrapper);
 var body = Ti.UI.createLabel({
   text:review.body,
   height:Titanium.UI.SIZE,
-  width:300,
+  width:290,
   left:10,
   top:77,
   font:{fontSize:'12'}

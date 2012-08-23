@@ -7,7 +7,7 @@ var json, project;
 var image_place = 0;
 var xhr = Ti.Network.createHTTPClient({
   onload: function(){
-    var projectScroll = Titanium.UI.createScrollView({
+    var projectScroll = Ti.UI.createScrollView({
       contentWidth:'95%',
       contentHeight:1100,
       top:5,
@@ -18,24 +18,24 @@ var xhr = Ti.Network.createHTTPClient({
       layout:'vertical'
     });
     project = JSON.parse(this.responseText);
-    var title = Titanium.UI.createLabel({
+    var title = Ti.UI.createLabel({
       text:project.title,
-      height:Titanium.UI.SIZE,
-      width:Titanium.UI.SIZE,
+      height:Ti.UI.SIZE,
+      width:Ti.UI.SIZE,
       font:{fontSize:20},
       left:5
     });
     projectScroll.add(title);
-    var subTitle = Titanium.UI.createLabel({
+    var subTitle = Ti.UI.createLabel({
       text:project.company + " \u00B7 ages " + project.age_restriction + "+ \u00B7 " + project.duration + " \u00B7 " + project.cost_range,
-      height:Titanium.UI.SIZE,
+      height:Ti.UI.SIZE,
       width:'95%',       
       left:5,
       font:{fontSize:10}
     });
     projectScroll.add(subTitle);    
     var galleryView = Ti.UI.createView({
-      height:Titanium.UI.SIZE,
+      height:Ti.UI.SIZE,
       width:'100%',
       top:5,
       left:5
@@ -57,7 +57,7 @@ var xhr = Ti.Network.createHTTPClient({
       image_place ++;
       galleryView.add(img);            
       img.addEventListener('click', function(e){
-        var imageWin = Titanium.UI.createWindow({
+        var imageWin = Ti.UI.createWindow({
           backgroundColor:'white',
           url:'image.js',
           image:e.source.full_image_path,
@@ -71,8 +71,8 @@ var xhr = Ti.Network.createHTTPClient({
       top:9,
       left:220,
       text:'more images',
-      width:Titanium.UI.SIZE,
-      height:Titanium.UI.SIZE,
+      width:Ti.UI.SIZE,
+      height:Ti.UI.SIZE,
       font:{fontSize:14}
     });
     if(project.images.length > 4){
@@ -94,7 +94,7 @@ var xhr = Ti.Network.createHTTPClient({
       bottom:7,
       left:5,
       font:{fontSize:10},
-      height:Titanium.UI.SIZE,
+      height:Ti.UI.SIZE,
       width: '95%'
     });
     projectScroll.add(descriptionLabel);
@@ -154,7 +154,7 @@ var xhr = Ti.Network.createHTTPClient({
       iconView.add(iconImage);
       var iconText = Ti.UI.createLabel({
         text:icon.text,
-        height:Titanium.UI.SIZE,
+        height:Ti.UI.SIZE,
         width:100,
         font:{fontSize:10},
         left:0,
@@ -180,7 +180,7 @@ var xhr = Ti.Network.createHTTPClient({
         });
       }
       else{
-        var newWindow = Titanium.UI.createWindow({
+        var newWindow = Ti.UI.createWindow({
           title:e.source.text,
           backgroundColor:'#fff',
           url:e.source.window,
@@ -218,7 +218,7 @@ var xhr = Ti.Network.createHTTPClient({
       font:{fontSize:14},
       left:65,
       top:5,
-      height:Titanium.UI.SIZE,
+      height:Ti.UI.SIZE,
       width:'90%'
     });
     reviewView.add(reviewsLabel);
@@ -227,7 +227,7 @@ var xhr = Ti.Network.createHTTPClient({
       font:{fontSize:10},
       left:65,
       top:23,
-      height:Titanium.UI.SIZE,
+      height:Ti.UI.SIZE,
       width:250
     });
     reviewView.add(reviewsLabel);
@@ -269,7 +269,7 @@ var xhr = Ti.Network.createHTTPClient({
       font:{fontSize:14},
       left:65,
       top:5,
-      height:Titanium.UI.SIZE,
+      height:Ti.UI.SIZE,
       width:'90%'
     });
     teamView.add(teamLabel);
@@ -278,7 +278,7 @@ var xhr = Ti.Network.createHTTPClient({
       font:{fontSize:10},
       left:65,
       top:23,
-      height:Titanium.UI.SIZE,
+      height:Ti.UI.SIZE,
       width:250
     });
     teamView.add(teamLabel);
@@ -294,7 +294,7 @@ var xhr = Ti.Network.createHTTPClient({
       projectTab.open(reviewsWin);
     });
     function loadIconWin(e, islongclick){ 
-      var newWindow = Titanium.UI.createWindow({
+      var newWindow = Ti.UI.createWindow({
         title:e.source.text,
         backgroundColor:'#fff',
         url:e.source.window,
@@ -316,8 +316,8 @@ var xhr = Ti.Network.createHTTPClient({
     }
     var tagsLabel = Ti.UI.createLabel({
       text:tagsList,
-      height:Titanium.UI.SIZE,
-      width:Titanium.UI.SIZE,
+      height:Ti.UI.SIZE,
+      width:Ti.UI.SIZE,
       top:10,
       left:5,
       font:{fontSize:10}

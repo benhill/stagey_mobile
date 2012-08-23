@@ -2,27 +2,19 @@ Ti.include("helper.js");
 var url = "http://www.gwahir.com:3000/api/performances/7.json";
 var nowWin = Titanium.UI.currentWindow;
 var nowTab = Titanium.UI.currentTab;
-var nowScroll = Titanium.UI.createScrollView({
-  contentWidth:'auto',
-  contentHeight:1100,
-  top:0,
-  height:800,
-  showVerticalScrollIndicator:true,
-  showHorizontalScrollIndicator:true,
-  layout:'vertical'
-});
+var table = Titanium.UI.createTableView();
+var page = 1
+var rows_per_page = 9
 var xhr = Ti.Network.createHTTPClient({
-  onload: function(){      
+  onload: function(){  
+    var tableData = [];
     var performances = JSON.parse(this.responseText).performances;
-    var nowView = Ti.UI.createView({        
-      width:'auto',
-      height:2000,
-      top:0,
-      left:0,
-      layout:'vertical'
-    });
-    for (var i = 0; i < performances.length; i++) {             
+    for (var i = 0; i < performances.length; i++) {
       var performance = performances[i];
+      var row = Ti.UI.createTableViewRow({
+        height:60
+      });
+      row.project_id = performance.project_id;
       var projectThumb = Titanium.UI.createImageView({
         image:performance.project_thumbnail,
         width:45,
@@ -32,8 +24,8 @@ var xhr = Ti.Network.createHTTPClient({
         borderColor:'black',
         borderWidth:1,
         project_id:performance.project_id
-      });            
-      nowView.add(projectThumb);      
+      });      
+      row.add(projectThumb);      
       projectThumb.addEventListener('click', function(e){
         openProject(e);
       });
@@ -41,31 +33,59 @@ var xhr = Ti.Network.createHTTPClient({
       (performance.project_name.length >= 35) ? title = performance.project_name.substr(0,35) + "..." : title = performance.project_name;  
       var projectTitle = Titanium.UI.createLabel({
         text:title,
-        height:'auto',
-        width:'auto',            
-        top:-45,  
+        height:Ti.UI.SIZE,
+        width:Ti.UI.SIZE,
+        top:10,
         left:60,
         font:{fontSize:14},
         project_id:performance.project_id
-      });
-      projectTitle.addEventListener('click', function(e){
-        openProject(e);
-      });   
-      nowView.add(projectTitle);      
+      });      
+      row.add(projectTitle);      
       var projectInfo = Titanium.UI.createLabel({
         text:performance.info,
-        height:'auto',
-        width:'auto',            
-        top:0,  
+        height:Ti.UI.SIZE,
+        width:Ti.UI.SIZE,            
+        top:30,  
         bottom:10,
         left:60,
         font:{fontSize:10}      
-      });   
-      nowView.add(projectInfo);      
+      });  
+      projectTitle.addEventListener('click', function(e){
+        loadProject(e);
+      });    
+      row.add(projectInfo);
+      tableData.push(row);
     }
-    nowScroll.add(nowView);
-    nowWin.add(nowScroll);
-    nowWin.open();    
+    var row = Ti.UI.createTableViewRow({
+      height:60
+    });
+    var moreLabel = Ti.UI.createLabel({
+      text:"LOAD MORE",
+      height:Ti.UI.SIZE,
+      width:Ti.UI.SIZE,            
+      top:20,        
+      left:100,
+      font:{fontSize:14, fontWeight:'bold'}
+    });
+    row.add(moreLabel);
+    row.addEventListener('click', function(e){
+      page += 1;
+      loadMore(e);
+    });
+    tableData.push(row);
+    if(page > 1){
+      table.deleteRow(rows_per_page * (page-1),{animationStyle:Titanium.UI.iPhone.RowAnimationStyle.NONE})
+      for(var i = 0; i < tableData.length; i++){
+        table.appendRow(tableData[i]);
+      }
+      table.scrollToIndex((page * rows_per_page) - (rows_per_page - 1));
+    }
+    else {
+      table.setData(tableData);
+      nowWin.add(table);
+    }    
+    nowWin.open();
+    spinner.hide();
   },
   onerror: function(e) {
     Ti.API.debug("STATUS: " + this.status);
@@ -75,8 +95,7 @@ var xhr = Ti.Network.createHTTPClient({
   },
   timeout:5000
 });
-
-function openProject(e, islongclick){   
+function loadProject(e, islongclick) {
   var newWindow = Titanium.UI.createWindow({
     url:"project.js",
     layout:'vertical',
@@ -84,6 +103,27 @@ function openProject(e, islongclick){
   });
   nowTab.open(newWindow)  
 }
-
+function loadMore(e,islongclick){
+  table.deleteRow(rows_per_page * (page-1),{animationStyle:Titanium.UI.iPhone.RowAnimationStyle.NONE})
+  var row = Ti.UI.createTableViewRow({
+    height:60
+  });
+  var spinner = Ti.UI.createActivityIndicator({
+    width:50,
+    height:50,      
+    message: 'loading...',
+    color: 'black',
+    style: Titanium.UI.iPhone.ActivityIndicatorStyle.DARK
+  })
+  row.add(spinner);
+  spinner.show();
+  table.appendRow(row);
+  table.scrollToIndex((page * rows_per_page) - rows_per_page);
+  url = "http://www.gwahir.com:3000/api/performances/7.json?page=" + page;
+  xhr.open("GET", url);
+  xhr.send();
+}
+nowWin.add(spinner);
+spinner.show();
 xhr.open("GET", url);
 xhr.send();

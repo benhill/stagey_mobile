@@ -56,6 +56,7 @@ var xhr = Ti.Network.createHTTPClient({
     }
     coordinates = {latitude:'34.090643', longitude:'-118.332067', latitudeDelta:0.018, longitudeDelta:0.018};
     add_view();
+    spinner.hide();
   },
   onerror: function(e) {
     Ti.API.debug("STATUS: " + this.status);
@@ -65,6 +66,9 @@ var xhr = Ti.Network.createHTTPClient({
   },
   timeout:5000
 });
+
+mapWin.add(spinner);
+spinner.show();
 
 if(venue){
   annotations.push(createAnnotation(venue));

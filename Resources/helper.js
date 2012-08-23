@@ -1,4 +1,4 @@
-var barColor = 'purple';
+var barColor = '#A1A1A1';
 var default_search_text = 'search for a show';
 function addKeyboardToolbar(textbox){
   var flexSpace = Ti.UI.createButton({

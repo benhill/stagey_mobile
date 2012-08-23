@@ -15,7 +15,7 @@ var xhr = Ti.Network.createHTTPClient({
   onload: function(){  
     var projects;
     projectsWin.projects ? projects = projectsWin.projects : projects = JSON.parse(this.responseText).projects;
-    for (i = 0; i < projects.length; i++){
+    for(i = 0; i < projects.length; i++){
       var project = projects[i];
       var row = Ti.UI.createTableViewRow({
           height:60
