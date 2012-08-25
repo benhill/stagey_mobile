@@ -17,7 +17,7 @@ var schedule = new Icon('My Schedule', 'icons/schedule_48.png', 'schedule.js');
 icons.push(schedule);
 var purchases = new Icon('Purchases', 'icons/purchase_48.png', 'purchases.js');
 icons.push(purchases);
-var profile = new Icon('Me', 'icons/my_account_48.png', 'profile.js');
+var profile = new Icon('Login', 'icons/my_account_48.png', 'login.js');
 icons.push(profile);
 var homeWin = Ti.UI.currentWindow;
 var searchView = Ti.UI.createView({

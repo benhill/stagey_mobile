@@ -1,13 +1,18 @@
 Ti.include("helper.js");
-var reviewsTable = Ti.UI.createTableView();
-var reviewsData = []
-var reviewsWin = Ti.UI.currentWindow;
-var projectsTab = Ti.UI.currentTab;
-var project = reviewsWin.project;
+var table = Ti.UI.createTableView();
+var currentWin = Ti.UI.currentWindow;
+var currentTab = Ti.UI.currentTab;
+var project = currentWin.project;
 var url = "http://www.gwahir.com:3000/api/reviews/" + project.id + ".json"
+var page = 1
+var rows_per_page = 9
 var xhr =  Ti.Network.createHTTPClient({
-	onload: function(){    
+	onload: function(){ 
+    var tableData = []
     reviews = JSON.parse(this.responseText).reviews;
+    if (reviews.length > 0){
+      var total_results = reviews[0].total_results;
+    }
     for(i = 0; i < reviews.length; i++){
       review = reviews[i];
       var row = Ti.UI.createTableViewRow({
@@ -51,10 +56,42 @@ var xhr =  Ti.Network.createHTTPClient({
         font:{fontSize:'11'}
       });
       row.add(blurb);
-      reviewsData.push(row);
+      tableData.push(row);
+      row.addEventListener('click', function(e){
+        loadReview(e);
+      });      
     };
-    reviewsTable.setData(reviewsData);
-    reviewsWin.add(reviewsTable);
+    var row = Ti.UI.createTableViewRow({
+      height:60
+    });
+    var moreLabel = Ti.UI.createLabel({
+      text:"LOAD MORE",
+      height:Ti.UI.SIZE,
+      width:Ti.UI.SIZE,            
+      top:20,        
+      left:100,
+      font:{fontSize:14, fontWeight:'bold'}
+    });
+    row.add(moreLabel);
+    row.addEventListener('click', function(e){
+      page += 1;
+      loadMore(e);
+    });
+    if(page * rows_per_page < total_results){
+      tableData.push(row);
+    }
+    if(page > 1){
+      table.deleteRow(rows_per_page * (page-1),{animationStyle:Titanium.UI.iPhone.RowAnimationStyle.NONE})
+      for(var i = 0; i < tableData.length; i++){
+        table.appendRow(tableData[i]);
+      }
+      table.scrollToIndex((page * rows_per_page) - rows_per_page);
+    }
+    else {
+      table.setData(tableData);
+      currentWin.add(table);
+    }    
+    currentWin.add(table);
     spinner.hide();
   },
   onerror: function(){
@@ -65,10 +102,7 @@ var xhr =  Ti.Network.createHTTPClient({
   },
   timeout:5000
 });
-reviewsTable.addEventListener('click', function(e){
-  showClickEventInfo(e);
-});
-function showClickEventInfo(e, islongclick) { 
+function loadReview(e, islongclick) { 
   var review = e.rowData.review;
   if (e.rowData.link){
     var reviewWindow = Titanium.UI.createWindow({
@@ -81,10 +115,30 @@ function showClickEventInfo(e, islongclick) {
       barColor:barColor
     });
   }
-  projectsTab.open(reviewWindow);
+  currentTab.open(reviewWindow);
+}
+function loadMore(e,islongclick){
+  table.deleteRow(rows_per_page * (page-1),{animationStyle:Titanium.UI.iPhone.RowAnimationStyle.NONE})
+  var row = Ti.UI.createTableViewRow({
+    height:60
+  });
+  var spinner = Ti.UI.createActivityIndicator({
+    width:50,
+    height:50,      
+    message: 'loading...',
+    color: 'black',
+    style: Titanium.UI.iPhone.ActivityIndicatorStyle.DARK
+  })
+  row.add(spinner);
+  spinner.show();
+  table.appendRow(row);
+  table.scrollToIndex((page * rows_per_page) - rows_per_page);
+  var url = "http://www.gwahir.com:3000/api/reviews/" + project.id + ".json" + "?page=" + page;
+  xhr.open("GET", url);
+  xhr.send();
 }
 xhr.open("GET", url);
 xhr.send();
-reviewsWin.add(spinner);
+currentWin.add(spinner);
 spinner.show();
-reviewsWin.open();
+currentWin.open();

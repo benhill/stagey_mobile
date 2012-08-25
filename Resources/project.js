@@ -322,7 +322,9 @@ var xhr = Ti.Network.createHTTPClient({
       left:5,
       font:{fontSize:10}
     })
-    projectScroll.add(tagsLabel);    
+    if(project.tags.length > 0){
+      projectScroll.add(tagsLabel);
+    }
     projectWin.add(projectScroll);
     projectWin.remove(spinner);
     projectWin.open();    
