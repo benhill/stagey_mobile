@@ -48,10 +48,10 @@ function loginUser(){
 
 var xhr = Ti.Network.createHTTPClient({
   onload: function(){
-    authenticated = JSON.parse(this.responseText)    
-    if(authenticated){
-      Ti.App.Properties.setString('email', email.value);
-      Ti.App.Properties.setString('password', 'password.value');
+    user = JSON.parse(this.responseText)
+    if(user){
+      Ti.App.Properties.setString('currentUser', JSON.stringify(user));
+      alert(user);
       if(currentWin.return_win){
         currentTab.open(currentWin.return_win);
       }

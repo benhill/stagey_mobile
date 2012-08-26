@@ -1,25 +1,24 @@
 Ti.include("helper.js");
 
-
 var currentTab = Titanium.UI.currentTab;
 icons = [];
-var projects = new Icon('Browse Shows', 'icons/all_shows_48.png', 'cats.js', false);
+var projects = new Icon('Browse Shows', 'icons/all_shows_48.png', 'cats.js', null, false);
 icons.push(projects);
-var whats_next = new Icon('Coming Next', 'icons/whats_next_48.png', 'now.js', false);
+var whats_next = new Icon('Coming Next', 'icons/whats_next_48.png', 'now.js', null, false);
 icons.push(whats_next);
-var nearby = new Icon('Nearby', 'icons/nearby_48.png', 'map.js', false);
+var nearby = new Icon('Nearby', 'icons/nearby_48.png', 'map.js', null, false);
 icons.push(nearby);
-var venues = new Icon('Venues', 'icons/venues_48.png', 'venues.js', false);
+var venues = new Icon('Venues', 'icons/venues_48.png', 'venues.js', null, false);
 icons.push(venues);
-var reviews = new Icon('Reviews', 'icons/reviews_48.png', 'reviews_all.js', false);
+var reviews = new Icon('Reviews', 'icons/reviews_48.png', 'reviews_all.js', null, false);
 icons.push(reviews);
-var favorites = new Icon('Favorites', 'icons/favorites_48.png', 'favorites.js', true);
+var favorites = new Icon('Favorites', 'icons/favorites_48.png', 'favorites.js', null, true);
 icons.push(favorites);
-var schedule = new Icon('My Schedule', 'icons/schedule_48.png', 'schedule.js', true);
+var schedule = new Icon('My Schedule', 'icons/schedule_48.png', 'schedule.js', null, true);
 icons.push(schedule);
-var purchases = new Icon('Purchases', 'icons/purchase_48.png', 'purchases.js', true);
+var purchases = new Icon('Purchases', 'icons/purchase_48.png', 'purchases.js', null, true);
 icons.push(purchases);
-var profile = new Icon('Me', 'icons/my_account_48.png', 'me.js', true);
+var profile = new Icon('Me', 'icons/my_account_48.png', 'me.js', null, true);
 icons.push(profile);
 
 var homeWin = Ti.UI.currentWindow;
@@ -110,7 +109,7 @@ for(var i = 0;i < icons.length; i++){
     width:100,
     height:85,
     layout:'vertical',
-    window:icon.window,
+    icon:icon,
     text:icon.text
   });
 
@@ -120,7 +119,7 @@ for(var i = 0;i < icons.length; i++){
     width:40,
     top:10,
     window:icon.window,
-    text:icon.text
+    icon:icon
   });
 
   iconView.add(iconImage);
@@ -134,7 +133,7 @@ for(var i = 0;i < icons.length; i++){
     top:5,
     textAlign:'center',
     window:icon.window,
-    text:icon.text
+    icon:icon
   });
 
   iconView.add(iconText);  
@@ -159,13 +158,14 @@ function runSearch(terms, e, islongclick){
 
 function runIconEvent(e, islongclick){
   var newWindow = Titanium.UI.createWindow({
-    title:e.source.text,
+    title:e.source.icon.text,
     backgroundColor:'#fff',
     url:e.source.window,
     barColor:barColor
-  });
+  });  
 
-  if(authenticated){
+  user = JSON.parse(Ti.App.Properties.getString('currentUser'));
+  if(user || e.source.icon.auth_required == false){
     currentTab.open(newWindow);
   }
   else{
@@ -228,9 +228,9 @@ xhr.send();
 
 currentWin.addEventListener('focus', function(e){  
   var status;
-
-  if(authenticated){
-    currentWin.title = 'Authed User';
+  user = JSON.parse(Ti.App.Properties.getString('currentUser'));
+  if(user){
+    currentWin.title = user.email;
   }
   else{
     currentWin.title = "Unauthed User";

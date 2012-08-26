@@ -2,8 +2,6 @@ var currentWin = Ti.UI.currentWindow;
 var currentTab = Ti.UI.currentTab;
 var barColor = '#A1A1A1';
 var default_search_text = 'search for a show';
-var authenticated;
-Ti.App.Properties.getString('email') ? authenticated = true : authenticated = false;
 
 function addKeyboardToolbar(textbox){
   var flexSpace = Ti.UI.createButton({
@@ -25,11 +23,11 @@ function addKeyboardToolbar(textbox){
 };
 
 function Icon(text, image, window, object, auth_required){
-   this.text = text;
-   this.image = image;
-   this.window = window;
-   this.object = object;
-   this.auth_required = auth_required;
+ this.text = text;
+ this.image = image;
+ this.window = window;
+ this.object = object;
+ this.auth_required = auth_required;
 }
 
 var spinner = Ti.UI.createActivityIndicator({

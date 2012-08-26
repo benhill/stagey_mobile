@@ -19,7 +19,7 @@ var wrapper = Ti.UI.createView({
 });
 var url = "http://www.gwahir.com:3000/api/user/" + userWin.user_id + ".json";
 var xhr =  Ti.Network.createHTTPClient({
-  onload: function(){    
+  onload: function(){
     var user = JSON.parse(this.responseText);
   	var image = Ti.UI.createImageView({
   	  image:user.thumbnail_url,
