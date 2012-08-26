@@ -36,10 +36,6 @@ var loginButton = Ti.UI.createButton({
 }); 
 currentWin.add(loginButton);
 
-loginButton.addEventListener('click',function(e) { 
-  Ti.API.info("You clicked the button"); 
-});
-
 loginButton.addEventListener('click', function(e){
   loginUser();
 });

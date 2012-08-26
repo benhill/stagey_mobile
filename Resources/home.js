@@ -19,12 +19,7 @@ var schedule = new Icon('My Schedule', 'icons/schedule_48.png', 'schedule.js', t
 icons.push(schedule);
 var purchases = new Icon('Purchases', 'icons/purchase_48.png', 'purchases.js', true);
 icons.push(purchases);
-if(Ti.App.Properties.getString('email')){
-  var profile = new Icon('Logout', 'icons/my_account_48.png', 'logout.js');
-}
-else{
-  var profile = new Icon('Login', 'icons/my_account_48.png', 'login.js');
-}
+var profile = new Icon('Me', 'icons/my_account_48.png', 'me.js', true);
 icons.push(profile);
 
 var homeWin = Ti.UI.currentWindow;

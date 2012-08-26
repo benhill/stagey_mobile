@@ -27,7 +27,7 @@ var xhr = Ti.Network.createHTTPClient({
       });      
       row.add(projectThumb);            
       var title;
-      (performance.project_name.length >= 35) ? title = performance.project_name.substr(0,35) + "..." : title = performance.project_name;  
+      (performance.project_name.length >= 30) ? title = performance.project_name.substr(0,30) + "..." : title = performance.project_name;  
       var projectTitle = Titanium.UI.createLabel({
         text:title,
         height:Ti.UI.SIZE,
