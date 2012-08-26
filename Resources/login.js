@@ -1,6 +1,5 @@
 Ti.include("helper.js");
-currentWin = Ti.UI.currentWindow;
-currentTab = Ti.UI.currentTab;
+
 var email = Ti.UI.createTextField({ 
 	color:'#336699', 
   height:35, 
@@ -8,71 +7,66 @@ var email = Ti.UI.createTextField({
   top:10,
   left:5,
   clearOnEdit:true,
-  borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED
+  borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+  hintText:'Email Address'
 });
 currentWin.add(email);
-var emailLabel = Ti.UI.createLabel({
-  text:'email address',
-  height:Titanium.UI.SIZE,
-  width:Titanium.UI.SIZE,
-  font:{fontSize:14},
-  left:10,
-  top:50
-});
-currentWin.add(emailLabel);
+
 var password = Ti.UI.createTextField({
   color:'#336699', 
   height:35, 
   width:300, 
-  top:80,
+  top:55,
   left:5,
   clearOnEdit:true,
   borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-  passwordMask:true
+  passwordMask:true,
+  hintText:"Password"
 });
 currentWin.add(password);
+
 password.addEventListener('return', function(e){
   loginUser();
 });
-var passwordLabel = Ti.UI.createLabel({
-  text:'password',
-  height:Titanium.UI.SIZE,
-  width:Titanium.UI.SIZE,
-  font:{fontSize:14},
-  left:10,
-  top:120
-});
-currentWin.add(passwordLabel);
+
 var loginButton = Ti.UI.createButton({ 
   title: 'Login',
-  top:160,
+  top:100,
   left:5
 }); 
 currentWin.add(loginButton);
+
 loginButton.addEventListener('click',function(e) { 
   Ti.API.info("You clicked the button"); 
 });
+
 loginButton.addEventListener('click', function(e){
   loginUser();
 });
+
 function loginUser(){
   var url = "http://www.gwahir.com:3000/api/login.json?email=" + email.value + "&password=" + password.value;
   xhr.open("GET", url);
   xhr.send();
 }
+
 var xhr = Ti.Network.createHTTPClient({
   onload: function(){
-    authenticated = JSON.parse(this.responseText)
+    authenticated = JSON.parse(this.responseText)    
     if(authenticated){
-      Ti.App.Properties.setBool('authenticated', true);
       Ti.App.Properties.setString('email', email.value);
       Ti.App.Properties.setString('password', 'password.value');
-      homeWin = Titanium.UI.createWindow({
-        url:'home.js',
-        barColor:barColor,
-        layout:'vertical'
-      });
-      currentTab.open(homeWin)
+      if(currentWin.return_win){
+        currentTab.open(currentWin.return_win);
+      }
+      else{
+        homeWin = Ti.UI.createWindow({
+          url:'home.js',
+          barColor:barColor,
+          layout:'vertical'
+        });
+        currentTab.open(homeWin);
+      }
     }
     else {
       alert('login failed');
@@ -86,4 +80,7 @@ var xhr = Ti.Network.createHTTPClient({
   },
   timeout:5000
 })
+
+email.animate();
+
 currentWin.open();

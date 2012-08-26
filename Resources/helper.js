@@ -1,5 +1,10 @@
+var currentWin = Ti.UI.currentWindow;
+var currentTab = Ti.UI.currentTab;
 var barColor = '#A1A1A1';
 var default_search_text = 'search for a show';
+var authenticated;
+Ti.App.Properties.getString('email') ? authenticated = true : authenticated = false;
+
 function addKeyboardToolbar(textbox){
   var flexSpace = Ti.UI.createButton({
     systemButton:Ti.UI.iPhone.SystemButton.FLEXIBLE_SPACE,
@@ -18,12 +23,15 @@ function addKeyboardToolbar(textbox){
     e.source.activeFld.blur();
   });
 };
-function Icon(text, image, window, object){
+
+function Icon(text, image, window, object, auth_required){
    this.text = text;
    this.image = image;
    this.window = window;
    this.object = object;
+   this.auth_required = auth_required;
 }
+
 var spinner = Ti.UI.createActivityIndicator({
   width:50,
   height:50,  
@@ -32,4 +40,14 @@ var spinner = Ti.UI.createActivityIndicator({
   color: 'black',
   style: Titanium.UI.iPhone.ActivityIndicatorStyle.DARK
 })
+
 var sharekit = require('com.0x82.sharekit');
+
+function prompt_login(win){
+  loginWin = Ti.UI.createWindow({
+    url:'login.js',
+    barColor:barColor,
+    return_win:win
+  });
+  currentTab.open(loginWin);
+}
