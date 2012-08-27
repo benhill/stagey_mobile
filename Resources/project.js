@@ -221,7 +221,8 @@ var xhr = Ti.Network.createHTTPClient({
     }
 
     function runIconEvent(e, islongclick){
-      var favView = iconsView.children[2].children[1]
+      var favTextView = iconsView.children[2].children[1]
+      var favImgView = iconsView.children[2].children[0]
       if(e.source.text == 'Share'){
         sharekit.share({
           title:'I am checking out this show a show on stagey.net',
@@ -229,12 +230,14 @@ var xhr = Ti.Network.createHTTPClient({
           link:'www.gwahir.com:3000/projects/' + e.source.object.id
         });
       }
-      else if(favView.text == make_fav_text){        
-        favView.text = remove_fav_text;
+      else if(e.source.text == make_fav_text){        
+        favTextView.text = remove_fav_text;
+        favImgView.text = remove_fav_text;
         toggleFavorite();
       }
-      else if(favView.text == remove_fav_text){
-        favView.text = make_fav_text;
+      else if(e.source.text == remove_fav_text){
+        favTextView.text = make_fav_text;
+        favImgView.text = make_fav_text;
         toggleFavorite();
       }
       else{
