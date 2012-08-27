@@ -1,6 +1,9 @@
 var currentWin = Ti.UI.currentWindow;
+
 var currentTab = Ti.UI.currentTab;
+
 var barColor = '#A1A1A1';
+
 var default_search_text = 'search for a show';
 
 function addKeyboardToolbar(textbox){
@@ -8,15 +11,19 @@ function addKeyboardToolbar(textbox){
     systemButton:Ti.UI.iPhone.SystemButton.FLEXIBLE_SPACE,
     right:0
   });
+
   var doneButton = Ti.UI.createButton({
     systemButton:Ti.UI.iPhone.SystemButton.DONE,
     right:0
   });
+
   textbox.keyboardToolbar = [flexSpace, doneButton];
+
   textbox.addEventListener('focus', function(e) {
     textbox.keyboardToolbar = [flexSpace, doneButton];
     doneButton.activeFld = textbox;
   });
+
   doneButton.addEventListener('click', function(e) {
     e.source.activeFld.blur();
   });
@@ -47,5 +54,6 @@ function prompt_login(win){
     barColor:barColor,
     return_win:win
   });
+  
   currentTab.open(loginWin);
 }

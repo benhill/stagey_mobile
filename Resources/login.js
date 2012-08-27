@@ -51,7 +51,9 @@ var xhr = Ti.Network.createHTTPClient({
     user = JSON.parse(this.responseText)
     if(user){
       Ti.App.Properties.setString('currentUser', JSON.stringify(user));
-      alert(user);
+      Ti.App.Properties.setString('userPassword', password.value);
+      Ti.App.currentUser = user;
+      Ti.App.userPassword = password.value;
       if(currentWin.return_win){
         currentTab.open(currentWin.return_win);
       }

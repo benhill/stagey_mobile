@@ -6,11 +6,15 @@ var currentTab = Ti.UI.currentTab;
 var page = 1
 var rows_per_page = 9
 var seed;
+
 if(currentWin.venue_id){
   var url = "http://www.gwahir.com:3000/api/projects.json?venue_id=" + currentWin.venue_id + "&event_id=7";
 }
 else if(currentWin.cat_id){
   var url = "http://www.gwahir.com:3000/api/projects.json?cat_id=" + currentWin.cat_id + "&event_id=7";
+}
+else if(currentWin.favorites){    
+  var url = "http://www.gwahir.com:3000/api/favorites.json?email=" + Ti.App.currentUser.email + "&password=" + Ti.App.userPassword;
 }
 else {
   var url = "http://www.gwahir.com:3000/api/projects.json&event_id=7";
@@ -140,6 +144,9 @@ function loadMore(e,islongclick){
   }
   else if(currentWin.cat_id){
     var url = "http://www.gwahir.com:3000/api/projects.json?cat_id=" + currentWin.cat_id + "&event_id=7&page=" + page;
+  }
+  else if(currentWin.favorites){
+    var url = "http://www.gwahir.com:3000/api/favorites.json?email=" + Ti.App.currentUser.email + "&password=" + Ti.App.userPassword + "&page=" + page;
   }
   else {
     var url = "http://www.gwahir.com:3000/api/projects.json&event_id=7&page=" + page;

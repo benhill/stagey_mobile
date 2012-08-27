@@ -1,27 +1,33 @@
 Ti.include("helper.js");
 
-var currentTab = Titanium.UI.currentTab;
 icons = [];
+
 var projects = new Icon('Browse Shows', 'icons/all_shows_48.png', 'cats.js', null, false);
 icons.push(projects);
+
 var whats_next = new Icon('Coming Next', 'icons/whats_next_48.png', 'now.js', null, false);
 icons.push(whats_next);
+
 var nearby = new Icon('Nearby', 'icons/nearby_48.png', 'map.js', null, false);
 icons.push(nearby);
+
 var venues = new Icon('Venues', 'icons/venues_48.png', 'venues.js', null, false);
 icons.push(venues);
+
 var reviews = new Icon('Reviews', 'icons/reviews_48.png', 'reviews_all.js', null, false);
 icons.push(reviews);
-var favorites = new Icon('Favorites', 'icons/favorites_48.png', 'favorites.js', null, true);
+
+var favorites = new Icon('Favorites', 'icons/favorites_48.png', 'projects.js', null, true);
 icons.push(favorites);
+
 var schedule = new Icon('My Schedule', 'icons/schedule_48.png', 'schedule.js', null, true);
 icons.push(schedule);
+
 var purchases = new Icon('Purchases', 'icons/purchase_48.png', 'purchases.js', null, true);
 icons.push(purchases);
+
 var profile = new Icon('Me', 'icons/my_account_48.png', 'me.js', null, true);
 icons.push(profile);
-
-var homeWin = Ti.UI.currentWindow;
 
 var searchView = Ti.UI.createView({
   top:0,
@@ -86,7 +92,7 @@ var xhr = Ti.Network.createHTTPClient({
   timeout:5000
 })
 
-homeWin.add(searchView);
+currentWin.add(searchView);
 
 var iconsView = Ti.UI.createView({
   top:0,
@@ -126,7 +132,7 @@ for(var i = 0;i < icons.length; i++){
 
   var iconText = Ti.UI.createLabel({
     text:icon.text,
-    height:'auto',
+    height:Ti.UI.SIZE,
     width:100,
     font:{fontSize:12},
     left:0,
@@ -162,9 +168,14 @@ function runIconEvent(e, islongclick){
     backgroundColor:'#fff',
     url:e.source.window,
     barColor:barColor
-  });  
+  });
+
+  if(e.source.icon.text == 'Favorites'){    
+    newWindow.favorites = true
+  }
 
   user = JSON.parse(Ti.App.Properties.getString('currentUser'));
+
   if(user || e.source.icon.auth_required == false){
     currentTab.open(newWindow);
   }
@@ -173,7 +184,7 @@ function runIconEvent(e, islongclick){
   }
 }
 
-homeWin.add(iconsView);
+currentWin.add(iconsView);
 
 var url = "http://www.gwahir.com:3000/api/mobile_ad.json";
 
@@ -203,8 +214,8 @@ var xhr = Ti.Network.createHTTPClient({
 
     var adText = Ti.UI.createLabel({
       text:ad.text,
-      height:'auto',
-      width:'auto',
+      height:Ti.UI.SIZE,
+      width:Ti.UI.SIZE,
       font:{fontSize:20},
       left:70,
       top:10
@@ -212,7 +223,7 @@ var xhr = Ti.Network.createHTTPClient({
 
     adView.add(adText);
 
-    homeWin.add(adView);
+    currentWin.add(adView);
   },
   onerror: function(e) {
     Ti.API.debug("STATUS: " + this.status);
@@ -224,13 +235,13 @@ var xhr = Ti.Network.createHTTPClient({
 });
 
 xhr.open("GET", url);
+
 xhr.send();
 
 currentWin.addEventListener('focus', function(e){  
   var status;
-  user = JSON.parse(Ti.App.Properties.getString('currentUser'));
-  if(user){
-    currentWin.title = user.email;
+  if(Ti.App.currentUser != null){
+    currentWin.title = Ti.App.currentUser.email;
   }
   else{
     currentWin.title = "Unauthed User";

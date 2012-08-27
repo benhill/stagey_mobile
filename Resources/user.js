@@ -1,26 +1,33 @@
 Ti.include("helper.js");
+
 var projectTab = Ti.UI.currentTab;
+
 var userWin = Ti.UI.currentWindow;
+
 var userScroll = Titanium.UI.createScrollView({
-    contentWidth:'auto',
-    contentHeight:'auto',
+    contentWidth:Ti.UI.SIZE,
+    contentHeight:Ti.UI.SIZE,
     touchEnabled:true,
     scrollType:'vertical',
     verticalBounce:true,
     showVerticalScrollIndicator:true,
-    width:'auto',
+    width:Ti.UI.SIZE,
     height:350,
     top:0
 });
+
 var wrapper = Ti.UI.createView({
-  height:'auto',
-  width:'auto',
+  height:Ti.UI.SIZE,
+  width:Ti.UI.SIZE,
   top:0
 });
+
 var url = "http://www.gwahir.com:3000/api/user/" + userWin.user_id + ".json";
+
 var xhr =  Ti.Network.createHTTPClient({
   onload: function(){
     var user = JSON.parse(this.responseText);
+
   	var image = Ti.UI.createImageView({
   	  image:user.thumbnail_url,
   	  width:45,
@@ -30,6 +37,7 @@ var xhr =  Ti.Network.createHTTPClient({
   	  borderColor:'black',
   	  borderWidth:1
   	});
+
     image.addEventListener('click', function(e){
       var imageWin = Titanium.UI.createWindow({
         backgroundColor: 'white',
@@ -38,27 +46,35 @@ var xhr =  Ti.Network.createHTTPClient({
       });                
       imageWin.open();
     });
+
   	wrapper.add(image);  	
+
     var name = Ti.UI.createLabel({
       text:(user.first_name + " " + user.last_name),
-      height:'auto',
+      height:Ti.UI.SIZE,
       width:300,
       left:70,
       top:20,
       font:{fontSize:'14', fontWeight:'bold'}
     });
+
     wrapper.add(name);
+
   	var profile = Ti.UI.createLabel({
   	  text:(user.profile ? user.profile : 'No profile information available.'),
-  	  height:'auto',
+  	  height:Ti.UI.SIZE,
   	  width:300,
   	  left:10,
   	  top:70,
   	  font:{fontSize:'12'}
   	});
+
   	wrapper.add(profile);
+
   	userScroll.add(wrapper);
+
     userWin.add(userScroll);
+
     userWin.remove(spinner);
   },
   onerror: function(){
@@ -69,8 +85,13 @@ var xhr =  Ti.Network.createHTTPClient({
   },
   timeout:5000
 });
+
 xhr.open("GET", url);
+
 xhr.send();
+
 userWin.add(spinner);
+
 spinner.show();
+
 userWin.open();

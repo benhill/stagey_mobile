@@ -2,8 +2,8 @@ Ti.include("helper.js");
 var currentUser = JSON.parse(Ti.App.Properties.getString('currentUser'));
 
 var wrapper = Ti.UI.createView({
-  height:'auto',
-  width:'auto',
+  height:'100%',
+  width:'100%',
   top:0
 });
 
@@ -37,7 +37,7 @@ var xhr =  Ti.Network.createHTTPClient({
 
     var name = Ti.UI.createLabel({
       text:(currentUser.first_name + " " + currentUser.last_name),
-      height:'auto',
+      height:Ti.UI.SIZE,
       width:300,
       left:70,
       top:20,
@@ -48,7 +48,7 @@ var xhr =  Ti.Network.createHTTPClient({
 
     var profile = Ti.UI.createLabel({
       text:(currentUser.profile ? currentUser.profile : 'No profile information available.'),
-      height:'auto',
+      height:Ti.UI.SIZE,
       width:300,
       left:10,
       top:70,
@@ -78,12 +78,14 @@ var xhr =  Ti.Network.createHTTPClient({
   },
   timeout:5000
 });
+
 xhr.open("GET", url);
 xhr.send();
 
 function logout(){
   Ti.include("helper.js");
   Ti.App.Properties.setString('currentUser', null);
+  Ti.App.currentUser = null
   homeWin = Titanium.UI.createWindow({
     url:'home.js',
     barColor:barColor,
