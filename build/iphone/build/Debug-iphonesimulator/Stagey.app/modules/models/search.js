@@ -1,0 +1,1 @@
+/src/stagey_mobile_new/Resources/modules/models/search.js

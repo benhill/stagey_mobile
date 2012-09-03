@@ -1,0 +1,5 @@
+// this is a generated file - DO NOT EDIT
+
+COM_0X82_SHAREKIT_OTHER_LDFLAGS=$(inherited) -framework UIKit -framework Security -framework SystemConfiguration -framework Security -framework MessageUI -framework CFNetwork -framework CoreLocation -weak_framework Twitter
+
+OTHER_LDFLAGS=$(inherited) $(COM_0X82_SHAREKIT_OTHER_LDFLAGS) 
