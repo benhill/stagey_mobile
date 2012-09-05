@@ -14,7 +14,6 @@ function Projects(url, callback){
 
   xhr.open('GET', url);
   xhr.send();
- 
 };
  
 module.exports = Projects;

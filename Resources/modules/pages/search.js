@@ -31,6 +31,7 @@ function SearchWindow(title, containingTab, search_terms){
   self.add(searchField);
 
   var searchButton =  Ti.UI.createImageView(searchStyles.searchButton);
+  self.add(searchButton);
 
   if(search_terms){
     searchField.value = search_terms;

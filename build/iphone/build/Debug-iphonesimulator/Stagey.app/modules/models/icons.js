@@ -1,1 +1,0 @@
-/src/stagey_mobile_new/Resources/modules/models/icons.js

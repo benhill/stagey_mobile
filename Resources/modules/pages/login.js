@@ -1,49 +1,35 @@
 function LoginWindow(title, containingTab){
 
   var styles = require('modules/styles/styles');
-  var reviewsStyles = require('modules/styles/reviews');
+  var loginStyles = require('modules/styles/login');
 
   var self = Ti.UI.createWindow(styles.defaultWindow);
   self.title = title;
 
-  var email = Ti.UI.createTextField({ 
-  	color:'#336699', 
-    height:35, 
-    width:300, 
-    top:10,
-    left:5,
-    clearOnEdit:true,
-    borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-    hintText:'Email Address'
-  });
+  var email = Ti.UI.createTextField(loginStyles.email);
   self.add(email);
 
-  var password = Ti.UI.createTextField({
-    color:'#336699', 
-    height:35, 
-    width:300, 
-    top:55,
-    left:5,
-    clearOnEdit:true,
-    borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-    passwordMask:true,
-    hintText:"Password"
-  });
+  var password = Ti.UI.createTextField(loginStyles.password);
   self.add(password);
 
   password.addEventListener('return', function(e){
     loginUser();
   });
 
-  var loginButton = Ti.UI.createButton({ 
-    title: 'Login',
-    top:100,
-    left:5
-  }); 
+  var loginButton = Ti.UI.createButton(loginStyles.loginButton); 
   self.add(loginButton);
 
   loginButton.addEventListener('click', function(e){
     loginUser();
+  });
+
+  var addUserLabel = Ti.UI.createLabel(loginStyles.addUserLabel);
+  self.add(addUserLabel);
+
+  addUserLabel.addEventListener('click', function(e){
+    var addUserObj = require('modules/pages/add_user');
+    var addUserWindow = new addUserObj('Create an Account', containingTab, self.return_win);
+    containingTab.open(addUserWindow);
   });
 
   function loginUser(){
@@ -55,8 +41,8 @@ function LoginWindow(title, containingTab){
   var xhr = Ti.Network.createHTTPClient({
     onload: function(){
       user = JSON.parse(this.responseText)
-      if(user){
 
+      if(user){
         Ti.App.Properties.setString('currentUser', JSON.stringify(user));
         Ti.App.Properties.setString('userPassword', password.value);
         Ti.App.currentUser = user;

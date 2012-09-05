@@ -19,18 +19,20 @@ function UsersWindow(title, containingTab, users){
 
     var image = Ti.UI.createImageView(usersStyles.image);
     image.image = user.image_url;
+    image.user = user; 
     row.add(image);
 
     var nameLabel = Ti.UI.createLabel(usersStyles.nameLabel);
     nameLabel.text = user.first_name + ' ' + user.last_name;
+    nameLabel.user = user; 
     row.add(nameLabel);
 
     var roleLabel = Ti.UI.createLabel(usersStyles.roleLabel);
     roleLabel.text = user.role;
+    roleLabel.user = user;
     row.add(roleLabel);
 
     usersData.push(row);
-
   }
 
   usersTable.setData(usersData);
@@ -44,7 +46,7 @@ function UsersWindow(title, containingTab, users){
 
   function loadUser(e, islongclick) { 
     var userObj = require('modules/pages/user');
-    var userWindow = new userObj('User', containingTab, user.id);
+    var userWindow = new userObj('User', containingTab, e.source.user.id);
     containingTab.open(userWindow);
   }
 

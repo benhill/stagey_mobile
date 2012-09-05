@@ -12,7 +12,7 @@ exports = {
   },
 
   searchButton: {
-    image:'icons/search_24.png',
+    image:'iphone/search_24.png',
     width:24,
     height:24,
     top:12,    
