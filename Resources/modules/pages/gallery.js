@@ -14,8 +14,8 @@ function GalleryWindow(title, containingTab, images){
     if(i > 0 && i % 4 === 0){image_place = 0;image_top += 75;}
 
     var image = Ti.UI.createImageView(galleryStyles.image);
-    image.image = images[i].thumbnail_path;
-    image.full_image_path = images[i].image_path;
+    image.image = images[i].image.thumbnail_path;
+    image.full_image_path = images[i].image.image_path;
     image.left = image_place * 77;
     image.top = image_top;
     galleryScroll.add(image);

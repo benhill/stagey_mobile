@@ -5,22 +5,30 @@ function ProjectWindow(title, containingTab, project_id){
 
   var self = Ti.UI.createWindow(styles.defaultWindow);
   self.title = title;
+  var projectObj = require('modules/models/project');
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
-  var sharekit = require('com.0x82.sharekit');
-  var url = "http://www.gwahir.com:3000/api/project/" + project_id + ".json?event_id=7";
-  var Icon = require('modules/models/icons');
-  if(Ti.App.currentUser){url += '&email=' + Ti.App.currentUser.email}
+  var sharekit = require('com.0x82.sharekit');  
+  var Icon = require('modules/models/icons');  
   var json, project, iconsView;
   var image_place = 0;
   var make_fav_text = "Make Favorite";
   var remove_fav_text = "Remove Favorite"
 
-  var xhr = Ti.Network.createHTTPClient({
-    onload: function(){
+  self.load = function(){
+    var url = "http://www.gwahir.com:3000/api/project/" + project_id + ".json?event_id=7";
+    if(Ti.App.currentUser){url += '&email=' + Ti.App.currentUser.email}
 
+    new projectObj(url, function(project){
+      loadProject(project);
+    });
+
+    function loadProject(project){      
       var projectScroll = Ti.UI.createScrollView(projectStyles.projectScroll);
 
-      project = JSON.parse(this.responseText);
+      if(Ti.App.make_favorite == project.id){
+        Ti.App.make_favorite = null;
+        if(!project.is_favorite){toggleFavorite();}
+      }
 
       var title = Ti.UI.createLabel(projectStyles.title);
       title.text = project.title;
@@ -30,18 +38,18 @@ function ProjectWindow(title, containingTab, project_id){
       subTitle.text = project.company + " \u00B7 ages " + project.age_restriction + "+ \u00B7 " + project.duration + " \u00B7 " + project.cost_range
       projectScroll.add(subTitle);    
 
-      var galleryView = Ti.UI.createView(projectStyles.galleryView);
+      var galleryView = Ti.UI.createView(projectStyles.galleryView);      
 
-      var imageCollection = project.images.slice(0,4);
+      var imageCollection = project.images.slice(0,4);      
 
       for (var i = 0; i < imageCollection.length; i++) {
 
         if(i > 0 && i % 6 === 0){image_place = 0;}
 
         var img = Ti.UI.createImageView(projectStyles.img);
-        img.left = image_place * 77,
-        img.image = imageCollection[i].thumbnail_path,
-        img.full_image_path = imageCollection[i].image_path,
+        img.left = image_place * 77,        
+        img.image = imageCollection[i].image.thumbnail_path,
+        img.full_image_path = imageCollection[i].image.image_path,
 
         image_place ++;
 
@@ -245,39 +253,37 @@ function ProjectWindow(title, containingTab, project_id){
       }
 
       self.add(projectScroll);
-      self.remove(spinner);
-    },
-    onerror: function(e) {
-      Ti.API.debug("STATUS: " + this.status);
-      Ti.API.debug("TEXT:   " + this.responseText);
-      Ti.API.debug("ERROR:  " + e.error);
-      alert('There was an error retrieving the remote data. Try again.');
-    },
-    timeout:8000
-  });
+      self.remove(spinner);      
+    };
 
-  spinner.show();
-  self.add(spinner);
+    spinner.show();
+    self.add(spinner);
 
-  xhr.open("GET", url);
-  xhr.send();  
+    var favXhr = Ti.Network.createHTTPClient({
+      onload: function(){
+      },
+      onerror: function(e) {
+        Ti.API.debug("STATUS: " + this.status);
+        Ti.API.debug("TEXT:   " + this.responseText);
+        Ti.API.debug("ERROR:  " + e.error);
+        alert('There was an error retrieving the remote data. Try again.');
+      },
+      timeout:8000
+    }); 
 
-  var favXhr = Ti.Network.createHTTPClient({
-    onload: function(){
-    },
-    onerror: function(e) {
-      Ti.API.debug("STATUS: " + this.status);
-      Ti.API.debug("TEXT:   " + this.responseText);
-      Ti.API.debug("ERROR:  " + e.error);
-      alert('There was an error retrieving the remote data. Try again.');
-    },
-    timeout:8000
-  }); 
-
-  function toggleFavorite(){
-    url = "http://www.gwahir.com:3000/api/toggle_favorite.json?project_id=" + project_id + "&email=" + Ti.App.currentUser.email + "&password=" + Ti.App.userPassword;
-    favXhr.open("GET", url);
-    favXhr.send();  
+    function toggleFavorite(){
+      if(Ti.App.currentUser){
+        url = "http://www.gwahir.com:3000/api/toggle_favorite.json?project_id=" + project_id + "&email=" + Ti.App.currentUser.email + "&password=" + Ti.App.userPassword;
+        favXhr.open("GET", url);
+        favXhr.send();
+      }
+      else{
+        Ti.App.make_favorite = project_id;
+        var loginObj = require('modules/pages/login');
+        var loginWindow = new loginObj('Login', containingTab, self);
+        containingTab.open(loginWindow);
+      }
+    }
   }
 
   return self;

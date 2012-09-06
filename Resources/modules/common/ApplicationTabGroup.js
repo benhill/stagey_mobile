@@ -30,6 +30,7 @@ function ApplicationTabGroup(windows) {
   var projectsWin = new projectsObj('Projects', projectsTab, null);
   projectsTab.window = projectsWin;
   self.addTab(projectsTab);
+  projectsWin.load();
 
   var searchObj = require('modules/pages/search')  
   var searchTab = Ti.UI.createTab({

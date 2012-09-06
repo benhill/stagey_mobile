@@ -8,56 +8,59 @@ function MeWindow(title, containingTab){
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
   var currentUser = JSON.parse(Ti.App.Properties.getString('currentUser'));
   var wrapper = Ti.UI.createView(meStyles.wrapper);
-  var url = "http://www.gwahir.com:3000/api/user/" + currentUser.id + ".json";
 
-  var xhr =  Ti.Network.createHTTPClient({
-    onload: function(){
-      
-      var user = JSON.parse(this.responseText);
+  self.load = function(){
+    var url = "http://www.gwahir.com:3000/api/user/" + currentUser.id + ".json";
 
-      var image = Ti.UI.createImageView(meStyles.image);
-      image.image = user.thumbnail_url;
+    var xhr =  Ti.Network.createHTTPClient({
+      onload: function(){
+        
+        var user = JSON.parse(this.responseText);
 
-      image.addEventListener('click', function(e){
-        var imageObj = require('modules/pages/image');
-        var imageWindow = new imageObj(containingTab, user.image_url);
-        containingTab.open(imageWindow);
-      });
+        var image = Ti.UI.createImageView(meStyles.image);
+        image.image = user.thumbnail_url;
 
-      wrapper.add(image);   
+        image.addEventListener('click', function(e){
+          var imageObj = require('modules/pages/image');
+          var imageWindow = new imageObj(containingTab, user.image_url);
+          containingTab.open(imageWindow);
+        });
 
-      var name = Ti.UI.createLabel(meStyles.name);
-      name.text = (currentUser.first_name + " " + currentUser.last_name),
-      wrapper.add(name);
+        wrapper.add(image);   
 
-      var profile = Ti.UI.createLabel(meStyles.profile);
-      profile.text = (currentUser.profile ? currentUser.profile : 'No profile information available.');
+        var name = Ti.UI.createLabel(meStyles.name);
+        name.text = (currentUser.first_name + " " + currentUser.last_name),
+        wrapper.add(name);
 
-      var logoutButton = Ti.UI.createButton(meStyles.logoutButton);
-      wrapper.add(logoutButton);
+        var profile = Ti.UI.createLabel(meStyles.profile);
+        profile.text = (currentUser.profile ? currentUser.profile : 'No profile information available.');
 
-      logoutButton.addEventListener('click', function(e){
-        logout();
-      });
+        var logoutButton = Ti.UI.createButton(meStyles.logoutButton);
+        wrapper.add(logoutButton);
 
-      self.add(wrapper);
+        logoutButton.addEventListener('click', function(e){
+          logout();
+        });
 
-      self.remove(spinner);
-  },
-    onerror: function(){
-      Ti.API.debug("STATUS: " + this.status);
-      Ti.API.debug("TEXT:   " + this.responseText);
-      Ti.API.debug("ERROR:  " + e.error);
-      alert('There was an error retrieving the remote data. Try again.');
+        self.add(wrapper);
+
+        self.remove(spinner);
     },
-    timeout:5000
-  });
+      onerror: function(){
+        Ti.API.debug("STATUS: " + this.status);
+        Ti.API.debug("TEXT:   " + this.responseText);
+        Ti.API.debug("ERROR:  " + e.error);
+        alert('There was an error retrieving the remote data. Try again.');
+      },
+      timeout:5000
+    });
 
-  spinner.show();
-  self.add(spinner);
+    spinner.show();
+    self.add(spinner);
 
-  xhr.open("GET", url);
-  xhr.send();
+    xhr.open("GET", url);
+    xhr.send();
+  }
 
   return(self);
 

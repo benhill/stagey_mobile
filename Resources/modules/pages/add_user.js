@@ -41,10 +41,10 @@ function AddUserWindow(title, containingTab, return_win){
       Ti.App.Properties.setString('userPassword', passwordLabel.value);
       Ti.App.currentUser = results;
       Ti.App.userPassword = passwordLabel.value;
-      alert(Ti.App.currentUser.email);
 
       if(return_win){
-        currentTab.open(return_win);
+        containingTab.open(return_win);
+        return_win.load();
       }
       else{
         var homeObj = require('modules/pages/home');

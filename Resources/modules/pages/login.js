@@ -1,4 +1,4 @@
-function LoginWindow(title, containingTab){
+function LoginWindow(title, containingTab, return_win){
 
   var styles = require('modules/styles/styles');
   var loginStyles = require('modules/styles/login');
@@ -28,7 +28,7 @@ function LoginWindow(title, containingTab){
 
   addUserLabel.addEventListener('click', function(e){
     var addUserObj = require('modules/pages/add_user');
-    var addUserWindow = new addUserObj('Create an Account', containingTab, self.return_win);
+    var addUserWindow = new addUserObj('Create an Account', containingTab, return_win);
     containingTab.open(addUserWindow);
   });
 
@@ -42,23 +42,24 @@ function LoginWindow(title, containingTab){
     onload: function(){
       user = JSON.parse(this.responseText)
 
-      if(user){
+      if(user.error){
+        alert(user.error);
+      }
+      else{
         Ti.App.Properties.setString('currentUser', JSON.stringify(user));
         Ti.App.Properties.setString('userPassword', password.value);
         Ti.App.currentUser = user;
         Ti.App.userPassword = password.value;
 
-        if(self.return_win){
-          currentTab.open(self.return_win);
+        if(return_win){
+          containingTab.open(return_win);
+          return_win.load();
         }
         else{
           var homeObj = require('modules/pages/home');
           var homeWindow = new homeObj('Home', containingTab);
           containingTab.open(homeWindow);
         }
-      }
-      else {
-        alert('login failed');
       }
     },
     onerror: function(e) {

@@ -129,22 +129,22 @@ function HomeWindow(title, containingTab){
 
   function runIconEvent(e, islongclick){
     user = JSON.parse(Ti.App.Properties.getString('currentUser'));
-  	if(user || e.source.icon.auth_required == false){
-      var windowObj = require('modules/pages/' + e.source.icon.window);
-      var fourthParam;
-      if(e.source.icon.text == 'Favorites'){fourthParam = true;}
-      var newWindow = new windowObj(e.source.icon.text, containingTab, null, fourthParam);
+
+    var windowObj = require('modules/pages/' + e.source.icon.window);
+    var fourthParam;
+    if(e.source.icon.text == 'Favorites'){fourthParam = true;}
+
+    var newWindow = new windowObj(e.source.icon.text, containingTab, null, fourthParam);
+
+  	if(user || e.source.icon.auth_required == false){      
       containingTab.open(newWindow);
+      newWindow.load();
     }
     else{
-      prompt_login(newWindow);
+      var loginObj = require('modules/pages/login');
+      var loginWindow = new loginObj('Login', containingTab, newWindow);
+      containingTab.open(loginWindow);
     }
-  }
-
-  function prompt_login(win){
-    var loginObj = require('modules/pages/login');
-    var loginWindow = new loginObj('Login', containingTab);
-    containingTab.open(loginWindow);
   }
 
   return(self);
