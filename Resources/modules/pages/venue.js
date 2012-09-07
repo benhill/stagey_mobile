@@ -36,10 +36,10 @@ function VenueWindow(title, containingTab, venue_id){
       if(i > 0 && i % 6 === 0){image_place = 0;image_top += 50;}
 
       var img = Ti.UI.createImageView(venueStyles.img);
-      img.image = venue.images[i].thumbnail_path;
+      img.image = venue.images[i].image.thumbnail_path;
       img.left = image_place * 77;
       img.top = image_top;
-      img.full_image_path = venue.images[i].image_path;
+      img.full_image_path = venue.images[i].image.image_path;
       image_place ++;
 
       galleryView.add(img);            
@@ -62,16 +62,9 @@ function VenueWindow(title, containingTab, venue_id){
       venueScroll.add(moreImagesLabel);
 
       moreImagesLabel.addEventListener('click', function(e){
-
-        galleryWin = Ti.UI.createWindow({
-          images:venue.images,
-          title:venue.title,
-          backgroundColor:'white',
-          url:'gallery.js'
-        });
-
-        venuesTab.open(galleryWin);
-
+        var galleryObj = require('modules/pages/gallery');
+        var galleryWindow = new galleryObj(venue.name, containingTab, venue.images);
+        containingTab.open(galleryWindow);
       });
     }
 
@@ -122,7 +115,8 @@ function VenueWindow(title, containingTab, venue_id){
 
       projectsView.addEventListener('click', function(e){
         var projectsObj = require('modules/pages/projects');
-        var projectsWindow = new projectsObj('Shows', containingTab, null, null, venue.id)
+        var projectsWindow = new projectsObj('Shows', containingTab, 'venue');
+        projectsWindow.venue_id = venue.id;
         containingTab.open(projectsWindow);
         projectsWindow.load();
       });

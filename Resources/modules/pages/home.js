@@ -14,7 +14,7 @@ function HomeWindow(title, containingTab){
   var projects = new Icon('Browse', 'iphone/all_shows_48.png', 'cats', null, false);
   icons.push(projects);
 
-  var whats_next = new Icon('Upcoming', 'iphone/whats_next_48.png', 'now', null, false);
+  var whats_next = new Icon('Upcoming', 'iphone/whats_next_48.png', 'performances', null, false);
   icons.push(whats_next);
 
   var nearby = new Icon('Nearby', 'iphone/nearby_48.png', 'map', null, false);
@@ -29,7 +29,7 @@ function HomeWindow(title, containingTab){
   var favorites = new Icon('Favorites', 'iphone/favorites_48.png', 'projects', null, true);
   icons.push(favorites);
 
-  var schedule = new Icon('My Schedule', 'iphone/schedule_48.png', 'schedule', null, true);
+  var schedule = new Icon('My Schedule', 'iphone/schedule_48.png', 'performances', null, true);
   icons.push(schedule);
 
   var purchases = new Icon('Purchases', 'iphone/purchase_48.png', 'purchases', null, true);
@@ -131,10 +131,12 @@ function HomeWindow(title, containingTab){
     user = JSON.parse(Ti.App.Properties.getString('currentUser'));
 
     var windowObj = require('modules/pages/' + e.source.icon.window);
-    var fourthParam;
-    if(e.source.icon.text == 'Favorites'){fourthParam = true;}
+    var thirdParam;
+    if(e.source.icon.text == 'Favorites'){thirdParam = 'favorites';}
+    if(e.source.icon.text == 'Upcoming'){thirdParam = 'next';}
+    if(e.source.icon.text == 'My Schedule'){thirdParam = 'schedule';}
 
-    var newWindow = new windowObj(e.source.icon.text, containingTab, null, fourthParam);
+    var newWindow = new windowObj(e.source.icon.text, containingTab, thirdParam);
 
   	if(user || e.source.icon.auth_required == false){      
       containingTab.open(newWindow);

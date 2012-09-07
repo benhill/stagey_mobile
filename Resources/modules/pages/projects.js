@@ -1,4 +1,6 @@
-function ProjectsWindow(title, containingTab, cat_id, is_favorite, venue_id, startProjects){
+function ProjectsWindow(title, containingTab, mode){
+
+  //cat_id, is_favorite, venue_id, startProjects
 
   var styles = require('modules/styles/styles');
   var projectsStyles = require('modules/styles/projects');
@@ -11,21 +13,11 @@ function ProjectsWindow(title, containingTab, cat_id, is_favorite, venue_id, sta
   var currentTab = Ti.UI.currentTab;
   var page = 1
   var rows_per_page = 9
-  var seed, total_results;
+  var seed, total_results, startProjects;
 
   self.load = function(){
-    if(venue_id){
-      var url = "http://www.gwahir.com:3000/api/projects.json?venue_id=" + venue_id + "&event_id=7";
-    }  
-    else if(cat_id){
-      var url = "http://www.gwahir.com:3000/api/projects.json?cat_id=" + cat_id + "&event_id=7";
-    }
-    else if(is_favorite){    
-      var url = "http://www.gwahir.com:3000/api/favorites.json?email=" + Ti.App.currentUser.email + "&password=" + Ti.App.userPassword;
-    }
-    else {
-      var url = "http://www.gwahir.com:3000/api/projects.json&event_id=7";
-    }
+
+    var url = setUrl();
 
     new projectsObj(url, function(results){
       loadProjects(results);
@@ -123,20 +115,8 @@ function ProjectsWindow(title, containingTab, cat_id, is_favorite, venue_id, sta
 
       table.scrollToIndex((page * rows_per_page) - rows_per_page);
       
-      if(venue_id){
-        var url = "http://www.gwahir.com:3000/api/projects.json?venue_id=" + venue_id + "&event_id=7&page=" + page;
-      }
-      else if(cat_id){
-        var url = "http://www.gwahir.com:3000/api/projects.json?cat_id=" + cat_id + "&event_id=7&page=" + page;
-      }
-      else if(is_favorite){
-        var url = "http://www.gwahir.com:3000/api/favorites.json?email=" + Ti.App.currentUser.email + "&password=" + Ti.App.userPassword + "&page=" + page;
-      }
-      else {
-        var url = "http://www.gwahir.com:3000/api/projects.json&event_id=7&page=" + page;
-      }
-
-      url += "&seed=" + seed;
+      var url = setUrl();
+      url += "&seed=" + seed + "&page=" + page;
 
       new projectsObj(url, function(results){
         loadProjects(results);
@@ -145,6 +125,23 @@ function ProjectsWindow(title, containingTab, cat_id, is_favorite, venue_id, sta
 
     spinner.show();
     self.add(spinner);
+  }
+
+  function setUrl(){
+    if(mode == 'venue'){
+      url = "http://www.gwahir.com:3000/api/projects.json?venue_id=" + self.venue_id + "&event_id=7";
+    }  
+    else if(mode == 'cat'){
+      url = "http://www.gwahir.com:3000/api/projects.json?cat_id=" + self.cat_id + "&event_id=7";
+    }
+    else if(mode == 'favorites'){    
+      url = "http://www.gwahir.com:3000/api/favorites.json?email=" + Ti.App.currentUser.email + "&password=" + Ti.App.userPassword;
+    }
+    else {
+      url = "http://www.gwahir.com:3000/api/projects.json&event_id=7";
+    }
+
+    return url;
   }
   
   return self;

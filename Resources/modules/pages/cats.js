@@ -54,7 +54,8 @@ function CatsWindow(title, containingTab) {
 
     function loadProjects(e, islongclick) { 
       var projectsObj = require('modules/pages/projects');
-      var projectsWindow = new projectsObj(app.toTitleCase(e.rowData.cat.name), containingTab, e.rowData.cat.id)
+      var projectsWindow = new projectsObj(app.toTitleCase(e.rowData.cat.name), containingTab, 'cat');
+      projectsWindow.cat_id = e.rowData.cat.id;
       containingTab.open(projectsWindow);
       projectsWindow.load();
     }
