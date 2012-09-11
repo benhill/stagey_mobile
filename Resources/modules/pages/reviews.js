@@ -1,13 +1,12 @@
-function ReviewsWindow(title, containingTab, project){
+function ReviewsWindow(title, containingTab, project, user_id){
 
   var styles = require('modules/styles/styles');
   var reviewsStyles = require('modules/styles/reviews');
-
   var self = Ti.UI.createWindow(styles.defaultWindow);
   self.title = title;
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
   var table = Ti.UI.createTableView();
-  var url = "http://www.gwahir.com:3000/api/reviews/" + project.id + ".json"
+  url = getUrl();
   var page = 1
   var rows_per_page = 9
 
@@ -31,11 +30,21 @@ function ReviewsWindow(title, containingTab, project){
         row.review = review;   
 
         var imageLabel = Ti.UI.createImageView(reviewsStyles.imageLabel);
-        imageLabel.image = review.reviewer_image_url;
+        if(user_id){
+          imageLabel.image = review.project_image_url;
+        }
+        else{
+          imageLabel.image = review.reviewer_image_url;
+        }
         row.add(imageLabel);
 
         var nameLabel = Ti.UI.createLabel(reviewsStyles.nameLabel);
-        nameLabel.text = review.reviewer_first_name + " " + review.reviewer_last_name.substr(0,1);
+        if(user_id){
+          (review.project_title.length >= 30) ? nameLabel.text = review.project_title.substr(0,25) + "..." : nameLabel.text = review.project_title;
+        }
+        else{
+          nameLabel.text = review.reviewer_first_name + " " + review.reviewer_last_name.substr(0,1);
+        }
         row.add(nameLabel);
 
         var date = Ti.UI.createLabel(reviewsStyles.date);
@@ -115,7 +124,7 @@ function ReviewsWindow(title, containingTab, project){
     table.appendRow(row);
     table.scrollToIndex((page * rows_per_page) - rows_per_page);
 
-    var url = "http://www.gwahir.com:3000/api/reviews/" + project.id + ".json" + "?page=" + page;
+    var url = getUrl() + "&page=" + page;
 
     xhr.open("GET", url);
     xhr.send();
@@ -123,6 +132,16 @@ function ReviewsWindow(title, containingTab, project){
 
   xhr.open("GET", url);
   xhr.send();
+
+  function getUrl(){
+    if(user_id){
+      url = "http://www.gwahir.com:3000/api/reviews?user_id=" + user_id + ".json"
+    }
+    else{
+      url = "http://www.gwahir.com:3000/api/reviews/" + project.id + ".json"
+    }
+    return url
+  }
 
   self.add(spinner);
   spinner.show();

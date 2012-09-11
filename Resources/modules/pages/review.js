@@ -18,7 +18,7 @@ function ReviewWindow(title, containingTab, review, project){
   reviewerWrapper.add(nameLabel);
 
   var projectLabel = Ti.UI.createLabel(reviewStyles.projectLabel);
-  projectLabel.text = "on " + ((project.title.length >= 30) ? title = project.title.substr(0,42) + "..." : title = project.title);
+  projectLabel.text = "on " + ((review.project_title.length >= 25) ? title = review.project_title.substr(0,25) + "..." : title = review.project_title);
   reviewerWrapper.add(projectLabel);
 
   var info = Ti.UI.createLabel(reviewStyles.info);
@@ -29,9 +29,11 @@ function ReviewWindow(title, containingTab, review, project){
   reviewerWrapper.add(line);
 
   reviewerWrapper.addEventListener('click', function(e){
-    var userObj = require('modules/pages/user');
-    var userWindow = new userObj('User', containingTab, review.fringe_user_id);
-    containingTab.open(userWindow);
+    if(!review.anonymous){
+      var userObj = require('modules/pages/user');
+      var userWindow = new userObj('User', containingTab, review.fringe_user_id);
+      containingTab.open(userWindow);
+    }
   });
 
   wrapper.add (reviewerWrapper);

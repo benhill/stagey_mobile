@@ -1,7 +1,7 @@
 exports = {	
 
   row: {
-    height:'70dp'
+    height:'75dp'
   },
 
   imageLabel: {    
@@ -23,15 +23,15 @@ exports = {
 
   date: {    
     height:45,
-    left:225,
-    top:-7,
+    left:60,
+    top:7,
     font:{fontSize:'10'}
   },
 
   blurb: {
     height:45,
     left:60,
-    top:17,
+    top:30,
     width:250,
     font:{fontSize:'11'}
   },

@@ -32,15 +32,30 @@ function MeWindow(title, containingTab){
         name.text = (currentUser.first_name + " " + currentUser.last_name),
         wrapper.add(name);
 
-        var profile = Ti.UI.createLabel(meStyles.profile);
-        profile.text = (currentUser.profile ? currentUser.profile : 'No profile information available.');
-
         var logoutButton = Ti.UI.createButton(meStyles.logoutButton);
         wrapper.add(logoutButton);
 
         logoutButton.addEventListener('click', function(e){
           logout();
         });
+
+        if(user.review_count > 0){
+          var line = Ti.UI.createView(meStyles.line1);
+          wrapper.add(line);
+
+          var reviewsLabel = Ti.UI.createLabel(meStyles.reviewsLabel);
+          reviewsLabel.text = "Reviews by " + user.first_name;
+          wrapper.add(reviewsLabel);
+
+          reviewsLabel.addEventListener('click', function(e){
+            var reviewsObj = require('modules/pages/reviews');
+            var reviewsWindow = new reviewsObj('Reviews by ' + user.first_name, containingTab, null, user.id);
+            containingTab.open(reviewsWindow);
+          });
+
+          var line = Ti.UI.createView(meStyles.line2);
+          wrapper.add(line);
+        }
 
         self.add(wrapper);
 

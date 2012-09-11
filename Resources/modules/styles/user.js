@@ -33,11 +33,35 @@ exports = {
     font:{fontSize:'14', fontWeight:'bold'}
   },
 
+  line1: {
+    width:320,
+    height:1,
+    top:70,
+    left:0,
+    backgroundColor:'gray'
+  },
+
+  reviewsLabel: {    
+    height:Ti.UI.SIZE,
+    width:300,
+    left:10,
+    top:80,
+    font:{fontSize:'14', fontWeight:'bold'}
+  },
+
+  line2: {
+    width:320,
+    height:1,
+    top:110,
+    left:0,
+    backgroundColor:'gray'
+  },
+
   profile: {
     height:Ti.UI.SIZE,
     width:300,
     left:10,
-    top:70,
+    top:120,
     font:{fontSize:'12'}
   }
 

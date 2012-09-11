@@ -1,7 +1,5 @@
 function ProjectsWindow(title, containingTab, mode){
 
-  //cat_id, is_favorite, venue_id, startProjects
-
   var styles = require('modules/styles/styles');
   var projectsStyles = require('modules/styles/projects');
 

@@ -32,6 +32,24 @@ function UserWindow(title, containingTab, user_id){
       profile.text = (user.profile ? user.profile : 'No profile information available.');
     	wrapper.add(profile);
 
+      if(user.review_count > 0){
+        var line = Ti.UI.createView(userStyles.line1);
+        wrapper.add(line);
+
+        var reviewsLabel = Ti.UI.createLabel(userStyles.reviewsLabel);
+        reviewsLabel.text = "Reviews by " + user.first_name;
+        wrapper.add(reviewsLabel);
+
+        reviewsLabel.addEventListener('click', function(e){
+          var reviewsObj = require('modules/pages/reviews');
+          var reviewsWindow = new reviewsObj('Reviews by ' + user.first_name, containingTab, null, user.id);
+          containingTab.open(reviewsWindow);
+        });
+
+        var line = Ti.UI.createView(userStyles.line2);
+        wrapper.add(line);
+      }
+
     	userScroll.add(wrapper);
 
       self.add(userScroll);
@@ -48,7 +66,6 @@ function UserWindow(title, containingTab, user_id){
   });
 
   xhr.open("GET", url);
-
   xhr.send();
 
   self.add(spinner);
