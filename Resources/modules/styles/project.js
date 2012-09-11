@@ -135,6 +135,12 @@ exports = {
     borderColor:'black'
   },
 
+  teamView: {
+    width:320,
+    height:60,
+    top:5
+  },
+
   teamLabel: {
     text:"View Project Team",
     font:{fontSize:14},

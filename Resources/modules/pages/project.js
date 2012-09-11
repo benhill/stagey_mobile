@@ -8,11 +8,13 @@ function ProjectWindow(title, containingTab, project_id){
   var projectObj = require('modules/models/project');
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
   var sharekit = require('com.0x82.sharekit');  
-  var Icon = require('modules/models/icons');  
+  var Icon = require('modules/models/icons');
+  var reviewObj = require('modules/models/review');
   var json, project, iconsView;
   var image_place = 0;
   var make_fav_text = "Make Favorite";
   var remove_fav_text = "Remove Favorite"
+  var is_favorite;
 
   self.load = function(){
     var url = "http://www.gwahir.com:3000/api/project/" + project_id + ".json?event_id=7";
@@ -96,14 +98,21 @@ function ProjectWindow(title, containingTab, project_id){
       var buy_ticket = new Icon('Buy Ticket', 'iphone/purchase_24.png', 'performances', project);
       icons.push(buy_ticket);
 
-      var add_review = new Icon('Add Review', 'iphone/reviews_24.png', 'add_review', project);
+      if(project.reviewed_by_me){
+        var add_review = new Icon('My Review', 'iphone/reviews_24.png', 'add_review', project);
+      }
+      else{
+        var add_review = new Icon('Add Review', 'iphone/reviews_24.png', 'add_review', project, true);
+      }
       icons.push(add_review);
 
       if(project.is_favorite){
-        var make_favorite = new Icon(remove_fav_text, 'iphone/favorite_24.png', '', project);
+        var make_favorite = new Icon(remove_fav_text, 'iphone/favorite_24.png', 'favorite', project);
+        is_favorite = true
       }
       else{
-        var make_favorite = new Icon(make_fav_text, 'iphone/favorite_24.png', '', project); 
+        var make_favorite = new Icon(make_fav_text, 'iphone/favorite_24.png', 'favorite', project);
+        is_favorite = false
       }
       icons.push(make_favorite);
 
@@ -115,24 +124,18 @@ function ProjectWindow(title, containingTab, project_id){
       for(var i = 0; i < icons.length; i++){      
         icon = icons[i];
 
-        var iconView = Ti.UI.createView(projectStyles.iconView);
-        iconView.window = icon.window;
-        iconView.object = icon.object;
-        iconView.text = icon.text;
+        var iconView = Ti.UI.createView(projectStyles.iconView);        
         iconView.left = left;
+        iconView.icon = icon;
 
-        var iconImage = Ti.UI.createImageView(projectStyles.iconImage);
+        var iconImage = Ti.UI.createImageView(projectStyles.iconImage);        
+        iconImage.icon = icon;
         iconImage.image = icon.image;
-        iconImage.window = icon.window;
-        iconImage.object = icon.object;
-        iconImage.text = icon.text;
         iconView.add(iconImage);
 
         var iconText = Ti.UI.createLabel(projectStyles.iconText);
         iconText.text = icon.text;
-        iconText.window = icon.window;
-        iconText.object = icon.object;
-        iconText.text = icon.text;
+        iconText.icon = icon;
         iconView.add(iconText);
 
         iconView.addEventListener('click', function(e){        
@@ -147,28 +150,50 @@ function ProjectWindow(title, containingTab, project_id){
       function runIconEvent(e, islongclick){
         var favTextView = iconsView.children[2].children[1]
         var favImgView = iconsView.children[2].children[0]
-        if(e.source.text == 'Share'){
+        if(e.source.icon.text == 'Share'){
           sharekit.share({
             title:'I am checking out this show a show on stagey.net',
             view:e.source,
-            link:'www.gwahir.com:3000/projects/' + e.source.object.id
+            link:'www.gwahir.com:3000/projects/' + e.source.icon.object.id
           });
         }
-        else if(e.source.text == make_fav_text){        
+        else if(e.source.icon.window == 'favorite' && !is_favorite){  
           favTextView.text = remove_fav_text;
           favImgView.text = remove_fav_text;
-          toggleFavorite();
+          is_favorite = true;
+          toggleFavorite();          
         }
-        else if(e.source.text == remove_fav_text){
+        else if(e.source.icon.window == 'favorite' && is_favorite){
           favTextView.text = make_fav_text;
           favImgView.text = make_fav_text;
+          is_favorite = false;
           toggleFavorite();
         }
-        else{
-          var windowObj = require('modules/pages/' + e.source.window);
-          var newWindow = new windowObj('Home', containingTab, e.source.object);
-          containingTab.open(newWindow);
+        else if(e.source.icon.text == 'My Review'){
+          new reviewObj(project.reviewed_by_me, function(review){
+            loadReview(review);
+          })
         }
+        else{
+          var windowObj = require('modules/pages/' + e.source.icon.window);
+          var newWindow = new windowObj(e.source.icon.text, containingTab, e.source.icon.object);
+
+          if(Ti.App.currentUser || e.source.icon.auth_required == false){
+            containingTab.open(newWindow);
+            newWindow.load();
+          }
+          else{
+            var loginObj = require('modules/pages/login');
+            var loginWindow = new loginObj('Login', containingTab, newWindow);
+            containingTab.open(loginWindow);
+          }
+        }
+      }
+
+      function loadReview(review){
+        var reviewObj = require('modules/pages/review');
+        var reviewWindow = new reviewObj('Show Review', containingTab, review, project);
+        containingTab.open(reviewWindow);
       }
 
       projectScroll.add(iconsView);
@@ -201,11 +226,7 @@ function ProjectWindow(title, containingTab, project_id){
         containingTab.open(reviewsWindow);
       });    
 
-      var teamView = Ti.UI.createView({      
-        width:320,
-        height:60,
-        top:5
-      });
+      var teamView = Ti.UI.createView(projectStyles.teamView);
 
       var teamThumb = Ti.UI.createImageView(projectStyles.teamThumb);
       teamThumb.image = project.fringe_user.picture_url;
@@ -232,7 +253,7 @@ function ProjectWindow(title, containingTab, project_id){
           backgroundColor:'#fff',
           url:e.source.window
         });      
-        currentTab.open(newWindow);      
+        currentTab.open(newWindow);
       }
 
       var line = Ti.UI.createView(projectStyles.line);

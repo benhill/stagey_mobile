@@ -138,7 +138,7 @@ function HomeWindow(title, containingTab){
 
     var newWindow = new windowObj(e.source.icon.text, containingTab, thirdParam);
 
-  	if(user || e.source.icon.auth_required == false){      
+  	if(user || e.source.icon.auth_required == false){
       containingTab.open(newWindow);
       newWindow.load();
     }

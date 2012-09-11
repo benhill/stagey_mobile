@@ -39,7 +39,7 @@ function SearchWindow(title, containingTab, search_terms){
     runSearch(search_terms);
   }
 
-  searchButton.addEventListener('click', function(e){  
+  searchButton.addEventListener('click', function(e){
     runSearch(searchField.value);
   });
 
