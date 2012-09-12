@@ -51,8 +51,9 @@ function SearchWindow(title, containingTab, search_terms){
 
   function loadResults(projects){
     var resultsObj = require('modules/pages/projects');
-    var resultsWindow = new resultsObj('Search Results', containingTab, null, null, null, projects);
+    var resultsWindow = new resultsObj('Search Results', containingTab, null, projects);
     containingTab.open(resultsWindow);
+    resultsWindow.load();
   }
 
   return(self);

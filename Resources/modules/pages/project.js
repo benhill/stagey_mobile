@@ -41,8 +41,9 @@ function ProjectWindow(title, containingTab, project_id){
       projectScroll.add(subTitle);    
 
       var galleryView = Ti.UI.createView(projectStyles.galleryView);      
-
-      var imageCollection = project.images.slice(0,4);      
+      
+      var imageCollection = [];
+      if(project.images.length > 0){imageCollection = project.images.slice(0,4)};    
 
       for (var i = 0; i < imageCollection.length; i++) {
 

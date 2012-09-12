@@ -1,4 +1,4 @@
-function ProjectsWindow(title, containingTab, mode){
+function ProjectsWindow(title, containingTab, mode, startProjects){
 
   var styles = require('modules/styles/styles');
   var projectsStyles = require('modules/styles/projects');

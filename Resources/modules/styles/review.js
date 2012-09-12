@@ -68,15 +68,14 @@ exports = {
   not_helpful: {
     title: 'Not Helpful',
     top:-35,
-    right:40,
+    right:35,
     width:100  
   },
 
   body: {
     height:Ti.UI.SIZE,
     width:290,
-    left:10,
-    top:77,
+    left:10,    
     font:{fontSize:'12'}
   },
 
@@ -90,7 +89,8 @@ exports = {
   wrapper: {
     height:Ti.UI.SIZE,
     top:0,
-    left:0
+    left:0,
+    layout:'vertical'
   }
 
 }

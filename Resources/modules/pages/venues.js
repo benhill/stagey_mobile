@@ -22,17 +22,19 @@ function VenuesWindow(title, containingTab){
           var row = Ti.UI.createTableViewRow(venueStyles.row);      
           row.venue_id = venue.id;
 
-          venueStyles.venueThumb.image = venue.thumbnail;
           var venueThumb = Titanium.UI.createImageView(venueStyles.venueThumb);
+          venueThumb.image = venue.thumbnail;
+          venueThumb.venue_id = venue.id;
 
           var name;
           (venue.name.length >= 30) ? name = venue.name.substr(0,30) + "..." : name = venue.name;
-
-          venueStyles.nameLabel.text = name;
           var nameLabel = Ti.UI.createLabel(venueStyles.nameLabel);
+          nameLabel.text = name;
+          name.venue_id = venue.id;
 
-          venueStyles.addressLabel.text = venue.address;
           var addressLabel = Ti.UI.createLabel(venueStyles);
+          addressLabel.addressLabel.text = venue.address;
+          addressLabel.venue_id = venue.id;
 
           row.add(venueThumb);
           row.add(nameLabel);

@@ -120,7 +120,7 @@ exports = {
 
   reviewsLabelName: {
     font:{fontSize:10},
-    left:70,
+    left:65,
     top:23,
     height:Ti.UI.SIZE,
     width:250
