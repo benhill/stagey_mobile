@@ -29,7 +29,7 @@ exports = {
 
   textBody: {
     color:'#336699',
-    height:300, 
+    height:250,
     width:305,
     top:70,
     left:5,

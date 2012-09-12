@@ -52,7 +52,9 @@ function ReviewsWindow(title, containingTab, project, user_id){
         row.add(date);
 
         var blurb = Ti.UI.createLabel(reviewsStyles.blurb);
-        blurb.text = review.body.substr(0,80).replace(/\n/gm, '').replace(/\r/gm, ' ') + '...';
+        if(review.body){
+          blurb.text = review.body.substr(0,80).replace(/\n/gm, '').replace(/\r/gm, ' ') + '...';
+        }
         row.add(blurb);
 
         tableData.push(row);
@@ -124,7 +126,8 @@ function ReviewsWindow(title, containingTab, project, user_id){
     table.appendRow(row);
     table.scrollToIndex((page * rows_per_page) - rows_per_page);
 
-    var url = getUrl() + "&page=" + page;
+    if(user_id){var url = getUrl() + "&page=" + page;}
+    else{var url = getUrl() + "?page=" + page;}  
 
     xhr.open("GET", url);
     xhr.send();

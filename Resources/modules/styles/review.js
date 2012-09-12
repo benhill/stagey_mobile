@@ -58,12 +58,33 @@ exports = {
     backgroundColor:'gray'
   },
 
+  helpful: {
+    title: 'Helpful',
+    top:25,
+    left:20,
+    width:100
+  },
+
+  not_helpful: {
+    title: 'Not Helpful',
+    top:-35,
+    right:40,
+    width:100  
+  },
+
   body: {
     height:Ti.UI.SIZE,
     width:290,
     left:10,
     top:77,
     font:{fontSize:'12'}
+  },
+
+  bodyWrapper: {
+    height:Ti.UI.SIZE,
+    top:0,
+    left:0,
+    layout:'vertical'
   },
 
   wrapper: {

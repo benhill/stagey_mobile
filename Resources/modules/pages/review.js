@@ -38,13 +38,38 @@ function ReviewWindow(title, containingTab, review, project){
 
   wrapper.add (reviewerWrapper);
 
+  var bodyWrapper = Ti.UI.createView(reviewStyles.bodyWrapper);
+
   var body = Ti.UI.createLabel(reviewStyles.body);
   body.text = review.body,
-  wrapper.add(body);
+  bodyWrapper.add(body);
 
+  var helpful =  Ti.UI.createButton(reviewStyles.helpful);
+  if(Ti.App.currentUser){bodyWrapper.add(helpful);}
+
+  helpful.addEventListener('click', function(e){
+    make_helpful(true);
+  });
+
+  var not_helpful =  Ti.UI.createButton(reviewStyles.not_helpful);
+  if(Ti.App.currentUser){bodyWrapper.add(not_helpful);}
+
+  not_helpful.addEventListener('click', function(e){
+    make_helpful(false);
+  });
+
+  wrapper.add(bodyWrapper);
+  
   reviewScroll.add(wrapper);
 
   self.add(reviewScroll);
+
+  function make_helpful(is_helpful){
+    var helpfulObj = require('modules/models/make_review_helpful');
+    new helpfulObj(review.id, Ti.App.currentUser.id, is_helpful, function(response){
+      alert("Thanks for your feedback");
+    })
+  }
 
   return self;
 }
