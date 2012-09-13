@@ -44,6 +44,15 @@ exports = {
     message: 'loading...',
     color: 'black',
     style: Titanium.UI.iPhone.ActivityIndicatorStyle.DARK
+  },
+
+  noPerfs: {
+    text:'No performances available',
+    height:Ti.UI.SIZE,
+    width:Ti.UI.SIZE,
+    top:10,
+    left:60,
+    font:{fontSize:14}
   }
 
 };

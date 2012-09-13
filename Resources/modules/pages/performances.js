@@ -7,24 +7,40 @@ function NowWindow(title, containingTab, mode){
   self.title = title;
   var performancesObj = require('modules/models/performances');
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);  
-  var nowTab = Titanium.UI.currentTab;
-  var table = Titanium.UI.createTableView();
+  var nowTab = Ti.UI.currentTab;
+  var table = Ti.UI.createTableView();
   var page = 1
   var rows_per_page = 9
+  var lat,lng;  
 
   self.load = function(){
-    if(mode == 'next'){
-      var url = "http://www.gwahir.com:3000/api/performances/7.json";
+    if(mode == "nearby"){
+      Ti.Geolocation.getCurrentPosition(function(e){
+        lat = e.coords.latitude;
+        lng = e.coords.longitude;
+        loadForm();
+      });
     }
-    else if(mode == 'schedule'){
-      var url = "http://www.gwahir.com:3000/api/my_schedule.json?email=" + Ti.App.currentUser.email + "&password=" + Ti.App.userPassword
+    else{
+      loadForm();    
     }
+  }
 
-    new performancesObj(url, function(performances){
-      loadPerformances(performances);
+  function loadForm(){
+    url = getUrl();
+
+    new performancesObj(url, function(performances){      
+      if(performances.length > 0){
+        loadPerformances(performances);
+      }
+      else{
+        var noPerfs = Ti.UI.createLabel(nowStyles.noPerfs);
+        spinner.hide();
+        self.add(noPerfs);
+      }
     });
 
-    function loadPerformances(performances){
+    function loadPerformances(performances){      
       var tableData = [];
       var total_results = performances[0].total_results;
 
@@ -36,7 +52,7 @@ function NowWindow(title, containingTab, mode){
 
         row.project_id = performance.project_id;      
 
-        var projectThumb = Titanium.UI.createImageView(nowStyles.projectThumb);
+        var projectThumb = Ti.UI.createImageView(nowStyles.projectThumb);
         projectThumb.image = performance.project_thumbnail;
         projectThumb.project_id = performance.project_id;
         row.add(projectThumb);            
@@ -44,14 +60,14 @@ function NowWindow(title, containingTab, mode){
         var title;
         (performance.project_name.length >= 30) ? title = performance.project_name.substr(0,30) + "..." : title = performance.project_name;
 
-        var projectTitle = Titanium.UI.createLabel(nowStyles.projectTitle);
+        var projectTitle = Ti.UI.createLabel(nowStyles.projectTitle);
         projectTitle.text = title;
         projectTitle.project_id = performance.project_id;
         row.add(projectTitle);
 
         var projectInfo = Ti.UI.createLabel(nowStyles.projectInfo);
-        nowStyles.projectInfo.text = performance.info;
-        nowStyles.projectInfo.project_id = performance.project_id;
+        projectInfo.text = performance.info;
+        projectInfo.project_id = performance.project_id;
         row.add(projectInfo);
 
         row.addEventListener('click', function(e){
@@ -78,7 +94,7 @@ function NowWindow(title, containingTab, mode){
 
       if(page > 1){
 
-        table.deleteRow(rows_per_page * (page-1),{animationStyle:Titanium.UI.iPhone.RowAnimationStyle.NONE})
+        table.deleteRow(rows_per_page * (page-1),{animationStyle:Ti.UI.iPhone.RowAnimationStyle.NONE})
 
         for(var i = 0; i < tableData.length; i++){
           table.appendRow(tableData[i]);
@@ -104,8 +120,7 @@ function NowWindow(title, containingTab, mode){
     }
 
     function loadMore(e,islongclick){
-
-      table.deleteRow(rows_per_page * (page-1),{animationStyle:Titanium.UI.iPhone.RowAnimationStyle.NONE})
+      table.deleteRow(rows_per_page * (page-1),{animationStyle:Ti.UI.iPhone.RowAnimationStyle.NONE})
       var row = Ti.UI.createTableViewRow(nowStyles.row);
 
       var spinner = Ti.UI.createActivityIndicator(nowStyles.spinner);
@@ -116,14 +131,7 @@ function NowWindow(title, containingTab, mode){
 
       table.scrollToIndex((page * rows_per_page) - rows_per_page);
 
-      if(mode == 'next'){
-        var url = "http://www.gwahir.com:3000/api/performances/7.json";
-      }
-      else if(mode == 'schedule'){
-        var url = "http://www.gwahir.com:3000/api/my_schedule.json?email=" + Ti.App.currentUser.email + "&password=" + Ti.App.userPassword
-      }
-
-      url += '&page=' + page;
+      url = getUrl() + '&page=' + page;
 
       new performancesObj(url, function(performances){
         loadPerformances(performances);
@@ -132,6 +140,20 @@ function NowWindow(title, containingTab, mode){
 
     self.add(spinner);
     spinner.show();
+  }
+
+  function getUrl(){
+    if(mode == 'next'){
+      url = 'http://www.gwahir.com:3000/api/performances/7.json';
+    }
+    else if(mode == 'nearby'){      
+      url = 'http://www.gwahir.com:3000/api/performances/7.json?lat=' + lat + '&lng=' + lng + '&distance=0.5';
+    }
+    else if(mode == 'schedule'){
+      url = 'http://www.gwahir.com:3000/api/my_schedule.json?email=' + Ti.App.currentUser.email + '&password=' + Ti.App.userPassword
+    }
+
+    return url
   }
 
   return self;

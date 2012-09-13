@@ -17,7 +17,7 @@ function HomeWindow(title, containingTab){
   var whats_next = new Icon('Upcoming', 'iphone/whats_next_48.png', 'performances', null, false);
   icons.push(whats_next);
 
-  var nearby = new Icon('Nearby', 'iphone/nearby_48.png', 'map', null, false);
+  var nearby = new Icon('Nearby', 'iphone/nearby_48.png', 'performances', null, false);
   icons.push(nearby);
 
   var venues = new Icon('Venues', 'iphone/venues_48.png', 'venues', null, false);
@@ -136,6 +136,7 @@ function HomeWindow(title, containingTab){
     if(e.source.icon.text == 'Favorites'){thirdParam = 'favorites';}
     if(e.source.icon.text == 'Upcoming'){thirdParam = 'next';}
     if(e.source.icon.text == 'My Schedule'){thirdParam = 'schedule';}
+    if(e.source.icon.text == 'Nearby'){thirdParam = 'nearby';}
 
     var newWindow = new windowObj(e.source.icon.text, containingTab, thirdParam);
 
