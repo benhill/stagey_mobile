@@ -44,6 +44,7 @@ function UserWindow(title, containingTab, user_id){
           var reviewsObj = require('modules/pages/reviews');
           var reviewsWindow = new reviewsObj('Reviews by ' + user.first_name, containingTab, null, user.id);
           containingTab.open(reviewsWindow);
+          reviewsWindow.load();
         });
 
         var line = Ti.UI.createView(userStyles.line2);

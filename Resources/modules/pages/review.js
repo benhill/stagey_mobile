@@ -58,6 +58,17 @@ function ReviewWindow(title, containingTab, review, project){
     make_helpful(false);
   });
 
+  var view_project =  Ti.UI.createButton(reviewStyles.view_project);
+  bodyWrapper.add(view_project);
+
+  view_project.addEventListener('click', function(e){
+    var projectObj = require('modules/pages/project');
+    var projectWindow = new projectObj('Project', containingTab, review.project_id);
+    projectWindow.layout = 'vertical';
+    containingTab.open(projectWindow);
+    projectWindow.load();
+  });
+
   wrapper.add(bodyWrapper);
   
   reviewScroll.add(wrapper);

@@ -72,6 +72,13 @@ exports = {
     width:100  
   },
 
+  view_project: {
+    title: 'View Project',
+    top:10,
+    left:90,
+    width:120  
+  },
+
   body: {
     height:Ti.UI.SIZE,
     width:290,

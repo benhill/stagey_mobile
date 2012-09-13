@@ -225,6 +225,7 @@ function ProjectWindow(title, containingTab, project_id){
         var reviewsObj = require('modules/pages/reviews');
         var reviewsWindow = new reviewsObj('Reviews', containingTab, project);
         containingTab.open(reviewsWindow);
+        reviewsWindow.load();
       });
 
       var teamView = Ti.UI.createView(projectStyles.teamView);

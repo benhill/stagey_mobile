@@ -23,7 +23,7 @@ function HomeWindow(title, containingTab){
   var venues = new Icon('Venues', 'iphone/venues_48.png', 'venues', null, false);
   icons.push(venues);
 
-  var reviews = new Icon('Reviews', 'iphone/reviews_48.png', 'reviews_all', null, false);
+  var reviews = new Icon('Reviews', 'iphone/reviews_48.png', 'reviews', null, false);
   icons.push(reviews);
 
   var favorites = new Icon('Favorites', 'iphone/favorites_48.png', 'projects', null, true);

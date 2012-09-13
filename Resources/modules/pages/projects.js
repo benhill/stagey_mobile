@@ -95,8 +95,8 @@ function ProjectsWindow(title, containingTab, mode, startProjects){
 
     function loadProject(e, islongclick){
       var projectObj = require('modules/pages/project');
-      var projectWindow = new projectObj('Project', containingTab, e.source.project_id)
-      projectWindow.layout = 'vertical'
+      var projectWindow = new projectObj('Project', containingTab, e.source.project_id);
+      projectWindow.layout = 'vertical';
       containingTab.open(projectWindow);
       projectWindow.load();
     }
