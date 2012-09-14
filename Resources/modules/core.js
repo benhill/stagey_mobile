@@ -25,6 +25,10 @@ exports.property = function(name) {
 	return properties[name]; 
 };
 
+exports.api_url = 'http://www.gwahir.com:3000/api/';
+
+exports.site_url = 'http://www.gwahir.com:3000/';
+
 exports.orientationObserverUpdate = function(_event) {
 	// Example of how you can control the current page with global events
 	var type = (_event.source.isLandscape()) ? 'landscape' : 'portrait' ;

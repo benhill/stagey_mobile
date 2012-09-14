@@ -8,7 +8,7 @@ function UserWindow(title, containingTab, user_id){
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
   var userScroll = Titanium.UI.createScrollView(userStyles.userScroll);
   var wrapper = Ti.UI.createView(userStyles.wrapper);
-  var url = "http://www.gwahir.com:3000/api/user/" + user_id + ".json";
+  var url = app.api_url + "user/" + user_id + ".json";
 
   var xhr =  Ti.Network.createHTTPClient({
     onload: function(){

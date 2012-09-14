@@ -144,13 +144,13 @@ function NowWindow(title, containingTab, mode){
 
   function getUrl(){
     if(mode == 'next'){
-      url = 'http://www.gwahir.com:3000/api/performances/7.json';
+      url = app.api_url + 'performances/7.json';
     }
     else if(mode == 'nearby'){      
-      url = 'http://www.gwahir.com:3000/api/performances/7.json?lat=' + lat + '&lng=' + lng + '&distance=0.5';
+      url = app.api_url + 'performances/7.json?lat=' + lat + '&lng=' + lng + '&distance=0.5';
     }
     else if(mode == 'schedule'){
-      url = 'http://www.gwahir.com:3000/api/my_schedule.json?email=' + Ti.App.currentUser.email + '&password=' + Ti.App.userPassword
+      url = app.api_url + 'my_schedule.json?email=' + Ti.App.currentUser.email + '&password=' + Ti.App.userPassword
     }
 
     return url

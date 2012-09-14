@@ -33,7 +33,7 @@ function LoginWindow(title, containingTab, return_win){
   });
 
   function loginUser(){
-    var url = "http://www.gwahir.com:3000/api/login.json?email=" + email.value + "&password=" + password.value;
+    var url = app.api_url + "login.json?email=" + email.value + "&password=" + password.value;
     xhr.open("GET", url);
     xhr.send();
   }

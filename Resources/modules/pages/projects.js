@@ -127,16 +127,16 @@ function ProjectsWindow(title, containingTab, mode, startProjects){
 
   function setUrl(){
     if(mode == 'venue'){
-      url = "http://www.gwahir.com:3000/api/projects.json?venue_id=" + self.venue_id + "&event_id=7";
+      url = app.api_url + "projects.json?venue_id=" + self.venue_id + "&event_id=7";
     }  
     else if(mode == 'cat'){
-      url = "http://www.gwahir.com:3000/api/projects.json?cat_id=" + self.cat_id + "&event_id=7";
+      url = app.api_url + "projects.json?cat_id=" + self.cat_id + "&event_id=7";
     }
     else if(mode == 'favorites'){    
-      url = "http://www.gwahir.com:3000/api/favorites.json?email=" + Ti.App.currentUser.email + "&password=" + Ti.App.userPassword;
+      url = app.api_url + "favorites.json?email=" + Ti.App.currentUser.email + "&password=" + Ti.App.userPassword;
     }
     else {
-      url = "http://www.gwahir.com:3000/api/projects.json&event_id=7";
+      url = app.api_url + "projects.json&event_id=7";
     }
 
     return url;

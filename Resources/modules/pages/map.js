@@ -63,7 +63,7 @@ function MapWindow(title, containingTab, venue){
     add_view();  
   }
   else {
-    var url = "http://www.gwahir.com:3000/api/venues.json?event_id=5";    
+    var url = app.api_url + "venues.json?event_id=5";    
     xhr.open("GET", url);
     xhr.send();
   }

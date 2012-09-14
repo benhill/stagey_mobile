@@ -12,7 +12,7 @@ function AddReview(project_id, rating, body, callback){
     Ti.API.info('Error');
   };
 
-  url = 'http://www.gwahir.com:3000/api/add_review.json?email=' + Ti.App.currentUser.email + '&password=' + Ti.App.userPassword + '&project_id=' + project_id + '&body=' + body + '&rating=' + rating + '&event_id=7';
+  url = app.api_url + 'add_review.json?email=' + Ti.App.currentUser.email + '&password=' + Ti.App.userPassword + '&project_id=' + project_id + '&body=' + body + '&rating=' + rating + '&event_id=7';
   xhr.open('GET', url);
   xhr.send();
 };

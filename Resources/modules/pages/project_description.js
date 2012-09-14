@@ -6,7 +6,7 @@ function ProjectDescriptionWindow(title, containingTab, project_id){
   var self = Ti.UI.createWindow(styles.defaultWindow);
   self.title = title;
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
-  var url = "http://www.gwahir.com:3000/api/project_description/" + project_id + ".json";
+  var url = app.api_url + "project_description/" + project_id + ".json";
 
   var xhr = Ti.Network.createHTTPClient({
     onload: function(){

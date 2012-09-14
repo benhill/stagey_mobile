@@ -13,7 +13,7 @@ function VenueDistance(venue_id, callback){
   };
 
   Ti.Geolocation.getCurrentPosition(function(e){    
-    url = 'http://www.gwahir.com:3000/api/venue_distance/' + venue_id + '?lat=' + e.coords.latitude + '&lng=' + e.coords.longitude;
+    url = app.api_url + 'venue_distance/' + venue_id + '?lat=' + e.coords.latitude + '&lng=' + e.coords.longitude;
     xhr.open('GET', url);
     xhr.send();
   });

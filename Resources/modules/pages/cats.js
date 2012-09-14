@@ -12,7 +12,7 @@ function CatsWindow(title, containingTab) {
   var currentTab = Ti.UI.currentTab;
 
   self.load = function(){
-    var url = "http://www.gwahir.com:3000/api/cats.json?event_id=7";
+    var url = app.api_url + "cats.json?event_id=7";
 
     var xhr = Ti.Network.createHTTPClient({
       onload: function(){  

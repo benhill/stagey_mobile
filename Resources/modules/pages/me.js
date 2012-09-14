@@ -1,16 +1,15 @@
 function MeWindow(title, containingTab){
 
   var styles = require('modules/styles/styles');
-  var meStyles = require('modules/styles/me');
-
+  var meStyles = require('modules/styles/me');  
   var self = Ti.UI.createWindow(styles.defaultWindow);
   self.title = title;
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
-  var currentUser = JSON.parse(Ti.App.Properties.getString('currentUser'));
   var wrapper = Ti.UI.createView(meStyles.wrapper);
 
   self.load = function(){
-    var url = "http://www.gwahir.com:3000/api/user/" + currentUser.id + ".json";
+    var currentUser = JSON.parse(Ti.App.Properties.getString('currentUser'));
+    var url = app.api_url + "user/" + currentUser.id + ".json";
 
     var xhr =  Ti.Network.createHTTPClient({
       onload: function(){

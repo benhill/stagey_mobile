@@ -7,7 +7,7 @@ function VenueWindow(title, containingTab, venue_id){
   self.title = title;
   var venueObj = require('modules/models/venue');
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
-  var url = "http://www.gwahir.com:3000/api/venue/" + venue_id + ".json?event_id=7";
+  var url = app.api_url + "venue/" + venue_id + ".json?event_id=7";
   var json, venue;
   var image_top = 0;
   var image_place = 0;

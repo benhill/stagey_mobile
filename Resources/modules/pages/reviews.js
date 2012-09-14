@@ -143,13 +143,13 @@ function ReviewsWindow(title, containingTab, project, user_id){
 
     function getUrl(){
       if(user_id){
-        url = "http://www.gwahir.com:3000/api/reviews?user_id=" + user_id + ".json"
+        url = app.api_url + "reviews?user_id=" + user_id + ".json"
       }
       else if(project){    
-        url = "http://www.gwahir.com:3000/api/reviews/" + project.id + ".json"
+        url = app.api_url + "reviews/" + project.id + ".json"
       }
       else{
-        url = "http://www.gwahir.com:3000/api/reviews.json"
+        url = app.api_url + "reviews.json"
       }
       return url
     }

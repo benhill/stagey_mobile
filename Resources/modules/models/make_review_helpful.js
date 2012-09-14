@@ -12,7 +12,7 @@ function MakeReviewHelpful(review_id, user_id, feedback, callback){
     Ti.API.info('Error');
   };
 
-  url = 'http://www.gwahir.com:3000/api/make_review_helpful/' + review_id + '?user_id=' + user_id + '&feedback=' + feedback
+  url = app.api_url + 'make_review_helpful/' + review_id + '?user_id=' + user_id + '&feedback=' + feedback
   xhr.open('GET', url);
   xhr.send();
 };

@@ -15,7 +15,7 @@ function Review(review_id, callback){
     alert('There was an error retrieving the remote data. Try again.');
   };
 
-  var url = "http://www.gwahir.com:3000/api/review/" + review_id;
+  var url = app.api_url + "review/" + review_id;
   xhr.open('GET', url);
   xhr.send();
 };

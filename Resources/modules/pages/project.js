@@ -17,7 +17,7 @@ function ProjectWindow(title, containingTab, project_id){
   var is_favorite;
 
   self.load = function(){
-    var url = "http://www.gwahir.com:3000/api/project/" + project_id + ".json?event_id=7";
+    var url = app.api_url + "project/" + project_id + ".json?event_id=7";
     if(Ti.App.currentUser){url += '&email=' + Ti.App.currentUser.email}
 
     new projectObj(url, function(project){
@@ -296,7 +296,7 @@ function ProjectWindow(title, containingTab, project_id){
 
     function toggleFavorite(){
       if(Ti.App.currentUser){
-        url = "http://www.gwahir.com:3000/api/toggle_favorite.json?project_id=" + project_id + "&email=" + Ti.App.currentUser.email + "&password=" + Ti.App.userPassword;
+        url = app.api_url + "toggle_favorite.json?project_id=" + project_id + "&email=" + Ti.App.currentUser.email + "&password=" + Ti.App.userPassword;
         favXhr.open("GET", url);
         favXhr.send();
       }
