@@ -69,7 +69,7 @@ exports = {
 
   mapView: {
     width:320,
-    height:40,
+    height:45,
     top:5
   },
 
@@ -84,6 +84,14 @@ exports = {
 
   address: {
     top:3,
+    left:70,
+    font:{fontSize:10},
+    height:Titanium.UI.SIZE,
+    width: '95%'
+  },
+
+  distance: {
+    top:30,
     left:70,
     font:{fontSize:10},
     height:Titanium.UI.SIZE,
