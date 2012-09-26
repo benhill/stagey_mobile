@@ -1,4 +1,4 @@
-function NowWindow(title, containingTab, mode){
+function PerformancesWindow(title, containingTab, mode){
 
   var styles = require('modules/styles/styles');
   var nowStyles = require('modules/styles/now');
@@ -29,7 +29,7 @@ function NowWindow(title, containingTab, mode){
   function loadForm(){
     url = getUrl();
 
-    new performancesObj(url, function(performances){      
+    new performancesObj(url, function(performances){
       if(performances.length > 0){
         loadPerformances(performances);
       }
@@ -50,11 +50,11 @@ function NowWindow(title, containingTab, mode){
 
         var row = Ti.UI.createTableViewRow(nowStyles.row);
 
-        row.project_id = performance.project_id;      
+        row.perf_id = performance.id;
 
         var projectThumb = Ti.UI.createImageView(nowStyles.projectThumb);
         projectThumb.image = performance.project_thumbnail;
-        projectThumb.project_id = performance.project_id;
+        projectThumb.perf_id = performance.id;
         row.add(projectThumb);            
 
         var title;
@@ -62,16 +62,16 @@ function NowWindow(title, containingTab, mode){
 
         var projectTitle = Ti.UI.createLabel(nowStyles.projectTitle);
         projectTitle.text = title;
-        projectTitle.project_id = performance.project_id;
+        projectTitle.perf_id = performance.id;
         row.add(projectTitle);
 
         var projectInfo = Ti.UI.createLabel(nowStyles.projectInfo);
         projectInfo.text = performance.info;
-        projectInfo.project_id = performance.project_id;
+        projectInfo.perf_id = performance.id;
         row.add(projectInfo);
 
         row.addEventListener('click', function(e){
-          loadProject(e);
+          loadPerformance(e);
         });
 
         tableData.push(row);
@@ -111,12 +111,12 @@ function NowWindow(title, containingTab, mode){
       spinner.hide();
     };
 
-    function loadProject(e, islongclick) {
-      var projectObj = require('modules/pages/project');
-      var projectWindow = new projectObj('Project', containingTab, e.source.project_id)
-      projectWindow.layout = 'vertical'
-      containingTab.open(projectWindow);
-      projectWindow.load();
+    function loadPerformance(e, islongclick) {
+      var perfObj = require('modules/pages/performance');
+      var perfWindow = new perfObj('Performance', containingTab, e.source.perf_id)
+      perfWindow.layout = 'vertical'
+      containingTab.open(perfWindow);
+      perfWindow.load();
     }
 
     function loadMore(e,islongclick){
@@ -152,6 +152,9 @@ function NowWindow(title, containingTab, mode){
     else if(mode == 'schedule'){
       url = app.api_url + 'my_schedule.json?email=' + Ti.App.currentUser.email + '&password=' + Ti.App.userPassword
     }
+    else{
+      url = app.api_url + 'performances/7.json?project_id=' + mode.id;
+    }
 
     return url
   }
@@ -159,4 +162,4 @@ function NowWindow(title, containingTab, mode){
   return self;
 }
 
-module.exports = NowWindow;
+module.exports = PerformancesWindow;

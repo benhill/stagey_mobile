@@ -13,6 +13,11 @@ exports.loadPage = function(name, params) {
 	currentPage.load(exports, params);
 };
 
+exports.formatCurrency = function(num) {
+  num = isNaN(num) || num === '' || num === null ? 0.00 : num;
+  return parseFloat(num).toFixed(2);
+}
+
 exports.register = function(name, object) {
 	plugins[name] = object;
 };
