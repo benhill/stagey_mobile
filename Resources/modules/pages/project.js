@@ -276,7 +276,7 @@ function ProjectWindow(title, containingTab, project_id){
       }
 
       self.add(projectScroll);
-      self.remove(spinner);      
+      self.remove(spinner);
     };
 
     spinner.show();

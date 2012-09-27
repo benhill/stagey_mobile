@@ -30,7 +30,7 @@ function ProjectsWindow(title, containingTab, mode, startProjects){
         total_results = projects[0].total_results;
         seed = projects[0].seed;
       }
-
+      
       for(i = 0; i < projects.length; i++){
 
         var project = projects[i];      

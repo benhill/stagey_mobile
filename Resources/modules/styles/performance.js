@@ -26,14 +26,15 @@ exports = {
     left:5
   },
 
-  quantity: {
+  quantityPicker: {
     top:10,
     selectionIndicator:true
   },
 
   payButton: {
     title:'Pay for Tickets',
-    top:10
+    top:15,
+    width:300
   }
 
 }
