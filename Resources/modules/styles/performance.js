@@ -1,15 +1,4 @@
-exports = {
-
-  perfScroll: {
-    contentWidth:'95%',
-    contentHeight:1100,
-    top:5,
-    left:0,
-    height:800,
-    showVerticalScrollIndicator:true,
-    showHorizontalScrollIndicator:true,
-    layout:'vertical'
-  },
+exports = {    
 
   title: {
     height:Ti.UI.SIZE,
@@ -26,14 +15,25 @@ exports = {
     left:5
   },
 
-  quantityPicker: {
-    top:10,
-    selectionIndicator:true
+  quantityButton: {
+    title:'Change Quantity',
+    top:5,
+    width:200,
+    left:10
+  },
+
+  quantityLabel: {
+    top:5,
+    left:120,
+    text:'1 Ticket',
+    width:Ti.UI.SIZE,
+    height:Ti.UI.SIZE,
+    font:{fontSize:14}
   },
 
   payButton: {
     title:'Pay for Tickets',
-    top:15,
+    bottom:0,
     width:300
   }
 
