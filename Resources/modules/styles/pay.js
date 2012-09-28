@@ -33,10 +33,58 @@ exports = {
     hintText: 'CSV',
   },
 
-  datePicker: {
-    type:Ti.UI.PICKER_TYPE_DATE,    
-    top:100
+  pickerView: {
+    height:251,
+    bottom:-251,
+    zIndex:100
   },
+
+  cancel: {
+    title:'Cancel',
+    style:Titanium.UI.iPhone.SystemButtonStyle.BORDERED
+  },
+
+  done: {
+    title:'Done',
+    style:Titanium.UI.iPhone.SystemButtonStyle.DONE
+  },
+
+  spacer: {
+    systemButton:Titanium.UI.iPhone.SystemButton.FLEXIBLE_SPACE
+  },
+
+  toolbar: {
+    top:0    
+  },
+
+  picker: {
+    top:43,
+    type:Ti.UI.PICKER_TYPE_DATE
+  },
+
+  slide_in: {
+    bottom:0
+  },
+
+  slide_out: {
+    bottom:-251
+  },
+
+  showPicker: {
+    title:'Set Expiry Date',
+    top:100,
+    width:100,
+    left:10
+  },
+
+  expiryLabel: {
+    top:100,
+    left:120,
+    text:'no date selected',
+    width:Ti.UI.SIZE,
+    height:Ti.UI.SIZE,
+    font:{fontSize:14}
+  },  
 
   payButton: {
     title:'Buy Tickets',
