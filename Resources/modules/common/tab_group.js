@@ -1,6 +1,6 @@
 function ApplicationTabGroup(windows) {
 
-  var ApplicationTabGroup = require('modules/common/ApplicationTabGroup');
+  var ApplicationTabGroup = require('modules/common/tab_group');
 
   var self = Ti.UI.createTabGroup();
 

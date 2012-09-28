@@ -1,13 +1,7 @@
 function SelectBox(resultsLabel, submitButton, data){
 
   var styles = require('modules/styles/styles');
-  var pickerStyles = require('modules/styles/select_box');
-  var selected_date;
-  var today = new Date();
-  var dd = today.getDate();
-  var mm = today.getMonth()+1; //January is 0!
-  var yyyy = today.getFullYear();
-  if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm} today = mm+'/'+dd+'/'+yyyy;
+  var pickerStyles = require('modules/styles/select_box');  
 
   var pickerView = Ti.UI.createView(pickerStyles.pickerView);
    
@@ -24,10 +18,18 @@ function SelectBox(resultsLabel, submitButton, data){
   var picker = Ti.UI.createPicker(pickerStyles.picker);
   picker.selectionIndicator=true;  
   if(data){
+    var selectedValue;
+    var selectedTitle;
     picker.add(data);
   }
   else{
+    var selectedDate;
     picker.type = Ti.UI.PICKER_TYPE_DATE;
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+    if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm} today = mm+'/'+dd+'/'+yyyy;
     //picker.minDate = today;
     //picker.maxDate = today + (365*12);
     //picker.value = today;
@@ -36,7 +38,13 @@ function SelectBox(resultsLabel, submitButton, data){
   pickerView.add(picker);
 
   picker.addEventListener("change", function(e){
-    selected_date = e.value;
+    if(data){
+      selectedValue = e.row.value;
+      selectedTitle = e.row.title;
+    }
+    else{
+      selectedDate = e.value;
+    }
   });  
 
   var slide_in =  Ti.UI.createAnimation(pickerStyles.slide_in);
@@ -51,7 +59,13 @@ function SelectBox(resultsLabel, submitButton, data){
   });
 
   done.addEventListener('click',function() {
-    resultsLabel.text =  selected_date;
+    if(data){
+      resultsLabel.text = selectedTitle;
+      resultsLabel.value = selectedValue;
+    }
+    else{
+      resultsLabel.text =  selectedDate;
+    }
     pickerView.hide();
   });
   

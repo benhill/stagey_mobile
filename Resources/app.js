@@ -1,6 +1,6 @@
 var app = require('modules/core');
 
-var ApplicationTabGroup = require('modules/common/ApplicationTabGroup');
+var ApplicationTabGroup = require('modules/common/tab_group');
 new ApplicationTabGroup().open();
 
 var sharekit = require('com.0x82.sharekit');

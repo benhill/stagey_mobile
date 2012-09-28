@@ -4,36 +4,36 @@ exports = {
     height:Ti.UI.SIZE,
     width:Ti.UI.SIZE,
     font:{fontSize:20},
-    left:5
+    left:5,
+    top:5
   },
 
   perfInfo: {
     height:Ti.UI.SIZE,
     width:Ti.UI.SIZE,
     font:{fontSize:12},
-    top:3,
+    top:30,
     left:5
+  },
+
+  quantityLabel: {
+    top:70,
+    left:5,    
+    width:Ti.UI.SIZE,
+    height:Ti.UI.SIZE,
+    font:{fontSize:18}
   },
 
   quantityButton: {
     title:'Change Quantity',
-    top:5,
+    top:100,
     width:200,
-    left:10
-  },
-
-  quantityLabel: {
-    top:5,
-    left:120,
-    text:'1 Ticket',
-    width:Ti.UI.SIZE,
-    height:Ti.UI.SIZE,
-    font:{fontSize:14}
+    left:5
   },
 
   payButton: {
     title:'Pay for Tickets',
-    bottom:0,
+    bottom:10,
     width:300
   }
 

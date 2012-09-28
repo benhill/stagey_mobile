@@ -32,6 +32,7 @@ function PerformanceWindow(title, containingTab, performance_id){
       }
 
       var quantityLabel = Ti.UI.createLabel(perfStyles.quantityLabel);
+      quantityLabel.text = data[0].title;
       self.add(quantityLabel);
 
       var quantityButton = Ti.UI.createButton(perfStyles.quantityButton);
@@ -45,7 +46,7 @@ function PerformanceWindow(title, containingTab, performance_id){
 
       payButton.addEventListener('click', function(e){
         var payObj = require('modules/pages/pay');
-        var payWindow = new payObj('Credit Card', containingTab, performance, quantity);
+        var payWindow = new payObj('Credit Card', containingTab, performance, quantityLabel.value);
         containingTab.open(payWindow);
         payWindow.load();
       });

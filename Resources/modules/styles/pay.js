@@ -3,7 +3,7 @@ exports = {
   expiryButton: {
     title:'Set Expiry Date',
     top:100,
-    width:100,
+    width:200,
     left:10
   },
 

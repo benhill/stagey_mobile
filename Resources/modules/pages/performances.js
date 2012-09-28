@@ -114,7 +114,6 @@ function PerformancesWindow(title, containingTab, mode){
     function loadPerformance(e, islongclick) {
       var perfObj = require('modules/pages/performance');
       var perfWindow = new perfObj('Performance', containingTab, e.source.perf_id)
-      perfWindow.layout = 'vertical'
       containingTab.open(perfWindow);
       perfWindow.load();
     }
