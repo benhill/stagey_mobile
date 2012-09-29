@@ -1,21 +1,5 @@
 exports = {
 
-  expiryButton: {
-    title:'Set Expiry Date',
-    top:100,
-    width:200,
-    left:10
-  },
-
-  expiryLabel: {
-    top:100,
-    left:120,
-    text:'no date selected',
-    width:Ti.UI.SIZE,
-    height:Ti.UI.SIZE,
-    font:{fontSize:14}
-  },
-
 	nameLabel: {		
     color:'#336699', 
     height:35, 
@@ -48,6 +32,22 @@ exports = {
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
     hintText: 'CSV',
   },  
+
+  expiryButton: {
+    title:'Set Expiry Date',
+    top:100,
+    width:150,
+    left:10
+  },
+
+  expiryLabel: {
+    top:108,
+    left:170,
+    text:'no date selected',
+    width:Ti.UI.SIZE,
+    height:Ti.UI.SIZE,
+    font:{fontSize:14}
+  },
 
   payButton: {
     title:'Buy Tickets',

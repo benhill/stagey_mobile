@@ -1,4 +1,4 @@
-function SelectBox(resultsLabel, submitButton, data){
+function SelectBox(resultsLabel, submitButton, data_1, data_2){
 
   var styles = require('modules/styles/styles');
   var pickerStyles = require('modules/styles/select_box');  
@@ -17,10 +17,27 @@ function SelectBox(resultsLabel, submitButton, data){
    
   var picker = Ti.UI.createPicker(pickerStyles.picker);
   picker.selectionIndicator=true;  
-  if(data){
+  if(data_1){
     var selectedValue;
     var selectedTitle;
-    picker.add(data);
+
+    var column1 = Ti.UI.createPickerColumn();
+    
+    for(var i=0; i<data_1.length; i++){
+      column1.addRow(data_1[i]);
+    }    
+
+    if(data_2){
+      var column2 = Ti.UI.createPickerColumn();
+      for(var i=0; i<data_2.length; i++){
+        column2.addRow(data_2[i]);
+      }
+      picker.columns = [column1, column2];
+    }
+    else{
+      picker.columns = [column1]; 
+    }
+
   }
   else{
     var selectedDate;
@@ -38,7 +55,11 @@ function SelectBox(resultsLabel, submitButton, data){
   pickerView.add(picker);
 
   picker.addEventListener("change", function(e){
-    if(data){
+    if(data_2){
+      selectedTitle = e.selectedValue[0] + ' ' + e.selectedValue[1]
+      selectedValue = e.selectedValue[0] + ',' + e.selectedValue[1]
+    }
+    else if(data_1){
       selectedValue = e.row.value;
       selectedTitle = e.row.title;
     }
@@ -59,7 +80,7 @@ function SelectBox(resultsLabel, submitButton, data){
   });
 
   done.addEventListener('click',function() {
-    if(data){
+    if(data_1){
       resultsLabel.text = selectedTitle;
       resultsLabel.value = selectedValue;
     }
