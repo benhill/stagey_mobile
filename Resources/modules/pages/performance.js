@@ -45,8 +45,9 @@ function PerformanceWindow(title, containingTab, performance_id){
       self.add(payButton);
 
       payButton.addEventListener('click', function(e){
-        var payObj = require('modules/pages/pay');
-        var payWindow = new payObj('Credit Card', containingTab, performance, quantityLabel.value);
+        var payObj = require('modules/pages/pay');        
+        if(!quantityLabel.value){quantity = 1}else{quantity = quantityLabel.value}
+        var payWindow = new payObj('Credit Card', containingTab, performance, quantity);
         containingTab.open(payWindow);
         payWindow.load();
       });

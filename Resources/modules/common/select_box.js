@@ -1,7 +1,7 @@
 function SelectBox(resultsLabel, submitButton, data_1, data_2){
 
   var styles = require('modules/styles/styles');
-  var pickerStyles = require('modules/styles/select_box');  
+  var pickerStyles = require('modules/styles/select_box');
 
   var pickerView = Ti.UI.createView(pickerStyles.pickerView);
    
@@ -16,10 +16,16 @@ function SelectBox(resultsLabel, submitButton, data_1, data_2){
   pickerView.add(toolbar);
    
   var picker = Ti.UI.createPicker(pickerStyles.picker);
-  picker.selectionIndicator=true;  
+  picker.selectionIndicator=true;
+  
   if(data_1){
-    var selectedValue;
-    var selectedTitle;
+    var selectedValue = data_1[0].value;    
+    var selectedTitle = data_1[0].title;
+      
+    if(data_2){
+      var selectedValue2  = data_2[0].value;
+      var selectedTitle2 = data_2[0].title;
+    }
 
     var column1 = Ti.UI.createPickerColumn();
     
@@ -41,23 +47,21 @@ function SelectBox(resultsLabel, submitButton, data_1, data_2){
   }
   else{
     var selectedDate;
-    picker.type = Ti.UI.PICKER_TYPE_DATE;
-    var today = new Date();
-    var dd = today.getDate();
-    var mm = today.getMonth()+1; //January is 0!
-    var yyyy = today.getFullYear();
-    if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm} today = mm+'/'+dd+'/'+yyyy;
-    //picker.minDate = today;
-    //picker.maxDate = today + (365*12);
-    //picker.value = today;
+    picker.type = Ti.UI.PICKER_TYPE_DATE;      
   }  
    
   pickerView.add(picker);
 
   picker.addEventListener("change", function(e){
     if(data_2){
-      selectedTitle = e.selectedValue[0] + ' ' + e.selectedValue[1]
-      selectedValue = e.selectedValue[0] + ',' + e.selectedValue[1]
+      if(e.columnIndex == 0){
+        selectedTitle = e.row.title;
+        selectedValue = e.row.value
+      }
+      else if(e.columnIndex == 1){
+        selectedTitle2 = e.row.title;
+        selectedValue2 = e.row.value
+      }
     }
     else if(data_1){
       selectedValue = e.row.value;
@@ -80,7 +84,11 @@ function SelectBox(resultsLabel, submitButton, data_1, data_2){
   });
 
   done.addEventListener('click',function() {
-    if(data_1){
+    if(data_2){      
+      resultsLabel.text = selectedTitle + ' ' + selectedTitle2;
+      resultsLabel.value = selectedValue + ',' + selectedValue2;
+    }
+    else if(data_1){      
       resultsLabel.text = selectedTitle;
       resultsLabel.value = selectedValue;
     }

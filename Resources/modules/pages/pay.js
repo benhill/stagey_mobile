@@ -24,7 +24,7 @@ function PayWindow(title, containingTab, performance, quantity){
     var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     var data_1 = [];
     for(i=0; i < months.length; i++){              
-      data_1[i] = Ti.UI.createPickerRow({value:months[i], title:months[i]});
+      data_1[i] = Ti.UI.createPickerRow({value:i+1, title:months[i]});
     }
 
     year = new Date().getFullYear();
@@ -42,6 +42,11 @@ function PayWindow(title, containingTab, performance, quantity){
 
     var payButton = Ti.UI.createButton(payStyles.payButton);      
     self.add(payButton);
+
+    payButton.addEventListener('click', function(e){
+      expiryMonth = expiryLabel.value.split(',')[0];
+      expiryYear = expiryLabel.value.split(',')[1];
+    });
   }
 
   return self;
