@@ -1,6 +1,6 @@
 exports = {    
 
-  title: {
+  titleLabel: {
     height:Ti.UI.SIZE,
     width:Ti.UI.SIZE,
     font:{fontSize:20},

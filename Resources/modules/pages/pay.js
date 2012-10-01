@@ -6,19 +6,22 @@ function PayWindow(title, containingTab, performance, quantity){
   self.title = title;  
 
   self.load = function(){
-    var nameLabel = Ti.UI.createTextField(payStyles.nameLabel);
-    self.add(nameLabel);
+    var fNameText = Ti.UI.createTextField(payStyles.fNameText);
+    self.add(fNameText);
 
-    var cardLabel = Ti.UI.createTextField(payStyles.cardLabel);
-    self.add(cardLabel);
+    var lNameText = Ti.UI.createTextField(payStyles.lNameText);
+    self.add(lNameText);
 
-    var csvLabel = Ti.UI.createTextField(payStyles.csvLabel);    
-    self.add(csvLabel);
+    var cardText = Ti.UI.createTextField(payStyles.cardText);
+    self.add(cardText);
 
-    var expiryLabel = Ti.UI.createLabel(payStyles.expiryLabel);
+    var csvText = Ti.UI.createTextField(payStyles.csvText);
+    self.add(csvText);
+
+    var expiryLabel = Ti.UI.createLabel(payStyles.expiryLabel);    
     self.add(expiryLabel);
 
-    var expiryButton = Ti.UI.createButton(payStyles.expiryButton);
+    var expiryButton = Ti.UI.createButton(payStyles.expiryButton);    
     self.add(expiryButton);
 
     var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -35,17 +38,32 @@ function PayWindow(title, containingTab, performance, quantity){
     var data_2 = [];
     for(i=0; i < years.length; i++){
       data_2[i] = Ti.UI.createPickerRow({value:years[i], title:years[i]});
-    }
+    }    
 
     var selectObj = require('modules/common/select_box');
     self.add(new selectObj(expiryLabel, expiryButton, data_1, data_2));
 
-    var payButton = Ti.UI.createButton(payStyles.payButton);      
+    var payButton = Ti.UI.createButton(payStyles.payButton);
+    payButton.hide();
     self.add(payButton);
 
+    expiryButton.addEventListener('click', function(e){
+      payButton.show();
+    })
+
     payButton.addEventListener('click', function(e){
-      expiryMonth = expiryLabel.value.split(',')[0];
-      expiryYear = expiryLabel.value.split(',')[1];
+      
+      var cartObj = require('modules/models/cart');
+
+      new cartObj(Ti.App.currentUser.id).add_to_cart(performance.id, quantity, function(e){
+        expiryMonth = expiryLabel.value.split(',')[0];
+        expiryYear = expiryLabel.value.split(',')[1];
+
+        var orderObj = require('modules/pages/order');
+        var orderWindow = new orderObj('Review Order', containingTab, cardText.value, fNameText.value, lNameText.value, csvText.value, expiryMonth, expiryYear);
+        containingTab.open(orderWindow);
+      });
+            
     });
   }
 

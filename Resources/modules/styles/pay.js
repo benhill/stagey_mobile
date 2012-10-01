@@ -1,17 +1,28 @@
 exports = {
 
-	nameLabel: {		
+	fNameText: {
     color:'#336699', 
     height:35, 
-    width:300, 
+    width:140, 
     top:10,
     left:5,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-    hintText: 'Name on Card',
+    hintText: 'First Name',
 	},
 
-  cardLabel: {    
+  lNameText: {
+    color:'#336699', 
+    height:35, 
+    width:140,
+    top:10,
+    left:150,
+    clearOnEdit:true,
+    borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+    hintText: 'Last Name',
+  },
+
+  cardText: {    
     color:'#336699', 
     height:35, 
     width:200, 
@@ -22,7 +33,7 @@ exports = {
     hintText: 'Credit Card Number',
   },
 
-  csvLabel: {    
+  csvText: {    
     color:'#336699', 
     height:35, 
     width:75, 
@@ -50,7 +61,7 @@ exports = {
   },
 
   payButton: {
-    title:'Buy Tickets',
+    title:'Review Order',
     bottom:10,
     width:300
   }

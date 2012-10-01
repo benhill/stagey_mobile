@@ -17,9 +17,11 @@ function PerformanceWindow(title, containingTab, performance_id){
 
   	new perfObj(url, function(performance){
 
-	    var title = Ti.UI.createLabel(perfStyles.title);
-	    title.text = performance.project_title;
-	    self.add(title);
+	    (performance.project_title.length >= 30) ? title = performance.project_title.substr(0,30) + "..." : title = performance.project_title;
+
+      var titleLabel = Ti.UI.createLabel(perfStyles.titleLabel);
+	    titleLabel.text = title;
+	    self.add(titleLabel);
 
       var perfInfo = Ti.UI.createLabel(perfStyles.perfInfo);
       perfInfo.text = performance.performance_info;

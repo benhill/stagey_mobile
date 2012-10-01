@@ -1,0 +1,44 @@
+function Cart(user_id){
+  this.user_id = user_id;
+};
+
+Cart.prototype.add_to_cart = function(performance_id, quantity, callback) {
+
+  url = app.api_url + 'add_to_cart?user_id=' + this.user_id + '&performance_id=' + performance_id + '&quantity=' + quantity
+
+  var xhr = Ti.Network.createHTTPClient({
+    timeout: 15000
+  });
+
+  xhr.onload = function(){    
+    callback(this.responseText);
+  };
+
+  xhr.onerror = function(){ 
+    Ti.API.info('Error');
+  };
+
+  xhr.open('GET', url);
+  xhr.send();  
+};
+
+Cart.prototype.get = function(callback) {
+  url = app.api_url + 'cart_contents/' + this.user_id
+
+  var xhr = Ti.Network.createHTTPClient({
+    timeout: 15000
+  });
+
+  xhr.onload = function(){    
+    callback(JSON.parse(this.responseText).contents);
+  };
+
+  xhr.onerror = function(){ 
+    Ti.API.info('Error');
+  };
+
+  xhr.open('GET', url);
+  xhr.send();  
+};
+ 
+module.exports = Cart;

@@ -19,7 +19,7 @@ function SelectBox(resultsLabel, submitButton, data_1, data_2){
   picker.selectionIndicator=true;
   
   if(data_1){
-    var selectedValue = data_1[0].value;    
+    var selectedValue = data_1[0].value;
     var selectedTitle = data_1[0].title;
       
     if(data_2){
