@@ -9,19 +9,19 @@ function OrderWindow(title, containingTab, cc_num, cc_fname, cc_lname, csv, expi
 
   new cartObj(Ti.App.currentUser.id).get(function(e){
 
-    var detailsView = Ti.UI.createView(orderStyles.detailsView)    
+    var detailsView = Ti.UI.createView(orderStyles.detailsView);
+
+    var cartTotal = Ti.UI.createLabel(orderStyles.cartTotal);
+    cartTotal.text = 'Total Order: $' + app.formatCurrency(e[0].total_cart);
+    detailsView.add(cartTotal);
 
     var ticketsTotal = Ti.UI.createLabel(orderStyles.ticketsTotal);
-    ticketsTotal.text = 'Total Tickets: $' + app.formatCurrency(e[0].total_tickets);
+    ticketsTotal.text = '$' + app.formatCurrency(e[0].total_tickets) + ' in tickets';
     detailsView.add(ticketsTotal);
 
     var feesTotal = Ti.UI.createLabel(orderStyles.feesTotal);
-    feesTotal.text = 'Total Fees: $' + app.formatCurrency(e[0].total_fees);
+    feesTotal.text = '$' + app.formatCurrency(e[0].total_fees) + ' in fees';
     detailsView.add(feesTotal);
-
-    var cartTotal = Ti.UI.createLabel(orderStyles.cartTotal);
-    cartTotal.text = 'Total Cart: $' + app.formatCurrency(e[0].total_cart);
-    detailsView.add(cartTotal);
 
     self.add(detailsView);
 
@@ -64,7 +64,14 @@ function OrderWindow(title, containingTab, cc_num, cc_fname, cc_lname, csv, expi
     payButton.addEventListener('click', function(e){
       var cartObj = require('modules/models/cart');
       new cartObj(Ti.App.currentUser.id).purchase(cc_fname, cc_lname, cc_num, expiry_month, expiry_year, csv, function(e){
-        e.error ? alert(e.error) ? alert(e.sale_id);
+        if (e.error){
+          alert(e.error)
+        }
+        else{
+          var receiptObj = require('modules/pages/receipt');
+          var receiptWindow = new receiptObj('Receipt', containingTab, e.sale_id);
+          containingTab.open(receiptWindow);
+        }
       })
     })
 

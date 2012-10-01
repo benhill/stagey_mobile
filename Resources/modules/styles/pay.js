@@ -3,7 +3,7 @@ exports = {
 	fNameText: {
     color:'#336699', 
     height:35, 
-    width:140, 
+    width:150, 
     top:10,
     left:5,
     clearOnEdit:true,
@@ -14,9 +14,9 @@ exports = {
   lNameText: {
     color:'#336699', 
     height:35, 
-    width:140,
+    width:150,
     top:10,
-    left:150,
+    left:160,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
     hintText: 'Last Name',

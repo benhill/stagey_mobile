@@ -32,8 +32,8 @@ exports = {
   },
 
   table: {
-    top:60,
-    height:'70%'
+    top:'20%',
+    height:'80%'
   },
 
   row: {
@@ -71,12 +71,5 @@ exports = {
     top:45,       
     left:60,
     font:{fontSize:10},
-  },
-
- payButton: {
-    title:'Buy Tickets',
-    bottom:10,
-    width:300
   }
-
 }

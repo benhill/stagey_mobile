@@ -17,10 +17,16 @@ function PayWindow(title, containingTab, performance, quantity){
     var cardText = Ti.UI.createTextField(payStyles.cardText);
     self.add(cardText);
     addKeyboardToolbar(cardText);
-
+    
     var csvText = Ti.UI.createTextField(payStyles.csvText);
     self.add(csvText);
     addKeyboardToolbar(csvText);
+
+    csvText.addEventListener('change', function(e){
+      if(e.value.length == 3){
+        e.source.blur();
+      }      
+    })
 
     var expiryLabel = Ti.UI.createLabel(payStyles.expiryLabel);    
     self.add(expiryLabel);
