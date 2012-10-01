@@ -59,7 +59,15 @@ function OrderWindow(title, containingTab, cc_num, cc_fname, cc_lname, csv, expi
     self.add(table);
 
     var payButton = Ti.UI.createButton(orderStyles.payButton);    
-    self.add(payButton);    
+    self.add(payButton);
+  
+    payButton.addEventListener('click', function(e){
+      var cartObj = require('modules/models/cart');
+      new cartObj(Ti.App.currentUser.id).purchase(cc_fname, cc_lname, cc_num, expiry_month, expiry_year, csv, function(e){
+        e.error ? alert(e.error) ? alert(e.sale_id);
+      })
+    })
+
   });
 
   return self;

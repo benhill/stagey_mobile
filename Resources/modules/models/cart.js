@@ -40,5 +40,24 @@ Cart.prototype.get = function(callback) {
   xhr.open('GET', url);
   xhr.send();  
 };
+
+Cart.prototype.purchase = function(cc_first_name, cc_last_name, cc_number, cc_month, cc_year, csv, callback) {  
+  url = app.api_url + 'purchase_tickets?user_id=' + this.user_id + '&cc_first_name=' + cc_first_name + '&cc_last_name=' + cc_last_name + '&cc_number=' + cc_number + '&cc_month=' + cc_month + '&cc_year=' + cc_year + '&csv=' + csv
+
+  var xhr = Ti.Network.createHTTPClient({
+    timeout: 15000
+  });
+
+  xhr.onload = function(){    
+    callback(JSON.parse(this.responseText));
+  };
+
+  xhr.onerror = function(){ 
+    Ti.API.info('Error');
+  };
+
+  xhr.open('GET', url);
+  xhr.send();  
+};
  
 module.exports = Cart;

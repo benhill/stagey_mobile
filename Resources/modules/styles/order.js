@@ -12,7 +12,7 @@ exports = {
     width:Ti.UI.SIZE,
     top:10,
     left:10,
-    font:{fontSize:16},
+    font:{fontSize:16}
   },
 
   feesTotal: {
@@ -20,7 +20,7 @@ exports = {
     width:Ti.UI.SIZE,
     top:30,
     left:10,
-    font:{fontSize:16},
+    font:{fontSize:16}
   },
 
   cartTotal: {
@@ -28,7 +28,7 @@ exports = {
     width:Ti.UI.SIZE,
     top:50,
     left:10,
-    font:{fontSize:16},
+    font:{fontSize:16}
   },
 
   table: {

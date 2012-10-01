@@ -8,15 +8,19 @@ function PayWindow(title, containingTab, performance, quantity){
   self.load = function(){
     var fNameText = Ti.UI.createTextField(payStyles.fNameText);
     self.add(fNameText);
+    addKeyboardToolbar(fNameText);
 
     var lNameText = Ti.UI.createTextField(payStyles.lNameText);
     self.add(lNameText);
+    addKeyboardToolbar(lNameText);
 
     var cardText = Ti.UI.createTextField(payStyles.cardText);
     self.add(cardText);
+    addKeyboardToolbar(cardText);
 
     var csvText = Ti.UI.createTextField(payStyles.csvText);
     self.add(csvText);
+    addKeyboardToolbar(csvText);
 
     var expiryLabel = Ti.UI.createLabel(payStyles.expiryLabel);    
     self.add(expiryLabel);
@@ -51,8 +55,30 @@ function PayWindow(title, containingTab, performance, quantity){
       payButton.show();
     })
 
-    payButton.addEventListener('click', function(e){
-      
+    function addKeyboardToolbar(textbox){
+      var flexSpace = Ti.UI.createButton({
+        systemButton:Ti.UI.iPhone.SystemButton.FLEXIBLE_SPACE,
+        right:0
+      });
+
+      var doneButton = Ti.UI.createButton({
+        systemButton:Ti.UI.iPhone.SystemButton.DONE,
+        right:0
+      });
+
+      textbox.keyboardToolbar = [flexSpace, doneButton];
+
+      textbox.addEventListener('focus', function(e) {
+        textbox.keyboardToolbar = [flexSpace, doneButton];
+        doneButton.activeFld = textbox;
+      });
+
+      doneButton.addEventListener('click', function(e) {
+        e.source.activeFld.blur();
+      });
+    };
+
+    payButton.addEventListener('click', function(e){      
       var cartObj = require('modules/models/cart');
 
       new cartObj(Ti.App.currentUser.id).add_to_cart(performance.id, quantity, function(e){
