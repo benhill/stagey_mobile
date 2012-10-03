@@ -129,8 +129,6 @@ function HomeWindow(title, containingTab){
   }
 
   function runIconEvent(e, islongclick){
-    user = JSON.parse(Ti.App.Properties.getString('currentUser'));
-
     var windowObj = require('modules/pages/' + e.source.icon.window);
     var thirdParam;
     if(e.source.icon.text == 'Favorites'){thirdParam = 'favorites';}
@@ -140,7 +138,7 @@ function HomeWindow(title, containingTab){
 
     var newWindow = new windowObj(e.source.icon.text, containingTab, thirdParam);
 
-  	if(user || e.source.icon.auth_required == false){
+  	if(Ti.App.Properties.getString('currentUser') || e.source.icon.auth_required == false){
       containingTab.open(newWindow);
       newWindow.load();
     }

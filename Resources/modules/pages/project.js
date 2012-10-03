@@ -96,7 +96,7 @@ function ProjectWindow(title, containingTab, project_id){
       var icons = [];
       var left = 0;
 
-      var buy_ticket = new Icon('Buy Ticket', 'iphone/purchase_24.png', 'performances', project);
+      var buy_ticket = new Icon('Buy Ticket', 'iphone/purchase_24.png', 'performances', project, false);
       icons.push(buy_ticket);
 
       if(project.reviewed_by_me){

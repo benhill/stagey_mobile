@@ -112,10 +112,19 @@ function PerformancesWindow(title, containingTab, mode){
     };
 
     function loadPerformance(e, islongclick) {
+
       var perfObj = require('modules/pages/performance');
       var perfWindow = new perfObj('Performance', containingTab, e.source.perf_id)
-      containingTab.open(perfWindow);
-      perfWindow.load();
+      if(Ti.App.currentUser){
+        containingTab.open(perfWindow);
+        perfWindow.load();   
+      }   
+      else{
+        var loginObj = require('modules/pages/login');
+        var loginWindow = new loginObj('Login', containingTab, perfWindow);
+        containingTab.open(loginWindow);
+      }
+
     }
 
     function loadMore(e,islongclick){

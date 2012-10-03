@@ -8,7 +8,7 @@ function MeWindow(title, containingTab){
   var wrapper = Ti.UI.createView(meStyles.wrapper);
 
   self.load = function(){
-    var currentUser = JSON.parse(Ti.App.Properties.getString('currentUser'));
+    var currentUser = Ti.App.currentUser;
     var url = app.api_url + "user/" + currentUser.id + ".json";
 
     var xhr =  Ti.Network.createHTTPClient({
@@ -60,11 +60,11 @@ function MeWindow(title, containingTab){
         self.add(wrapper);
 
         self.remove(spinner);
-    },
+      },
       onerror: function(){
         Ti.API.debug("STATUS: " + this.status);
         Ti.API.debug("TEXT:   " + this.responseText);
-        Ti.API.debug("ERROR:  " + e.error);
+        Ti.API.debug("ERROR:  " + this.error);
         alert('There was an error retrieving the remote data. Try again.');
       },
       timeout:5000

@@ -11,7 +11,7 @@ Cart.prototype.add_to_cart = function(performance_id, quantity, callback) {
   });
 
   xhr.onload = function(){    
-    callback(this.responseText);
+    callback(JSON.parse(this.responseText));
   };
 
   xhr.onerror = function(){ 

@@ -47,11 +47,30 @@ function PerformanceWindow(title, containingTab, performance_id){
       self.add(payButton);
 
       payButton.addEventListener('click', function(e){
-        var payObj = require('modules/pages/pay');        
         if(!quantityLabel.value){quantity = 1}else{quantity = quantityLabel.value}
-        var payWindow = new payObj('Credit Card', containingTab, performance, quantity);
-        containingTab.open(payWindow);
-        payWindow.load();
+        var cartObj = require('modules/models/cart');
+        new cartObj(Ti.App.currentUser.id).add_to_cart(performance.id, quantity, function(e){          
+          if(e.cart_total > 0){
+            var payObj = require('modules/pages/pay');                
+            var payWindow = new payObj('Credit Card', containingTab);
+            containingTab.open(payWindow);
+            payWindow.load();
+          }
+          else{
+            var cartObj = require('modules/models/cart');
+            new cartObj(Ti.App.currentUser.id).purchase(null, null, null, null, null, null, function(e){
+              if (e.error){
+                alert(e.error)
+              }
+              else{
+                var receiptObj = require('modules/pages/receipt');
+                var receiptWindow = new receiptObj('Receipt', containingTab, e.sale_id);
+                containingTab.open(receiptWindow);
+              }
+            })
+          }
+
+        });
       });
 
       self.remove(spinner);

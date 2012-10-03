@@ -1,4 +1,4 @@
-function PayWindow(title, containingTab, performance, quantity){
+function PayWindow(title, containingTab){
 
   var styles = require('modules/styles/styles');
   var payStyles = require('modules/styles/pay');
@@ -84,18 +84,12 @@ function PayWindow(title, containingTab, performance, quantity){
       });
     };
 
-    payButton.addEventListener('click', function(e){      
-      var cartObj = require('modules/models/cart');
-
-      new cartObj(Ti.App.currentUser.id).add_to_cart(performance.id, quantity, function(e){
-        expiryMonth = expiryLabel.value.split(',')[0];
-        expiryYear = expiryLabel.value.split(',')[1];
-
-        var orderObj = require('modules/pages/order');
-        var orderWindow = new orderObj('Review Order', containingTab, cardText.value, fNameText.value, lNameText.value, csvText.value, expiryMonth, expiryYear);
-        containingTab.open(orderWindow);
-      });
-            
+    payButton.addEventListener('click', function(e){
+      expiryMonth = expiryLabel.value.split(',')[0];
+      expiryYear = expiryLabel.value.split(',')[1];        
+      var orderObj = require('modules/pages/order');
+      var orderWindow = new orderObj('Review Order', containingTab, cardText.value, fNameText.value, lNameText.value, csvText.value, expiryMonth, expiryYear);
+      containingTab.open(orderWindow);      
     });
   }
 
