@@ -30,7 +30,7 @@ exports = {
   },
 
   quantButton: {
-    title:'Select Quantity',
+    title:'Next',
     bottom:10,
     width:300
   }

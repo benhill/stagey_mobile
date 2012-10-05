@@ -58,6 +58,10 @@ function PayWindow(title, containingTab){
     self.add(payButton);
 
     expiryButton.addEventListener('click', function(e){
+      fNameText.blur();
+      lNameText.blur();
+      cardText.blur();
+      csvText.blur();
       payButton.show();
     })
 
