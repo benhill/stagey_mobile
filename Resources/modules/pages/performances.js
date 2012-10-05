@@ -50,11 +50,11 @@ function PerformancesWindow(title, containingTab, mode){
 
         var row = Ti.UI.createTableViewRow(nowStyles.row);
 
-        row.perf_id = performance.id;
+        row.performance = performance;
 
         var projectThumb = Ti.UI.createImageView(nowStyles.projectThumb);
         projectThumb.image = performance.project_thumbnail;
-        projectThumb.perf_id = performance.id;
+        projectThumb.performance = performance;
         row.add(projectThumb);            
 
         var title;
@@ -62,12 +62,12 @@ function PerformancesWindow(title, containingTab, mode){
 
         var projectTitle = Ti.UI.createLabel(nowStyles.projectTitle);
         projectTitle.text = title;
-        projectTitle.perf_id = performance.id;
+        projectTitle.performance = performance;
         row.add(projectTitle);
 
         var projectInfo = Ti.UI.createLabel(nowStyles.projectInfo);
         projectInfo.text = performance.info;
-        projectInfo.perf_id = performance.id;
+        projectInfo.performance = performance;
         row.add(projectInfo);
 
         row.addEventListener('click', function(e){
@@ -113,18 +113,25 @@ function PerformancesWindow(title, containingTab, mode){
 
     function loadPerformance(e, islongclick) {
 
-      var perfObj = require('modules/pages/performance');
-      var perfWindow = new perfObj('Performance', containingTab, e.source.perf_id)
+      if(e.source.performance.pwyc){
+        var pwycObj = require('modules/pages/pwyc');
+        var nextWindow = new pwycObj('PWYC', containingTab, e.source.performance);
+      }
+      else{
+        var perfObj = require('modules/pages/performance');
+        var nextWindow = new perfObj('Performance', containingTab, e.source.performance.id)
+      }
+
       if(Ti.App.currentUser){
-        containingTab.open(perfWindow);
-        perfWindow.load();   
+        containingTab.open(nextWindow);
+        nextWindow.load();   
       }   
       else{
         var loginObj = require('modules/pages/login');
-        var loginWindow = new loginObj('Login', containingTab, perfWindow);
+        var loginWindow = new loginObj('Login', containingTab, nextWindow);
         containingTab.open(loginWindow);
       }
-
+      
     }
 
     function loadMore(e,islongclick){
@@ -152,17 +159,19 @@ function PerformancesWindow(title, containingTab, mode){
 
   function getUrl(){
     if(mode == 'next'){
-      url = app.api_url + 'performances/7.json';
+      url = app.api_url + 'performances/7.json?';
     }
     else if(mode == 'nearby'){      
-      url = app.api_url + 'performances/7.json?lat=' + lat + '&lng=' + lng + '&distance=0.5';
+      url = app.api_url + 'performances/7.json?lat=' + lat + '&lng=' + lng + '&distance=0.5&';
     }
     else if(mode == 'schedule'){
-      url = app.api_url + 'my_schedule.json?email=' + Ti.App.currentUser.email + '&password=' + Ti.App.userPassword
+      url = app.api_url + 'my_schedule.json?email=' + Ti.App.currentUser.email + '&password=' + Ti.App.userPassword + '&';
     }
     else{
-      url = app.api_url + 'performances/7.json?project_id=' + mode.id;
+      url = app.api_url + 'performances/7.json?project_id=' + mode.id + '&';
     }
+
+    url += 'user_id=' + Ti.App.currentUser.id;
 
     return url
   }

@@ -1,4 +1,4 @@
-function PerformanceWindow(title, containingTab, performance_id){
+function PerformanceWindow(title, containingTab, performance_id, pwycPrice){
 
   var styles = require('modules/styles/styles');
   var perfStyles = require('modules/styles/performance');
@@ -6,6 +6,7 @@ function PerformanceWindow(title, containingTab, performance_id){
   self.title = title;
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
   var quantity = 1;
+  var pwycPrice;
 
   self.load = function(){
 
@@ -17,7 +18,10 @@ function PerformanceWindow(title, containingTab, performance_id){
 
   	new perfObj(url, function(performance){
 
-	    (performance.project_title.length >= 25) ? title = performance.project_title.substr(0,25) + "..." : title = performance.project_title;
+      var cost;
+      pwycPrice ? cost = pwycPrice : cost = performance.cost;
+
+	  (performance.project_title.length >= 25) ? title = performance.project_title.substr(0,25) + "..." : title = performance.project_title;
 
       var titleLabel = Ti.UI.createLabel(perfStyles.titleLabel);
 	    titleLabel.text = title;
@@ -30,7 +34,7 @@ function PerformanceWindow(title, containingTab, performance_id){
       var data = [];      
       for(i=0; i<8; i++){        
         i > 0 ? plural = 's' : plural = ''
-        data[i] = Ti.UI.createPickerRow({value:i+1, title:(i+1) +' Ticket' + plural + ' for $' + app.formatCurrency(performance.cost * (i+1))});
+        data[i] = Ti.UI.createPickerRow({value:i+1, title:(i+1) +' Ticket' + plural + ' for $' + app.formatCurrency(cost * (i+1))});
       }
 
       var quantityLabel = Ti.UI.createLabel(perfStyles.quantityLabel);
@@ -41,7 +45,7 @@ function PerformanceWindow(title, containingTab, performance_id){
       self.add(quantityButton);
 
       var selectObj = require('modules/common/select_box');
-      self.add(new selectObj(quantityLabel, quantityButton, data));
+      self.add(new selectObj(quantityLabel, quantityButton, data));      
       
       var payButton = Ti.UI.createButton(perfStyles.payButton);      
       self.add(payButton);
@@ -49,7 +53,7 @@ function PerformanceWindow(title, containingTab, performance_id){
       payButton.addEventListener('click', function(e){
         if(!quantityLabel.value){quantity = 1}else{quantity = quantityLabel.value}
         var cartObj = require('modules/models/cart');
-        new cartObj(Ti.App.currentUser.id).add_to_cart(performance.id, quantity, function(e){          
+        new cartObj(Ti.App.currentUser.id).add_to_cart(performance.id, quantity, pwycPrice, function(e){
           if(e.cart_total > 0){
             var payObj = require('modules/pages/pay');                
             var payWindow = new payObj('Credit Card', containingTab);

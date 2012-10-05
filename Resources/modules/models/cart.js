@@ -2,9 +2,10 @@ function Cart(user_id){
   this.user_id = user_id;
 };
 
-Cart.prototype.add_to_cart = function(performance_id, quantity, callback) {
+Cart.prototype.add_to_cart = function(performance_id, quantity, pwyc_price, callback) {
 
   url = app.api_url + 'add_to_cart?user_id=' + this.user_id + '&performance_id=' + performance_id + '&quantity=' + quantity
+  if(pwyc_price){url += '&pwyc_price=' + pwyc_price}
 
   var xhr = Ti.Network.createHTTPClient({
     timeout: 15000

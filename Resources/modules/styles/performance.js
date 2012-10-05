@@ -4,7 +4,7 @@ exports = {
     height:Ti.UI.SIZE,
     width:Ti.UI.SIZE,
     font:{fontSize:20},
-    left:5,
+    left:10,
     top:5
   },
 
@@ -13,12 +13,12 @@ exports = {
     width:Ti.UI.SIZE,
     font:{fontSize:12},
     top:30,
-    left:5
+    left:10
   },
 
   quantityLabel: {
     top:70,
-    left:5,    
+    left:10,    
     width:Ti.UI.SIZE,
     height:Ti.UI.SIZE,
     font:{fontSize:18}
