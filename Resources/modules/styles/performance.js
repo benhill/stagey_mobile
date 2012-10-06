@@ -25,10 +25,21 @@ exports = {
   },
 
   quantityButton: {
-    title:'Change Quantity',
-    top:100,
-    width:200,
-    left:5
+    title:'Change',
+    top:65,
+    width:75,
+    left:90
+  },
+
+  codeText: {    
+    color:'#336699', 
+    height:35, 
+    width:150, 
+    top:120,
+    left:10,
+    clearOnEdit:true,
+    borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+    hintText: 'Discount Code',
   },
 
   payButton: {

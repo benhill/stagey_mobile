@@ -42,6 +42,25 @@ Cart.prototype.get = function(callback) {
   xhr.send();  
 };
 
+Cart.prototype.apply_discount_code = function(code_name, callback) {
+  url = app.api_url + 'apply_discount_code?user_id=' + this.user_id + '&code_name=' + code_name
+
+  var xhr = Ti.Network.createHTTPClient({
+    timeout: 15000
+  });
+
+  xhr.onload = function(){    
+    callback(JSON.parse(this.responseText));
+  };
+
+  xhr.onerror = function(){ 
+    Ti.API.info('Error');
+  };
+
+  xhr.open('GET', url);
+  xhr.send();  
+};
+
 Cart.prototype.purchase = function(cc_first_name, cc_last_name, cc_number, cc_month, cc_year, csv, callback) {  
   url = app.api_url + 'purchase_tickets?user_id=' + this.user_id + '&cc_first_name=' + cc_first_name + '&cc_last_name=' + cc_last_name + '&cc_number=' + cc_number + '&cc_month=' + cc_month + '&cc_year=' + cc_year + '&csv=' + csv
 

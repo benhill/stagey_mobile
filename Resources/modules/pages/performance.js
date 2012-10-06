@@ -34,7 +34,7 @@ function PerformanceWindow(title, containingTab, performance_id, pwycPrice){
       var data = [];      
       for(i=0; i<8; i++){        
         i > 0 ? plural = 's' : plural = ''
-        data[i] = Ti.UI.createPickerRow({value:i+1, title:(i+1) +' Ticket' + plural + ' for $' + app.formatCurrency(cost * (i+1))});
+        data[i] = Ti.UI.createPickerRow({value:i+1, title:(i+1) +' Ticket'});
       }
 
       var quantityLabel = Ti.UI.createLabel(perfStyles.quantityLabel);
@@ -45,7 +45,13 @@ function PerformanceWindow(title, containingTab, performance_id, pwycPrice){
       self.add(quantityButton);
 
       var selectObj = require('modules/common/select_box');
-      self.add(new selectObj(quantityLabel, quantityButton, data));      
+      self.add(new selectObj(quantityLabel, quantityButton, data));
+
+      var codeText = Ti.UI.createTextField(perfStyles.codeText);
+      if(!pwycPrice){
+        self.add(codeText);
+        addKeyboardToolbar(codeText);
+      }
       
       var payButton = Ti.UI.createButton(perfStyles.payButton);      
       self.add(payButton);
@@ -55,10 +61,16 @@ function PerformanceWindow(title, containingTab, performance_id, pwycPrice){
         var cartObj = require('modules/models/cart');
         new cartObj(Ti.App.currentUser.id).add_to_cart(performance.id, quantity, pwycPrice, function(e){
           if(e.cart_total > 0){
-            var payObj = require('modules/pages/pay');                
-            var payWindow = new payObj('Credit Card', containingTab);
-            containingTab.open(payWindow);
-            payWindow.load();
+            if(codeText.value.length > 0){
+              var cartObj = require('modules/models/cart');
+              new cartObj(Ti.App.currentUser.id).apply_discount_code(codeText.value, function(result){
+                if(result.success){loadPayWindow();}
+                else{alert('Discount Code Not Found')}
+              })
+            }
+            else{
+              loadPayWindow();
+            }
           }
           else{
             var cartObj = require('modules/models/cart');
@@ -79,6 +91,36 @@ function PerformanceWindow(title, containingTab, performance_id, pwycPrice){
 
       self.remove(spinner);
 	  })
+  }
+
+  function addKeyboardToolbar(textbox){
+      var flexSpace = Ti.UI.createButton({
+        systemButton:Ti.UI.iPhone.SystemButton.FLEXIBLE_SPACE,
+        right:0
+      });
+
+      var doneButton = Ti.UI.createButton({
+        systemButton:Ti.UI.iPhone.SystemButton.DONE,
+        right:0
+      });
+
+      textbox.keyboardToolbar = [flexSpace, doneButton];
+
+      textbox.addEventListener('focus', function(e) {
+        textbox.keyboardToolbar = [flexSpace, doneButton];
+        doneButton.activeFld = textbox;
+      });
+
+      doneButton.addEventListener('click', function(e) {
+        e.source.activeFld.blur();
+      });
+    };
+
+  function loadPayWindow(){
+    var payObj = require('modules/pages/pay');                
+    var payWindow = new payObj('Credit Card', containingTab);
+    containingTab.open(payWindow);
+    payWindow.load();
   }
 
   return self;
