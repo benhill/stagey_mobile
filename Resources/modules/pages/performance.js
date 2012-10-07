@@ -34,7 +34,7 @@ function PerformanceWindow(title, containingTab, performance_id, pwycPrice){
       var data = [];      
       for(i=0; i<8; i++){        
         i > 0 ? plural = 's' : plural = ''
-        data[i] = Ti.UI.createPickerRow({value:i+1, title:(i+1) +' Ticket'});
+        data[i] = Ti.UI.createPickerRow({value:i+1, title:(i+1) +' Ticket' + plural + ' x $' + app.formatCurrency(cost)});
       }
 
       var quantityLabel = Ti.UI.createLabel(perfStyles.quantityLabel);

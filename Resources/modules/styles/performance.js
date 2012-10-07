@@ -28,7 +28,7 @@ exports = {
     title:'Change',
     top:65,
     width:75,
-    left:90
+    left:170
   },
 
   codeText: {    

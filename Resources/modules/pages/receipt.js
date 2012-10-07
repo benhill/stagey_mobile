@@ -48,7 +48,7 @@ function ReceiptWindow(title, containingTab, sale_id){
       row.add(projectInfo);
 
       var costLabel = Ti.UI.createLabel(receiptStyles.costLabel);
-      costLabel.text = '$' + app.formatCurrency(ticket.cost);
+      costLabel.text = '$' + app.formatCurrency(ticket.cost)  + ' \u00B7 ' + cart_item.discount;
       row.add(costLabel);
 
       tableData.push(row);

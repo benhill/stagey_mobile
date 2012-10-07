@@ -50,6 +50,7 @@ function OrderWindow(title, containingTab, cc_num, cc_fname, cc_lname, csv, expi
 
       var costLabel = Ti.UI.createLabel(orderStyles.costLabel);
       costLabel.text = '$' + app.formatCurrency(cart_item.ticket_price);
+      if(cart_item.discount){costLabel.text += ' \u00B7 ' + cart_item.discount};
       row.add(costLabel);
 
       tableData.push(row);
