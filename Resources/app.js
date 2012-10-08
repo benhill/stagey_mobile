@@ -7,6 +7,7 @@ var sharekit = require('com.0x82.sharekit');
 
 Ti.App.currentUser = JSON.parse(Ti.App.Properties.getString('currentUser'));
 Ti.App.userPassword = Ti.App.Properties.getString('userPassword');
+Ti.App.token = '8kj@!!00990j34Ad'
 Ti.API.info("module is => " + sharekit);
 
 sharekit.configure({
