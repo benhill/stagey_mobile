@@ -15,7 +15,7 @@ function SaleModel(sale_id, callback){
     alert('There was an error retrieving the remote data. Try again.');
   };
 
-  var url = app.api_url + "sale/" + sale_id + '.json';
+  var url = app.api_url + "sale/" + sale_id + '.json?email=' + Ti.App.currentUser.email + '&password=' + Ti.App.userPassword ;
   xhr.open('GET', url);
   xhr.send();
 };
