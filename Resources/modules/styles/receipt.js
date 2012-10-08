@@ -37,7 +37,7 @@ exports = {
   },
 
   row: {
-    height:70
+    height:75
   },
 
   projectThumb: {
@@ -60,7 +60,7 @@ exports = {
   projectInfo: {
     height:Ti.UI.SIZE,
     width:Ti.UI.SIZE,
-    top:30,       
+    top:45,       
     left:60,
     font:{fontSize:10},
   },
@@ -68,7 +68,7 @@ exports = {
   costLabel: {
     height:Ti.UI.SIZE,
     width:Ti.UI.SIZE,
-    top:45,       
+    top:30,       
     left:60,
     font:{fontSize:10},
   }

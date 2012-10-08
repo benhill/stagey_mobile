@@ -32,7 +32,7 @@ exports = {
   },
 
   table: {
-    top:60,
+    top:65,
     height:'70%'
   },
 
@@ -60,7 +60,7 @@ exports = {
   projectInfo: {
     height:Ti.UI.SIZE,
     width:Ti.UI.SIZE,
-    top:30,       
+    top:45,       
     left:60,
     font:{fontSize:10},
   },
@@ -68,7 +68,7 @@ exports = {
   costLabel: {
     height:Ti.UI.SIZE,
     width:Ti.UI.SIZE,
-    top:45,       
+    top:30,       
     left:60,
     font:{fontSize:10},
   },
