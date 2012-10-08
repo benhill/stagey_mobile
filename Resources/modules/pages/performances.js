@@ -71,7 +71,14 @@ function PerformancesWindow(title, containingTab, mode){
         row.add(projectInfo);
 
         row.addEventListener('click', function(e){
-          loadPerformance(e);
+          if(mode == 'schedule'){
+            var projectObj = require('modules/pages/project');            
+            var projectWindow = new projectObj('Project', containingTab, e.source.performance.project_id);
+            projectWindow.layout = 'vertical';
+            containingTab.open(projectWindow);
+            projectWindow.load();
+          }            
+          else{loadPerformance(e);}
         });
 
         tableData.push(row);
