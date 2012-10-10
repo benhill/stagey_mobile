@@ -6,7 +6,7 @@ exports = {
     left:5,
     top:10,
     borderColor:'black',
-    borderWidth:1,
+    borderWidth:1
   },
 
   nameLabel: {
@@ -15,7 +15,7 @@ exports = {
     left:55,
     top:7,
     color:'#000',
-    touchEnabled:false,
+    touchEnabled:false
   },
 
   infoLabel: {
@@ -24,7 +24,7 @@ exports = {
     left:55,
     top:25,
     color:'#000',
-    touchEnabled:false,
+    touchEnabled:false
   },
 
   row: {

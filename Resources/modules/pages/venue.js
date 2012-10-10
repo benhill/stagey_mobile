@@ -11,10 +11,11 @@ function VenueWindow(title, containingTab, venue_id){
   var json, venue;
   var image_top = 0;
   var image_place = 0;
-
-  new venueObj(url, function(venue){
-    loadVenue(venue);
-  });
+  self.load = function(){
+    new venueObj(url, function(venue){
+      loadVenue(venue);
+    });
+  }
 
   function loadVenue(venue){
     var venueDistObj = require('modules/models/venue_distance');

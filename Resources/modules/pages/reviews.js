@@ -114,8 +114,9 @@ function ReviewsWindow(title, containingTab, project, user_id){
 
     function loadReview(e, islongclick) { 
       var reviewObj = require('modules/pages/review');
-      var reviewWindow = new reviewObj('Show Review', containingTab, e.rowData.review, project);
+      var reviewWindow = new reviewObj('Show Review', containingTab, e.rowData.review.id);
       containingTab.open(reviewWindow);
+      reviewWindow.load();
     }
 
     function loadMore(e,islongclick){

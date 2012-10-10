@@ -4,7 +4,7 @@ function ApplicationTabGroup(windows) {
 
   var self = Ti.UI.createTabGroup();
 
-  var homeObj = require('modules/pages/home');  
+  var homeObj = require('modules/pages/feed');  
   var homeTab = Ti.UI.createTab({
     title:'Home',
     icon:'iphone/home_30.png'

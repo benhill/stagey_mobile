@@ -1,8 +1,7 @@
 function CatsWindow(title, containingTab) {
   
   var styles = require('modules/styles/styles') 
-  var catStyles = require('modules/styles/cats')
-  
+  var catStyles = require('modules/styles/cats')  
   var self = Ti.UI.createWindow(styles.defaultWindow);
   self.title = title;
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
@@ -37,7 +36,7 @@ function CatsWindow(title, containingTab) {
         }
         table.setData(tableData);
         self.add(table);
-        spinner.hide();    
+        spinner.hide();
       },
       onerror: function(e) {
         Ti.API.debug("STATUS: " + this.status);

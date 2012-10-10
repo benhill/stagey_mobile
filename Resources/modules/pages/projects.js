@@ -41,7 +41,7 @@ function ProjectsWindow(title, containingTab, mode, startProjects){
         projectsStyles.projectThumb.project_id = project.id;
         var projectThumb = Titanium.UI.createImageView(projectsStyles.projectThumb);  
 
-        row.add(projectThumb);         
+        row.add(projectThumb);
 
         (project.title.length >= 30) ? title = project.title.substr(0,25) + "..." : title = project.title;
 

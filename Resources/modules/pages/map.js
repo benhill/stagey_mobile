@@ -23,6 +23,7 @@ function MapWindow(title, containingTab, venue){
       var venueObj = require('modules/pages/venue');
       var venueWindow = new venueObj('venue', containingTab, venue.id);
       containingTab.open(venueWindow);
+      venueWindow.load();
     });
 
     var annotation = Ti.Map.createAnnotation(mapStyles.annotation);

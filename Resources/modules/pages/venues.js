@@ -11,49 +11,42 @@ function VenuesWindow(title, containingTab){
   var venuesTab = Titanium.UI.currentTab;
 
   self.load = function(){
-    var url = app.api_url + "venues.json?event_id=7";
 
-    var xhr = Ti.Network.createHTTPClient({
-      onload: function(){      
-        var json = JSON.parse(this.responseText);    
+    var venuesObj = require('modules/models/venues');    
+    new venuesObj(function(venues){      
+      loadVenues(venues);      
+    })
 
-        for (i = 0; i < json.venues.length; i++) {
-          var venue = json.venues[i];
-          var row = Ti.UI.createTableViewRow(venueStyles.row);      
-          row.venue_id = venue.id;
+    function loadVenues(venues){
+      for (i = 0; i < venues.length; i++) {
+        var venue = venues[i];
+        var row = Ti.UI.createTableViewRow(venueStyles.row);      
+        row.venue_id = venue.id;
 
-          var venueThumb = Titanium.UI.createImageView(venueStyles.venueThumb);
-          venueThumb.image = venue.thumbnail;
-          venueThumb.venue_id = venue.id;
+        var venueThumb = Titanium.UI.createImageView(venueStyles.venueThumb);
+        venueThumb.image = venue.thumbnail;
+        venueThumb.venue_id = venue.id;
 
-          var name;
-          (venue.name.length >= 30) ? name = venue.name.substr(0,30) + "..." : name = venue.name;
-          var nameLabel = Ti.UI.createLabel(venueStyles.nameLabel);
-          nameLabel.text = name;
-          name.venue_id = venue.id;
+        var name;
+        (venue.name.length >= 30) ? name = venue.name.substr(0,30) + "..." : name = venue.name;
+        var nameLabel = Ti.UI.createLabel(venueStyles.nameLabel);
+        nameLabel.text = name;
+        name.venue_id = venue.id;
 
-          var addressLabel = Ti.UI.createLabel(venueStyles);
-          addressLabel.addressLabel.text = venue.address;
-          addressLabel.venue_id = venue.id;
+        var addressLabel = Ti.UI.createLabel(venueStyles);
+        addressLabel.addressLabel.text = venue.address;
+        addressLabel.venue_id = venue.id;
 
-          row.add(venueThumb);
-          row.add(nameLabel);
-          row.add(addressLabel);
-          tableData.push(row);
-        }
+        row.add(venueThumb);
+        row.add(nameLabel);
+        row.add(addressLabel);
+        tableData.push(row);
+      }
 
-        table.setData(tableData);
-        self.add(table);
-        spinner.hide();
-      },
-      onerror: function(e) {
-        Ti.API.debug("STATUS: " + this.status);
-        Ti.API.debug("TEXT:   " + this.responseText);
-        Ti.API.debug("ERROR:  " + e.error);
-        alert('There was an error retrieving the remote data. Try again.');
-      },
-      timeout:8000
-    });
+      table.setData(tableData);
+      self.add(table);
+      spinner.hide();
+    }
 
     table.addEventListener('click', function(e){
       openVenue(e);
@@ -64,10 +57,9 @@ function VenuesWindow(title, containingTab){
       var venueWindow = new venueObj('Venue', containingTab, e.source.venue_id);
       venueWindow.layout = 'vertical';
       containingTab.open(venueWindow);
+      venueWindow.load();
     }
-
-    xhr.open("GET", url);
-    xhr.send();
+    
     self.add(spinner);
     spinner.show();
   }
