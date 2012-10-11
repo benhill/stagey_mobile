@@ -19,9 +19,14 @@ function FeedWindow(title, containingTab) {
       row.feed_item = feed_item;
         
       var feedThumb = Titanium.UI.createImageView(feedStyles.feedThumb);  
-      feedThumb.image = feed_item.thumbnail_path;
+      feedThumb.image = feed_item.item_thumbnail_path;
       feedThumb.feed_item = feed_item;
       row.add(feedThumb);
+
+      var objectLabel = Ti.UI.createLabel(feedStyles.objectLabel);      
+      objectLabel.text = feed_item.object_name;
+      objectLabel.feed_item = feed_item;
+      row.add(objectLabel);
 
       var textLabel = Ti.UI.createLabel(feedStyles.textLabel);
       textLabel.text = feed_item.text;

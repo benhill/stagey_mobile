@@ -13,11 +13,20 @@ exports = {
     borderWidth:1
   },
 
-  textLabel: {
+  objectLabel: {
     font:{fontSize:16,fontWeight:'bold'},
-    height:'auto',
+    height:Ti.UI.SIZE,
     left:55,
-    top:7,
+    top:10,
+    color:'#000',
+    touchEnabled:false
+  },
+
+  textLabel: {
+    font:{fontSize:12},
+    height:Ti.UI.SIZE,
+    left:55,
+    top:30,
     color:'#000',
     touchEnabled:false
   }
