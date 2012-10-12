@@ -33,7 +33,7 @@ function LoginWindow(title, containingTab, return_win){
   });
 
   function loginUser(){
-    var url = app.api_url + "login.json?email=" + email.value + "&password=" + password.value;
+    var url = app.api_url + "login?email=" + email.value + "&password=" + password.value;
     xhr.open("GET", url);
     xhr.send();
   }
@@ -56,9 +56,10 @@ function LoginWindow(title, containingTab, return_win){
           return_win.load();
         }
         else{
-          var homeObj = require('modules/pages/home');
-          var homeWindow = new homeObj('Home', containingTab);
-          containingTab.open(homeWindow);
+          var meObj = require('modules/pages/me');
+          var meWindow = new meObj('Me', containingTab);
+          containingTab.open(meWindow);
+          meWindow.load();
         }
       }
     },

@@ -4,33 +4,54 @@ function ApplicationTabGroup(windows) {
 
   var self = Ti.UI.createTabGroup();
 
-  var homeObj = require('modules/pages/feed');  
-  var homeTab = Ti.UI.createTab({
-    title:'Home',
+  var showsObj = require('modules/pages/home');  
+  var showsTab = Ti.UI.createTab({
+    title:'Shows',
     icon:'iphone/home_30.png'
   });
-  var homeWin = new homeObj('Home', homeTab);
-  homeTab.window = homeWin;
-  self.addTab(homeTab);
+  var showsWin = new showsObj('Home', showsTab);
+  showsTab.window = showsWin;
+  self.addTab(showsTab);
 
-  var mapObj = require('modules/pages/map');  
-  var mapTab = Ti.UI.createTab({
-    title:'Map',
-    icon:'iphone/nearby_30.png'
-  });
-  var mapWin = new mapObj('Map', mapTab, null);
-  mapTab.window = mapWin;
-  self.addTab(mapTab);
-
-  var projectsObj = require('modules/pages/projects')  
-  var projectsTab = Ti.UI.createTab({
-    title:'Projects',
+  var venuesObj = require('modules/pages/venues')
+  var venuesTab = Ti.UI.createTab({
+    title:'Venues',
     icon:'iphone/favorites_30.png'
   });
-  var projectsWin = new projectsObj('Projects', projectsTab, null);
-  projectsTab.window = projectsWin;
-  self.addTab(projectsTab);
-  projectsWin.load();
+  var venuesWin = new venuesObj('Venues', venuesTab);
+  venuesTab.window = venuesWin;
+  self.addTab(venuesTab);
+  venuesWin.load();
+
+  var newsObj = require('modules/pages/feed');  
+  var newsTab = Ti.UI.createTab({
+    title:'News',
+    icon:'iphone/nearby_30.png'
+  });
+  var newsWin = new newsObj('Map', newsTab);
+  newsTab.window = newsWin;
+  self.addTab(newsTab);
+
+  var meObj = require('modules/pages/me')  
+  var meTab = Ti.UI.createTab({
+    title:'Me',
+    icon:'iphone/favorites_30.png'
+  });
+  var meWin = new meObj('Me', meTab);
+  meTab.window = meWin;
+  self.addTab(meTab);
+  meWin.load();  
+
+  meTab.addEventListener('focus',function(e){
+  	loadMeWindow();
+  })
+
+  function loadMeWindow(){
+    var meObj = require('modules/pages/me');
+    var meWindow = new meObj('Me', meTab);
+    meTab.open(meWindow);
+    meWindow.load();
+  }
 
   var searchObj = require('modules/pages/search')  
   var searchTab = Ti.UI.createTab({
