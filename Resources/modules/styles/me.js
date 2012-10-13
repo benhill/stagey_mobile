@@ -15,44 +15,36 @@ exports = {
     borderWidth:1
   },
 
-  name: {
+  nameLabel: {
     height:Ti.UI.SIZE,
     width:300,
-    left:70,
+    left:65,
     top:20,
-    font:{fontSize:'14', fontWeight:'bold'}
+    font:{fontSize:'18', fontWeight:'bold'}
   },
 
   logoutButton: {
     title: 'Logout',
-    top:70,
+    bottom:10,
     left:10,
     width:300
   },
 
-  line1: {
-    width:320,
-    height:1,
-    top:120,
-    left:0,
-    backgroundColor:'gray'
+  table: {
+    top:75,
+    height:400
   },
 
-  reviewsLabel: {    
+  row: {
+    height:60
+  },
+
+  iconLabel: {    
     height:Ti.UI.SIZE,
     width:300,
-    left:10,
-    top:130,
-    font:{fontSize:'14', fontWeight:'bold'},
-    textAlign:'center'
-  },
-
-  line2: {
-    width:320,
-    height:1,
-    top:155,
-    left:0,
-    backgroundColor:'gray'
+    left:50,
+    top:15,
+    font:{fontSize:'16', fontWeight:'bold'}
   }
 
 }

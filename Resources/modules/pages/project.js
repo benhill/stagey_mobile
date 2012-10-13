@@ -223,7 +223,7 @@ function ProjectWindow(title, containingTab, project_id){
 
       reviewView.addEventListener('click', function(e){
         var reviewsObj = require('modules/pages/reviews');
-        var reviewsWindow = new reviewsObj('Reviews', containingTab, project);
+        var reviewsWindow = new reviewsObj('Reviews', containingTab, null, project);
         containingTab.open(reviewsWindow);
         reviewsWindow.load();
       });

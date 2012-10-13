@@ -7,7 +7,7 @@ function ApplicationTabGroup(windows) {
   var showsObj = require('modules/pages/home');  
   var showsTab = Ti.UI.createTab({
     title:'Shows',
-    icon:'iphone/home_30.png'
+    icon:'iphone/shows_30.png'
   });
   var showsWin = new showsObj('Home', showsTab);
   showsTab.window = showsWin;
@@ -16,7 +16,7 @@ function ApplicationTabGroup(windows) {
   var venuesObj = require('modules/pages/venues')
   var venuesTab = Ti.UI.createTab({
     title:'Venues',
-    icon:'iphone/favorites_30.png'
+    icon:'iphone/nearby_30.png'
   });
   var venuesWin = new venuesObj('Venues', venuesTab);
   venuesTab.window = venuesWin;
@@ -26,7 +26,7 @@ function ApplicationTabGroup(windows) {
   var newsObj = require('modules/pages/feed');  
   var newsTab = Ti.UI.createTab({
     title:'News',
-    icon:'iphone/nearby_30.png'
+    icon:'iphone/news_30.png'
   });
   var newsWin = new newsObj('Map', newsTab);
   newsTab.window = newsWin;
@@ -35,7 +35,7 @@ function ApplicationTabGroup(windows) {
   var meObj = require('modules/pages/me')  
   var meTab = Ti.UI.createTab({
     title:'Me',
-    icon:'iphone/favorites_30.png'
+    icon:'iphone/me_30.png'
   });
   var meWin = new meObj('Me', meTab);
   meTab.window = meWin;

@@ -5,7 +5,7 @@ function MeWindow(title, containingTab){
   var self = Ti.UI.createWindow(styles.defaultWindow);
   self.title = title;
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
-  var wrapper = Ti.UI.createView(meStyles.wrapper);
+  var wrapper = Ti.UI.createView(meStyles.wrapper);  
 
   self.load = function(){
 
@@ -18,73 +18,86 @@ function MeWindow(title, containingTab){
       containingTab.open(loginWindow);
     }
     else{
-      
-      var url = app.api_url + "user/" + Ti.App.currentUser.id;
 
-      var xhr =  Ti.Network.createHTTPClient({
-        onload: function(){
-          
-          var user = JSON.parse(this.responseText);
-
-          var image = Ti.UI.createImageView(meStyles.image);
-          image.image = user.thumbnail_url;
-
-          image.addEventListener('click', function(e){
-            var imageObj = require('modules/pages/image');
-            var imageWindow = new imageObj(containingTab, user.image_url);
-            containingTab.open(imageWindow);
-          });
-
-          wrapper.add(image);   
-
-          var name = Ti.UI.createLabel(meStyles.name);
-          name.text = (Ti.App.currentUser.first_name + " " + Ti.App.currentUser.last_name),
-          wrapper.add(name);
-
-          var logoutButton = Ti.UI.createButton(meStyles.logoutButton);
-          wrapper.add(logoutButton);
-
-          logoutButton.addEventListener('click', function(e){
-            logout();
-          });
-
-          if(user.review_count > 0){
-            var line = Ti.UI.createView(meStyles.line1);
-            wrapper.add(line);
-
-            var reviewsLabel = Ti.UI.createLabel(meStyles.reviewsLabel);
-            reviewsLabel.text = "Reviews by " + user.first_name;
-            wrapper.add(reviewsLabel);
-
-            reviewsLabel.addEventListener('click', function(e){
-              var reviewsObj = require('modules/pages/reviews');
-              var reviewsWindow = new reviewsObj('Reviews by ' + user.first_name, containingTab, null, user.id);
-              containingTab.open(reviewsWindow);
-              reviewsWindow.load();
-            });
-
-            var line = Ti.UI.createView(meStyles.line2);
-            wrapper.add(line);
-          }
-
-          self.add(wrapper);
-
-          self.remove(spinner);
-        },
-        onerror: function(){
-          Ti.API.debug("STATUS: " + this.status);
-          Ti.API.debug("TEXT:   " + this.responseText);
-          Ti.API.debug("ERROR:  " + this.error);
-          alert('There was an error retrieving the remote data. Try again.');
-        },
-        timeout:5000
+      var userObj = require('modules/models/user');
+      new userObj(Ti.App.currentUser.id, function(user){
+        loadUser(user);
       });
+
+      function loadUser(user){
+
+        var image = Ti.UI.createImageView(meStyles.image);
+        image.image = user.thumbnail_url;
+
+        image.addEventListener('click', function(e){
+          var imageObj = require('modules/pages/image');
+          var imageWindow = new imageObj(containingTab, user.image_url);
+          containingTab.open(imageWindow);
+        });
+
+        wrapper.add(image);   
+
+        var nameLabel = Ti.UI.createLabel(meStyles.nameLabel);
+        var name = Ti.App.currentUser.first_name + " " + Ti.App.currentUser.last_name;
+        if(name.length >= 20){name = name.substr(0,20) + '...'};
+        nameLabel.text = name;
+        wrapper.add(nameLabel);
+
+        var icons = [];
+        var tableData = [];
+        var table = Ti.UI.createTableView(meStyles.table);
+
+        var iconObj = require('modules/models/icons');
+    
+        var reviews = new iconObj('My Reviews', 'iphone/all_shows_48.png', 'reviews', null, false, null);
+        icons.push(reviews);
+
+        var favorites = new iconObj('My Favorites', 'iphone/all_shows_48.png', 'projects', null, false, 'favorites');
+        icons.push(favorites);
+
+        var schedule = new iconObj('My Schedule', 'iphone/all_shows_48.png', 'performances', null, false, 'schedule');
+        icons.push(schedule);          
+
+        for(i=0; i< icons.length; i++){
+
+          var icon = icons[i];
+
+          var row = Ti.UI.createTableViewRow(meStyles.row);
+          row.icon = icon;
+
+          var iconLabel = Ti.UI.createLabel(meStyles.iconLabel);
+          iconLabel.text = icon.text;
+          iconLabel.icon = icon;
+          row.add(iconLabel);
+
+          row.addEventListener('click', function(e){
+          	icon = e.source.icon;
+            var iconObj = require('modules/pages/' + icon.window);
+            var iconWindow = new iconObj(e.source.icon.text, containingTab, icon.third_param);
+            containingTab.open(iconWindow);
+            iconWindow.load();
+          });
+
+          tableData.push(row);
+        }
+
+        table.setData(tableData);
+        wrapper.add(table);
+
+        var logoutButton = Ti.UI.createButton(meStyles.logoutButton);
+        wrapper.add(logoutButton);
+
+        logoutButton.addEventListener('click', function(e){
+          logout();
+        });
+
+        self.add(wrapper);
+
+        self.remove(spinner);
+      }
 
       spinner.show();
       self.add(spinner);
-
-      xhr.open("GET", url);
-      xhr.send();
     }
   }
 

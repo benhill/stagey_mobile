@@ -1,4 +1,4 @@
-function ReviewsWindow(title, containingTab, project, user_id){
+function ReviewsWindow(title, containingTab, user_id, project){
 
   var styles = require('modules/styles/styles');
   var reviewsStyles = require('modules/styles/reviews');
