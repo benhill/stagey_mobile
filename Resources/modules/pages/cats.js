@@ -5,7 +5,7 @@ function CatsWindow(title, containingTab) {
   var self = Ti.UI.createWindow(styles.defaultWindow);
   self.title = title;
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
-  var table = Ti.UI.createTableView();
+  var table = Ti.UI.createTableView(catStyles.table);
   var tableData = [];
   var i, row, title;
   var currentTab = Ti.UI.currentTab;
@@ -52,11 +52,8 @@ function CatsWindow(title, containingTab) {
     });
 
     function loadProjects(e, islongclick) { 
-      var projectsObj = require('modules/pages/projects');
-      var projectsWindow = new projectsObj(app.toTitleCase(e.rowData.cat.name), containingTab, 'cat');
-      projectsWindow.cat_id = e.rowData.cat.id;
-      containingTab.open(projectsWindow);
-      projectsWindow.load();
+      params = [app.toTitleCase(e.rowData.cat.name), containingTab, 'cat', null, e.rowData.cat.id];
+      app.openWindow('projects', containingTab, params)
     }
 
     xhr.open("GET", url);

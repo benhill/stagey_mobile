@@ -5,23 +5,26 @@ function ImageWindow(containingTab, image_path){
 
   var self = Ti.UI.createWindow(styles.defaultWindow);
 
-	var objectImage = Titanium.UI.createImageView({
-	  image: image_path,
-	  top:15
-	});
-	self.add(objectImage);
+  self.load = function(){
 
-	var closeButton = Titanium.UI.createButton({
-	  title:'Close',
-	  height:30,
-	  width:150,
-	  top:5
-	});
-	self.add(closeButton);
+  	var objectImage = Titanium.UI.createImageView({
+  	  image: image_path,
+  	  top:15
+  	});
+  	self.add(objectImage);
 
-	closeButton.addEventListener('click', function(){
-	  self.close();
-	});
+  	var closeButton = Titanium.UI.createButton({
+  	  title:'Close',
+  	  height:30,
+  	  width:150,
+  	  top:5
+  	});
+  	self.add(closeButton);
+
+  	closeButton.addEventListener('click', function(){
+  	  self.close();
+  	});
+  }
   
   return self;
 }

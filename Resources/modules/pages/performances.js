@@ -1,14 +1,13 @@
 function PerformancesWindow(title, containingTab, mode){
 
   var styles = require('modules/styles/styles');
-  var nowStyles = require('modules/styles/now');
-  
+  var perfStyles = require('modules/styles/performances');
   var self = Ti.UI.createWindow(styles.defaultWindow);
   self.title = title;
   var performancesObj = require('modules/models/performances');
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);  
   var nowTab = Ti.UI.currentTab;
-  var table = Ti.UI.createTableView();
+  var table = Ti.UI.createTableView(perfStyles.table);
   var page = 1
   var rows_per_page = 9
   var lat,lng;  
@@ -34,7 +33,7 @@ function PerformancesWindow(title, containingTab, mode){
         loadPerformances(performances);
       }
       else{
-        var noPerfs = Ti.UI.createLabel(nowStyles.noPerfs);
+        var noPerfs = Ti.UI.createLabel(perfStyles.noPerfs);
         spinner.hide();
         self.add(noPerfs);
       }
@@ -48,11 +47,11 @@ function PerformancesWindow(title, containingTab, mode){
 
         var performance = performances[i];
 
-        var row = Ti.UI.createTableViewRow(nowStyles.row);
+        var row = Ti.UI.createTableViewRow(perfStyles.row);
 
         row.performance = performance;
 
-        var projectThumb = Ti.UI.createImageView(nowStyles.projectThumb);
+        var projectThumb = Ti.UI.createImageView(perfStyles.projectThumb);
         projectThumb.image = performance.project_thumbnail;
         projectThumb.performance = performance;
         row.add(projectThumb);            
@@ -60,23 +59,20 @@ function PerformancesWindow(title, containingTab, mode){
         var title;
         (performance.project_name.length >= 30) ? title = performance.project_name.substr(0,30) + "..." : title = performance.project_name;
 
-        var projectTitle = Ti.UI.createLabel(nowStyles.projectTitle);
+        var projectTitle = Ti.UI.createLabel(perfStyles.projectTitle);
         projectTitle.text = title;
         projectTitle.performance = performance;
         row.add(projectTitle);
 
-        var projectInfo = Ti.UI.createLabel(nowStyles.projectInfo);
+        var projectInfo = Ti.UI.createLabel(perfStyles.projectInfo);
         projectInfo.text = performance.info;
         projectInfo.performance = performance;
         row.add(projectInfo);
 
         row.addEventListener('click', function(e){
           if(mode == 'schedule'){
-            var projectObj = require('modules/pages/project');            
-            var projectWindow = new projectObj('Project', containingTab, e.source.performance.project_id);
-            projectWindow.layout = 'vertical';
-            containingTab.open(projectWindow);
-            projectWindow.load();
+            params = ['Project', containingTab, e.source.performance.project_id];
+            app.openWindow('project', containingTab, params);
           }            
           else{loadPerformance(e);}
         });
@@ -84,9 +80,9 @@ function PerformancesWindow(title, containingTab, mode){
         tableData.push(row);
       }
 
-      var row = Ti.UI.createTableViewRow(nowStyles.row);
+      var row = Ti.UI.createTableViewRow(perfStyles.row);
 
-      var moreLabel = Ti.UI.createLabel(nowStyles.moreLabel);
+      var moreLabel = Ti.UI.createLabel(perfStyles.moreLabel);
       
       if(total_results > (rows_per_page * page)){
         row.add(moreLabel);
@@ -121,31 +117,36 @@ function PerformancesWindow(title, containingTab, mode){
     function loadPerformance(e, islongclick) {
 
       if(e.source.performance.pwyc){
-        var pwycObj = require('modules/pages/pwyc');
-        var nextWindow = new pwycObj('PWYC', containingTab, e.source.performance);
+        var window = pwyc;
+        var params = ['PWYC', containingTab, e.source.performance];        
       }
       else{
-        var perfObj = require('modules/pages/performance');
-        var nextWindow = new perfObj('Performance', containingTab, e.source.performance.id)
+        var window = 'performance';
+        var params = ['Performance', containingTab, e.source.performance.id];
       }
 
       if(Ti.App.currentUser){
-        containingTab.open(nextWindow);
-        nextWindow.load();   
+        app.openWindow(window, containingTab, params)
       }   
       else{
-        var loginObj = require('modules/pages/login');
-        var loginWindow = new loginObj('Login', containingTab, nextWindow);
-        containingTab.open(loginWindow);
+        var newObj = require('modules/pages/' + window);
+        var newWindow = newObj.apply(this, params);
+        newWindow.navBarHidden = true;
+
+        var headerObj = require('modules/common/header');
+        newWindow.add(new headerObj());
+
+        var login_params = ['Login', containingTab, newWindow];
+        app.openWindow('login', containingTab, login_params);
       }
       
     }
 
     function loadMore(e,islongclick){
       table.deleteRow(rows_per_page * (page-1),{animationStyle:Ti.UI.iPhone.RowAnimationStyle.NONE})
-      var row = Ti.UI.createTableViewRow(nowStyles.row);
+      var row = Ti.UI.createTableViewRow(perfStyles.row);
 
-      var spinner = Ti.UI.createActivityIndicator(nowStyles.spinner);
+      var spinner = Ti.UI.createActivityIndicator(perfStyles.spinner);
       row.add(spinner);
       spinner.show();
 
@@ -178,7 +179,7 @@ function PerformancesWindow(title, containingTab, mode){
       url = app.api_url + 'performances/7.json?project_id=' + mode.id + '&';
     }
 
-    url += 'user_id=' + Ti.App.currentUser.id;
+    if(Ti.App.currentUser){url += 'user_id=' + Ti.App.currentUser.id};
 
     return url
   }

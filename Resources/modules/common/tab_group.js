@@ -3,64 +3,66 @@ function ApplicationTabGroup(windows) {
   var ApplicationTabGroup = require('modules/common/tab_group');
 
   var self = Ti.UI.createTabGroup();
-
-  var showsObj = require('modules/pages/home');  
+  
   var showsTab = Ti.UI.createTab({
     title:'Shows',
     icon:'iphone/shows_30.png'
   });
-  var showsWin = new showsObj('Home', showsTab);
-  showsTab.window = showsWin;
+  showsTab.window = createWin('shows', showsTab)
   self.addTab(showsTab);
+  showsTab.window.load();  
 
-  var venuesObj = require('modules/pages/venues')
   var venuesTab = Ti.UI.createTab({
     title:'Venues',
     icon:'iphone/nearby_30.png'
   });
-  var venuesWin = new venuesObj('Venues', venuesTab);
-  venuesTab.window = venuesWin;
+  venuesTab.window = createWin('venues', venuesTab)
   self.addTab(venuesTab);
-  venuesWin.load();
-
-  var newsObj = require('modules/pages/feed');  
+  venuesTab.window.load();
+  
   var newsTab = Ti.UI.createTab({
     title:'News',
     icon:'iphone/news_30.png'
-  });
-  var newsWin = new newsObj('Map', newsTab);
-  newsTab.window = newsWin;
+  });  
+  newsTab.window = createWin('feed', newsTab)
   self.addTab(newsTab);
-
-  var meObj = require('modules/pages/me')  
+  newsTab.window.load();
+  
   var meTab = Ti.UI.createTab({
     title:'Me',
     icon:'iphone/me_30.png'
   });
-  var meWin = new meObj('Me', meTab);
-  meTab.window = meWin;
+  meTab.window = createWin('me', meTab);
   self.addTab(meTab);
-  meWin.load();  
+  meTab.window.load();
 
   meTab.addEventListener('focus',function(e){
   	loadMeWindow();
   })
 
   function loadMeWindow(){
-    var meObj = require('modules/pages/me');
-    var meWindow = new meObj('Me', meTab);
-    meTab.open(meWindow);
-    meWindow.load();
+    params = ['Me', meTab];
+    app.openWindow('me', meTab, params)
   }
-
-  var searchObj = require('modules/pages/search')  
+  
   var searchTab = Ti.UI.createTab({
     title:'Search',
     icon:'iphone/search_30.png'
   });
-  var searchWin = new searchObj('Search', searchTab, null);
-  searchTab.window = searchWin;
+  searchTab.window = createWin('search', searchTab);
   self.addTab(searchTab);
+  searchTab.window.load();
+
+  function createWin(winName, tab){
+    var winObj = require('modules/pages/' + winName)
+    win = new winObj(winName, tab);
+    win.navBarHidden = true;
+
+    var headerObj = require('modules/common/header');
+    win.add(new headerObj());
+
+    return win;
+  }
 
   return self;
 };

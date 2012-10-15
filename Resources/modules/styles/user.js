@@ -1,5 +1,9 @@
 exports = {
 
+  table: {
+    top:50
+  },
+
   userScroll: {
   	contentWidth:Ti.UI.SIZE,
     contentHeight:Ti.UI.SIZE,
@@ -8,7 +12,7 @@ exports = {
     verticalBounce:true,
     showVerticalScrollIndicator:true,
     height:350,
-    top:0
+    top:50
 	},
 
   wrapper: {

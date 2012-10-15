@@ -3,7 +3,7 @@ exports = {
   venueScroll: {
     contentWidth:'95%',
     contentHeight:1100,
-    top:5,
+    top:70,
     left:0,
     height:800,
     showVerticalScrollIndicator:true,

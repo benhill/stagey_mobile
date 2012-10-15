@@ -3,7 +3,7 @@ var default_search_text = 'search for a show';
 exports = {	
 
 	searchView: {
-		top:0,
+		top:60,
     left:0,
     height:50,
     layout:'absolute'
@@ -38,7 +38,7 @@ exports = {
   },
 
   iconsView: {
-    top:55,
+    top:115,
     left:0,
     height:260,
     layout:'absolute'

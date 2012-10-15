@@ -1,7 +1,7 @@
 exports = {
 
   detailsView: {
-    top:0,
+    top:50,
     left:0,
     height:100,
     layout:'absolute'
@@ -32,7 +32,7 @@ exports = {
   },
 
   table: {
-    top:'20%',
+    top:100,
     height:'80%'
   },
 

@@ -12,10 +12,13 @@ function MeWindow(title, containingTab){
     if(Ti.App.currentUser == null){
       var meObj = require('modules/pages/me');
       var meWindow = new meObj('Me', containingTab);
+      meWindow.navBarHidden = true;
 
-      var loginObj = require('modules/pages/login');
-      var loginWindow = new loginObj('Login', containingTab, meWindow);
-      containingTab.open(loginWindow);
+      var headerObj = require('modules/common/header');
+      meWindow.add(new headerObj());
+
+      params = ['Login', containingTab, meWindow]
+      app.openWindow('login', containingTab, params)
     }
     else{
 
@@ -30,9 +33,8 @@ function MeWindow(title, containingTab){
         image.image = user.thumbnail_url;
 
         image.addEventListener('click', function(e){
-          var imageObj = require('modules/pages/image');
-          var imageWindow = new imageObj(containingTab, user.image_url);
-          containingTab.open(imageWindow);
+          params = [containingTab, user.image_url];
+          app.openWindow('image', containingTab, params)
         });
 
         wrapper.add(image);   
@@ -71,11 +73,9 @@ function MeWindow(title, containingTab){
           row.add(iconLabel);
 
           row.addEventListener('click', function(e){
-          	icon = e.source.icon;
-            var iconObj = require('modules/pages/' + icon.window);
-            var iconWindow = new iconObj(e.source.icon.text, containingTab, icon.third_param);
-            containingTab.open(iconWindow);
-            iconWindow.load();
+          	icon = e.source.icon;            
+            params = [e.source.icon.text, containingTab, icon.third_param];
+            app.openWindow(icon.window, containingTab, params);
           });
 
           tableData.push(row);
@@ -106,10 +106,9 @@ function MeWindow(title, containingTab){
   function logout(){
     Ti.App.Properties.setString('currentUser', null);
     Ti.App.currentUser = null
-    
-    var loginObj = require('modules/pages/login');
-    var loginWindow = new loginObj('Login', containingTab);
-    containingTab.open(loginWindow);
+        
+    params = ['Login', containingTab]
+    app.openWindow('login', containingTab, params)
   }
 }
 

@@ -2,52 +2,53 @@ function UsersWindow(title, containingTab, users){
 
   var styles = require('modules/styles/styles');
   var usersStyles = require('modules/styles/users');
-
   var self = Ti.UI.createWindow(styles.defaultWindow);
   self.title = title;
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
-  var usersTable = Ti.UI.createTableView();
+  var usersTable = Ti.UI.createTableView(usersStyles.table);
   var usersData = [];
 
-  for(i = 0; i < users.length; i++){
+  self.load = function(){
 
-    user = users[i];
+    for(i = 0; i < users.length; i++){
 
-    var row = Ti.UI.createTableViewRow(usersStyles.row);
-    row.link = 'user.js';
-    row.user = user;
+      user = users[i];
 
-    var image = Ti.UI.createImageView(usersStyles.image);
-    image.image = user.image_url;
-    image.user = user; 
-    row.add(image);
+      var row = Ti.UI.createTableViewRow(usersStyles.row);
+      row.link = 'user.js';
+      row.user = user;
 
-    var nameLabel = Ti.UI.createLabel(usersStyles.nameLabel);
-    nameLabel.text = user.first_name + ' ' + user.last_name;
-    nameLabel.user = user; 
-    row.add(nameLabel);
+      var image = Ti.UI.createImageView(usersStyles.image);
+      image.image = user.image_url;
+      image.user = user; 
+      row.add(image);
 
-    var roleLabel = Ti.UI.createLabel(usersStyles.roleLabel);
-    roleLabel.text = user.role;
-    roleLabel.user = user;
-    row.add(roleLabel);
+      var nameLabel = Ti.UI.createLabel(usersStyles.nameLabel);
+      nameLabel.text = user.first_name + ' ' + user.last_name;
+      nameLabel.user = user; 
+      row.add(nameLabel);
 
-    usersData.push(row);
-  }
+      var roleLabel = Ti.UI.createLabel(usersStyles.roleLabel);
+      roleLabel.text = user.role;
+      roleLabel.user = user;
+      row.add(roleLabel);
 
-  usersTable.setData(usersData);
-  self.add(usersTable);
+      usersData.push(row);
+    }
 
-  self.remove(spinner);
+    usersTable.setData(usersData);
+    self.add(usersTable);
 
-  usersTable.addEventListener('click', function(e){  
-    loadUser(e);
-  });
+    self.remove(spinner);
 
-  function loadUser(e, islongclick) { 
-    var userObj = require('modules/pages/user');
-    var userWindow = new userObj('User', containingTab, e.source.user.id);
-    containingTab.open(userWindow);
+    usersTable.addEventListener('click', function(e){  
+      loadUser(e);
+    });
+
+    function loadUser(e, islongclick) { 
+      params = ['User', containingTab, e.source.user.id];
+      app.openWindow('user', containingTab, params);
+    }
   }
 
   return(self);

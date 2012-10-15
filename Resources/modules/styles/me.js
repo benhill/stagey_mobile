@@ -3,7 +3,7 @@ exports = {
   wrapper: {
     height:'100%',
     width:'100%',
-    top:0
+    top:50
   },
 
   image: {
@@ -25,14 +25,14 @@ exports = {
 
   logoutButton: {
     title: 'Logout',
-    bottom:10,
+    bottom:60,
     left:10,
     width:300
   },
 
   table: {
     top:75,
-    height:400
+    height:250
   },
 
   row: {

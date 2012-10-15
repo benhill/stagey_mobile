@@ -6,30 +6,33 @@ function GalleryWindow(title, containingTab, images){
   self.title = title;
   var galleryScroll = Titanium.UI.createScrollView(galleryStyles.galleryScroll);;
 
-  var image_place = 0;
-  var image_top = 0;
+  self.load = function(){
 
-  for(i = 0;i < images.length; i++){
+    var image_place = 0;
+    var image_top = 0;
 
-    if(i > 0 && i % 4 === 0){image_place = 0;image_top += 75;}
+    for(i = 0;i < images.length; i++){
 
-    var image = Ti.UI.createImageView(galleryStyles.image);
-    image.image = images[i].image.thumbnail_path;
-    image.full_image_path = images[i].image.image_path;
-    image.left = image_place * 77;
-    image.top = image_top;
-    galleryScroll.add(image);
+      if(i > 0 && i % 4 === 0){image_place = 0;image_top += 75;}
 
-    image.addEventListener('click', function(e){
-      var imageObj = require('modules/pages/image');
-      var imageWindow = new imageObj(containingTab, e.source.full_image_path);
-      containingTab.open(imageWindow);
-    });
+      var image = Ti.UI.createImageView(galleryStyles.image);
+      image.image = images[i].image.thumbnail_path;
+      image.full_image_path = images[i].image.image_path;
+      image.left = image_place * 77;
+      image.top = image_top;
+      galleryScroll.add(image);
 
-    image_place ++;
+      image.addEventListener('click', function(e){
+        params = [containingTab, e.source.full_image_path];
+        app.openWindow('image', containingTab, params);
+      });
+
+      image_place ++;
+    }
+
+    self.add(galleryScroll);
   }
-
-  self.add(galleryScroll);
+  
   return(self)
 }
 

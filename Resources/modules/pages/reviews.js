@@ -5,7 +5,7 @@ function ReviewsWindow(title, containingTab, user_id, project){
   var self = Ti.UI.createWindow(styles.defaultWindow);
   self.title = title;
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
-  var table = Ti.UI.createTableView();  
+  var table = Ti.UI.createTableView(reviewsStyles.table);
   var page = 1
   var rows_per_page = 9
   
@@ -113,10 +113,8 @@ function ReviewsWindow(title, containingTab, user_id, project){
     });
 
     function loadReview(e, islongclick) { 
-      var reviewObj = require('modules/pages/review');
-      var reviewWindow = new reviewObj('Show Review', containingTab, e.rowData.review.id);
-      containingTab.open(reviewWindow);
-      reviewWindow.load();
+      params = ['Show Review', containingTab, e.rowData.review.id];
+      app.openWindow('review', containingTab, params);
     }
 
     function loadMore(e,islongclick){

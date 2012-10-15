@@ -69,9 +69,8 @@ function OrderWindow(title, containingTab, cc_num, cc_fname, cc_lname, csv, expi
           alert(e.error)
         }
         else{
-          var receiptObj = require('modules/pages/receipt');
-          var receiptWindow = new receiptObj('Receipt', containingTab, e.sale_id);
-          containingTab.open(receiptWindow);
+          params = ['Receipt', containingTab, e.sale_id];
+          app.openWindow('receipt', containingTab, params);
         }
       })
     })

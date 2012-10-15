@@ -23,10 +23,8 @@ function PwycWindow(title, containingTab, performance){
 	  self.add(quantButton);
 
 	  quantButton.addEventListener('click', function(e){
-	  	var quantObj = require('modules/pages/performance');
-	    var quantWindow = new quantObj('Performance', containingTab, performance.id, pwycText.value)
-	    containingTab.open(quantWindow);
-	    quantWindow.load();
+	  	params = ['Performance', containingTab, performance.id, pwycText.value];
+	    app.openWindows('performance', containingTab, params);
 	  })
 
 	  function addKeyboardToolbar(textbox){

@@ -3,7 +3,7 @@ exports = {
   galleryScroll: {
     contentWidth:'95%',
     contentHeight:1100,
-    top:5,
+    top:55,
     left:0,
     height:800,
     showVerticalScrollIndicator:true,

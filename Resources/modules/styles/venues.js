@@ -1,4 +1,8 @@
 exports = {	
+  
+  table: {
+    top:50
+  },
 
   venueThumb: {
     width:45,

@@ -91,9 +91,8 @@ function PayWindow(title, containingTab){
     payButton.addEventListener('click', function(e){
       expiryMonth = expiryLabel.value.split(',')[0];
       expiryYear = expiryLabel.value.split(',')[1];        
-      var orderObj = require('modules/pages/order');
-      var orderWindow = new orderObj('Review Order', containingTab, cardText.value, fNameText.value, lNameText.value, csvText.value, expiryMonth, expiryYear);
-      containingTab.open(orderWindow);      
+      params = ['Review Order', containingTab, cardText.value, fNameText.value, lNameText.value, csvText.value, expiryMonth, expiryYear];
+      app.openWindow('order', containingTab, params);
     });
   }
 

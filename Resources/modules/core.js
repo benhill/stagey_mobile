@@ -22,6 +22,47 @@ exports.register = function(name, object) {
 	plugins[name] = object;
 };
 
+exports.openWindow = function(windowName, containingTab, params){
+  var windowObj = require('modules/pages/' + windowName);
+  var newWindow = windowObj.apply(this, params);
+  openWithWindow(newWindow, containingTab);
+};
+
+exports.openFromWindow = function(window, containingTab){  
+  openWithWindow(window, containingTab);
+};
+
+function openWithWindow(window, containingTab){
+  window.navBarHidden = true;
+  var headerObj = require('modules/common/header');
+  window.add(new headerObj());
+  containingTab.open(window);
+  window.load();
+}
+
+exports.addKeyboardToolbar = function(textbox){
+  var flexSpace = Ti.UI.createButton({
+    systemButton:Ti.UI.iPhone.SystemButton.FLEXIBLE_SPACE,
+    right:0
+  });
+
+  var doneButton = Ti.UI.createButton({
+    systemButton:Ti.UI.iPhone.SystemButton.DONE,
+    right:0
+  });
+
+  textbox.keyboardToolbar = [flexSpace, doneButton];
+
+  textbox.addEventListener('focus', function(e) {
+    textbox.keyboardToolbar = [flexSpace, doneButton];
+    doneButton.activeFld = textbox;
+  });
+
+  doneButton.addEventListener('click', function(e) {
+    e.source.activeFld.blur();
+  });
+};	
+
 exports.properties = function() { 
 	return properties; 
 };

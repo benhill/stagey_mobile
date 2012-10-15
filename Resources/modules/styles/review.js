@@ -1,4 +1,4 @@
-exports = {	
+exports = {
 
   reviewScroll: {
     contentWidth:Ti.UI.SIZE,
@@ -7,8 +7,8 @@ exports = {
     scrollType:'vertical',
     verticalBounce:true,
     showVerticalScrollIndicator:true,
-    height:350,
-    top:0,
+    height:'100%',
+    top:50,
     left:0
   },
 

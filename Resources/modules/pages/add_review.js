@@ -23,11 +23,9 @@ function AddReviewWindow(title, containingTab, project){
       new addReviewObj(project.id, tabRating.value, textBody.value, function(results){
         if(results.id){
           alert('The Review has been Added');
-          var projectObj = require('modules/pages/project');
-          var projectWindow = new projectObj('Project', containingTab, project.id)
-          projectWindow.layout = 'vertical'
-          containingTab.open(projectWindow);
-          projectWindow.load();
+          
+          params = ['Project', containingTab, project.id];
+          app.openWindow('project', containingTab, params);
         }
         else{
           alert('there was an issue adding this review');

@@ -21,7 +21,7 @@ function PerformanceWindow(title, containingTab, performance_id, pwycPrice){
       var cost;
       pwycPrice ? cost = pwycPrice : cost = performance.cost;
 
-	  (performance.project_title.length >= 25) ? title = performance.project_title.substr(0,25) + "..." : title = performance.project_title;
+	    (performance.project_title.length >= 25) ? title = performance.project_title.substr(0,25) + "..." : title = performance.project_title;
 
       var titleLabel = Ti.UI.createLabel(perfStyles.titleLabel);
 	    titleLabel.text = title;
@@ -78,10 +78,9 @@ function PerformanceWindow(title, containingTab, performance_id, pwycPrice){
               if (e.error){
                 alert(e.error)
               }
-              else{
-                var receiptObj = require('modules/pages/receipt');
-                var receiptWindow = new receiptObj('Receipt', containingTab, e.sale_id);
-                containingTab.open(receiptWindow);
+              else{                
+                var params = ['Receipt', containingTab, e.sale_id];
+                app.openWindow('receipt', containingTab, params);
               }
             })
           }
@@ -117,10 +116,8 @@ function PerformanceWindow(title, containingTab, performance_id, pwycPrice){
     };
 
   function loadPayWindow(){
-    var payObj = require('modules/pages/pay');                
-    var payWindow = new payObj('Credit Card', containingTab);
-    containingTab.open(payWindow);
-    payWindow.load();
+    var params = ['Credit Card', containingTab];
+    app.openWindow('pay', containingTab, params);
   }
 
   return self;

@@ -2,57 +2,61 @@ function AddUserWindow(title, containingTab, return_win){
 
   var styles = require('modules/styles/styles');
   var addUserStyles = require('modules/styles/add_user');
-
   var self = Ti.UI.createWindow(styles.defaultWindow);
   self.title = title;
   var addUserObj = require('modules/models/add_user');
 
-  var emailLabel = Ti.UI.createTextField(addUserStyles.emailLabel);
-  self.add(emailLabel);
+  self.load = function(){    
 
-  var firstNameLabel = Ti.UI.createTextField(addUserStyles.firstNameLabel);
-  self.add(firstNameLabel);
+    var emailLabel = Ti.UI.createTextField(addUserStyles.emailLabel);
+    self.add(emailLabel);
+    app.addKeyboardToolbar(emailLabel);
 
-  var lastNameLabel = Ti.UI.createTextField(addUserStyles.lastNameLabel);
-  self.add(lastNameLabel);
+    var firstNameLabel = Ti.UI.createTextField(addUserStyles.firstNameLabel);
+    self.add(firstNameLabel);
+    app.addKeyboardToolbar(firstNameLabel);
 
-  var passwordLabel = Ti.UI.createTextField(addUserStyles.passwordLabel);
-  self.add(passwordLabel);
-  
-  var addUserButton = Ti.UI.createButton(addUserStyles.addUserButton);
-  self.add(addUserButton);
+    var lastNameLabel = Ti.UI.createTextField(addUserStyles.lastNameLabel);
+    self.add(lastNameLabel);
+    app.addKeyboardToolbar(lastNameLabel);
 
-  addUserButton.addEventListener('click', function(e){
-    runAddUser();
-  });
+    var passwordLabel = Ti.UI.createTextField(addUserStyles.passwordLabel);
+    self.add(passwordLabel);
+    app.addKeyboardToolbar(passwordLabel);
+    
+    var addUserButton = Ti.UI.createButton(addUserStyles.addUserButton);
+    self.add(addUserButton);
 
-  function runAddUser(){    
-    new addUserObj(emailLabel.value, firstNameLabel.value, lastNameLabel.value, passwordLabel.value, function(results){
-      addUser(results);
+    addUserButton.addEventListener('click', function(e){
+      runAddUser();
     });
-  };
 
-  function addUser(results){
-    if(results.error){
-      alert(results.error);
-    }
-    else{
-      Ti.App.Properties.setString('currentUser', JSON.stringify(results));
-      Ti.App.Properties.setString('userPassword', passwordLabel.value);
-      Ti.App.currentUser = results;
-      Ti.App.userPassword = passwordLabel.value;
+    function runAddUser(){    
+      new addUserObj(emailLabel.value, firstNameLabel.value, lastNameLabel.value, passwordLabel.value, function(results){
+        addUser(results);
+      });
+    };
 
-      if(return_win){
-        containingTab.open(return_win);
-        return_win.load();
+    function addUser(results){
+      if(results.error){
+        alert(results.error);
       }
       else{
-        var homeObj = require('modules/pages/home');
-        var homeWindow = new homeObj('Home', containingTab);
-        containingTab.open(homeWindow);
+        Ti.App.Properties.setString('currentUser', JSON.stringify(results));
+        Ti.App.Properties.setString('userPassword', passwordLabel.value);
+        Ti.App.currentUser = results;
+        Ti.App.userPassword = passwordLabel.value;
+
+        if(return_win){
+          app.openFromWindow(return_win, containingTab);
+        }
+        else{
+          params = ['Me', containingTab];
+          app.openWindow('home', containingTab, params);
+        }
       }
-    }
-  };
+    };
+  }
 
   return(self);
 }

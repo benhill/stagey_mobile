@@ -2,11 +2,10 @@ function VenuesWindow(title, containingTab){
 
   var styles = require('modules/styles/styles');
   var venueStyles = require('modules/styles/venues');
-
   var self = Ti.UI.createWindow(styles.defaultWindow);
   self.title = title;
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);  
-  var table = Ti.UI.createTableView();
+  var table = Ti.UI.createTableView(venueStyles.table);
   var tableData = [];
   var venuesTab = Titanium.UI.currentTab;
 
@@ -53,11 +52,8 @@ function VenuesWindow(title, containingTab){
     });
 
     function openVenue(e, islongclick) { 
-      var venueObj = require('modules/pages/venue');
-      var venueWindow = new venueObj('Venue', containingTab, e.source.venue_id);
-      venueWindow.layout = 'vertical';
-      containingTab.open(venueWindow);
-      venueWindow.load();
+      params = ['Venue', containingTab, e.source.venue_id];
+      app.openWindow('venue', containingTab, params);
     }
     
     self.add(spinner);

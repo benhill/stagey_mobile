@@ -2,7 +2,6 @@ function ProjectWindow(title, containingTab, project_id){
 
   var styles = require('modules/styles/styles');
   var projectStyles = require('modules/styles/project');
-
   var self = Ti.UI.createWindow(styles.defaultWindow);
   self.title = title;
   var projectObj = require('modules/models/project');
@@ -59,9 +58,8 @@ function ProjectWindow(title, containingTab, project_id){
         galleryView.add(img);            
 
         img.addEventListener('click', function(e){
-          var imageObj = require('modules/pages/image');
-          var imageWindow = new imageObj(containingTab, e.source.full_image_path);
-          containingTab.open(imageWindow);
+          params = [containingTab, e.source.full_image_path];
+          app.openWindow('image', containingTab, params);
         });
       }
 
@@ -73,9 +71,8 @@ function ProjectWindow(title, containingTab, project_id){
         projectScroll.add(moreImagesLabel);
 
         moreImagesLabel.addEventListener('click', function(e){
-          var galleryObj = require('modules/pages/gallery');
-          var galleryWindow = new galleryObj(project.title, containingTab, project.images);
-          containingTab.open(galleryWindow);          
+          params = [project.title, containingTab, project.images];
+          app.openWindow('gallery', containingTab, params);
         });
       }
 
@@ -85,9 +82,8 @@ function ProjectWindow(title, containingTab, project_id){
       projectScroll.add(descriptionLabel);
 
       descriptionLabel.addEventListener('click', function(e){
-        var descObj = require('modules/pages/project_description');
-        var descWindow = new descObj('Show Description', containingTab, project.id);
-        containingTab.open(descWindow);
+        params = ['Show Description', containingTab, project.id];
+        app.openWindow('project_description', containingTab, params);
       });
 
       var line = Ti.UI.createView(projectStyles.line);
@@ -175,26 +171,28 @@ function ProjectWindow(title, containingTab, project_id){
             loadReview(review);
           })
         }
-        else{
-          var windowObj = require('modules/pages/' + e.source.icon.window);
-          var newWindow = new windowObj(e.source.icon.text, containingTab, e.source.icon.object);
-
+        else{          
           if(Ti.App.currentUser || e.source.icon.auth_required == false){
-            containingTab.open(newWindow);
-            newWindow.load();
+            params = [e.source.icon.text, containingTab, e.source.icon.object]
+            app.openWindow(e.source.icon.window, containingTab, params)
           }
           else{
-            var loginObj = require('modules/pages/login');
-            var loginWindow = new loginObj('Login', containingTab, newWindow);
-            containingTab.open(loginWindow);
+            var windowObj = require('modules/pages/' + e.source.icon.window);
+            var newWindow = new windowObj(e.source.icon.text, containingTab, e.source.icon.object);
+            newWindow.navBarHidden = true;
+
+            var headerObj = require('modules/common/header');
+            newWindow.add(new headerObj());
+
+            params = ['Login', containingTab, newWindow]
+            app.openWindow('Login', containingTab, params)
           }
         }
       }
 
       function loadReview(review){
-        var reviewObj = require('modules/pages/review');
-        var reviewWindow = new reviewObj('Show Review', containingTab, review, project);
-        containingTab.open(reviewWindow);
+        params = ['Show Review', containingTab, review, project];
+        app.openWindow('review', containingTab, params);
       }
 
       projectScroll.add(iconsView);
@@ -222,10 +220,8 @@ function ProjectWindow(title, containingTab, project_id){
       if(project.top_review_blurb){projectScroll.add(reviewView);}
 
       reviewView.addEventListener('click', function(e){
-        var reviewsObj = require('modules/pages/reviews');
-        var reviewsWindow = new reviewsObj('Reviews', containingTab, null, project);
-        containingTab.open(reviewsWindow);
-        reviewsWindow.load();
+        params = ['Reviews', containingTab, null, project];
+        app.openWindow('reviews', containingTab, params);
       });
 
       var teamView = Ti.UI.createView(projectStyles.teamView);
@@ -244,19 +240,9 @@ function ProjectWindow(title, containingTab, project_id){
       projectScroll.add(teamView);
 
       teamView.addEventListener('click', function(e){
-        var usersObj = require('modules/pages/users');
-        var usersWindow = new usersObj('Project Team', containingTab, project.team);
-        containingTab.open(usersWindow);
+        params = ['Project Team', containingTab, project.team];
+        app.openWindow('users', containingTab, params);
       });
-
-      function loadIconWin(e, islongclick){ 
-        var newWindow = Ti.UI.createWindow({
-          title:e.source.text,
-          backgroundColor:'#fff',
-          url:e.source.window
-        });      
-        currentTab.open(newWindow);
-      }
 
       var line = Ti.UI.createView(projectStyles.line);
       projectScroll.add(line);
@@ -300,11 +286,18 @@ function ProjectWindow(title, containingTab, project_id){
         favXhr.open("GET", url);
         favXhr.send();
       }
-      else{
+      else{        
         Ti.App.make_favorite = project_id;
-        var loginObj = require('modules/pages/login');
-        var loginWindow = new loginObj('Login', containingTab, self);
-        containingTab.open(loginWindow);
+
+        var windowObj = require('modules/pages/project');
+        var newWindow = new windowObj("Project", containingTab, project_id);
+        newWindow.navBarHidden = true;
+
+        var headerObj = require('modules/common/header');
+        newWindow.add(new headerObj());
+
+        params = ['Login', containingTab, newWindow]
+        app.openWindow('Login', containingTab, params)
       }
     }
   }

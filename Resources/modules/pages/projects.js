@@ -1,13 +1,12 @@
-function ProjectsWindow(title, containingTab, mode, startProjects){
+function ProjectsWindow(title, containingTab, mode, startProjects, cat_id, venue_id){
 
   var styles = require('modules/styles/styles');
   var projectsStyles = require('modules/styles/projects');
-
   var self = Ti.UI.createWindow(styles.defaultWindow);
   self.title = title;
   var projectsObj = require('modules/models/projects');
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
-  var table = Titanium.UI.createTableView();
+  var table = Titanium.UI.createTableView(projectsStyles.table);
   var currentTab = Ti.UI.currentTab;
   var page = 1
   var rows_per_page = 9
@@ -94,11 +93,8 @@ function ProjectsWindow(title, containingTab, mode, startProjects){
     }
 
     function loadProject(e, islongclick){
-      var projectObj = require('modules/pages/project');
-      var projectWindow = new projectObj('Project', containingTab, e.source.project_id);
-      projectWindow.layout = 'vertical';
-      containingTab.open(projectWindow);
-      projectWindow.load();
+      params = ['Project', containingTab, e.source.project_id]
+      app.openWindow('project', containingTab, params)
     }
 
     function loadMore(e,islongclick){
@@ -127,10 +123,10 @@ function ProjectsWindow(title, containingTab, mode, startProjects){
 
   function setUrl(){
     if(mode == 'venue'){
-      url = app.api_url + "projects.json?venue_id=" + self.venue_id + "&event_id=7";
+      url = app.api_url + "projects.json?venue_id=" + venue_id + "&event_id=7";
     }  
     else if(mode == 'cat'){
-      url = app.api_url + "projects.json?cat_id=" + self.cat_id + "&event_id=7";
+      url = app.api_url + "projects.json?cat_id=" + cat_id + "&event_id=7";
     }
     else if(mode == 'favorites'){    
       url = app.api_url + "favorites.json?email=" + Ti.App.currentUser.email + "&password=" + Ti.App.userPassword;

@@ -3,7 +3,7 @@ exports = {
   emailLabel: {
     height:35, 
     width:305,
-    top:10,
+    top:60,
     left:5,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
@@ -13,7 +13,7 @@ exports = {
   firstNameLabel: {
     height:35, 
     width:150, 
-    top:55,
+    top:105,
     left:5,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
@@ -23,7 +23,7 @@ exports = {
   lastNameLabel: {
     height:35, 
     width:150, 
-    top:55,
+    top:105,
     left:165,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
@@ -33,7 +33,7 @@ exports = {
   passwordLabel: {
     height:35, 
     width:305, 
-    top:100,
+    top:150,
     left:5,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
@@ -43,8 +43,8 @@ exports = {
 
   addUserButton: {
     title: 'Create Account',
-    top:145,
-    left:5
+    bottom:10,
+    width:300
   }
 
 }

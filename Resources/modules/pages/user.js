@@ -10,68 +10,68 @@ function UserWindow(title, containingTab, user_id){
   var wrapper = Ti.UI.createView(userStyles.wrapper);
   var url = app.api_url + "user/" + user_id + ".json";
 
-  var xhr =  Ti.Network.createHTTPClient({
-    onload: function(){
-      var user = JSON.parse(this.responseText);
+  self.load = function(){
 
-    	var image = Ti.UI.createImageView(userStyles.image);
-      image.image = user.thumbnail_url;
-      wrapper.add(image);
+    var xhr =  Ti.Network.createHTTPClient({
+      onload: function(){
+        var user = JSON.parse(this.responseText);
 
-      image.addEventListener('click', function(e){
-        var imageObj = require('modules/pages/image');
-        var imageWindow = new imageObj(containingTab, user.image_url);
-        containingTab.open(imageWindow);
-      });
+      	var image = Ti.UI.createImageView(userStyles.image);
+        image.image = user.thumbnail_url;
+        wrapper.add(image);
 
-      var name = Ti.UI.createLabel(userStyles.name);
-      name.text = (user.first_name + " " + user.last_name);
-      wrapper.add(name);
-
-    	var profile = Ti.UI.createLabel(userStyles.profile);
-      profile.text = (user.profile ? user.profile : 'No profile information available.');
-    	wrapper.add(profile);
-
-      if(user.review_count > 0){
-        var line = Ti.UI.createView(userStyles.line1);
-        wrapper.add(line);
-
-        var reviewsLabel = Ti.UI.createLabel(userStyles.reviewsLabel);
-        reviewsLabel.text = "Reviews by " + user.first_name;
-        wrapper.add(reviewsLabel);
-
-        reviewsLabel.addEventListener('click', function(e){
-          var reviewsObj = require('modules/pages/reviews');
-          var reviewsWindow = new reviewsObj('Reviews by ' + user.first_name, containingTab, user.id, null);
-          containingTab.open(reviewsWindow);
-          reviewsWindow.load();
+        image.addEventListener('click', function(e){
+          var params = [containingTab, user.image_url];
+          app.openWindow('image', containingTab, params);
         });
 
-        var line = Ti.UI.createView(userStyles.line2);
-        wrapper.add(line);
-      }
+        var name = Ti.UI.createLabel(userStyles.name);
+        name.text = (user.first_name + " " + user.last_name);
+        wrapper.add(name);
 
-    	userScroll.add(wrapper);
+      	var profile = Ti.UI.createLabel(userStyles.profile);
+        profile.text = (user.profile ? user.profile : 'No profile information available.');
+      	wrapper.add(profile);
 
-      self.add(userScroll);
+        if(user.review_count > 0){
+          var line = Ti.UI.createView(userStyles.line1);
+          wrapper.add(line);
 
-      self.remove(spinner);
-    },
-    onerror: function(){
-      Ti.API.debug("STATUS: " + this.status);
-      Ti.API.debug("TEXT:   " + this.responseText);
-      Ti.API.debug("ERROR:  " + e.error);
-      alert('There was an error retrieving the remote data. Try again.');
-    },
-    timeout:5000
-  });
+          var reviewsLabel = Ti.UI.createLabel(userStyles.reviewsLabel);
+          reviewsLabel.text = "Reviews by " + user.first_name;
+          wrapper.add(reviewsLabel);
 
-  xhr.open("GET", url);
-  xhr.send();
+          reviewsLabel.addEventListener('click', function(e){
+            params = ['Reviews by ' + user.first_name, containingTab, user.id, null];
+            app.openWindow('reviews', containingTab, params);
+          });
 
-  self.add(spinner);
+          var line = Ti.UI.createView(userStyles.line2);
+          wrapper.add(line);
+        }
 
-  spinner.show();
+      	userScroll.add(wrapper);
+
+        self.add(userScroll);
+
+        self.remove(spinner);
+      },
+      onerror: function(){
+        Ti.API.debug("STATUS: " + this.status);
+        Ti.API.debug("TEXT:   " + this.responseText);
+        Ti.API.debug("ERROR:  " + e.error);
+        alert('There was an error retrieving the remote data. Try again.');
+      },
+      timeout:5000
+    });
+
+    xhr.open("GET", url);
+    xhr.send();
+
+    self.add(spinner);
+
+    spinner.show();
+  }
 
   return(self);
 }

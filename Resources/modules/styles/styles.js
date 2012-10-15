@@ -2,7 +2,7 @@ exports = {
 
 	defaultWindow: {
 		backgroundColor: '#ede8df',
-		barColor: '#777'
+		barColor: 'black'
 	},
 
 	spinner: {

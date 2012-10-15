@@ -2,7 +2,7 @@ exports = {
 
   buttonSave: {
     title:'save',    
-    top:10,
+    top:60,
     right:5,
     height:25,
     width:60
@@ -11,7 +11,7 @@ exports = {
   tabRating: {
     labels:['Loved It', 'Liked It', 'Not My Thing'], 
     backgroundColor:'#336699', 
-    top:10, 
+    top:60, 
     left:5,
     style:Titanium.UI.iPhone.SystemButtonStyle.BAR, 
     height:25, 
@@ -19,7 +19,7 @@ exports = {
   },
 
   labelBody: {
-    top:50,
+    top:100,
     left:5,
     text:'Your Review:',
     width:Ti.UI.SIZE,
@@ -31,7 +31,7 @@ exports = {
     color:'#336699',
     height:250,
     width:305,
-    top:70,
+    top:120,
     left:5,
     borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
   }
