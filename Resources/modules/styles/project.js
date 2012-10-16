@@ -3,7 +3,7 @@ exports = {
   projectScroll: {
     contentWidth:'95%',
     contentHeight:1100,
-    top:60,
+    top:50,
     left:0,
     height:800,
     showVerticalScrollIndicator:true,
@@ -11,24 +11,34 @@ exports = {
     layout:'vertical'
   },
 
+  titleView: {
+    width:'100%',
+    height:Ti.UI.SIZE,
+    layout:'vertical',
+    backgroundColor:'#bbbbbb',
+    top:0
+  },
+
   title: {
     height:Ti.UI.SIZE,
     width:Ti.UI.SIZE,
-    font:{fontSize:20},
-    left:5
+    font:{fontSize:20, fontWeight:'bold'},
+    left:5,
+    top:10
   },
 
   subTitle: {
     height:Ti.UI.SIZE,
     width:'95%',       
     left:5,
-    font:{fontSize:10}
+    font:{fontSize:10},
+    bottom:10
   },
 
   galleryView: {
     height:Ti.UI.SIZE,
     width:'100%',
-    top:5,
+    top:10,
     left:5
   },
 
@@ -67,7 +77,7 @@ exports = {
   },
 
   iconsView: {
-    top:0,
+    top:5,
     left:0,
     height:60,
     layout:'absolute'

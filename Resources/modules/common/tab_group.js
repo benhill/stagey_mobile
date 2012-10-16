@@ -1,6 +1,10 @@
 function ApplicationTabGroup(windows) {
 
   var self = Ti.UI.createTabGroup();
+
+  self.addEventListener('focus', function(e){    
+    Ti.API.activeTab = e.tab;
+  });
   
   var showsTab = Ti.UI.createTab({
     title:'Shows',
@@ -9,6 +13,7 @@ function ApplicationTabGroup(windows) {
   showsTab.window = createWin('Shows', 'shows', showsTab)
   self.addTab(showsTab);
   showsTab.window.load();  
+  Ti.API.activeTab = showsTab;
 
   var venuesTab = Ti.UI.createTab({
     title:'Venues',
@@ -32,7 +37,6 @@ function ApplicationTabGroup(windows) {
   });
   meTab.window = createWin('Me', 'me', meTab);
   self.addTab(meTab);
-  meTab.window.load();
 
   meTab.addEventListener('focus',function(e){
   	loadMeWindow();
@@ -42,18 +46,6 @@ function ApplicationTabGroup(windows) {
     app.openWindow('Me', 'me', [])
   }
   
-  var searchTab = Ti.UI.createTab({
-    title:'Search',
-    icon:'iphone/search_30.png'
-  });
-  searchTab.window = createWin('Search', 'search', searchTab);
-  self.addTab(searchTab);
-  searchTab.window.load();
-
-  self.addEventListener('focus', function(e){    
-    Ti.API.activeTab = e.tab;
-  });
-
   function createWin(title, winName, tab){
     var winObj = require('modules/pages/' + winName)
     win = new winObj();

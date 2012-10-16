@@ -10,16 +10,29 @@ function Header(title, window){
     backgroundColor:'black'
   })
 
-  if(window){
+  var searchButton =  Ti.UI.createImageView({
+    image:'iphone/search_24.png',
+    width:24,
+    height:24,
+    right:15,
+    top:15
+  });
+  if(title != 'Search'){headerView.add(searchButton)};
+
+  searchButton.addEventListener('click', function(e){
+    app.openWindow('Search', 'search', []);
+  });
+
+  if(window && title != 'Me' && title != 'Login'){
     var headerLabel = Ti.UI.createLabel({
       height:Ti.UI.SIZE,
       width:Ti.UI.SIZE,
       text:title,
       color:'white',
       left:80,
-      font:{fontSize:18}
+      font:{fontSize:22, fontWeight:'bold'}
     })
-    headerView.add(headerLabel)
+    //headerView.add(headerLabel)
 
     var backButton =  Ti.UI.createLabel({
       text:"\u21E6 back",

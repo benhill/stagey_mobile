@@ -124,7 +124,7 @@ function PerformancesWindow(mode){
       }
 
       if(Ti.App.currentUser){
-        app.openWindow(title, window, [e.source.performance])
+        app.openWindow(title, window, [e.source.performance.id])
       }   
       else{
         var newObj = require('modules/pages/' + window);

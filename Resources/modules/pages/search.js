@@ -27,6 +27,7 @@ function SearchWindow(search_terms){
       runSearch(searchField.value);
     });
     self.add(searchField);
+    app.addKeyboardToolbar(searchField);
 
     var searchButton =  Ti.UI.createImageView(searchStyles.searchButton);
     self.add(searchButton);

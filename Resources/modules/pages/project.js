@@ -30,13 +30,17 @@ function ProjectWindow(project_id){
         if(!project.is_favorite){toggleFavorite();}
       }
 
+      var titleView = Ti.UI.createView(projectStyles.titleView);
+
       var title = Ti.UI.createLabel(projectStyles.title);
-      title.text = project.title;
-      projectScroll.add(title);
+      title.text = project.title.toUpperCase();
+      titleView.add(title);
 
       var subTitle = Ti.UI.createLabel(projectStyles.subTitle);
       subTitle.text = project.company + " \u00B7 ages " + project.age_restriction + "+ \u00B7 " + project.duration + " \u00B7 " + project.cost_range
-      projectScroll.add(subTitle);    
+      titleView.add(subTitle);
+
+      projectScroll.add(titleView);
 
       var galleryView = Ti.UI.createView(projectStyles.galleryView);      
       
