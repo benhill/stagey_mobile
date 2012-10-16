@@ -19,25 +19,25 @@ exports.formatCurrency = function(num) {
 }
 
 exports.register = function(name, object) {
-	plugins[name] = object;
+  plugins[name] = object;
 };
 
-exports.openWindow = function(windowName, containingTab, params){
-  var windowObj = require('modules/pages/' + windowName);
-  var newWindow = windowObj.apply(this, params);
-  openWithWindow(newWindow, containingTab);
+exports.openWindow = function(title, newWindowName, params){    
+  var windowObj = require('modules/pages/' + newWindowName);  
+  var newWindow = windowObj.apply(this, params);  
+  openWithWindow(title, newWindow);
 };
 
-exports.openFromWindow = function(window, containingTab){  
-  openWithWindow(window, containingTab);
+exports.openFromWindow = function(newWindow){
+  openWithWindow('', newWindow);
 };
 
-function openWithWindow(window, containingTab){
-  window.navBarHidden = true;
+function openWithWindow(title, newWindow){
+  newWindow.navBarHidden = true;
   var headerObj = require('modules/common/header');
-  window.add(new headerObj());
-  containingTab.open(window);
-  window.load();
+  newWindow.add(new headerObj(title, newWindow));
+  Ti.API.activeTab.open(newWindow);
+  newWindow.load();
 }
 
 exports.addKeyboardToolbar = function(textbox){

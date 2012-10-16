@@ -1,9 +1,8 @@
-function ProjectWindow(title, containingTab, project_id){
+function ProjectWindow(project_id){
 
   var styles = require('modules/styles/styles');
   var projectStyles = require('modules/styles/project');
   var self = Ti.UI.createWindow(styles.defaultWindow);
-  self.title = title;
   var projectObj = require('modules/models/project');
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
   var sharekit = require('com.0x82.sharekit');  
@@ -58,8 +57,7 @@ function ProjectWindow(title, containingTab, project_id){
         galleryView.add(img);            
 
         img.addEventListener('click', function(e){
-          params = [containingTab, e.source.full_image_path];
-          app.openWindow('image', containingTab, params);
+          app.openWindow('Image', 'image', [e.source.full_image_path]);
         });
       }
 
@@ -71,8 +69,7 @@ function ProjectWindow(title, containingTab, project_id){
         projectScroll.add(moreImagesLabel);
 
         moreImagesLabel.addEventListener('click', function(e){
-          params = [project.title, containingTab, project.images];
-          app.openWindow('gallery', containingTab, params);
+          app.openWindow(project.title, 'gallery', [project.images]);
         });
       }
 
@@ -82,8 +79,7 @@ function ProjectWindow(title, containingTab, project_id){
       projectScroll.add(descriptionLabel);
 
       descriptionLabel.addEventListener('click', function(e){
-        params = ['Show Description', containingTab, project.id];
-        app.openWindow('project_description', containingTab, params);
+        app.openWindow('Show Description', 'project_description', [project.id]);
       });
 
       var line = Ti.UI.createView(projectStyles.line);
@@ -173,26 +169,23 @@ function ProjectWindow(title, containingTab, project_id){
         }
         else{          
           if(Ti.App.currentUser || e.source.icon.auth_required == false){
-            params = [e.source.icon.text, containingTab, e.source.icon.object]
-            app.openWindow(e.source.icon.window, containingTab, params)
+            app.openWindow(e.source.icon.text, e.source.icon.window, [e.source.icon.object])
           }
           else{
             var windowObj = require('modules/pages/' + e.source.icon.window);
-            var newWindow = new windowObj(e.source.icon.text, containingTab, e.source.icon.object);
+            var newWindow = new windowObj(e.source.icon.text, Ti.API.activeTab, e.source.icon.object);
             newWindow.navBarHidden = true;
 
             var headerObj = require('modules/common/header');
             newWindow.add(new headerObj());
 
-            params = ['Login', containingTab, newWindow]
-            app.openWindow('Login', containingTab, params)
+            app.openWindow('Login', 'Login', [newWindow])
           }
         }
       }
 
       function loadReview(review){
-        params = ['Show Review', containingTab, review, project];
-        app.openWindow('review', containingTab, params);
+        app.openWindow('Show Review', 'review', [review.id]);
       }
 
       projectScroll.add(iconsView);
@@ -220,8 +213,7 @@ function ProjectWindow(title, containingTab, project_id){
       if(project.top_review_blurb){projectScroll.add(reviewView);}
 
       reviewView.addEventListener('click', function(e){
-        params = ['Reviews', containingTab, null, project];
-        app.openWindow('reviews', containingTab, params);
+        app.openWindow('Reviews', 'reviews', [null, project]);
       });
 
       var teamView = Ti.UI.createView(projectStyles.teamView);
@@ -240,8 +232,7 @@ function ProjectWindow(title, containingTab, project_id){
       projectScroll.add(teamView);
 
       teamView.addEventListener('click', function(e){
-        params = ['Project Team', containingTab, project.team];
-        app.openWindow('users', containingTab, params);
+        app.openWindow('Project Team', 'users', [project.team]);
       });
 
       var line = Ti.UI.createView(projectStyles.line);
@@ -290,14 +281,13 @@ function ProjectWindow(title, containingTab, project_id){
         Ti.App.make_favorite = project_id;
 
         var windowObj = require('modules/pages/project');
-        var newWindow = new windowObj("Project", containingTab, project_id);
+        var newWindow = new windowObj("Project", Ti.API.activeTab, project_id);
         newWindow.navBarHidden = true;
 
         var headerObj = require('modules/common/header');
         newWindow.add(new headerObj());
 
-        params = ['Login', containingTab, newWindow]
-        app.openWindow('Login', containingTab, params)
+        app.openWindow('Login', 'Login', [newWindow])
       }
     }
   }

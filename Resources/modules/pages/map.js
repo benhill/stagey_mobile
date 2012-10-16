@@ -1,4 +1,4 @@
-function MapWindow(title, containingTab, venue){
+function MapWindow(venue){
 
   var styles = require('modules/styles/styles')
   var mapStyles = require('modules/styles/map')
@@ -21,8 +21,7 @@ function MapWindow(title, containingTab, venue){
       var viewButton = Ti.UI.createButton(mapStyles.viewButton);
 
       viewButton.addEventListener('click', function(e){
-        params = ['venue', containingTab, venue.id];
-        app.openWindow('venue', containingTab, params);
+        app.openWindow('Venue', 'venue', [venue.id]);
       });
 
       var annotation = Ti.Map.createAnnotation(mapStyles.annotation);

@@ -1,9 +1,8 @@
-function UsersWindow(title, containingTab, users){
+function UsersWindow(users){
 
   var styles = require('modules/styles/styles');
   var usersStyles = require('modules/styles/users');
   var self = Ti.UI.createWindow(styles.defaultWindow);
-  self.title = title;
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
   var usersTable = Ti.UI.createTableView(usersStyles.table);
   var usersData = [];
@@ -46,8 +45,7 @@ function UsersWindow(title, containingTab, users){
     });
 
     function loadUser(e, islongclick) { 
-      params = ['User', containingTab, e.source.user.id];
-      app.openWindow('user', containingTab, params);
+      app.openWindow('User', 'user', [e.source.user.id]);
     }
   }
 

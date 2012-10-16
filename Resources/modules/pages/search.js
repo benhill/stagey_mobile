@@ -1,9 +1,8 @@
-function SearchWindow(title, containingTab, search_terms){
+function SearchWindow(search_terms){
 
   var styles = require('modules/styles/styles');
   var searchStyles = require('modules/styles/search');
   var self = Ti.UI.createWindow(styles.defaultWindow);
-  self.title = title;
   var searchObj = require('modules/models/search');
 
   self.load = function(){
@@ -11,9 +10,7 @@ function SearchWindow(title, containingTab, search_terms){
     var xhr = Ti.Network.createHTTPClient({
       onload: function(){
         projects = JSON.parse(this.responseText).projects;
-        
-        var params = ['Search Results', containingTab, null, null, null, projects];
-        app.open('projects', containingTab, params);
+        app.open('Search Results', 'projects', [null, null, null, projects]);
       },
       onerror: function(e) {
         Ti.API.debug("STATUS: " + this.status);
@@ -51,8 +48,7 @@ function SearchWindow(title, containingTab, search_terms){
     }
 
     function loadResults(projects){      
-      var params = ['Search Results', containingTab, null, projects];
-      app.openWindow('projects', containingTab, params);
+      app.openWindow('Search Results', 'projects', [null, projects]);
     }
   }
 

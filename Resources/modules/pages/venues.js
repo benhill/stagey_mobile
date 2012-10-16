@@ -1,9 +1,8 @@
-function VenuesWindow(title, containingTab){
+function VenuesWindow(){
 
   var styles = require('modules/styles/styles');
   var venueStyles = require('modules/styles/venues');
   var self = Ti.UI.createWindow(styles.defaultWindow);
-  self.title = title;
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);  
   var table = Ti.UI.createTableView(venueStyles.table);
   var tableData = [];
@@ -52,8 +51,7 @@ function VenuesWindow(title, containingTab){
     });
 
     function openVenue(e, islongclick) { 
-      params = ['Venue', containingTab, e.source.venue_id];
-      app.openWindow('venue', containingTab, params);
+      app.openWindow('Venue', 'venue', [e.source.venue_id]);
     }
     
     self.add(spinner);

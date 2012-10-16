@@ -1,9 +1,8 @@
-function AddUserWindow(title, containingTab, return_win){
+function AddUserWindow(return_win){
 
   var styles = require('modules/styles/styles');
   var addUserStyles = require('modules/styles/add_user');
   var self = Ti.UI.createWindow(styles.defaultWindow);
-  self.title = title;
   var addUserObj = require('modules/models/add_user');
 
   self.load = function(){    
@@ -48,11 +47,10 @@ function AddUserWindow(title, containingTab, return_win){
         Ti.App.userPassword = passwordLabel.value;
 
         if(return_win){
-          app.openFromWindow(return_win, containingTab);
+          app.openFromWindow(return_win);
         }
-        else{
-          params = ['Me', containingTab];
-          app.openWindow('home', containingTab, params);
+        else{          
+          app.openWindow('Me', 'me', []);
         }
       }
     };

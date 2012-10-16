@@ -1,9 +1,8 @@
-function PerformancesWindow(title, containingTab, mode){
+function PerformancesWindow(mode){
 
   var styles = require('modules/styles/styles');
   var perfStyles = require('modules/styles/performances');
   var self = Ti.UI.createWindow(styles.defaultWindow);
-  self.title = title;
   var performancesObj = require('modules/models/performances');
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);  
   var nowTab = Ti.UI.currentTab;
@@ -71,8 +70,7 @@ function PerformancesWindow(title, containingTab, mode){
 
         row.addEventListener('click', function(e){
           if(mode == 'schedule'){
-            params = ['Project', containingTab, e.source.performance.project_id];
-            app.openWindow('project', containingTab, params);
+            app.openWindow('Project', 'project', [e.source.performance.project_id]);
           }            
           else{loadPerformance(e);}
         });
@@ -118,15 +116,15 @@ function PerformancesWindow(title, containingTab, mode){
 
       if(e.source.performance.pwyc){
         var window = pwyc;
-        var params = ['PWYC', containingTab, e.source.performance];        
+        var title = 'PWYC';
       }
       else{
         var window = 'performance';
-        var params = ['Performance', containingTab, e.source.performance.id];
+        var title = 'Performance';
       }
 
       if(Ti.App.currentUser){
-        app.openWindow(window, containingTab, params)
+        app.openWindow(title, window, [e.source.performance])
       }   
       else{
         var newObj = require('modules/pages/' + window);
@@ -134,10 +132,9 @@ function PerformancesWindow(title, containingTab, mode){
         newWindow.navBarHidden = true;
 
         var headerObj = require('modules/common/header');
-        newWindow.add(new headerObj());
+        newWindow.add(new headerObj(title, self));
 
-        var login_params = ['Login', containingTab, newWindow];
-        app.openWindow('login', containingTab, login_params);
+        app.openWindow('Login', 'login', [newWindow]);
       }
       
     }

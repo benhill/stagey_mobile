@@ -1,10 +1,8 @@
-function OrderWindow(title, containingTab, cc_num, cc_fname, cc_lname, csv, expiry_month, expiry_year){
+function OrderWindow(cc_num, cc_fname, cc_lname, csv, expiry_month, expiry_year){
 
   var styles = require('modules/styles/styles');
   var orderStyles = require('modules/styles/order');
   var self = Ti.UI.createWindow(styles.defaultWindow);
-  self.title = title;
-
   var cartObj = require('modules/models/cart');
 
   new cartObj(Ti.App.currentUser.id).get(function(e){
@@ -69,8 +67,7 @@ function OrderWindow(title, containingTab, cc_num, cc_fname, cc_lname, csv, expi
           alert(e.error)
         }
         else{
-          params = ['Receipt', containingTab, e.sale_id];
-          app.openWindow('receipt', containingTab, params);
+          app.openWindow('Receipt', 'receipt', [e.sale_id]);
         }
       })
     })

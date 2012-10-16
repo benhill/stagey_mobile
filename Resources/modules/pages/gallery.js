@@ -1,9 +1,8 @@
-function GalleryWindow(title, containingTab, images){
+function GalleryWindow(images){
 
   var styles = require('modules/styles/styles');
   var galleryStyles = require('modules/styles/gallery');
   var self = Ti.UI.createWindow(styles.defaultWindow);
-  self.title = title;
   var galleryScroll = Titanium.UI.createScrollView(galleryStyles.galleryScroll);;
 
   self.load = function(){
@@ -23,8 +22,7 @@ function GalleryWindow(title, containingTab, images){
       galleryScroll.add(image);
 
       image.addEventListener('click', function(e){
-        params = [containingTab, e.source.full_image_path];
-        app.openWindow('image', containingTab, params);
+        app.openWindow('Image', 'image', [e.source.full_image_path]);
       });
 
       image_place ++;

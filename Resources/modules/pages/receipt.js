@@ -1,9 +1,8 @@
-function ReceiptWindow(title, containingTab, sale_id){
+function ReceiptWindow(sale_id){
 
   var styles = require('modules/styles/styles');
   var receiptStyles = require('modules/styles/receipt');
   var self = Ti.UI.createWindow(styles.defaultWindow);
-  self.title = title;
 
   var saleObj = require('modules/models/sale');
   new saleObj(sale_id, function(sale){

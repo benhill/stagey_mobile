@@ -1,9 +1,8 @@
-function PerformanceWindow(title, containingTab, performance_id, pwycPrice){
+function PerformanceWindow(performance_id, pwycPrice){
 
   var styles = require('modules/styles/styles');
   var perfStyles = require('modules/styles/performance');
   var self = Ti.UI.createWindow(styles.defaultWindow);
-  self.title = title;
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
   var quantity = 1;
   var pwycPrice;
@@ -79,8 +78,7 @@ function PerformanceWindow(title, containingTab, performance_id, pwycPrice){
                 alert(e.error)
               }
               else{                
-                var params = ['Receipt', containingTab, e.sale_id];
-                app.openWindow('receipt', containingTab, params);
+                app.openWindow('Receipt', 'receipt', [e.sale_id]);
               }
             })
           }
@@ -116,8 +114,7 @@ function PerformanceWindow(title, containingTab, performance_id, pwycPrice){
     };
 
   function loadPayWindow(){
-    var params = ['Credit Card', containingTab];
-    app.openWindow('pay', containingTab, params);
+    app.openWindow('Credit Card', 'pay', []);
   }
 
   return self;

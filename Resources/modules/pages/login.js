@@ -1,9 +1,8 @@
-function LoginWindow(title, containingTab, return_win){
+function LoginWindow(return_win){
 
   var styles = require('modules/styles/styles');
   var loginStyles = require('modules/styles/login');
   var self = Ti.UI.createWindow(styles.defaultWindow);
-  self.title = title;
 
   self.load = function(){
 
@@ -28,8 +27,7 @@ function LoginWindow(title, containingTab, return_win){
     self.add(addUserLabel);
 
     addUserLabel.addEventListener('click', function(e){
-      params = ['Create an Account', containingTab, return_win];
-      app.openWindow('add_user', containingTab, params);
+      app.openWindow('Create an Account', 'add_user', [return_win]);
     });
 
     function loginUser(){
@@ -52,11 +50,10 @@ function LoginWindow(title, containingTab, return_win){
           Ti.App.userPassword = password.value;
 
           if(return_win){
-            app.openFromWindow(return_win, containingTab);
+            app.openFromWindow(return_win);
           }
-          else{
-            var params = ['Me', containingTab];
-            app.openWindow('me', containingTab, params);
+          else{            
+            app.openWindow('Me', 'me', []);
           }
         }
       },

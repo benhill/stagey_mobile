@@ -1,10 +1,8 @@
-function HomeWindow(title, containingTab){
+function ShowsWindow(){
 
   var styles = require('modules/styles/styles');
   var showStyles = require('modules/styles/shows');
-
   var self = Ti.UI.createWindow(styles.defaultWindow);
-  self.title = title;
   var searchObj = require('modules/models/search');
   var Icon = require('modules/models/icons');
   var icons = [];
@@ -124,8 +122,7 @@ function HomeWindow(title, containingTab){
     }
 
     function loadResults(projects){
-      params = ['Search Results', containingTab, null, projects];
-      app.openWindow('projects', containingTab, params);
+      app.openWindow('Search Results', 'projects', [null, projects]);
     }
 
     function runIconEvent(e, islongclick){
@@ -133,14 +130,13 @@ function HomeWindow(title, containingTab){
       if(e.source.icon.text == 'Favorites'){thirdParam = 'favorites';}
       if(e.source.icon.text == 'Upcoming'){thirdParam = 'next';}
       if(e.source.icon.text == 'My Schedule'){thirdParam = 'schedule';}
-      if(e.source.icon.text == 'Nearby'){thirdParam = 'nearby';}    
+      if(e.source.icon.text == 'Nearby'){thirdParam = 'nearby';}
 
-      params = [e.source.icon.text, containingTab, thirdParam];
-      app.openWindow(e.source.icon.window, containingTab, params);
+      app.openWindow(e.source.icon.text, e.source.icon.window, [thirdParam]);
     }
   }
   
   return(self);
 }
 
-module.exports = HomeWindow;
+module.exports = ShowsWindow;

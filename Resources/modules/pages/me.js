@@ -1,9 +1,8 @@
-function MeWindow(title, containingTab){
+function MeWindow(){
 
   var styles = require('modules/styles/styles');
   var meStyles = require('modules/styles/me');  
   var self = Ti.UI.createWindow(styles.defaultWindow);
-  self.title = title;
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
   var wrapper = Ti.UI.createView(meStyles.wrapper);  
 
@@ -11,14 +10,13 @@ function MeWindow(title, containingTab){
 
     if(Ti.App.currentUser == null){
       var meObj = require('modules/pages/me');
-      var meWindow = new meObj('Me', containingTab);
+      var meWindow = new meObj('Me', Ti.API.activeTab);
       meWindow.navBarHidden = true;
 
       var headerObj = require('modules/common/header');
       meWindow.add(new headerObj());
 
-      params = ['Login', containingTab, meWindow]
-      app.openWindow('login', containingTab, params)
+      app.openWindow('Login', 'login', [meWindow])
     }
     else{
 
@@ -33,8 +31,7 @@ function MeWindow(title, containingTab){
         image.image = user.thumbnail_url;
 
         image.addEventListener('click', function(e){
-          params = [containingTab, user.image_url];
-          app.openWindow('image', containingTab, params)
+          app.openWindow('Image', 'image', [user.image_url])
         });
 
         wrapper.add(image);   
@@ -74,8 +71,7 @@ function MeWindow(title, containingTab){
 
           row.addEventListener('click', function(e){
           	icon = e.source.icon;            
-            params = [e.source.icon.text, containingTab, icon.third_param];
-            app.openWindow(icon.window, containingTab, params);
+            app.openWindow(e.source.icon.text, icon.window, [icon.third_param]);
           });
 
           tableData.push(row);
@@ -106,9 +102,7 @@ function MeWindow(title, containingTab){
   function logout(){
     Ti.App.Properties.setString('currentUser', null);
     Ti.App.currentUser = null
-        
-    params = ['Login', containingTab]
-    app.openWindow('login', containingTab, params)
+    app.openWindow('Login', 'login', [])
   }
 }
 

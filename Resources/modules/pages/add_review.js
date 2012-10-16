@@ -1,9 +1,8 @@
-function AddReviewWindow(title, containingTab, project){
+function AddReviewWindow(project){
 
   var styles = require('modules/styles/styles');
   var addReviewStyles = require('modules/styles/add_review');
   var self = Ti.UI.createWindow(styles.defaultWindow);
-  self.title = title;
   var addReviewObj = require('modules/models/add_review');
 
   self.load = function(){
@@ -23,9 +22,7 @@ function AddReviewWindow(title, containingTab, project){
       new addReviewObj(project.id, tabRating.value, textBody.value, function(results){
         if(results.id){
           alert('The Review has been Added');
-          
-          params = ['Project', containingTab, project.id];
-          app.openWindow('project', containingTab, params);
+          app.openWindow('Project', 'project', [project.id]);
         }
         else{
           alert('there was an issue adding this review');

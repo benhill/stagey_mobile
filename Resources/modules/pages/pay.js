@@ -1,9 +1,8 @@
-function PayWindow(title, containingTab){
+function PayWindow(){
 
   var styles = require('modules/styles/styles');
   var payStyles = require('modules/styles/pay');
   var self = Ti.UI.createWindow(styles.defaultWindow);
-  self.title = title;  
 
   self.load = function(){
     var fNameText = Ti.UI.createTextField(payStyles.fNameText);
@@ -91,8 +90,8 @@ function PayWindow(title, containingTab){
     payButton.addEventListener('click', function(e){
       expiryMonth = expiryLabel.value.split(',')[0];
       expiryYear = expiryLabel.value.split(',')[1];        
-      params = ['Review Order', containingTab, cardText.value, fNameText.value, lNameText.value, csvText.value, expiryMonth, expiryYear];
-      app.openWindow('order', containingTab, params);
+      params = [cardText.value, fNameText.value, lNameText.value, csvText.value, expiryMonth, expiryYear];
+      app.openWindow('Review Order', 'order', params);
     });
   }
 

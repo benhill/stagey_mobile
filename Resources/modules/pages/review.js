@@ -1,9 +1,8 @@
-function ReviewWindow(title, containingTab, review_id){
+function ReviewWindow(review_id){
 
   var styles = require('modules/styles/styles');
   var reviewStyles = require('modules/styles/review');
   var self = Ti.UI.createWindow(styles.defaultWindow);
-  self.title = title;
   var reviewScroll = Ti.UI.createScrollView(reviewStyles.reviewScroll);
   var wrapper = Ti.UI.createView(reviewStyles.wrapper);
   var reviewerWrapper = Ti.UI.createView(reviewStyles.reviewerWrapper);
@@ -42,8 +41,7 @@ function ReviewWindow(title, containingTab, review_id){
 
     reviewerWrapper.addEventListener('click', function(e){
       if(!review.anonymous){
-        var params = ['User', containingTab, review.fringe_user_id];
-        app.openWindow('user', containingTab, params);
+        app.openWindow('User', 'user', [review.fringe_user_id]);
       }
     });
 
@@ -73,8 +71,7 @@ function ReviewWindow(title, containingTab, review_id){
     bodyWrapper.add(view_project);
 
     view_project.addEventListener('click', function(e){
-      var params = ['Project', containingTab, review.project_id];
-      app.openWindow('project', containingTab, params);
+      app.openWindow('Project', 'project', [review.project_id]);
     });
 
     wrapper.add(bodyWrapper);

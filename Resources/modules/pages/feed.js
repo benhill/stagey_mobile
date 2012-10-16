@@ -1,9 +1,8 @@
-function FeedWindow(title, containingTab) {
+function FeedWindow(){
   
   var styles = require('modules/styles/styles') 
   var feedStyles = require('modules/styles/feed')  
   var self = Ti.UI.createWindow(styles.defaultWindow);
-  self.title = title;
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
   var rows_per_page = 9
   var tableData = [];
@@ -51,20 +50,20 @@ function FeedWindow(title, containingTab) {
     function loadWindow(e){    
       feed_item = e.source.feed_item;
 
-      if(feed_item.object_type == "Venue"){
+      if(feed_item.object_type == 'Venue'){
         var win_name = 'venue';
-        params = ['Venue', containingTab, feed_item.object_id];
+        var title = 'Venue';
       }
-      else if(feed_item.object_type == "Review"){
+      else if(feed_item.object_type == 'Review'){
         var win_name = 'review';
-        params = ['Review', containingTab, feed_item.object_id];        
+        var title = 'Review';
       }
-      else if(feed_item.object_type == "Project"){
+      else if(feed_item.object_type == 'Project'){
         var win_name = 'project';
-        params = ['Project', containingTab, feed_item.object_id];
+        var title = 'Project'
       }
 
-      app.openWindow(win_name, containingTab, params)      
+      app.openWindow(title, win_name, [feed_item.object_id])      
     }
 
     spinner.show();

@@ -1,8 +1,7 @@
-function ImageWindow(containingTab, image_path){
+function ImageWindow(image_path){
 
   var styles = require('modules/styles/styles');
   var projectStyles = require('modules/styles/project');
-
   var self = Ti.UI.createWindow(styles.defaultWindow);
 
   self.load = function(){

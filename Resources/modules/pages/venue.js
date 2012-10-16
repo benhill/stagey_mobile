@@ -1,16 +1,15 @@
-function VenueWindow(title, containingTab, venue_id){
+function VenueWindow(venue_id){
 
   var styles = require('modules/styles/styles');
   var venueStyles = require('modules/styles/venue')
-
   var self = Ti.UI.createWindow(styles.defaultWindow);
-  self.title = title;
   var venueObj = require('modules/models/venue');
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
   var url = app.api_url + "venue/" + venue_id + ".json?event_id=7";
   var json, venue;
   var image_top = 0;
   var image_place = 0;
+
   self.load = function(){
     new venueObj(url, function(venue){
       loadVenue(venue);
@@ -49,8 +48,7 @@ function VenueWindow(title, containingTab, venue_id){
         galleryView.add(img);            
 
         img.addEventListener('click', function(e){
-          var params = [containingTab, e.source.full_image_path];
-          app.openWindow('image', containingTab, params);
+          app.openWindow('Image', 'image', [e.source.full_image_path]);
         });
 
       } 
@@ -64,8 +62,7 @@ function VenueWindow(title, containingTab, venue_id){
         venueScroll.add(moreImagesLabel);
 
         moreImagesLabel.addEventListener('click', function(e){
-          params = [venue.name, containingTab, venue.images];
-          app.openWindow('gallery', containingTab, params);
+          app.openWindow(venue.name, 'gallery', [venue.images]);
         });
       }
 
@@ -92,8 +89,7 @@ function VenueWindow(title, containingTab, venue_id){
       venueScroll.add(mapView);
 
       mapView.addEventListener('click', function(e){
-        params = ['project', containingTab, venue];
-        app.openWindow('map', containingTab, params);
+        app.openWindow('project', 'map', [venue]);
       });
 
       var line = Ti.UI.createView(venueStyles.line);
@@ -118,8 +114,8 @@ function VenueWindow(title, containingTab, venue_id){
         venueScroll.add(projectsView);
 
         projectsView.addEventListener('click', function(e){
-          var params = ['Shows', containingTab, 'venue', null, null, venue.id];
-          app.openWindow('projects', containingTab, params);
+          var params = ['venue', null, null, venue.id];
+          app.openWindow('Shows', 'projects', params);
         });
 
         var line = Ti.UI.createView(venueStyles.lien);

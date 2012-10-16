@@ -9,7 +9,7 @@ exports = {
     showVerticalScrollIndicator:true,
     width:Ti.UI.SIZE,
     height:350,
-    top:0
+    top:50
   },
 
   wrapper: {

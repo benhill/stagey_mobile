@@ -1,10 +1,8 @@
-function UserWindow(title, containingTab, user_id){
+function UserWindow(user_id){
 
   var styles = require('modules/styles/styles');
   var userStyles = require('modules/styles/user');
-
   var self = Ti.UI.createWindow(styles.defaultWindow);
-  self.title = title;
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
   var userScroll = Titanium.UI.createScrollView(userStyles.userScroll);
   var wrapper = Ti.UI.createView(userStyles.wrapper);
@@ -21,8 +19,7 @@ function UserWindow(title, containingTab, user_id){
         wrapper.add(image);
 
         image.addEventListener('click', function(e){
-          var params = [containingTab, user.image_url];
-          app.openWindow('image', containingTab, params);
+          app.openWindow('Image', 'image', [user.image_url]);
         });
 
         var name = Ti.UI.createLabel(userStyles.name);
@@ -42,8 +39,7 @@ function UserWindow(title, containingTab, user_id){
           wrapper.add(reviewsLabel);
 
           reviewsLabel.addEventListener('click', function(e){
-            params = ['Reviews by ' + user.first_name, containingTab, user.id, null];
-            app.openWindow('reviews', containingTab, params);
+            app.openWindow('Reviews by ' + user.first_name, 'reviews', [user.id, null]);
           });
 
           var line = Ti.UI.createView(userStyles.line2);

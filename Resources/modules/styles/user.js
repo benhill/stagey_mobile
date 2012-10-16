@@ -1,9 +1,5 @@
 exports = {
 
-  table: {
-    top:50
-  },
-
   userScroll: {
   	contentWidth:Ti.UI.SIZE,
     contentHeight:Ti.UI.SIZE,

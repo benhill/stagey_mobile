@@ -1,9 +1,8 @@
-function ProjectsWindow(title, containingTab, mode, startProjects, cat_id, venue_id){
+function ProjectsWindow(mode, startProjects, cat_id, venue_id){
 
   var styles = require('modules/styles/styles');
   var projectsStyles = require('modules/styles/projects');
   var self = Ti.UI.createWindow(styles.defaultWindow);
-  self.title = title;
   var projectsObj = require('modules/models/projects');
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
   var table = Titanium.UI.createTableView(projectsStyles.table);
@@ -93,8 +92,7 @@ function ProjectsWindow(title, containingTab, mode, startProjects, cat_id, venue
     }
 
     function loadProject(e, islongclick){
-      params = ['Project', containingTab, e.source.project_id]
-      app.openWindow('project', containingTab, params)
+      app.openWindow('Project', 'project', [e.source.project_id])
     }
 
     function loadMore(e,islongclick){

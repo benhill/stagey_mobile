@@ -1,10 +1,8 @@
-function PwycWindow(title, containingTab, performance){
+function PwycWindow(performance){
 
   var styles = require('modules/styles/styles');
-  var pwycStyles = require('modules/styles/pwyc');
-  
+  var pwycStyles = require('modules/styles/pwyc');  
   var self = Ti.UI.createWindow(styles.defaultWindow);
-  self.title = title;
 
   self.load = function(){
 
@@ -23,8 +21,7 @@ function PwycWindow(title, containingTab, performance){
 	  self.add(quantButton);
 
 	  quantButton.addEventListener('click', function(e){
-	  	params = ['Performance', containingTab, performance.id, pwycText.value];
-	    app.openWindows('performance', containingTab, params);
+	    app.openWindow('Performance', 'performance', [performance.id, pwycText.value]);
 	  })
 
 	  function addKeyboardToolbar(textbox){

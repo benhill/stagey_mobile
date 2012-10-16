@@ -1,4 +1,4 @@
-function ReviewsWindow(title, containingTab, user_id, project){
+function ReviewsWindow(user_id, project){
 
   var styles = require('modules/styles/styles');
   var reviewsStyles = require('modules/styles/reviews');
@@ -113,8 +113,7 @@ function ReviewsWindow(title, containingTab, user_id, project){
     });
 
     function loadReview(e, islongclick) { 
-      params = ['Show Review', containingTab, e.rowData.review.id];
-      app.openWindow('review', containingTab, params);
+      app.openWindow('Show Review', 'review', [e.rowData.review.id]);
     }
 
     function loadMore(e,islongclick){
