@@ -45,24 +45,41 @@ exports = {
   },
 
   iconView: {
-    width:100,
-    height:85,
-    layout:'vertical'  
+    width:120,
+    height:100,
+    layout:'vertical',
+    borderRadius:10,
+    backgroundColor:'black'
   },
 
   iconImage: {
     height:40,
     width:40,
-    top:10    
+    top:10,
+    left:40
   },
 
   iconText: {
     height:Ti.UI.SIZE,
     width:100,
-    font:{fontSize:12},
-    left:0,
+    font:{fontSize:12, fontWeight:'bold'},
+    left:10,
     top:5,
-    textAlign:'center'
+    textAlign:'center',
+    color:'white'
+  },
+
+  alertView: {
+    bottom:0,
+    height:50,
+    width:'100%',
+    backgroundColor:'#bbbbbb'
+  },
+
+  alertLabel: {
+    height:Ti.UI.SIZE,
+    width:Ti.UI.SIZE,
+    font:{fontSize:15, fontWeight:'bold'}
   }
 
 };

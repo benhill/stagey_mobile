@@ -7,53 +7,37 @@ function ShowsWindow(){
   var Icon = require('modules/models/icons');
   var icons = [];
   var top = 0;
-  var left = 0;
+  var left = 20;
 
   self.load = function(){
 
-    var projects = new Icon('Browse', 'iphone/all_shows_48.png', 'cats', null, false);
+    var projects = new Icon('Browse Current\nShows', 'iphone/all_shows_48.png', 'cats', null, false);
     icons.push(projects);
 
-    var whats_next = new Icon('Upcoming', 'iphone/whats_next_48.png', 'performances', null, false);
+    var whats_next = new Icon('Upcoming\nPerformances', 'iphone/whats_next_48.png', 'performances', null, false);
     icons.push(whats_next);
 
-    var nearby = new Icon('Nearby', 'iphone/nearby_48.png', 'performances', null, false);
+    var nearby = new Icon('Playing\nNearby', 'iphone/nearby_48.png', 'performances', null, false);
     icons.push(nearby);
 
-    var venues = new Icon('Venues', 'iphone/venues_48.png', 'venues', null, false);
-    icons.push(venues);
-
-    var reviews = new Icon('Reviews', 'iphone/reviews_48.png', 'reviews', null, false);
+    var reviews = new Icon('Recent\nReviews', 'iphone/reviews_48.png', 'reviews', null, false);
     icons.push(reviews);
-
-    var favorites = new Icon('Favorites', 'iphone/favorites_48.png', 'projects', null, true);
-    icons.push(favorites);
-
-    var schedule = new Icon('My Schedule', 'iphone/schedule_48.png', 'performances', null, true);
-    icons.push(schedule);
-
-    var purchases = new Icon('Purchases', 'iphone/purchase_48.png', 'purchases', null, true);
-    icons.push(purchases);
-
-    var profile = new Icon('Me', 'iphone/my_account_48.png', 'me', null, true);
-    icons.push(profile);
 
     var searchView = Ti.UI.createView(showStyles.searchView);
 
     var searchField = Titanium.UI.createTextField(showStyles.searchField);
-
-    addKeyboardToolbar(searchField);
-
+    app.addKeyboardToolbar(searchField);
     searchView.add(searchField);
 
     var searchButton =  Ti.UI.createImageView(showStyles.searchButton);
-
     searchView.add(searchButton);
+
+    self.add(searchView);
 
     var iconsView = Ti.UI.createView(showStyles.iconsView);
 
     for(var i = 0;i < icons.length; i++){
-      if(i > 0 && i % 3 === 0){left = 0;top += 85;}
+      if(i > 0 && i % 2 === 0){left = 20;top += 120;}
       
       icon = icons[i];
       
@@ -74,15 +58,22 @@ function ShowsWindow(){
       
       iconsView.add(iconView);
 
-      left += 100;  
+      left += 140;  
 
       iconView.addEventListener('click', function(e){
         runIconEvent(e);
       });  
     }
+    
+    self.add(iconsView);
 
-    self.add(searchView);
-    self.add(iconsView);  
+    alertView = Ti.UI.createView(showStyles.alertView);
+
+    alertLabel = Ti.UI.createLabel(showStyles.alertLabel);
+    alertLabel.text = "Registration is now open for HFF12!"
+    alertView.add(alertLabel);
+
+    self.add(alertView);
 
     searchButton.addEventListener('click', function(e){
       runSearch(searchField.value);
@@ -91,29 +82,6 @@ function ShowsWindow(){
     searchField.addEventListener('return', function(e){
       runSearch(searchField.value);
     });
-
-    function addKeyboardToolbar(textbox){
-      var flexSpace = Ti.UI.createButton({
-        systemButton:Ti.UI.iPhone.SystemButton.FLEXIBLE_SPACE,
-        right:0
-      });
-
-      var doneButton = Ti.UI.createButton({
-        systemButton:Ti.UI.iPhone.SystemButton.DONE,
-        right:0
-      });
-
-      textbox.keyboardToolbar = [flexSpace, doneButton];
-
-      textbox.addEventListener('focus', function(e) {
-        textbox.keyboardToolbar = [flexSpace, doneButton];
-        doneButton.activeFld = textbox;
-      });
-
-      doneButton.addEventListener('click', function(e) {
-        e.source.activeFld.blur();
-      });
-    };
 
     function runSearch(terms, e, islongclick){
       new searchObj(terms, function(data){

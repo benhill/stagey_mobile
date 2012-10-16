@@ -17,7 +17,7 @@ function Header(title, window){
     right:15,
     top:15
   });
-  if(title != 'Search'){headerView.add(searchButton)};
+  if(title != 'Search' && title != 'Shows'){headerView.add(searchButton)};
 
   searchButton.addEventListener('click', function(e){
     app.openWindow('Search', 'search', []);
@@ -53,7 +53,7 @@ function Header(title, window){
     var logoImage =  Ti.UI.createImageView({
       image:'iphone/hff_logo.png',      
       top:10,
-      left:10
+      left:15
     });
     headerView.add(logoImage);
   }
