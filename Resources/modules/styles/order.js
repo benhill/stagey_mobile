@@ -32,8 +32,8 @@ exports = {
   },
 
   table: {
-    top:115,
-    height:'70%'
+    top:100,
+    height:'80%'
   },
 
   row: {

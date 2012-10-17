@@ -11,16 +11,16 @@ function ShowsWindow(){
 
   self.load = function(){
 
-    var projects = new Icon('Browse Current\nShows', 'iphone/all_shows_48.png', 'cats', null, false);
+    var projects = new Icon('Browse Current\nShows', 'iphone/all_shows_48.png', 'cats', null, false, null, 'browse');
     icons.push(projects);
 
-    var whats_next = new Icon('Upcoming\nPerformances', 'iphone/whats_next_48.png', 'performances', null, false);
+    var whats_next = new Icon('Upcoming\nPerformances', 'iphone/whats_next_48.png', 'performances', null, false, null, 'next');
     icons.push(whats_next);
 
-    var nearby = new Icon('Playing\nNearby', 'iphone/nearby_48.png', 'performances', null, false);
+    var nearby = new Icon('Playing\nNearby', 'iphone/nearby_48.png', 'performances', null, false, null, 'nearby');
     icons.push(nearby);
 
-    var reviews = new Icon('Recent\nReviews', 'iphone/reviews_48.png', 'reviews', null, false);
+    var reviews = new Icon('Recent\nReviews', 'iphone/reviews_48.png', 'reviews', null, false, null, 'reviews');
     icons.push(reviews);
 
     var searchView = Ti.UI.createView(showStyles.searchView);
@@ -95,11 +95,8 @@ function ShowsWindow(){
 
     function runIconEvent(e, islongclick){
       var thirdParam;
-      if(e.source.icon.text == 'Favorites'){thirdParam = 'favorites';}
-      if(e.source.icon.text == 'Upcoming'){thirdParam = 'next';}
-      if(e.source.icon.text == 'My Schedule'){thirdParam = 'schedule';}
-      if(e.source.icon.text == 'Nearby'){thirdParam = 'nearby';}
-
+      if(e.source.icon.id == 'next'){thirdParam = 'next';}      
+      if(e.source.icon.id == 'nearby'){thirdParam = 'nearby';}
       app.openWindow(e.source.icon.text, e.source.icon.window, [thirdParam]);
     }
   }

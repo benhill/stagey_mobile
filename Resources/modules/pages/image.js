@@ -1,28 +1,17 @@
 function ImageWindow(image_path){
 
   var styles = require('modules/styles/styles');
-  var projectStyles = require('modules/styles/project');
+  var imageStyles = require('modules/styles/image');
   var self = Ti.UI.createWindow(styles.defaultWindow);
 
   self.load = function(){
+    var imageScroll = Ti.UI.createScrollView(imageStyles.imageScroll);
 
-  	var objectImage = Titanium.UI.createImageView({
-  	  image: image_path,
-  	  top:15
-  	});
-  	self.add(objectImage);
+  	var objectImage = Titanium.UI.createImageView(imageStyles.objectImage);
+    objectImage.image = image_path;
+  	imageScroll.add(objectImage);
 
-  	var closeButton = Titanium.UI.createButton({
-  	  title:'Close',
-  	  height:30,
-  	  width:150,
-  	  top:5
-  	});
-  	self.add(closeButton);
-
-  	closeButton.addEventListener('click', function(){
-  	  self.close();
-  	});
+    self.add(imageScroll);
   }
   
   return self;

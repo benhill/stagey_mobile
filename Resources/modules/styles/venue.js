@@ -3,7 +3,7 @@ exports = {
   venueScroll: {
     contentWidth:'95%',
     contentHeight:1100,
-    top:70,
+    top:50,
     left:0,
     height:800,
     showVerticalScrollIndicator:true,
@@ -11,11 +11,20 @@ exports = {
     layout:'vertical'
   },
 
+  titleView: {
+    width:'100%',
+    height:Ti.UI.SIZE,
+    layout:'vertical',
+    backgroundColor:'#bbbbbb',
+    top:0
+  },
+
   name: {
     height:Titanium.UI.SIZE,
     width:Titanium.UI.SIZE,            
-    font:{fontSize:20},
-    left:5
+    font:{fontSize:20, fontWeight:'bold'},
+    left:5,
+    top:10
   },
 
   presenter: {
@@ -23,7 +32,8 @@ exports = {
     left:5,
     font:{fontSize:10},
     height:Titanium.UI.SIZE,
-    width: '95%'
+    width: '95%',
+    bottom:10
   },
 
   galleryView: {

@@ -115,7 +115,7 @@ function PerformancesWindow(mode){
     function loadPerformance(e, islongclick) {
 
       if(e.source.performance.pwyc){
-        var window = pwyc;
+        var window = 'pwyc';
         var title = 'PWYC';
       }
       else{

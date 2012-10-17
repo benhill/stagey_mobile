@@ -1,8 +1,8 @@
 exports = {	
 
 	defaultWindow: {
-		backgroundColor: '#ede8df',
-		barColor: 'black'
+		backgroundColor:'#F4F1F1',
+		barColor:'black'
 	},
 
 	spinner: {

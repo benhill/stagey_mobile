@@ -24,16 +24,7 @@ function Header(title, window){
   });
 
   if(window && title != 'Me' && title != 'Login'){
-    var headerLabel = Ti.UI.createLabel({
-      height:Ti.UI.SIZE,
-      width:Ti.UI.SIZE,
-      text:title,
-      color:'white',
-      left:80,
-      font:{fontSize:22, fontWeight:'bold'}
-    })
-    //headerView.add(headerLabel)
-
+    
     var backButton =  Ti.UI.createLabel({
       text:"\u21E6 back",
       font:{fontSize:14},
@@ -53,9 +44,10 @@ function Header(title, window){
     var logoImage =  Ti.UI.createImageView({
       image:'iphone/hff_logo.png',      
       top:10,
-      left:15
+      left:5
     });
     headerView.add(logoImage);
+        
   }
   
 	return headerView;

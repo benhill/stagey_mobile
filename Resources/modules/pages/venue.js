@@ -22,13 +22,17 @@ function VenueWindow(venue_id){
     new venueDistObj(venue.id, function(miles_away){
       var venueScroll = Titanium.UI.createScrollView(venueStyles.venueScroll);
 
+      titleView = Ti.UI.createView(venueStyles.titleView);
+
       var name = Titanium.UI.createLabel(venueStyles.name);
-      name.text = venue.name;
-      venueScroll.add(name);
+      name.text = venue.name.toUpperCase();
+      titleView.add(name);
 
       var presenter = Ti.UI.createLabel(venueStyles.presenter);
       presenter.text = "presented by " + venue.presenter;
-      if(venue.presenter){venueScroll.add(presenter)};
+      if(venue.presenter){titleView.add(presenter)};
+
+      venueScroll.add(titleView);
 
       var galleryView = Ti.UI.createView(venueStyles.galleryView);    
 

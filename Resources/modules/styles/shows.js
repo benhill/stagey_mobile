@@ -3,7 +3,7 @@ var default_search_text = 'search for a show';
 exports = {	
 
 	searchView: {
-		top:60,
+		top:52,
     left:0,
     height:50,
     layout:'absolute'
@@ -22,23 +22,23 @@ exports = {
     value:default_search_text,
     height:30,
     clearOnEdit:true,
-    top:10,
-    left:15,
-    width:'82%',
+    top:0,
+    left:0,
+    width:'90%',
     borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
     color:'gray'		
   },
 
   searchButton: {
     image:'iphone/search_24.png',
-    width:24,
-    height:24,
-    top:12,    
-    left:285
+    width:'7%',
+    height:Ti.UI.SIZE,
+    top:5,
+    right:5
   },
 
   iconsView: {
-    top:115,
+    top:110,
     left:0,
     height:260,
     layout:'absolute'
