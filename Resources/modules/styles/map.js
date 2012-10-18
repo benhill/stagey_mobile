@@ -4,7 +4,7 @@ exports = {
     mapType: Titanium.Map.STANDARD_TYPE,
     animate:true,
     regionFit:true,
-    userLocation:false,
+    userLocation:false
   },
 
   viewButton: {

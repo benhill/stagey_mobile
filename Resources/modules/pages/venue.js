@@ -74,33 +74,11 @@ function VenueWindow(venue_id){
       description.text = venue.description;
       venueScroll.add(description);
 
-      var line = Ti.UI.createView(venueStyles.line);
-      venueScroll.add(line);
-
-      var mapView = Ti.UI.createView(venueStyles.mapView);
-
-      var mapLabel = Ti.UI.createLabel(venueStyles.mapLabel);      
-      mapView.add(mapLabel);
-
-      var address = Ti.UI.createLabel(venueStyles.address);
-      address.text = venue.address + "\n" + venue.city + ", " + venue.state + " " + venue.postal;
-      mapView.add(address);
-
-      var distance = Ti.UI.createLabel(venueStyles.distance);
-      distance.text = miles_away + ' miles away'
-      mapView.add(distance);
-
-      venueScroll.add(mapView);
-
-      mapView.addEventListener('click', function(e){
-        app.openWindow('project', 'map', [venue]);
-      });
 
       var line = Ti.UI.createView(venueStyles.line);
       venueScroll.add(line);
 
       if(venue.number_of_shows > 0){
-
         var projectsView = Ti.UI.createView(venueStyles.projectsView);
 
         var projectThumb = Ti.UI.createImageView(venueStyles.projectThumb);
@@ -115,17 +93,47 @@ function VenueWindow(venue_id){
         titleLabel.text = 'including ' + venue.random_show_title;
         projectsView.add(titleLabel);
 
+        var carrotImage = Ti.UI.createImageView(venueStyles.carrotImage);
+        projectsView.add(carrotImage);
+
         venueScroll.add(projectsView);
 
         projectsView.addEventListener('click', function(e){
           var params = ['venue', null, null, venue.id];
           app.openWindow('Shows', 'projects', params);
         });
-
-        var line = Ti.UI.createView(venueStyles.lien);
-        venueScroll.add(line);
+        
       }
 
+      var line = Ti.UI.createView(venueStyles.line);
+      venueScroll.add(line);
+
+      var addressView = Ti.UI.createView(venueStyles.addressView);
+
+      var addressLabel = Ti.UI.createLabel(venueStyles.addressLabel);      
+      addressView.add(addressLabel);
+
+      var address = Ti.UI.createLabel(venueStyles.address);
+      address.text = venue.address + "\n" + venue.city + ", " + venue.state + " " + venue.postal;
+      addressView.add(address);
+
+      var distance = Ti.UI.createLabel(venueStyles.distance);
+      distance.text = miles_away + ' miles away'
+      addressView.add(distance);
+
+      venueScroll.add(addressView);
+      
+      var annotation = Ti.Map.createAnnotation(venueStyles.annotation);
+      annotation.latitude = venue.lat;
+      annotation.longitude = venue.lng;
+      annotation.title = venue.name;
+      annotation.subtitle = venue.address;
+
+      var mapView = Titanium.Map.createView(venueStyles.mapView);
+      mapView.annotations = [annotation];
+      mapView.region = {latitude:venue.lat, longitude:venue.lng, latitudeDelta:0.01, longitudeDelta:0.01};
+      venueScroll.add(mapView);
+      
       self.add(venueScroll);
       self.remove(spinner);
     }); 

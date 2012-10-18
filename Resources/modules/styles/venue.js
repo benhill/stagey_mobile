@@ -77,14 +77,14 @@ exports = {
     backgroundColor:'gray'
   },
 
-  mapView: {
+  addressView: {
     width:320,
     height:45,
     top:5
   },
 
-  mapLabel: {
-    text: "map",
+  addressLabel: {
+    text: "address",
     top:3,
     left:5,
     font:{fontSize:13},
@@ -137,6 +137,29 @@ exports = {
     top:23,
     height:Titanium.UI.SIZE,
     width:250
+  },
+
+  mapView: {
+    mapType: Titanium.Map.STANDARD_TYPE,
+    animate:true,
+    regionFit:true,
+    userLocation:false,
+    top:15,
+    height:175
+  },
+
+  annotation: {
+    animate: true,
+    pincolor:  Titanium.Map.ANNOTATION_PURPLE
+  },
+
+  carrotImage: {
+    right:10,
+    top:'40%',
+    font:{fontSize:12, fontWeight:'bold'},
+    height:Titanium.UI.SIZE,
+    width:Titanium.UI.SIZE,
+    image:'iphone/more-arrow.png'
   }
 
 };
