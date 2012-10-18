@@ -69,6 +69,9 @@ function MeWindow(){
           iconLabel.icon = icon;
           row.add(iconLabel);
 
+          var carrotImage = Ti.UI.createImageView(meStyles.carrotImage);
+          row.add(carrotImage);
+
           row.addEventListener('click', function(e){
           	icon = e.source.icon;            
             app.openWindow(e.source.icon.text, icon.window, [icon.third_param]);

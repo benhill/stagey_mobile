@@ -26,6 +26,9 @@ function CatsWindow(){
         catStyles.nameLabel.text = name.toLowerCase(); 
         var nameLabel = Ti.UI.createLabel(catStyles.nameLabel);
 
+        var carrotImage = Ti.UI.createImageView(catStyles.carrotImage);
+        row.add(carrotImage);
+
         row.add(nameLabel);      
         tableData.push(row);
       }

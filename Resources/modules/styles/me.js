@@ -36,7 +36,7 @@ exports = {
   },
 
   row: {
-    height:60
+    height:50
   },
 
   iconLabel: {    
@@ -45,6 +45,16 @@ exports = {
     left:50,
     top:15,
     font:{fontSize:'16', fontWeight:'bold'}
+  },
+
+  carrotImage: {
+    right:10,
+    top:'40%',
+    font:{fontSize:12, fontWeight:'bold'},
+    height:Titanium.UI.SIZE,
+    width:Titanium.UI.SIZE,
+    image:'iphone/more-arrow.png'
   }
+
 
 }

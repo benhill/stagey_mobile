@@ -38,22 +38,24 @@ function ProjectsWindow(mode, startProjects, cat_id, venue_id){
         projectsStyles.projectThumb.image = project.thumbnail;
         projectsStyles.projectThumb.project_id = project.id;
         var projectThumb = Titanium.UI.createImageView(projectsStyles.projectThumb);  
-
         row.add(projectThumb);
 
-        (project.title.length >= 30) ? title = project.title.substr(0,25) + "..." : title = project.title;
+        (project.title.length >= 25) ? title = project.title.substr(0,25) + "..." : title = project.title;
 
         projectsStyles.nameLabel.text = title.toLowerCase();
         projectsStyles.nameLabel.project_id = project.id;
         var nameLabel = Ti.UI.createLabel(projectsStyles.nameLabel);
-
         row.add(nameLabel);
 
         projectsStyles.infoLabel.text = project.cat_name + " \u00B7 " + project.cost_range + " \u00B7 " + project.duration
         projectsStyles.infoLabel.project_id = project.id;
         var infoLabel = Ti.UI.createLabel(projectsStyles.infoLabel);
-
         row.add(infoLabel);
+
+        var carrotImage = Ti.UI.createImageView(projectsStyles.carrotImage);
+        row.add(carrotImage);
+
+
         tableData.push(row);
 
         row.addEventListener('click', function(e){

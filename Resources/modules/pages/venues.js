@@ -24,20 +24,23 @@ function VenuesWindow(){
         var venueThumb = Titanium.UI.createImageView(venueStyles.venueThumb);
         venueThumb.image = venue.thumbnail;
         venueThumb.venue_id = venue.id;
+        row.add(venueThumb);
 
         var name;
-        (venue.name.length >= 30) ? name = venue.name.substr(0,30) + "..." : name = venue.name;
+        (venue.name.length >= 25) ? name = venue.name.substr(0,25) + "..." : name = venue.name;
         var nameLabel = Ti.UI.createLabel(venueStyles.nameLabel);
         nameLabel.text = name;
         name.venue_id = venue.id;
-
-        var addressLabel = Ti.UI.createLabel(venueStyles);
-        addressLabel.addressLabel.text = venue.address;
-        addressLabel.venue_id = venue.id;
-
-        row.add(venueThumb);
         row.add(nameLabel);
+
+        var addressLabel = Ti.UI.createLabel(venueStyles.addressLabel);
+        addressLabel.text = venue.address;
+        addressLabel.venue_id = venue.id;
         row.add(addressLabel);
+
+        var carrotImage = Ti.UI.createImageView(venueStyles.carrotImage);
+        row.add(carrotImage);
+
         tableData.push(row);
       }
 

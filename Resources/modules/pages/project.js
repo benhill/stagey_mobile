@@ -210,6 +210,9 @@ function ProjectWindow(project_id){
       reviewsLabelName.text = project.top_review_user_full_name + ': \"' + project.top_review_blurb + '\"',
       reviewView.add(reviewsLabelName);
 
+      var carrotImage = Ti.UI.createImageView(projectStyles.carrotImage);
+      reviewView.add(carrotImage);
+
       var line = Ti.UI.createView(projectStyles.line);
       line.top = 70,
       reviewView.add(line);
@@ -232,6 +235,9 @@ function ProjectWindow(project_id){
       var teamLabelName = Ti.UI.createLabel(projectStyles.teamLabelName);
       teamLabelName.text = 'including ' + project.fringe_user.full_name,
       teamView.add(teamLabelName);
+
+      var carrotImage = Ti.UI.createImageView(projectStyles.carrotImage);
+      teamView.add(carrotImage);
 
       projectScroll.add(teamView);
 

@@ -56,7 +56,7 @@ function PerformancesWindow(mode){
         row.add(projectThumb);            
 
         var title;
-        (performance.project_name.length >= 30) ? title = performance.project_name.substr(0,30) + "..." : title = performance.project_name;
+        (performance.project_name.length >= 25) ? title = performance.project_name.substr(0,25) + "..." : title = performance.project_name;
 
         var projectTitle = Ti.UI.createLabel(perfStyles.projectTitle);
         projectTitle.text = title;
@@ -74,6 +74,9 @@ function PerformancesWindow(mode){
           }            
           else{loadPerformance(e);}
         });
+
+        var carrotImage = Ti.UI.createImageView(perfStyles.carrotImage);
+        row.add(carrotImage);
 
         tableData.push(row);
       }

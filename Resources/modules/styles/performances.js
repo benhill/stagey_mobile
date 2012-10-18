@@ -57,6 +57,15 @@ exports = {
     top:10,
     left:60,
     font:{fontSize:14}
+  },
+
+  carrotImage: {
+    right:10,
+    top:'40%',
+    font:{fontSize:12, fontWeight:'bold'},
+    height:Titanium.UI.SIZE,
+    width:Titanium.UI.SIZE,
+    image:'iphone/more-arrow.png'
   }
 
 };

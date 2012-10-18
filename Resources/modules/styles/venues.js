@@ -38,6 +38,15 @@ exports = {
 
   row: {
     height:'60dp'
+  },
+
+  carrotImage: {
+    right:10,
+    top:'40%',
+    font:{fontSize:12, fontWeight:'bold'},
+    height:Titanium.UI.SIZE,
+    width:Titanium.UI.SIZE,
+    image:'iphone/more-arrow.png'
   }
 
 };

@@ -133,7 +133,16 @@ exports = {
     left:65,
     top:23,
     height:Ti.UI.SIZE,
-    width:250
+    width:225
+  },
+
+  carrotImage: {
+    right:10,
+    top:'40%',
+    font:{fontSize:12, fontWeight:'bold'},
+    height:Titanium.UI.SIZE,
+    width:Titanium.UI.SIZE,
+    image:'iphone/more-arrow.png'
   },
 
   teamThumb: {
