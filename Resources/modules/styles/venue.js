@@ -15,30 +15,35 @@ exports = {
     width:'100%',
     height:Ti.UI.SIZE,
     layout:'vertical',
-    backgroundColor:'#bbbbbb',
-    top:0
+    backgroundColor:'black',
+    top:0    
   },
 
   name: {
-    height:Titanium.UI.SIZE,
-    width:Titanium.UI.SIZE,            
-    font:{fontSize:20, fontWeight:'bold'},
-    left:5,
-    top:10
+    height:Ti.UI.SIZE,
+    width:Ti.UI.SIZE,            
+    font:{fontSize:17, fontWeight:'bold'},
+    left:10,
+    top:11,
+    color:'white'
   },
 
   presenter: {
     top:0,
-    left:5,
-    font:{fontSize:10},
-    height:Titanium.UI.SIZE,
-    width: '95%',
-    bottom:10
+    left:10,
+    font:{fontSize:11},
+    height:Ti.UI.SIZE,
+    width: '95%',    
+    color:'white'
+  },
+
+  spacerView: {
+    height:10
   },
 
   galleryView: {
-    height:Titanium.UI.SIZE,
-    width:Titanium.UI.SIZE,
+    height:Ti.UI.SIZE,
+    width:Ti.UI.SIZE,
     top:5,
     left:5   
   },
@@ -56,8 +61,8 @@ exports = {
     top:9,
     left:220,
     text:'more images',
-    width:Titanium.UI.SIZE,
-    height:Titanium.UI.SIZE,
+    width:Ti.UI.SIZE,
+    height:Ti.UI.SIZE,
     font:{fontSize:14}
   },
 
@@ -65,7 +70,7 @@ exports = {
     top:10,
     left:5,
     font:{fontSize:10},
-    height:Titanium.UI.SIZE,
+    height:Ti.UI.SIZE,
     width: '95%'
   },
 
@@ -87,24 +92,24 @@ exports = {
     text: "address",
     top:3,
     left:5,
-    font:{fontSize:13},
-    height:Titanium.UI.SIZE,
+    font:{fontSize:12, fontWeight:'bold'},
+    height:Ti.UI.SIZE,
     width: '95%'
   },
 
   address: {
     top:3,
     left:70,
-    font:{fontSize:10},
-    height:Titanium.UI.SIZE,
+    font:{fontSize:12},
+    height:Ti.UI.SIZE,
     width: '95%'
   },
 
   distance: {
     top:30,
     left:70,
-    font:{fontSize:10},
-    height:Titanium.UI.SIZE,
+    font:{fontSize:12},
+    height:Ti.UI.SIZE,
     width: '95%'
   },
 
@@ -127,20 +132,20 @@ exports = {
     font:{fontSize:14},
     left:65,
     top:5,
-    height:Titanium.UI.SIZE,
-    width:'90%'
+    height:Ti.UI.SIZE,
+    width:'80%'
   },
 
   titleLabel: {
     font:{fontSize:10},
     left:65,
     top:23,
-    height:Titanium.UI.SIZE,
+    height:Ti.UI.SIZE,
     width:250
   },
 
   mapView: {
-    mapType: Titanium.Map.STANDARD_TYPE,
+    mapType: Ti.Map.STANDARD_TYPE,
     animate:true,
     regionFit:true,
     userLocation:false,
@@ -149,16 +154,16 @@ exports = {
   },
 
   annotation: {
-    animate: true,
-    pincolor:  Titanium.Map.ANNOTATION_PURPLE
+    animate:true,
+    pincolor:Ti.Map.ANNOTATION_RED
   },
 
   carrotImage: {
     right:10,
     top:'40%',
     font:{fontSize:12, fontWeight:'bold'},
-    height:Titanium.UI.SIZE,
-    width:Titanium.UI.SIZE,
+    height:Ti.UI.SIZE,
+    width:Ti.UI.SIZE,
     image:'iphone/more-arrow.png'
   }
 

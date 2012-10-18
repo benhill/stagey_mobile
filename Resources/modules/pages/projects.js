@@ -55,7 +55,6 @@ function ProjectsWindow(mode, startProjects, cat_id, venue_id){
         var carrotImage = Ti.UI.createImageView(projectsStyles.carrotImage);
         row.add(carrotImage);
 
-
         tableData.push(row);
 
         row.addEventListener('click', function(e){

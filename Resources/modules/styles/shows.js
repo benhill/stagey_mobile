@@ -4,7 +4,7 @@ exports = {
 
 	searchView: {
 		top:52,
-    left:0,
+    left:1,
     height:50,
     layout:'absolute'
 	},

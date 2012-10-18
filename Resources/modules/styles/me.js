@@ -42,7 +42,7 @@ exports = {
   iconLabel: {    
     height:Ti.UI.SIZE,
     width:300,
-    left:50,
+    left:10,
     top:15,
     font:{fontSize:'16', fontWeight:'bold'}
   },

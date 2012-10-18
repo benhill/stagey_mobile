@@ -24,6 +24,7 @@ exports = {
 
   addressLabel: {
     font:{fontSize:'12dp'},
+    width:'80%',
     height:Titanium.UI.SIZE,
     left:'55dp',
     top:30,

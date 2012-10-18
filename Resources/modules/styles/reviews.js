@@ -36,7 +36,7 @@ exports = {
     height:45,
     left:60,
     top:30,
-    width:250,
+    width:220,
     font:{fontSize:'11'}
   },
 
@@ -59,6 +59,15 @@ exports = {
     message: 'loading...',
     color: 'black',
     style: Titanium.UI.iPhone.ActivityIndicatorStyle.DARK
+  },
+
+  carrotImage: {
+    right:10,
+    top:'40%',
+    font:{fontSize:12, fontWeight:'bold'},
+    height:Titanium.UI.SIZE,
+    width:Titanium.UI.SIZE,
+    image:'iphone/more-arrow.png'
   }
 
 };

@@ -17,6 +17,7 @@ function ReviewsWindow(user_id, project){
     });
 
     function loadReviews(reviews){
+
       if (reviews.length > 0){var total_results = reviews[0].total_results};
 
       var tableData = [];
@@ -62,6 +63,9 @@ function ReviewsWindow(user_id, project){
           blurb.text = review.body.substr(0,80).replace(/\n/gm, '').replace(/\r/gm, ' ') + '...';
         }
         row.add(blurb);
+
+        var carrotImage = Ti.UI.createImageView(reviewsStyles.carrotImage);
+        row.add(carrotImage);
 
         tableData.push(row);
 

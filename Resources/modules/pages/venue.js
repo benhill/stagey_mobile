@@ -32,6 +32,9 @@ function VenueWindow(venue_id){
       presenter.text = "presented by " + venue.presenter;
       if(venue.presenter){titleView.add(presenter)};
 
+      var spacerView = Ti.UI.createView(venueStyles.spacerView);
+      titleView.add(spacerView);
+
       venueScroll.add(titleView);
 
       var galleryView = Ti.UI.createView(venueStyles.galleryView);    
@@ -74,11 +77,12 @@ function VenueWindow(venue_id){
       description.text = venue.description;
       venueScroll.add(description);
 
-
-      var line = Ti.UI.createView(venueStyles.line);
-      venueScroll.add(line);
-
+      
       if(venue.number_of_shows > 0){
+
+        var line = Ti.UI.createView(venueStyles.line);
+        venueScroll.add(line);
+
         var projectsView = Ti.UI.createView(venueStyles.projectsView);
 
         var projectThumb = Ti.UI.createImageView(venueStyles.projectThumb);

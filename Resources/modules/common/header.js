@@ -7,7 +7,9 @@ function Header(title, window){
     top:0,
     height:50,
     width:'100%',
-    backgroundColor:'black'
+    backgroundColor:'black',
+    borderColor:'white',
+    borderWidth:1
   })
 
   var searchButton =  Ti.UI.createImageView({

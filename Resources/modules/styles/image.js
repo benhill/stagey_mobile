@@ -11,7 +11,7 @@ exports = {
   },
 
   objectImage: {    
-    top:-70
+    top:-50
   }
 
 }

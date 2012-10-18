@@ -15,23 +15,25 @@ exports = {
     width:'100%',
     height:Ti.UI.SIZE,
     layout:'vertical',
-    backgroundColor:'#bbbbbb',
+    backgroundColor:'black',    
     top:0
   },
 
   title: {
     height:Ti.UI.SIZE,
     width:Ti.UI.SIZE,
-    font:{fontSize:20, fontWeight:'bold'},
-    left:5,
+    color:'white',
+    font:{fontSize:17, fontWeight:'bold'},
+    left:10,
     top:10
   },
 
   subTitle: {
     height:Ti.UI.SIZE,
-    width:'95%',       
-    left:5,
-    font:{fontSize:10},
+    width:'95%',
+    color:'white',
+    left:10,
+    font:{fontSize:11},
     bottom:10
   },
 
