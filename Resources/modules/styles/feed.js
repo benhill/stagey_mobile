@@ -5,19 +5,20 @@ exports = {
   },
 
   row: {
-    height:125
+    height:150,
+    bottom:10
   },
 
   imageView: {    
     width: 320, 
-    height:125
+    height:150
   },
 
   baseImage: {    
     width:512, 
     height:512,
     left:-100,
-    top:-125
+    top:-150
   },
 
   cropView: {
@@ -30,13 +31,12 @@ exports = {
   },
 
   labelView: {
-    bottom:0,
+    bottom:5,
     width:'100%',
-    backgroundColor:'#bbbbbb',
+    backgroundColor:'#777777',
     backgroundRepeat:true,
-    opacity:.7,
-    height:40,
-    borderWidth:1
+    opacity:.85,
+    height:40
   },
 
   objectLabel: {
@@ -44,7 +44,7 @@ exports = {
     height:Ti.UI.SIZE,
     left:10,
     top:5,
-    color:'#000',
+    color:'white',
     touchEnabled:false
   },
 
@@ -53,7 +53,7 @@ exports = {
     height:Ti.UI.SIZE,
     left:10,
     top:20,
-    color:'#000',
+    color:'white',
     touchEnabled:false
   },
 
@@ -63,7 +63,8 @@ exports = {
     font:{fontSize:12, fontWeight:'bold'},
     height:Titanium.UI.SIZE,
     width:Titanium.UI.SIZE,
-    image:'iphone/more-arrow.png'
+    image:'iphone/more-arrow-white.png',
+    zIndex:1000
   },
 
   moreLabel: {
@@ -81,6 +82,13 @@ exports = {
     message: 'loading...',
     color: 'black',
     style: Titanium.UI.iPhone.ActivityIndicatorStyle.DARK
+  },
+
+  line: {
+    width:320,
+    height:5,
+    bottom:0,
+    backgroundColor:'black'
   }
 
 }

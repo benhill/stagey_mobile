@@ -62,6 +62,9 @@ function FeedWindow(){
 
         row.add(labelView);
 
+        var line = Ti.UI.createView(feedStyles.line);
+        row.add(line);
+
         tableData.push(row);
 
         labelView.addEventListener('click', function(e){  
