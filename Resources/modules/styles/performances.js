@@ -23,7 +23,7 @@ exports = {
 
   projectInfo: {
     height:Ti.UI.SIZE,
-    width:'80%',
+    width:220,
     top:30,       
     left:60,
     font:{fontSize:10},

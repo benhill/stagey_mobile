@@ -1,4 +1,4 @@
-function Feed(callback){
+function Feed(page, callback){
  
   var xhr = Ti.Network.createHTTPClient({
     timeout: 15000
@@ -13,6 +13,7 @@ function Feed(callback){
   };
 
   url = app.api_url + "feed"
+  if(page){url += '?page=' + page};
   xhr.open('GET', url);
   xhr.send();
 };

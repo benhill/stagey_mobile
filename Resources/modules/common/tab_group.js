@@ -30,6 +30,10 @@ function ApplicationTabGroup(windows) {
   newsTab.window = createWin('News', 'feed', newsTab)
   self.addTab(newsTab);
   newsTab.window.load();
+
+  newsTab.addEventListener('focus',function(e){
+    app.openWindow('Feed', 'feed', []);
+  })
   
   var meTab = Ti.UI.createTab({
     title:'Me',
@@ -37,15 +41,12 @@ function ApplicationTabGroup(windows) {
   });
   meTab.window = createWin('Me', 'me', meTab);
   self.addTab(meTab);
+  meTab.window.load();
 
   meTab.addEventListener('focus',function(e){
-  	loadMeWindow();
+  	app.openWindow('Me', 'me', []);
   })
 
-  function loadMeWindow(){
-    app.openWindow('Me', 'me', [])
-  }
-  
   function createWin(title, winName, tab){
     var winObj = require('modules/pages/' + winName)
     win = new winObj();

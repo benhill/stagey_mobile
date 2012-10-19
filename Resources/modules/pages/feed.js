@@ -4,48 +4,120 @@ function FeedWindow(){
   var feedStyles = require('modules/styles/feed')  
   var self = Ti.UI.createWindow(styles.defaultWindow);
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
-  var rows_per_page = 9
-  var tableData = [];
+  var page = 1;
+  var rows_per_page = 8;
+  var feedObj;
+  var total_results;
+  var table = Ti.UI.createTableView(feedStyles.table);
 
-  self.load = function(){
+  self.load = function(){    
 
+    self.add(spinner);
+    spinner.show();
+    
     var feedObj = require('modules/models/feed');
-    new feedObj(function(feed_items){
-      var table = Titanium.UI.createTableView(feedStyles.table);
+    new feedObj(null, function(feed_items){
+      if(feed_items.length > 0){
+        total_results = feed_items[0].total_results;
+        loadForm(feed_items);
+      }
+    });
 
+    function loadForm(feed_items){
+      var tableData = [];
       for(i = 0; i < feed_items.length; i++){
         var feed_item = feed_items[i]
 
         var row = Ti.UI.createTableViewRow(feedStyles.row);
-        row.feed_item = feed_item;
-          
-        var feedThumb = Titanium.UI.createImageView(feedStyles.feedThumb);  
-        feedThumb.image = feed_item.item_thumbnail_path;
-        feedThumb.feed_item = feed_item;
-        row.add(feedThumb);
 
+        var baseImage = Ti.UI.createImageView(feedStyles.baseImage);
+        baseImage.image = feed_item.item_image_path;
+
+        var cropView = Ti.UI.createView(feedStyles.cropView);        
+        cropView.add(baseImage);        
+         
+        var croppedImage = cropView.toImage();
+         
+        var imageView = Ti.UI.createImageView(feedStyles.imageView);
+        imageView.image = croppedImage;
+
+        row.add(imageView);
+                  
+        var labelView = Ti.UI.createView(feedStyles.labelView);
+        labelView.feed_item = feed_item;
+    
+        (feed_item.object_name.length >= 35) ? title = feed_item.object_name.substr(0,35) + "..." : title = feed_item.object_name;
         var objectLabel = Ti.UI.createLabel(feedStyles.objectLabel);      
-        objectLabel.text = feed_item.object_name;
+        objectLabel.text = title;
         objectLabel.feed_item = feed_item;
-        row.add(objectLabel);
+        labelView.add(objectLabel);
 
         var textLabel = Ti.UI.createLabel(feedStyles.textLabel);
         textLabel.text = feed_item.text;
         textLabel.feed_item = feed_item;
-        row.add(textLabel);
+        labelView.add(textLabel);
+
+        var carrotImage = Ti.UI.createImageView(feedStyles.carrotImage);
+        labelView.add(carrotImage);
+
+        row.add(labelView);
 
         tableData.push(row);
 
-        row.addEventListener('click', function(e){        
+        labelView.addEventListener('click', function(e){  
           loadWindow(e);
         });
       }
 
-      table.setData(tableData);
-      self.add(table);
+      var row = Ti.UI.createTableViewRow(feedStyles.moreRow);
 
-      spinner.hide();
-    });
+      var moreLabel = Ti.UI.createLabel(feedStyles.moreLabel);
+      
+      if(total_results > (rows_per_page * page)){
+        row.add(moreLabel);
+      }
+
+      row.addEventListener('click', function(e){
+        page += 1;
+        loadMore(e);
+      });
+
+      tableData.push(row);
+
+      if(page > 1){
+
+        table.deleteRow(rows_per_page * (page-1),{animationStyle:Ti.UI.iPhone.RowAnimationStyle.NONE})
+
+        for(var i = 0; i < tableData.length; i++){
+          table.appendRow(tableData[i]);
+        }
+
+        table.scrollToIndex((page * rows_per_page) - rows_per_page);
+      }
+      else {
+        table.setData(tableData);
+        self.add(table);
+      }
+
+      spinner.hide();      
+    }
+
+    function loadMore(e,islongclick){
+      table.deleteRow(rows_per_page * (page-1),{animationStyle:Ti.UI.iPhone.RowAnimationStyle.NONE})
+      var row = Ti.UI.createTableViewRow(feedStyles.moreRow);
+
+      var spinner = Ti.UI.createActivityIndicator(feedStyles.spinner);
+      row.add(spinner);
+      spinner.show();
+
+      table.appendRow(row);
+
+      table.scrollToIndex((page * rows_per_page) - rows_per_page);        
+      
+      new feedObj(page, function(feed_items){
+        loadForm(feed_items);
+      });
+    }
 
     function loadWindow(e){    
       feed_item = e.source.feed_item;
@@ -63,7 +135,7 @@ function FeedWindow(){
         var title = 'Project'
       }
 
-      app.openWindow(title, win_name, [feed_item.object_id])      
+      app.openWindow(title, win_name, [feed_item.object_id]);
     }
 
     spinner.show();

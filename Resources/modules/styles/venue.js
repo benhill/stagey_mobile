@@ -141,7 +141,7 @@ exports = {
     left:65,
     top:23,
     height:Ti.UI.SIZE,
-    width:250
+    width:220
   },
 
   mapView: {

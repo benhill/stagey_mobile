@@ -7,8 +7,8 @@ function PerformancesWindow(mode){
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);  
   var nowTab = Ti.UI.currentTab;
   var table = Ti.UI.createTableView(perfStyles.table);
-  var page = 1
-  var rows_per_page = 9
+  var page = 1;
+  var rows_per_page = 9;
   var lat,lng;  
 
   self.load = function(){

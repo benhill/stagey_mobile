@@ -15,7 +15,7 @@ exports = {
 
   nameLabel: {
     font:{fontSize:16,fontWeight:'bold'},
-    height:'auto',
+    height:Ti.UI.SIZE,
     left:55,
     top:7,
     color:'#000',
