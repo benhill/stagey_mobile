@@ -15,7 +15,7 @@ function ProjectWindow(project_id){
   var is_favorite;
 
   self.load = function(){
-    var url = app.api_url + "project/" + project_id + ".json?event_id=7";
+    var url = app.api_url + "project/" + project_id + "?event_id=7";
     if(Ti.App.currentUser){url += '&email=' + Ti.App.currentUser.email}
 
     new projectObj(url, function(project){
@@ -23,12 +23,7 @@ function ProjectWindow(project_id){
     });
 
     function loadProject(project){      
-      var projectScroll = Ti.UI.createScrollView(projectStyles.projectScroll);
-
-      if(Ti.App.make_favorite == project.id){
-        Ti.App.make_favorite = null;
-        if(!project.is_favorite){toggleFavorite();}
-      }
+      var projectScroll = Ti.UI.createScrollView(projectStyles.projectScroll);      
 
       var titleView = Ti.UI.createView(projectStyles.titleView);
 
@@ -145,8 +140,8 @@ function ProjectWindow(project_id){
       }
 
       function runIconEvent(e, islongclick){
-        var favTextView = iconsView.children[2].children[1]
-        var favImgView = iconsView.children[2].children[0]
+        var favTextView = iconsView.children[2].children[1];
+        var favImgView = iconsView.children[2].children[0];
         if(e.source.icon.text == 'Share'){
           sharekit.share({
             title:'I am checking out this show a show on stagey.net',
@@ -177,7 +172,8 @@ function ProjectWindow(project_id){
           }
           else{
             var windowObj = require('modules/pages/' + e.source.icon.window);
-            var newWindow = new windowObj(e.source.icon.text, Ti.API.activeTab, e.source.icon.object);
+
+            var newWindow = new windowObj(e.source.icon.object);
             newWindow.navBarHidden = true;
 
             var headerObj = require('modules/common/header');
@@ -262,8 +258,23 @@ function ProjectWindow(project_id){
         projectScroll.add(tagsLabel);
       }
 
+      if(Ti.App.make_favorite == project.id){
+        Ti.App.make_favorite = null;
+
+        var favTextView = iconsView.children[2].children[1];
+        var favImgView = iconsView.children[2].children[0];
+
+        if(!project.is_favorite){
+          favTextView.text = remove_fav_text;
+          favImgView.text = remove_fav_text;
+          is_favorite = true;
+        }
+
+        if(!project.is_favorite){toggleFavorite();}
+      }
+
       self.add(projectScroll);
-      self.remove(spinner);
+      self.remove(spinner);      
     };
 
     spinner.show();
@@ -291,7 +302,7 @@ function ProjectWindow(project_id){
         Ti.App.make_favorite = project_id;
 
         var windowObj = require('modules/pages/project');
-        var newWindow = new windowObj("Project", Ti.API.activeTab, project_id);
+        var newWindow = new windowObj(project_id);
         newWindow.navBarHidden = true;
 
         var headerObj = require('modules/common/header');
@@ -300,6 +311,7 @@ function ProjectWindow(project_id){
         app.openWindow('Login', 'Login', [newWindow])
       }
     }
+
   }
 
   return self;

@@ -24,7 +24,7 @@ exports.register = function(name, object) {
 
 exports.openWindow = function(title, newWindowName, params){    
   var windowObj = require('modules/pages/' + newWindowName);  
-  var newWindow = windowObj.apply(this, params);  
+  var newWindow = windowObj.apply(this, params);
   openWithWindow(title, newWindow);
 };
 

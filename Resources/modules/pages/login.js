@@ -8,9 +8,11 @@ function LoginWindow(return_win){
 
     var email = Ti.UI.createTextField(loginStyles.email);
     self.add(email);
+    app.addKeyboardToolbar(email);
 
     var password = Ti.UI.createTextField(loginStyles.password);
     self.add(password);
+    app.addKeyboardToolbar(password);
 
     password.addEventListener('return', function(e){
       loginUser();

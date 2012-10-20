@@ -120,16 +120,18 @@ function PerformancesWindow(mode){
       if(e.source.performance.pwyc){
         var window = 'pwyc';
         var title = 'PWYC';
+        var params = [e.source.performance];
       }
       else{
         var window = 'performance';
         var title = 'Performance';
+        var params = [e.source.performance.id];
       }
 
       if(Ti.App.currentUser){
-        app.openWindow(title, window, [e.source.performance.id])
+        app.openWindow(title, window, params);
       }   
-      else{
+      else{        
         var newObj = require('modules/pages/' + window);
         var newWindow = newObj.apply(this, params);
         newWindow.navBarHidden = true;

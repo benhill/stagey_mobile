@@ -39,7 +39,13 @@ function ApplicationTabGroup(windows) {
     title:'Me',
     icon:'iphone/me_30.png'
   });
-  meTab.window = createWin('Me', 'me', meTab);
+
+  if(Ti.App.currentUser){
+    meTab.window = createWin('Me', 'me', meTab);  
+  }
+  else{
+    meTab.window = createWin('Login', 'login', []);
+  }
   self.addTab(meTab);
   meTab.window.load();
 
