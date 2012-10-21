@@ -48,7 +48,7 @@ function MeWindow(){
 
         var iconObj = require('modules/models/icons');
     
-        var reviews = new iconObj('My Reviews', 'iphone/all_shows_48.png', 'reviews', null, false, null);
+        var reviews = new iconObj('My Reviews', 'iphone/all_shows_48.png', 'reviews', null, false, Ti.App.currentUser.id);
         icons.push(reviews);
 
         var favorites = new iconObj('My Favorites', 'iphone/all_shows_48.png', 'projects', null, false, 'favorites');
@@ -73,7 +73,7 @@ function MeWindow(){
           row.add(carrotImage);
 
           row.addEventListener('click', function(e){
-          	icon = e.source.icon;            
+          	icon = e.source.icon;
             app.openWindow(e.source.icon.text, icon.window, [icon.third_param]);
           });
 

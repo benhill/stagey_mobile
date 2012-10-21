@@ -17,23 +17,23 @@ function VenueWindow(venue_id){
   }
 
   function loadVenue(venue){
+    
     var venueDistObj = require('modules/models/venue_distance');
 
     new venueDistObj(venue.id, function(miles_away){
+
       var venueScroll = Titanium.UI.createScrollView(venueStyles.venueScroll);
 
-      titleView = Ti.UI.createView(venueStyles.titleView);
+      var titleView = Ti.UI.createView(styles.titleView);
+      titleView.top = 0;
 
-      var name = Titanium.UI.createLabel(venueStyles.name);
-      name.text = venue.name.toUpperCase();
-      titleView.add(name);
+      var titleLabel = Ti.UI.createLabel(styles.titleLabel);
+      titleLabel.text = venue.name.toUpperCase();
+      titleView.add(titleLabel);
 
-      var presenter = Ti.UI.createLabel(venueStyles.presenter);
-      presenter.text = "presented by " + venue.presenter;
-      if(venue.presenter){titleView.add(presenter)};
-
-      var spacerView = Ti.UI.createView(venueStyles.spacerView);
-      titleView.add(spacerView);
+      var subTitleLabel = Ti.UI.createLabel(styles.subTitleLabel);
+      subTitleLabel.text = "presented by " + venue.presenter;
+      titleView.add(subTitleLabel);
 
       venueScroll.add(titleView);
 

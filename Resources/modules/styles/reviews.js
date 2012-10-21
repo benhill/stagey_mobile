@@ -1,7 +1,7 @@
 exports = {	
 
   table: {
-    top:50
+    top:100
   },
 
   row: {

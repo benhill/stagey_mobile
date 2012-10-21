@@ -22,7 +22,7 @@ exports.register = function(name, object) {
   plugins[name] = object;
 };
 
-exports.openWindow = function(title, newWindowName, params){    
+exports.openWindow = function(title, newWindowName, params){
   var windowObj = require('modules/pages/' + newWindowName);  
   var newWindow = windowObj.apply(this, params);
   openWithWindow(title, newWindow);

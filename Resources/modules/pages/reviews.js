@@ -13,12 +13,34 @@ function ReviewsWindow(user_id, project){
 
     var reviewsObj = require('modules/models/reviews');
     new reviewsObj(url, function(reviews){
-      loadReviews(reviews);
+      if(reviews.length > 0){
+        loadReviews(reviews);
+      }
+      else{
+        noDataLabel = Ti.UI.createLabel(styles.noDataLabel);
+        noDataLabel.text = "No feed data to display...";
+        self.add(noDataLabel);
+        spinner.hide();
+      }
     });
 
     function loadReviews(reviews){
 
-      if (reviews.length > 0){var total_results = reviews[0].total_results};
+      var titleView = Ti.UI.createView(styles.titleView);
+
+      user_id ? title = 'reviews by ' + reviews[0].reviewer_first_name.toUpperCase() + " " + reviews[0].reviewer_last_name.substr(0,1).toUpperCase() : title = 'RECENT REVIEWS';
+
+      var titleLabel = Ti.UI.createLabel(styles.titleLabel);
+      titleLabel.text = title;
+      titleView.add(titleLabel);
+
+      var subTitleLabel = Ti.UI.createLabel(styles.subTitleLabel);
+      subTitleLabel.text = 'sorted by date posted';
+      titleView.add(subTitleLabel);
+
+      self.add(titleView);
+
+      var total_results = reviews[0].total_results;
 
       var tableData = [];
 
@@ -137,10 +159,10 @@ function ReviewsWindow(user_id, project){
 
     function getUrl(){
       if(user_id){
-        url = app.api_url + "reviews?user_id=" + user_id + ".json"
+        url = app.api_url + "reviews?user_id=" + user_id;
       }
       else if(project){    
-        url = app.api_url + "reviews/" + project.id + ".json"
+        url = app.api_url + "reviews/" + project.id;
       }
       else{
         url = app.api_url + "reviews.json"

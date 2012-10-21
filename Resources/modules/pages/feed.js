@@ -21,6 +21,12 @@ function FeedWindow(){
         total_results = feed_items[0].total_results;
         loadForm(feed_items);
       }
+      else{
+        noDataLabel = Ti.UI.createLabel(styles.noDataLabel);
+        noDataLabel.text = "No feed data to display...";
+        self.add(noDataLabel);
+        spinner.hide();
+      }
     });
 
     function loadForm(feed_items){

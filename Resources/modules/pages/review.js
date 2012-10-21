@@ -4,8 +4,7 @@ function ReviewWindow(review_id){
   var reviewStyles = require('modules/styles/review');
   var self = Ti.UI.createWindow(styles.defaultWindow);
   var reviewScroll = Ti.UI.createScrollView(reviewStyles.reviewScroll);
-  var wrapper = Ti.UI.createView(reviewStyles.wrapper);
-  var reviewerWrapper = Ti.UI.createView(reviewStyles.reviewerWrapper);
+  var wrapper = Ti.UI.createView(reviewStyles.wrapper);  
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
 
   self.load = function(){
@@ -20,32 +19,35 @@ function ReviewWindow(review_id){
 
   function loadReview(review){
 
+    var titleView = Ti.UI.createView(styles.titleView);
+    titleView.top = 0;
+    titleView.layout = 'absolute';
+        
     var image = Ti.UI.createImageView(reviewStyles.image);
     image.image = review.reviewer_image_url;
-    reviewerWrapper.add(image);
+    titleView.add(image);
 
     var nameLabel = Ti.UI.createLabel(reviewStyles.nameLabel);
-    nameLabel.text = review.reviewer_first_name + " " + review.reviewer_last_name;
-    reviewerWrapper.add(nameLabel);
+    nameLabel.text = review.reviewer_first_name.toUpperCase() + " " + review.reviewer_last_name.toUpperCase();
+    titleView.add(nameLabel);
 
     var projectLabel = Ti.UI.createLabel(reviewStyles.projectLabel);
-    projectLabel.text = "on " + ((review.project_title.length >= 25) ? title = review.project_title.substr(0,25) + "..." : title = review.project_title);
-    reviewerWrapper.add(projectLabel);
+    projectLabel.text = "on " + ((review.project_title.length >= 30) ? title = review.project_title.substr(0,30) + "..." : title = review.project_title);
+    titleView.add(projectLabel);
 
     var info = Ti.UI.createLabel(reviewStyles.info);
     info.text = review.rating_text + " \u00B7 " + review.time_passed + " ago";
-    reviewerWrapper.add(info);
+    titleView.add(info);
 
-    var line = Ti.UI.createView(reviewStyles.line);
-    reviewerWrapper.add(line);
+    reviewScroll.add(titleView);
 
-    reviewerWrapper.addEventListener('click', function(e){
+    titleView.addEventListener('click', function(e){
       if(!review.anonymous){
         app.openWindow('User', 'user', [review.fringe_user_id]);
       }
     });
 
-    wrapper.add (reviewerWrapper);
+    wrapper.add(titleView);
 
     var bodyWrapper = Ti.UI.createView(reviewStyles.bodyWrapper);
 
@@ -53,28 +55,32 @@ function ReviewWindow(review_id){
     body.text = review.body,
     bodyWrapper.add(body);
 
+    wrapper.add(bodyWrapper);
+
+    var buttonsWrapper = Ti.UI.createView(reviewStyles.buttonsWrapper)
+    
     var helpful =  Ti.UI.createButton(reviewStyles.helpful);
-    if(Ti.App.currentUser){bodyWrapper.add(helpful);}
+    if(Ti.App.currentUser){buttonsWrapper.add(helpful);}
 
     helpful.addEventListener('click', function(e){
       make_helpful(true);
     });
 
     var not_helpful =  Ti.UI.createButton(reviewStyles.not_helpful);
-    if(Ti.App.currentUser){bodyWrapper.add(not_helpful);}
+    if(Ti.App.currentUser){buttonsWrapper.add(not_helpful);}
 
     not_helpful.addEventListener('click', function(e){
       make_helpful(false);
     });
 
     var view_project =  Ti.UI.createButton(reviewStyles.view_project);
-    bodyWrapper.add(view_project);
+    buttonsWrapper.add(view_project);
 
     view_project.addEventListener('click', function(e){
       app.openWindow('Project', 'project', [review.project_id]);
     });
 
-    wrapper.add(bodyWrapper);
+    self.add(buttonsWrapper);
     
     reviewScroll.add(wrapper);
 

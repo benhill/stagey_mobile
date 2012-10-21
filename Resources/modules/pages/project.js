@@ -25,15 +25,16 @@ function ProjectWindow(project_id){
     function loadProject(project){      
       var projectScroll = Ti.UI.createScrollView(projectStyles.projectScroll);      
 
-      var titleView = Ti.UI.createView(projectStyles.titleView);
+      var titleView = Ti.UI.createView(styles.titleView);
+      titleView.top = 0;
 
-      var title = Ti.UI.createLabel(projectStyles.title);
-      title.text = project.title.toUpperCase();
-      titleView.add(title);
+      var titleLabel = Ti.UI.createLabel(styles.titleLabel);
+      titleLabel.text = project.title.toUpperCase();
+      titleView.add(titleLabel);
 
-      var subTitle = Ti.UI.createLabel(projectStyles.subTitle);
-      subTitle.text = project.company + " \u00B7 ages " + project.age_restriction + "+ \u00B7 " + project.duration + " \u00B7 " + project.cost_range
-      titleView.add(subTitle);
+      var subTitleLabel = Ti.UI.createLabel(styles.subTitleLabel);
+      subTitleLabel.text = project.company + " \u00B7 ages " + project.age_restriction + "+ \u00B7 " + project.duration + " \u00B7 " + project.cost_range
+      titleView.add(subTitleLabel);
 
       projectScroll.add(titleView);
 

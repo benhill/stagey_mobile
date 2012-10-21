@@ -11,36 +11,6 @@ exports = {
     layout:'vertical'
   },
 
-  titleView: {
-    width:'100%',
-    height:Ti.UI.SIZE,
-    layout:'vertical',
-    backgroundColor:'black',
-    top:0    
-  },
-
-  name: {
-    height:Ti.UI.SIZE,
-    width:Ti.UI.SIZE,            
-    font:{fontSize:17, fontWeight:'bold'},
-    left:10,
-    top:11,
-    color:'white'
-  },
-
-  presenter: {
-    top:0,
-    left:10,
-    font:{fontSize:11},
-    height:Ti.UI.SIZE,
-    width: '95%',    
-    color:'white'
-  },
-
-  spacerView: {
-    height:10
-  },
-
   galleryView: {
     height:Ti.UI.SIZE,
     width:Ti.UI.SIZE,

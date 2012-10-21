@@ -89,6 +89,5 @@ exports = {
     height:5,
     bottom:0,
     backgroundColor:'black'
-  }
-
+  }  
 }
