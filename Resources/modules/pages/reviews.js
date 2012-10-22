@@ -28,7 +28,16 @@ function ReviewsWindow(user_id, project){
 
       var titleView = Ti.UI.createView(styles.titleView);
 
-      user_id ? title = 'reviews by ' + reviews[0].reviewer_first_name.toUpperCase() + " " + reviews[0].reviewer_last_name.substr(0,1).toUpperCase() : title = 'RECENT REVIEWS';
+      if(user_id){
+        var title = 'REVIEWS BY ' + reviews[0].reviewer_first_name.toUpperCase() + " " + reviews[0].reviewer_last_name.substr(0,1).toUpperCase();
+      }
+      else if(project){
+        (review.project_title.length >= 30) ?  project_title = review.project_title.substr(0,30) + "..." :  project_title = review.project_title;
+        var title = 'REVIEWS ON ' + project_title.toUpperCase();
+      }
+      else{
+        var title = 'RECENT REVIEWS';
+      }
 
       var titleLabel = Ti.UI.createLabel(styles.titleLabel);
       titleLabel.text = title;
@@ -61,7 +70,7 @@ function ReviewsWindow(user_id, project){
         row.add(imageLabel);
         
         var project_title;
-        (review.project_title.length >= 30) ? project_title = review.project_title.substr(0,25) + "..." : project_title = review.project_title;
+        (review.project_title.length >= 30) ? project_title = review.project_title.substr(0,30) + "..." : project_title = review.project_title;
 
         var reviewer_name;
         reviewer_name = review.reviewer_first_name + " " + review.reviewer_last_name.substr(0,1);
@@ -82,7 +91,7 @@ function ReviewsWindow(user_id, project){
 
         var blurb = Ti.UI.createLabel(reviewsStyles.blurb);
         if(review.body){
-          blurb.text = review.body.substr(0,80).replace(/\n/gm, '').replace(/\r/gm, ' ') + '...';
+          blurb.text = review.body.substr(0,130).replace(/\n/gm, '').replace(/\r/gm, ' ') + '...';
         }
         row.add(blurb);
 

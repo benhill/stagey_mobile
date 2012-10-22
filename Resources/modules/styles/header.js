@@ -18,13 +18,16 @@ exports = {
   },
 
   backButton: {
-    text:"\u21E6 back",
+    text:" \u21E6 back ",
     font:{fontSize:14},
     color:'white',
     width:Ti.UI.SIZE,
     height:Ti.UI.SIZE,
     top:15,
-    left:5
+    left:5,
+    borderWidth:.5,
+    borderColor:'gray',
+    borerRadius:5
   },
 
   logoImage: {
