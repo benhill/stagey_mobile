@@ -74,7 +74,6 @@ function ProjectWindow(project_id){
       }
 
       var descriptionLabel = Ti.UI.createLabel(projectStyles.descriptionLabel);
-      descriptionLabel.text = project.description + ' (read more)',
 
       projectScroll.add(descriptionLabel);
 
