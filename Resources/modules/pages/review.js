@@ -22,6 +22,7 @@ function ReviewWindow(review_id){
     var titleView = Ti.UI.createView(styles.titleView);
     titleView.top = 0;
     titleView.layout = 'absolute';
+    titleView.zIndex = 1000;
         
     var image = Ti.UI.createImageView(reviewStyles.image);
     image.image = review.reviewer_image_url;
@@ -37,17 +38,13 @@ function ReviewWindow(review_id){
 
     var info = Ti.UI.createLabel(reviewStyles.info);
     info.text = review.rating_text + " \u00B7 " + review.time_passed + " ago";
-    titleView.add(info);
-
-    reviewScroll.add(titleView);
+    titleView.add(info);    
 
     titleView.addEventListener('click', function(e){
-      if(!review.anonymous){
-        app.openWindow('User', 'user', [review.fringe_user_id]);
-      }
+      if(!review.anonymous){app.openWindow('User', 'user', [review.fringe_user_id]);}
     });
 
-    wrapper.add(titleView);
+    reviewScroll.add(titleView);
 
     var bodyWrapper = Ti.UI.createView(reviewStyles.bodyWrapper);
 

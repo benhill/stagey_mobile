@@ -22,7 +22,7 @@ exports = {
     height:Ti.UI.SIZE,
     layout:'vertical',
     backgroundColor:'black',    
-    top:50
+    top:0
   },
 
   titleLabel: {

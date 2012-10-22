@@ -15,7 +15,7 @@ exports = {
     top:10,
     borderColor:'black',
     borderWidth:1
-  },
+  },  
 
   nameLabel: {    
     width:'100%',

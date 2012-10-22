@@ -27,16 +27,24 @@ function ReviewsWindow(user_id, project){
     function loadReviews(reviews){
 
       var titleView = Ti.UI.createView(styles.titleView);
+      titleView.top = 50;
+
+      var project_title;
+      var subtitle;
+      var title;
 
       if(user_id){
-        var title = 'REVIEWS BY ' + reviews[0].reviewer_first_name.toUpperCase() + " " + reviews[0].reviewer_last_name.substr(0,1).toUpperCase();
+        title = 'REVIEWS BY ' + reviews[0].reviewer_first_name.toUpperCase() + " " + reviews[0].reviewer_last_name.substr(0,1).toUpperCase();
+        subtitle = 'sorted by date posted';
       }
       else if(project){
-        (review.project_title.length >= 30) ?  project_title = review.project_title.substr(0,30) + "..." :  project_title = review.project_title;
-        var title = 'REVIEWS ON ' + project_title.toUpperCase();
+        (reviews[0].project_title.length >= 50) ?  project_title = reviews[0].project_title.substr(0,50) + "..." :  project_title = reviews[0].project_title;
+        title = 'SHOW REVIEWS ';
+        subtitle = 'for ' + project_title.toLowerCase();
       }
       else{
-        var title = 'RECENT REVIEWS';
+        title = 'RECENT REVIEWS';
+        subtitle = 'sorted by date posted';
       }
 
       var titleLabel = Ti.UI.createLabel(styles.titleLabel);
@@ -44,7 +52,7 @@ function ReviewsWindow(user_id, project){
       titleView.add(titleLabel);
 
       var subTitleLabel = Ti.UI.createLabel(styles.subTitleLabel);
-      subTitleLabel.text = 'sorted by date posted';
+      subTitleLabel.text = subtitle;
       titleView.add(subTitleLabel);
 
       self.add(titleView);

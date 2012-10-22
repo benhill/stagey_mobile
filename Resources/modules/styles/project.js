@@ -135,7 +135,7 @@ exports = {
     left:65,
     top:23,
     height:Ti.UI.SIZE,
-    width:235
+    width:230
   },
 
   carrotImage: {

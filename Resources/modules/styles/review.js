@@ -7,7 +7,7 @@ exports = {
     scrollType:'vertical',
     verticalBounce:true,
     showVerticalScrollIndicator:true,
-    height:325,
+    height:330,
     top:50,
     left:0
   },
@@ -19,6 +19,13 @@ exports = {
     top:10,
     borderColor:'black',
     borderWidth:1
+  },
+
+  titleView: {
+    width:'100%',
+    height:Ti.UI.SIZE,
+    backgroundColor:'black',    
+    top:50
   },
 
   nameLabel: {
@@ -57,21 +64,21 @@ exports = {
 
   helpful: {
     title: 'Helpful',
-    top:5,
+    top:7,
     left:5,
     width:90
   },
 
   not_helpful: {
     title: 'Not Helpful',
-    top:5,
+    top:7,
     left:5,
     width:100  
   },
 
   view_project: {
     title: 'View Project',
-    top:5,
+    top:7,
     left:5,
     width:100  
   },
@@ -86,7 +93,7 @@ exports = {
 
   bodyWrapper: {
     height:Ti.UI.SIZE,
-    top:0,
+    top:75,
     left:0,
     layout:'vertical'
   },

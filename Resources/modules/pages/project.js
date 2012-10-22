@@ -78,9 +78,9 @@ function ProjectWindow(project_id){
 
       projectScroll.add(descriptionLabel);
 
-      descriptionLabel.addEventListener('click', function(e){
-        app.openWindow('Show Description', 'project_description', [project.id]);
-      });
+      //descriptionLabel.addEventListener('click', function(e){
+        //app.openWindow('Show Description', 'project_description', [project.id]);
+      //});
 
       var line = Ti.UI.createView(projectStyles.line);
       projectScroll.add(line);
