@@ -1,7 +1,38 @@
 exports = {	
 
-  table: {
-    top:50
+  table: {    
+  },
+
+  titleView: {
+    width:'100%',
+    height:50,
+    backgroundColor:'black',    
+    top:50    
+  },
+
+  titleLabel: {
+    height:Ti.UI.SIZE,
+    width:Ti.UI.SIZE,
+    color:'white',
+    font:{fontSize:20, fontWeight:'bold'},
+    left:75,
+    top:15
+  },
+  
+  previousImage: {
+    left:10,
+    top:20,
+    height:Titanium.UI.SIZE,
+    width:Titanium.UI.SIZE,
+    image:'iphone/less-arrow-white.png'
+  },
+
+  nextImage: {
+    right:10,
+    top:20,
+    height:Titanium.UI.SIZE,
+    width:Titanium.UI.SIZE,
+    image:'iphone/more-arrow-white.png'          
   },
 
   projectThumb: {

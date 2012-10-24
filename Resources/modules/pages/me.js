@@ -54,7 +54,7 @@ function MeWindow(){
         var favorites = new iconObj('My Favorites', 'iphone/all_shows_48.png', 'projects', null, false, 'favorites');
         icons.push(favorites);
 
-        var schedule = new iconObj('My Schedule', 'iphone/all_shows_48.png', 'performances', null, false, 'schedule');
+        var schedule = new iconObj('My Schedule', 'iphone/all_shows_48.png', 'performances', null, false, 'schedule', 'schedule');
         icons.push(schedule);          
 
         for(i=0; i< icons.length; i++){
@@ -74,7 +74,12 @@ function MeWindow(){
 
           row.addEventListener('click', function(e){
           	icon = e.source.icon;
-            app.openWindow(e.source.icon.text, icon.window, [icon.third_param]);
+            if(e.source.icon.id == 'schedule'){
+              app.openWindow(e.source.icon.text, icon.window, [icon.third_param, 1]);
+            }
+            else{
+              app.openWindow(e.source.icon.text, icon.window, [icon.third_param]);
+            }
           });
 
           tableData.push(row);

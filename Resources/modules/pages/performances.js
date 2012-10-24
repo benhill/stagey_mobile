@@ -1,12 +1,11 @@
-function PerformancesWindow(mode){
+function PerformancesWindow(mode, schedule_page){
 
   var styles = require('modules/styles/styles');
   var perfStyles = require('modules/styles/performances');
   var self = Ti.UI.createWindow(styles.defaultWindow);
   var performancesObj = require('modules/models/performances');
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);  
-  var nowTab = Ti.UI.currentTab;
-  var table = Ti.UI.createTableView(perfStyles.table);
+  var nowTab = Ti.UI.currentTab;  
   var page = 1;
   var rows_per_page = 9;
   var lat,lng;  
@@ -38,7 +37,35 @@ function PerformancesWindow(mode){
       }
     });
 
-    function loadPerformances(performances){      
+    function loadPerformances(performances){
+
+      if(schedule_page){
+        var titleView = Ti.UI.createView(perfStyles.titleView);
+        
+        var titleLabel = Ti.UI.createLabel(perfStyles.titleLabel);
+        titleLabel.text = performances[0].date_time;        
+        titleView.add(titleLabel);        
+      
+        var previousImage = Ti.UI.createImageView(perfStyles.previousImage);
+        if(performances[0].has_less){titleView.add(previousImage)};
+
+        previousImage.addEventListener('click', function(e){
+          app.openWindow('Schedule', 'performances', [mode, schedule_page -= 1]);
+        })
+
+        var nextImage = Ti.UI.createImageView(perfStyles.nextImage);        
+        if(performances[0].has_more){titleView.add(nextImage)};
+
+        nextImage.addEventListener('click', function(e){
+          app.openWindow('Schedule', 'performances', [mode, schedule_page += 1]);
+        })
+
+        self.add(titleView);
+      }
+
+      var table = Ti.UI.createTableView(perfStyles.table);
+      mode == 'schedule' || mode == 'next' ? table.top = 100 : table.top = 50;
+
       var tableData = [];
       var total_results = performances[0].total_results;
 
@@ -169,13 +196,13 @@ function PerformancesWindow(mode){
 
   function getUrl(){
     if(mode == 'next'){
-      url = app.api_url + 'performances/7.json?';
+      url = app.api_url + 'my_schedule.json?schedule_page=' + schedule_page + '&';
     }
     else if(mode == 'nearby'){      
       url = app.api_url + 'performances/7.json?lat=' + lat + '&lng=' + lng + '&distance=0.5&';
     }
     else if(mode == 'schedule'){
-      url = app.api_url + 'my_schedule.json?email=' + Ti.App.currentUser.email + '&password=' + Ti.App.userPassword + '&';
+      url = app.api_url + 'my_schedule.json?email=' + Ti.App.currentUser.email + '&password=' + Ti.App.userPassword + '&schedule_page=' + schedule_page + '&';
     }
     else{
       url = app.api_url + 'performances/7.json?project_id=' + mode.id + '&';

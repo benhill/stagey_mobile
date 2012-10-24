@@ -94,10 +94,13 @@ function ShowsWindow(){
     }
 
     function runIconEvent(e, islongclick){
-      var thirdParam;
-      if(e.source.icon.id == 'next'){thirdParam = 'next';}      
+      var thirdParam, fourthParam;
+      if(e.source.icon.id == 'next'){
+        thirdParam = 'next';
+        fourthParam = 1;
+      }
       if(e.source.icon.id == 'nearby'){thirdParam = 'nearby';}
-      app.openWindow(e.source.icon.text, e.source.icon.window, [thirdParam]);
+      app.openWindow(e.source.icon.text, e.source.icon.window, [thirdParam, fourthParam]);
     }
   }
   
