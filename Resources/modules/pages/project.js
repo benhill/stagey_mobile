@@ -206,7 +206,7 @@ function ProjectWindow(project_id){
       reviewsLabelName.text = project.top_review_user_full_name + ': \"' + project.top_review_blurb + '\"',
       reviewView.add(reviewsLabelName);
 
-      var carrotImage = Ti.UI.createImageView(projectStyles.carrotImage);
+      var carrotImage = Ti.UI.createImageView(projectStyles.carrotImage);      
       reviewView.add(carrotImage);
 
       var line = Ti.UI.createView(projectStyles.line);

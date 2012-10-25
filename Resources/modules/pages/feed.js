@@ -64,6 +64,7 @@ function FeedWindow(){
         labelView.add(textLabel);
 
         var carrotImage = Ti.UI.createImageView(feedStyles.carrotImage);
+        carrotImage.feed_item = feed_item;
         labelView.add(carrotImage);
 
         row.add(labelView);

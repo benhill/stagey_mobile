@@ -39,8 +39,10 @@ function VenuesWindow(){
         row.add(addressLabel);
 
         var carrotImage = Ti.UI.createImageView(venueStyles.carrotImage);
-        row.add(carrotImage);
+        carrotImage.venue_id = venue.id;
 
+        row.add(carrotImage);
+        row.venue_id = venue.id;
         tableData.push(row);
       }
 

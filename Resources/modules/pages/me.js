@@ -70,6 +70,7 @@ function MeWindow(){
           row.add(iconLabel);
 
           var carrotImage = Ti.UI.createImageView(meStyles.carrotImage);
+          carrotImage.icon = icon;
           row.add(carrotImage);
 
           row.addEventListener('click', function(e){

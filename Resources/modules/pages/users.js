@@ -32,6 +32,10 @@ function UsersWindow(users){
       roleLabel.user = user;
       row.add(roleLabel);
 
+      var carrotImage = Ti.UI.createImageView(usersStyles.carrotImage);
+      carrotImage.user = user;
+      row.add(carrotImage);
+
       usersData.push(row);
     }
 
