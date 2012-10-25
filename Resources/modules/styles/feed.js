@@ -31,28 +31,29 @@ exports = {
   },
 
   labelView: {
-    bottom:5,
+    bottom:3,
     width:'100%',
     backgroundColor:'#777777',
     backgroundRepeat:true,
     opacity:.85,
-    height:40
+    height:70
   },
 
   objectLabel: {
-    font:{fontSize:14,fontWeight:'bold'},
+    font:{fontSize:15,fontWeight:'bold'},
     height:Ti.UI.SIZE,
     left:10,
-    top:5,
+    top:1,
     color:'white',
     touchEnabled:false
   },
 
   textLabel: {
-    font:{fontSize:12},
+    font:{fontSize:13},
     height:Ti.UI.SIZE,
+    width:'90%',
     left:10,
-    top:20,
+    top:18,
     color:'white',
     touchEnabled:false
   },
@@ -86,7 +87,7 @@ exports = {
 
   line: {
     width:320,
-    height:5,
+    height:3,
     bottom:0,
     backgroundColor:'black'
   }  

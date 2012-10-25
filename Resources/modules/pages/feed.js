@@ -52,7 +52,7 @@ function FeedWindow(){
         var labelView = Ti.UI.createView(feedStyles.labelView);
         labelView.feed_item = feed_item;
     
-        (feed_item.object_name.length >= 35) ? title = feed_item.object_name.substr(0,35) + "..." : title = feed_item.object_name;
+        (feed_item.object_name.length >= 30) ? title = feed_item.object_name.substr(0,30) + "..." : title = feed_item.object_name;
         var objectLabel = Ti.UI.createLabel(feedStyles.objectLabel);      
         objectLabel.text = title;
         objectLabel.feed_item = feed_item;
@@ -142,6 +142,10 @@ function FeedWindow(){
       else if(feed_item.object_type == 'Project'){
         var win_name = 'project';
         var title = 'Project'
+      }
+      else if(feed_item.object_type == 'Page'){
+        var win_name = 'page';
+        var title = 'Page';
       }
 
       app.openWindow(title, win_name, [feed_item.object_id]);

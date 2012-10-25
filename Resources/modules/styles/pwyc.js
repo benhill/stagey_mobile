@@ -10,7 +10,7 @@ exports = {
   },
 
   dollarLabel: {
-    top:120,
+    top:105,
     left:10,
     width:20,
     width:Ti.UI.SIZE,

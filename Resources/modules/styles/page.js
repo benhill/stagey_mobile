@@ -1,6 +1,6 @@
 exports = {
 
-  reviewScroll: {
+  pageScroll: {
     contentWidth:Ti.UI.SIZE,
     contentHeight:Ti.UI.SIZE,
     touchEnabled:true,
@@ -12,15 +12,6 @@ exports = {
     left:0
   },
 
-  image: {
-    width:55,
-    height:55,
-    left:10,
-    top:10,
-    borderColor:'black',
-    borderWidth:1
-  },
-
   titleView: {
     width:'100%',
     height:Ti.UI.SIZE,
@@ -30,7 +21,7 @@ exports = {
 
   nameLabel: {
     height:45,
-    left:75,
+    left:10,
     top:-7,
     font:{fontSize:15, fontWeight:'bold'},
     color:'white'
@@ -41,16 +32,7 @@ exports = {
     top:11,
     font:{fontSize:13, fontWeight:'bold'},
     right:0,
-    left:75,
-    color:'white'
-  },
-
-  info: {
-    height:47,
-    top:26,
-    font:{fontSize:13, fontWeight:'bold'},
-    right:0,
-    left:75,
+    left:10,
     color:'white'
   },
 
@@ -62,38 +44,17 @@ exports = {
     backgroundColor:'black'
   },
 
-  helpful: {
-    title: 'Helpful',
-    top:7,
-    left:5,
-    width:90
-  },
-
-  not_helpful: {
-    title: 'Not Helpful',
-    top:7,
-    left:5,
-    width:100  
-  },
-
-  view_project: {
-    title: 'View Project',
-    top:7,
-    left:5,
-    width:100  
-  },
-
   body: {
     height:Ti.UI.SIZE,
     width:290,
     left:10,
-    top:5,
+    top:0,
     font:{fontSize:'15'}
   },
 
   bodyWrapper: {
     height:Ti.UI.SIZE,
-    top:75,
+    top:65,
     left:0,
     layout:'vertical'
   },
@@ -112,6 +73,13 @@ exports = {
     borderWidth:1,
     borderColor:'gray',
     layout:'horizontal'
+  },
+
+  view_project: {
+    title: 'View Project',
+    top:7,
+    left:5,
+    width:100  
   }
 
 }

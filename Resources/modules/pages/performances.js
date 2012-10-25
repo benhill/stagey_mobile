@@ -8,7 +8,8 @@ function PerformancesWindow(mode, schedule_page){
   var nowTab = Ti.UI.currentTab;  
   var page = 1;
   var rows_per_page = 9;
-  var lat,lng;  
+  var lat,lng;
+  var table = Ti.UI.createTableView(perfStyles.table); 
 
   self.load = function(){
     if(mode == "nearby"){
@@ -62,8 +63,7 @@ function PerformancesWindow(mode, schedule_page){
 
         self.add(titleView);
       }
-
-      var table = Ti.UI.createTableView(perfStyles.table);
+      
       mode == 'schedule' || mode == 'next' ? table.top = 100 : table.top = 50;
 
       var tableData = [];
@@ -74,7 +74,6 @@ function PerformancesWindow(mode, schedule_page){
         var performance = performances[i];
 
         var row = Ti.UI.createTableViewRow(perfStyles.row);
-
         row.performance = performance;
 
         var projectThumb = Ti.UI.createImageView(perfStyles.projectThumb);
@@ -92,6 +91,7 @@ function PerformancesWindow(mode, schedule_page){
 
         var projectInfo = Ti.UI.createLabel(perfStyles.projectInfo);
         projectInfo.text = performance.info;
+        if(mode == "schedule"){projectInfo.text += ' \u00B7 ' + performance.quantity + ' Tickets'};
         projectInfo.performance = performance;
         row.add(projectInfo);
 
@@ -103,6 +103,7 @@ function PerformancesWindow(mode, schedule_page){
         });
 
         var carrotImage = Ti.UI.createImageView(perfStyles.carrotImage);
+        carrotImage.performance = performance;
         row.add(carrotImage);
 
         tableData.push(row);

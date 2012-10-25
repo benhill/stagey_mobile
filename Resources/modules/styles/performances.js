@@ -15,7 +15,7 @@ exports = {
     width:Ti.UI.SIZE,
     color:'white',
     font:{fontSize:20, fontWeight:'bold'},
-    left:75,
+    left:85,
     top:15
   },
   
@@ -96,7 +96,8 @@ exports = {
     font:{fontSize:12, fontWeight:'bold'},
     height:Titanium.UI.SIZE,
     width:Titanium.UI.SIZE,
-    image:'iphone/more-arrow.png'
+    image:'iphone/more-arrow.png',
+    zIndex:-1000
   }
 
 };
