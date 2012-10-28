@@ -71,9 +71,9 @@ exports.property = function(name) {
 	return properties[name]; 
 };
 
-exports.api_url = 'http://www.gwahir.com:3000/api/';
+exports.api_url = 'http://staging.hollywoodfringe.org/api/';
 
-exports.site_url = 'http://www.gwahir.com:3000/';
+exports.site_url = 'http://staging.hollywoodfringe.org/';
 
 exports.orientationObserverUpdate = function(_event) {
 	// Example of how you can control the current page with global events

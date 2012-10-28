@@ -146,7 +146,7 @@ function ProjectWindow(project_id){
           sharekit.share({
             title:'I am checking out this show a show on stagey.net',
             view:e.source,
-            link:'www.gwahir.com:3000/projects/' + e.source.icon.object.id
+            link:app.site_url + 'projects/' + e.source.icon.object.id
           });
         }
         else if(e.source.icon.window == 'favorite' && !is_favorite){  

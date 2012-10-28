@@ -12,6 +12,9 @@ new ApplicationTabGroup().open();
 
 var sharekit = require('com.0x82.sharekit');
 
+var testflight = require("com.0x82.testflight");
+testflight.takeOff('6ea7c45a611258af025dea6d421f5d22_MTQ4NjYwMjAxMi0xMC0yOCAxNzowNjo1OC4wNjU1NTE');
+
 sharekit.configure({
   my_app_name: 'stagey',
   my_app_url: 'http://www.stagey.net',

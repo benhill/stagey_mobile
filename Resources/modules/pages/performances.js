@@ -4,7 +4,7 @@ function PerformancesWindow(mode, schedule_page){
   var perfStyles = require('modules/styles/performances');
   var self = Ti.UI.createWindow(styles.defaultWindow);
   var performancesObj = require('modules/models/performances');
-  var spinner = Ti.UI.createActivityIndicator(styles.spinner);  
+  var spinner = Ti.UI.createActivityIndicator(styles.spinner);
   var nowTab = Ti.UI.currentTab;  
   var page = 1;
   var rows_per_page = 9;
