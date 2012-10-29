@@ -88,15 +88,7 @@ function ProjectWindow(project_id){
       var left = 0;
 
       var buy_ticket = new Icon('Buy Ticket', 'iphone/purchase_24.png', 'performances', project, false);
-      icons.push(buy_ticket);
-
-      if(project.reviewed_by_me){
-        var add_review = new Icon('My Review', 'iphone/reviews_24.png', 'add_review', project);
-      }
-      else{
-        var add_review = new Icon('Add Review', 'iphone/reviews_24.png', 'add_review', project, true);
-      }
-      icons.push(add_review);
+      icons.push(buy_ticket);      
 
       if(project.is_favorite){
         var make_favorite = new Icon(remove_fav_text, 'iphone/favorite_24.png', 'favorite', project);
@@ -136,7 +128,7 @@ function ProjectWindow(project_id){
 
         iconsView.add(iconView);
 
-        left += 75; 
+        left += 105; 
       }
 
       function runIconEvent(e, islongclick){

@@ -71,7 +71,7 @@ exports.property = function(name) {
 	return properties[name]; 
 };
 
-exports.api_url = 'http://staging.hollywoodfringe.org/api/';
+exports.api_url = 'https://staging.hollywoodfringe.org/api/';
 
 exports.site_url = 'http://staging.hollywoodfringe.org/';
 

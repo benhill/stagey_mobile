@@ -80,14 +80,14 @@ exports = {
 
   iconsView: {
     top:5,
-    left:0,
+    left:5,
     height:60,
     layout:'absolute'
   },
 
   iconView: {
-    width:90,
-    height:45,
+    width:100,
+    height:50,
     layout:'vertical'
   },
 
@@ -100,7 +100,7 @@ exports = {
   iconText: {
     height:Ti.UI.SIZE,
     width:100,
-    font:{fontSize:10},
+    font:{fontSize:13},
     left:0,
     top:5,
     textAlign:'center'
