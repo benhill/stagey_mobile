@@ -11,6 +11,7 @@ function ApplicationTabGroup(windows) {
     icon:'iphone/shows_30.png'
   });
   showsTab.window = createWin('Shows', 'shows', showsTab)
+  showsTab.window.orientationModes = [Titanium.UI.PORTRAIT]
   self.addTab(showsTab);
   showsTab.window.load();  
   Ti.API.activeTab = showsTab;
@@ -20,6 +21,7 @@ function ApplicationTabGroup(windows) {
     icon:'iphone/nearby_30.png'
   });
   venuesTab.window = createWin('Venues', 'venues', venuesTab)
+  venuesTab.window.orientationModes = [Titanium.UI.PORTRAIT]
   self.addTab(venuesTab);
   venuesTab.window.load();
   
@@ -28,6 +30,7 @@ function ApplicationTabGroup(windows) {
     icon:'iphone/news_30.png'
   });  
   newsTab.window = createWin('News', 'feed', newsTab)
+  newsTab.window.orientationModes = [Titanium.UI.PORTRAIT]
   self.addTab(newsTab);
   newsTab.window.load();
 
@@ -46,6 +49,7 @@ function ApplicationTabGroup(windows) {
   else{
     meTab.window = createWin('Login', 'login', []);
   }
+  meTab.window.orientationModes = [Titanium.UI.PORTRAIT]
   self.addTab(meTab);
   meTab.window.load();
 
