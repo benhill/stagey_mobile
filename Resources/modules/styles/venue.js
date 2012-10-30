@@ -37,9 +37,9 @@ exports = {
   },
 
   description: {
-    top:10,
+    top:12,
     left:5,
-    font:{fontSize:10},
+    font:{fontSize:12},
     height:Ti.UI.SIZE,
     width: '95%'
   },
@@ -107,9 +107,9 @@ exports = {
   },
 
   titleLabel: {
-    font:{fontSize:10},
+    font:{fontSize:12},
     left:65,
-    top:23,
+    top:25,
     height:Ti.UI.SIZE,
     width:220
   },

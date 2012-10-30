@@ -55,13 +55,13 @@ exports = {
   projectInfo: {
     height:Ti.UI.SIZE,
     width:220,
-    top:32,
+    top:30,
     left:60,
     font:{fontSize:12},
   },
 
   row: {
-    height:60
+    height:65
   },
 
   moreLabel: {

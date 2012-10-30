@@ -59,18 +59,18 @@ exports = {
 
   projectInfo: {
     height:Ti.UI.SIZE,
-    width:Ti.UI.SIZE,
-    top:45,       
+    top:28,       
     left:60,
-    font:{fontSize:10},
+    font:{fontSize:12},
+    width:'95%'
   },
 
   costLabel: {
     height:Ti.UI.SIZE,
     width:Ti.UI.SIZE,
-    top:30,       
-    left:60,
-    font:{fontSize:10},
+    top:41,       
+    left:60,    
+    font:{fontSize:12},
   },
 
  payButton: {

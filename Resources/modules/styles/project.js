@@ -38,7 +38,7 @@ exports = {
     width:'95%',
     color:'white',
     left:10,
-    font:{fontSize:11},
+    font:{fontSize:12},
     bottom:10
   },
 
