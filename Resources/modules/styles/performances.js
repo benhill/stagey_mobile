@@ -55,9 +55,9 @@ exports = {
   projectInfo: {
     height:Ti.UI.SIZE,
     width:220,
-    top:30,       
+    top:32,
     left:60,
-    font:{fontSize:10},
+    font:{fontSize:12},
   },
 
   row: {

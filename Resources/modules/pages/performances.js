@@ -200,7 +200,7 @@ function PerformancesWindow(mode, schedule_page){
       url = app.api_url + 'my_schedule.json?schedule_page=' + schedule_page + '&';
     }
     else if(mode == 'nearby'){      
-      url = app.api_url + 'performances/7.json?lat=' + lat + '&lng=' + lng + '&distance=0.5&';
+      url = app.api_url + 'performances/7.json?lat=' + lat + '&lng=' + lng + '&distance=50&';
     }
     else if(mode == 'schedule'){
       url = app.api_url + 'my_schedule.json?email=' + Ti.App.currentUser.email + '&password=' + Ti.App.userPassword + '&schedule_page=' + schedule_page + '&';

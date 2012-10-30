@@ -22,8 +22,10 @@ function ProjectWindow(project_id){
       loadProject(project);
     });
 
-    function loadProject(project){      
+    function loadProject(project){
       var projectScroll = Ti.UI.createScrollView(projectStyles.projectScroll);      
+
+      var projectWrapper = Ti.UI.createView(projectStyles.projectWrapper);
 
       var titleView = Ti.UI.createView(styles.titleView);
       titleView.top = 0;
@@ -36,7 +38,7 @@ function ProjectWindow(project_id){
       subTitleLabel.text = project.company + " \u00B7 ages " + project.age_restriction + "+ \u00B7 " + project.duration + " \u00B7 " + project.cost_range
       titleView.add(subTitleLabel);
 
-      projectScroll.add(titleView);
+      projectWrapper.add(titleView);
 
       var galleryView = Ti.UI.createView(projectStyles.galleryView);      
       
@@ -61,12 +63,12 @@ function ProjectWindow(project_id){
         });
       }
 
-      projectScroll.add(galleryView);
+      projectWrapper.add(galleryView);
 
       var moreImagesLabel = Ti.UI.createLabel(projectStyles.moreImagesLabel);
 
       if(project.images.length > 4){
-        projectScroll.add(moreImagesLabel);
+        projectWrapper.add(moreImagesLabel);
 
         moreImagesLabel.addEventListener('click', function(e){
           app.openWindow(project.title, 'gallery', [project.images]);
@@ -74,20 +76,17 @@ function ProjectWindow(project_id){
       }
 
       var descriptionLabel = Ti.UI.createLabel(projectStyles.descriptionLabel);
+      descriptionLabel.text = project.description;
 
-      projectScroll.add(descriptionLabel);
-
-      //descriptionLabel.addEventListener('click', function(e){
-        //app.openWindow('Show Description', 'project_description', [project.id]);
-      //});
-
+      projectWrapper.add(descriptionLabel);
+      
       var line = Ti.UI.createView(projectStyles.line);
-      projectScroll.add(line);
+      projectWrapper.add(line);
 
       var icons = [];
       var left = 0;
 
-      var buy_ticket = new Icon('Buy Ticket', 'iphone/purchase_24.png', 'performances', project, false);
+      var buy_ticket = new Icon('Buy Tickets', 'iphone/purchase_24.png', 'performances', project, false);
       icons.push(buy_ticket);      
 
       if(project.is_favorite){
@@ -132,8 +131,8 @@ function ProjectWindow(project_id){
       }
 
       function runIconEvent(e, islongclick){
-        var favTextView = iconsView.children[2].children[1];
-        var favImgView = iconsView.children[2].children[0];
+        var favTextView = iconsView.children[1].children[1];
+        var favImgView = iconsView.children[1].children[0];
         if(e.source.icon.text == 'Share'){
           sharekit.share({
             title:'I am checking out this show a show on stagey.net',
@@ -180,10 +179,10 @@ function ProjectWindow(project_id){
         app.openWindow('Show Review', 'review', [review.id]);
       }
 
-      projectScroll.add(iconsView);
+      projectWrapper.add(iconsView);
 
       var line = Ti.UI.createView(projectStyles.line);
-      projectScroll.add(line);
+      projectWrapper.add(line);
 
       var reviewView = Ti.UI.createView(projectStyles.reviewView);
 
@@ -202,10 +201,12 @@ function ProjectWindow(project_id){
       reviewView.add(carrotImage);
 
       var line = Ti.UI.createView(projectStyles.line);
-      line.top = 70,
+      line.top = 80,
       reviewView.add(line);
 
-      if(project.top_review_blurb){projectScroll.add(reviewView);}
+      reviewView.height = reviewView.toImage().height + 8;
+
+      if(project.top_review_blurb){projectWrapper.add(reviewView);}
 
       reviewView.addEventListener('click', function(e){
         app.openWindow('Reviews', 'reviews', [null, project]);
@@ -227,14 +228,14 @@ function ProjectWindow(project_id){
       var carrotImage = Ti.UI.createImageView(projectStyles.carrotImage);
       teamView.add(carrotImage);
 
-      projectScroll.add(teamView);
+      projectWrapper.add(teamView);
 
       teamView.addEventListener('click', function(e){
         app.openWindow('Project Team', 'users', [project.team]);
       });
 
       var line = Ti.UI.createView(projectStyles.line);
-      projectScroll.add(line);
+      projectWrapper.add(line);
 
       var tagsList = 'tagged under:\n'
 
@@ -247,14 +248,14 @@ function ProjectWindow(project_id){
       tagsLabel.text = tagsList;
 
       if(project.tags.length > 0){
-        projectScroll.add(tagsLabel);
+        projectWrapper.add(tagsLabel);
       }
 
       if(Ti.App.make_favorite == project.id){
         Ti.App.make_favorite = null;
 
-        var favTextView = iconsView.children[2].children[1];
-        var favImgView = iconsView.children[2].children[0];
+        var favTextView = iconsView.children[1].children[1];
+        var favImgView = iconsView.children[1].children[0];
 
         if(!project.is_favorite){
           favTextView.text = remove_fav_text;
@@ -265,7 +266,9 @@ function ProjectWindow(project_id){
         if(!project.is_favorite){toggleFavorite();}
       }
 
+      projectScroll.add(projectWrapper);
       self.add(projectScroll);
+      projectScroll.contentHeight = projectWrapper.toImage().height + 60;
       self.remove(spinner);      
     };
 

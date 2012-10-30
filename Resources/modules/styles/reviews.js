@@ -5,7 +5,7 @@ exports = {
   },
 
   row: {
-    height:100
+    //height:100
   },
 
   imageLabel: {    
@@ -22,22 +22,22 @@ exports = {
     height:Ti.UI.SIZE,
     left:60,
     top:5,
-    font:{fontSize:'13', fontWeight:'bold'}
+    font:{fontSize:'16', fontWeight:'bold'}
   },
 
   date: {    
     height:Ti.UI.SIZE,
     left:60,
-    top:20,
-    font:{fontSize:'10'}
+    top:24,
+    font:{fontSize:'13'}
   },
 
   blurb: {
     height:Ti.UI.SIZE,
     left:60,
-    top:37,
+    top:39,
     width:220,
-    font:{fontSize:'11'}
+    font:{fontSize:'13'}
   },
 
   moreRow: {

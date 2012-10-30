@@ -2,7 +2,7 @@ exports = {
 
   venueScroll: {
     contentWidth:'95%',
-    contentHeight:1100,
+    contentHeight:950,
     top:50,
     left:0,
     height:800,

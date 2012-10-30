@@ -1,7 +1,7 @@
 function Page(page_id, callback){
  
   var xhr = Ti.Network.createHTTPClient({
-    timeout: 15000
+    timeout:app.timeout
   });
 
   xhr.onload = function(){    

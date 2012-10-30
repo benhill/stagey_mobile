@@ -64,12 +64,14 @@ exports.addKeyboardToolbar = function(textbox){
 };	
 
 exports.properties = function() { 
-	return properties; 
+  return properties; 
 };
 
 exports.property = function(name) { 
-	return properties[name]; 
+  return properties[name]; 
 };
+
+exports.timeout = 15000;
 
 exports.api_url = 'https://staging.hollywoodfringe.org/api/';
 

@@ -1,7 +1,7 @@
 function MakeReviewHelpful(review_id, user_id, feedback, callback){
  
   var xhr = Ti.Network.createHTTPClient({
-    timeout: 15000
+    timeout:app.timeout
   });
 
   xhr.onload = function(){    

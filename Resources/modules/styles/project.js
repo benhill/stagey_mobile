@@ -2,12 +2,17 @@ exports = {
 
   projectScroll: {
     contentWidth:'95%',
-    contentHeight:1100,
     top:50,
     left:0,
-    height:800,
+    height:'100%',
     showVerticalScrollIndicator:true,
     showHorizontalScrollIndicator:true,
+    layout:'vertical'
+  },
+
+  projectWrapper: {
+    height:Ti.UI.SIZE,
+    width:'100%',
     layout:'vertical'
   },
 
@@ -108,7 +113,6 @@ exports = {
 
   reviewView: {
     width:320,
-    height:75,
     top:5
   },
 
@@ -131,7 +135,7 @@ exports = {
   },
 
   reviewsLabelName: {
-    font:{fontSize:10},
+    font:{fontSize:12},
     left:65,
     top:23,
     height:Ti.UI.SIZE,
@@ -158,7 +162,7 @@ exports = {
 
   teamView: {
     width:320,
-    height:60,
+    height:75,
     top:5
   },
 
@@ -172,7 +176,7 @@ exports = {
   },
 
   teamLabelName: {
-    font:{fontSize:10},
+    font:{fontSize:12},
     left:65,
     top:23,
     height:Ti.UI.SIZE,
@@ -184,7 +188,7 @@ exports = {
     width:Ti.UI.SIZE,
     top:10,
     left:5,
-    font:{fontSize:10}
+    font:{fontSize:12}
   }
 
 };

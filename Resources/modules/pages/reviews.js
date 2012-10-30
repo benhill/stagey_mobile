@@ -106,6 +106,8 @@ function ReviewsWindow(user_id, project){
         var carrotImage = Ti.UI.createImageView(reviewsStyles.carrotImage);
         row.add(carrotImage);
 
+        row.height = row.toImage().height + 8;
+
         tableData.push(row);
 
         row.addEventListener('click', function(e){

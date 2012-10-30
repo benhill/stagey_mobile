@@ -1,7 +1,7 @@
 function AddUser(email, first_name, last_name, password, callback){
  
   var xhr = Ti.Network.createHTTPClient({
-    timeout: 15000
+    timeout:app.timeout
   });
 
   xhr.onload = function(){    

@@ -28,6 +28,7 @@ function VenueWindow(venue_id){
       titleView.top = 0;
 
       var titleLabel = Ti.UI.createLabel(styles.titleLabel);
+      titleLabel.width = '95%';
       titleLabel.text = venue.name.toUpperCase();
       titleView.add(titleLabel);
 
