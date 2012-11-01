@@ -113,7 +113,7 @@ function PerformancesWindow(mode, schedule_page){
         row.add(projectInfo);
 
         row.addEventListener('click', function(e){
-          if(mode == 'schedule'){
+          if(mode == 'schedule' || mode == 'nearby' || mode == 'next'){
             app.openWindow('Project', 'project', [e.source.performance.project_id]);
           }            
           else{loadPerformance(e);}
