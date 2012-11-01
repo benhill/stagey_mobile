@@ -22,11 +22,11 @@ exports = {
   },
 
   buttonLabel: {
-    color:'gray',
+    color:'white',
     width:Ti.UI.SIZE,
     height:Ti.UI.SIZE,
     textAlign:'center',
-    top:5
+    top:10
   }
 
 }

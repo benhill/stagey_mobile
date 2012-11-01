@@ -14,7 +14,7 @@ function VenuesWindow(){
     var buttonBarView = Ti.UI.createView(venueStyles.buttonBarView);
     
     var buttonBarObj = require('modules/common/button_bar');
-    buttonBarView.add(new buttonBarObj(['list', 'map'], function(label){
+    buttonBarView.add(new buttonBarObj(['LIST', 'MAP'], function(label){
 
       if(self.children.length > 1){self.remove(contentView)};
 
@@ -23,14 +23,14 @@ function VenuesWindow(){
       self.add(spinner);
       spinner.show();
             
-      if(label == 'list'){        
+      if(label == 'LIST'){        
         loadVenues();
       }
-      else{
+      else if(label == 'MAP'){
         loadMap();
       }
     }));
-    
+
     self.add(buttonBarView);
 
     function loadMap(){

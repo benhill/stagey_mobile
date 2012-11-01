@@ -37,8 +37,9 @@ function ButtonBar(tabNames, callback){
     }
     
     button.toString == "[object TiUILabel]" ? newbutton = button.parent : newbutton = button;
-    newbutton.backgroundColor = 'gray';
-    newbutton.children[0].color = 'white';
+    newbutton.backgroundColor = 'white';
+    newbutton.children[0].font = {fontWeight:'bold'}
+    newbutton.children[0].color = 'black';    
     currbutton = newbutton;
     callback(newbutton.children[0].text);
   }  
