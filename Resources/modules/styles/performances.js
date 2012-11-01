@@ -18,17 +18,37 @@ exports = {
     left:85,
     top:15
   },
+
+  previousView: {
+    left:0,
+    top:0,
+    height:'100%',
+    width:40
+  },
   
-  previousImage: {
-    left:10,
+  previousImage: {    
+    left:15,
     top:20,
     height:Titanium.UI.SIZE,
     width:Titanium.UI.SIZE,
     image:'iphone/less-arrow-white.png'
   },
 
-  nextImage: {
-    right:10,
+  nextView: {
+    right:0,
+    top:0,
+    height:'100%',
+    width:40
+  },
+
+  spacer: {
+    height:'100%',
+    width:1,
+    backgroundColor:'white'
+  },
+
+  nextImage: {    
+    right:15,
     top:20,
     height:Titanium.UI.SIZE,
     width:Titanium.UI.SIZE,

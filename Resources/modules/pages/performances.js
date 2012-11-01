@@ -47,17 +47,34 @@ function PerformancesWindow(mode, schedule_page){
         titleLabel.text = performances[0].date_time;        
         titleView.add(titleLabel);        
       
-        var previousImage = Ti.UI.createImageView(perfStyles.previousImage);
-        if(performances[0].has_less){titleView.add(previousImage)};
+        
+        var previousView = Ti.UI.createView(perfStyles.previousView);
 
-        previousImage.addEventListener('click', function(e){
+        var previousImage = Ti.UI.createImageView(perfStyles.previousImage);
+        previousView.add(previousImage);
+
+        var spacer = Ti.UI.createView(perfStyles.spacer);
+        spacer.right = 0;
+        previousView.add(spacer);
+
+        if(performances[0].has_less){titleView.add(previousView)};
+
+        previousView.addEventListener('click', function(e){
           app.openWindow('Schedule', 'performances', [mode, schedule_page -= 1]);
         })
 
-        var nextImage = Ti.UI.createImageView(perfStyles.nextImage);        
-        if(performances[0].has_more){titleView.add(nextImage)};
+        var nextView = Ti.UI.createView(perfStyles.nextView);
 
-        nextImage.addEventListener('click', function(e){
+        var nextImage = Ti.UI.createImageView(perfStyles.nextImage);
+        nextView.add(nextImage);
+
+        var spacer = Ti.UI.createView(perfStyles.spacer);
+        spacer.left = 0;
+        nextView.add(spacer);
+
+        if(performances[0].has_more){titleView.add(nextView)};
+
+        nextView.addEventListener('click', function(e){
           app.openWindow('Schedule', 'performances', [mode, schedule_page += 1]);
         })
 
