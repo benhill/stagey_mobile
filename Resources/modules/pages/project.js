@@ -35,7 +35,7 @@ function ProjectWindow(project_id){
       titleView.add(titleLabel);
 
       var subTitleLabel = Ti.UI.createLabel(styles.subTitleLabel);
-      subTitleLabel.text = project.company + " \u00B7 ages " + project.age_restriction + "+ \u00B7 " + project.duration + " \u00B7 " + project.cost_range
+      subTitleLabel.text = project.company + " \u00B7 ages " + project.age_restriction + "+ \u00B7 " + (project.duration + " \u00B7 ") + project.cost_range
       titleView.add(subTitleLabel);
 
       projectWrapper.add(titleView);
@@ -201,7 +201,7 @@ function ProjectWindow(project_id){
       reviewView.add(carrotImage);
 
       var line = Ti.UI.createView(projectStyles.line);
-      line.top = 80,
+      line.top = 65,
       reviewView.add(line);
 
       reviewView.height = reviewView.toImage().height + 8;

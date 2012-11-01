@@ -3,11 +3,10 @@ function VenuesWindow(){
   var styles = require('modules/styles/styles');
   var venueStyles = require('modules/styles/venues');
   var self = Ti.UI.createWindow(styles.defaultWindow);
-  var spinner = Ti.UI.createActivityIndicator(styles.spinner);
-  var table = Ti.UI.createTableView(venueStyles.table);
-  var tableData = [];
+  var spinner = Ti.UI.createActivityIndicator(styles.spinner);  
   var venuesTab = Titanium.UI.currentTab;
   var contentView;
+  var table;
 
   self.load = function(){
 
@@ -41,6 +40,8 @@ function VenuesWindow(){
     }
       
     function loadVenues(){
+      table = Ti.UI.createTableView(venueStyles.table);
+      var tableData = [];
       var venuesObj = require('modules/models/venues');    
       new venuesObj(function(venues){      
         for (i = 0; i < venues.length; i++) {

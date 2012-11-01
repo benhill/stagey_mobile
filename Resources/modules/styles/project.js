@@ -71,7 +71,7 @@ exports = {
     top:15,
     bottom:7,
     left:5,
-    font:{fontSize:12},
+    font:{fontSize:13},
     height:Ti.UI.SIZE,
     width: '95%'
   },

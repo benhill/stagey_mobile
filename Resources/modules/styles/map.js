@@ -9,7 +9,8 @@ exports = {
     mapType:Ti.Map.STANDARD_TYPE,
     animate:true,
     regionFit:true,
-    userLocation:false
+    userLocation:false,
+    backgroundColor:'white'
   },
 
   viewButton: {
