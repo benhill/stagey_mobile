@@ -1,5 +1,10 @@
 exports = {	
 
+  mapWrapper: {
+    width:Ti.UI.SIZE,
+    height:Ti.UI.SIZE
+  },
+
   mapView: {
     mapType:Ti.Map.STANDARD_TYPE,
     animate:true,

@@ -14,7 +14,8 @@ exports = {
 	  top:150,
 	  message: 'loading...',
 	  color: 'black',
-	  style: Titanium.UI.iPhone.ActivityIndicatorStyle.DARK
+	  style: Titanium.UI.iPhone.ActivityIndicatorStyle.DARK,
+    zIndex:1000
 	},
 
 	titleView: {

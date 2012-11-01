@@ -1,7 +1,17 @@
 exports = {	
+
+  buttonBarView: {
+    top:50
+  },
+
+  contentView: {
+    height:Ti.UI.SIZE,
+    width: Ti.UI.SIZE,
+    top:90
+  },
   
   table: {
-    top:50
+    top:0
   },
 
   venueThumb: {
