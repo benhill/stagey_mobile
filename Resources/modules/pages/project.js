@@ -35,7 +35,7 @@ function ProjectWindow(project_id){
       titleView.add(titleLabel);
 
       var subTitleLabel = Ti.UI.createLabel(styles.subTitleLabel);
-      subTitleLabel.text = project.company + " \u00B7 ages " + project.age_restriction + "+ \u00B7 " + (project.duration + " \u00B7 ") + project.cost_range
+      subTitleLabel.text = project.company + ' \u00B7 ages ' + project.age_restriction + '+' + (project.duration ? ' \u00B7 ' + project.duration : '') + (project.cost_range ? ' \u00B7 '  + project.cost_range : '')
       titleView.add(subTitleLabel);
 
       projectWrapper.add(titleView);
