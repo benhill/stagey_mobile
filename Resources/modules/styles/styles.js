@@ -9,12 +9,12 @@ exports = {
 	},
 
 	spinner: {
-	  width:50,
-	  height:50,  
+	  width:Ti.UI.SIZE,
+	  height:Ti.UI.SIZE,  
 	  top:150,
-	  message: 'loading...',
-	  color: 'black',
-	  style: Titanium.UI.iPhone.ActivityIndicatorStyle.DARK,
+	  message:'loading...',
+	  color:'black',
+	  style:Titanium.UI.iPhone.ActivityIndicatorStyle.DARK,
     zIndex:1000
 	},
 
