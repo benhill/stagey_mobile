@@ -63,6 +63,13 @@ exports = {
     height:Titanium.UI.SIZE,
     width:Titanium.UI.SIZE,
     image:'iphone/more-arrow.png'
+  },
+
+  noResultsLabel: {
+    top:150,
+    width:Ti.UI.SIZE,
+    height:Ti.UI.SIZE,
+    text:'No projects match your query...'
   }
 
 };

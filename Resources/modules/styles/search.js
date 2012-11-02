@@ -17,6 +17,13 @@ exports = {
     height:24,
     top:12,    
     left:285
+  },
+
+  noResultsLabel: {
+    top:150,
+    width:Ti.UI.SIZE,
+    height:Ti.UI.SIZE,
+    text:'No projects match your query...'
   }
 
 }

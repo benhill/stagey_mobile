@@ -16,7 +16,14 @@ function ProjectsWindow(mode, startProjects, cat_id, venue_id){
     var url = setUrl();
 
     new projectsObj(url, function(results){
-      loadProjects(results);
+      if(startProjects && startProjects.length == 0){
+        var noResultsLabel = Ti.UI.createLabel(projectsStyles.noResultsLabel);
+        self.add(noResultsLabel);
+        spinner.hide();
+      }
+      else{
+      	loadProjects(results);        
+      }
     });
 
     function loadProjects(results){
