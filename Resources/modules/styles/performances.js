@@ -102,12 +102,10 @@ exports = {
   },
 
   noPerfs: {
-    text:'No performances available',
+    text:'No performances match your criteria...',
     height:Ti.UI.SIZE,
     width:Ti.UI.SIZE,
-    top:10,
-    left:60,
-    font:{fontSize:14}
+    top:150
   },
 
   carrotImage: {
