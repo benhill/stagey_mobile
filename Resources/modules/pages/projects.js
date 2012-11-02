@@ -47,9 +47,10 @@ function ProjectsWindow(mode, startProjects, cat_id, venue_id){
         var nameLabel = Ti.UI.createLabel(projectsStyles.nameLabel);
         row.add(nameLabel);
 
-        projectsStyles.infoLabel.text = project.cat_name + " \u00B7 " + project.cost_range + " \u00B7 " + project.duration
-        projectsStyles.infoLabel.project_id = project.id;
         var infoLabel = Ti.UI.createLabel(projectsStyles.infoLabel);
+        infoLabel.text = project.cat_name 
+        if(project.cost_range){infoLabel.text += " \u00B7 " + project.cost_range + " \u00B7 " + project.duration};
+        infoLabel.project_id = project.id;
         row.add(infoLabel);
 
         var carrotImage = Ti.UI.createImageView(projectsStyles.carrotImage);

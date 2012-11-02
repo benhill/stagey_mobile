@@ -59,23 +59,20 @@ exports = {
 
   projectInfo: {
     height:Ti.UI.SIZE,
-    top:28,       
+    top:27,       
     left:60,
     font:{fontSize:12},
-    width:'95%'
+    width:240
   },
-
-  costLabel: {
+  
+  buttonView: {
     height:Ti.UI.SIZE,
     width:Ti.UI.SIZE,
-    top:41,       
-    left:60,    
-    font:{fontSize:12},
+    bottom:10
   },
 
- payButton: {
-    title:'Buy Tickets',
-    bottom:10,
+  payButton: {
+    title:'Buy Tickets',    
     width:300
   }
 

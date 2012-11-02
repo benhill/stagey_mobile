@@ -46,13 +46,11 @@ function ReceiptWindow(sale_id){
         row.add(projectTitle);
 
         var projectInfo = Ti.UI.createLabel(receiptStyles.projectInfo);
-        projectInfo.text = ticket.performance_info;
+        projectInfo.text = ticket.performance_info + ' \u00B7 $' + app.formatCurrency(ticket.cost);
+        if(ticket.discount){projectInfo.text += ' \u00B7 ' + ticket.discount};
         row.add(projectInfo);
 
-        var costLabel = Ti.UI.createLabel(receiptStyles.costLabel);
-        costLabel.text = '$' + app.formatCurrency(ticket.cost); 
-        if(ticket.discount){costLabel.text += ' \u00B7 ' + ticket.discount};
-        row.add(costLabel);
+        row.height = row.toImage().height + 8;       
 
         tableData.push(row);
       }

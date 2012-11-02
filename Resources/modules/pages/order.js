@@ -4,6 +4,7 @@ function OrderWindow(cc_num, cc_fname, cc_lname, csv, expiry_month, expiry_year)
   var orderStyles = require('modules/styles/order');
   var self = Ti.UI.createWindow(styles.defaultWindow);
   var cartObj = require('modules/models/cart');
+  var payButton;
 
   self.load = function(){
 
@@ -45,28 +46,41 @@ function OrderWindow(cc_num, cc_fname, cc_lname, csv, expiry_month, expiry_year)
         row.add(projectTitle);
 
         var projectInfo = Ti.UI.createLabel(orderStyles.projectInfo);
-        projectInfo.text = cart_item.performance_info;
+        projectInfo.text = cart_item.performance_info + ' \u00B7 $' + app.formatCurrency(cart_item.ticket_price);
+        if(cart_item.discount){projectInfo.text += ' \u00B7 ' + cart_item.discount};
         row.add(projectInfo);
 
-        var costLabel = Ti.UI.createLabel(orderStyles.costLabel);
-        costLabel.text = '$' + app.formatCurrency(cart_item.ticket_price);
-        if(cart_item.discount){costLabel.text += ' \u00B7 ' + cart_item.discount};
-        row.add(costLabel);
+        row.height = row.toImage().height + 8;        
 
         tableData.push(row);
+
       }
 
       table.setData(tableData);
-      self.add(table);
+      self.add(table);      
+      
+      var buttonView = Ti.UI.createView(orderStyles.buttonView);
 
-      var payButton = Ti.UI.createButton(orderStyles.payButton);    
-      self.add(payButton);
+      payButton = Ti.UI.createButton(orderStyles.payButton);
+      buttonView.add(payButton);
+
+      self.add(buttonView);
     
       payButton.addEventListener('click', function(e){
+
+        buttonView.remove(payButton);
+
+        var spinner = Ti.UI.createActivityIndicator(styles.spinner);
+        spinner.message = '';
+        buttonView.add(spinner);
+        spinner.show();
+
         var cartObj = require('modules/models/cart');
         new cartObj(Ti.App.currentUser.id).purchase(cc_fname, cc_lname, cc_num, expiry_month, expiry_year, csv, function(e){
           if (e.error){
             alert(e.error)
+            buttonView.remove(spinner);
+            buttonView.add(payButton);
           }
           else{
             app.openWindow('Receipt', 'receipt', [e.sale_id]);

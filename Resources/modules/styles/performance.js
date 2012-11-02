@@ -42,9 +42,14 @@ exports = {
     hintText: 'Discount Code',
   },
 
+  buttonView: {
+    height:Ti.UI.SIZE,
+    width:Ti.UI.SIZE,
+    bottom:10
+  },
+
   payButton: {
-    title:'Pay for Tickets',
-    bottom:10,
+    title:'Pay for Tickets',    
     width:300
   }
 

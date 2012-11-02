@@ -62,14 +62,6 @@ exports = {
     top:27,
     left:60,
     font:{fontSize:12},
-    width:'95%'
-  },
-
-  costLabel: {
-    height:Ti.UI.SIZE,
-    width:Ti.UI.SIZE,
-    top:43,
-    left:60,
-    font:{fontSize:12},
+    width:240
   }
 }

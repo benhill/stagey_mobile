@@ -6,6 +6,7 @@ function PerformanceWindow(performance_id, pwycPrice){
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
   var quantity = 1;
   var pwycPrice;
+  var payButton;
 
   self.load = function(){
 
@@ -51,13 +52,24 @@ function PerformanceWindow(performance_id, pwycPrice){
         self.add(codeText);
         addKeyboardToolbar(codeText);
       }
+
+      var buttonView = Ti.UI.createView(perfStyles.buttonView);
       
-      var payButton = Ti.UI.createButton(perfStyles.payButton);      
-      self.add(payButton);
+      payButton = Ti.UI.createButton(perfStyles.payButton);      
+      buttonView.add(payButton);
+      self.add(buttonView);
 
       payButton.addEventListener('click', function(e){
         if(!quantityLabel.value){quantity = 1}else{quantity = quantityLabel.value}
         var cartObj = require('modules/models/cart');
+
+        buttonView.remove(payButton);
+
+        var spinner = Ti.UI.createActivityIndicator(styles.spinner);
+        spinner.message = '';
+        buttonView.add(spinner);
+        spinner.show();
+
         new cartObj(Ti.App.currentUser.id).add_to_cart(performance.id, quantity, pwycPrice, function(e){
           if(e.cart_total > 0){
             if(codeText.value.length > 0){
@@ -76,6 +88,8 @@ function PerformanceWindow(performance_id, pwycPrice){
             new cartObj(Ti.App.currentUser.id).purchase(null, null, null, null, null, null, function(e){
               if (e.error){
                 alert(e.error)
+                buttonView.remove(spinner);
+                buttonView.add(payButton);
               }
               else{                
                 app.openWindow('Receipt', 'receipt', [e.sale_id]);
