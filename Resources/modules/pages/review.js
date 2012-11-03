@@ -33,7 +33,7 @@ function ReviewWindow(review_id){
     titleView.add(nameLabel);
 
     var projectLabel = Ti.UI.createLabel(reviewStyles.projectLabel);
-    projectLabel.text = "on " + ((review.project_title.length >= 30) ? title = review.project_title.substr(0,30) + "..." : title = review.project_title);
+    projectLabel.text = "on " + ((review.project_title.length >= 32) ? review.project_title.substr(0,32).toLowerCase() + "..." : review.project_title.toLowerCase());
     titleView.add(projectLabel);
 
     var info = Ti.UI.createLabel(reviewStyles.info);

@@ -39,7 +39,7 @@ exports = {
   projectLabel: {
     height:45,  
     top:11,
-    font:{fontSize:13, fontWeight:'bold'},
+    font:{fontSize:12, fontWeight:'bold'},
     right:0,
     left:75,
     color:'white'
@@ -48,7 +48,7 @@ exports = {
   info: {
     height:47,
     top:26,
-    font:{fontSize:13, fontWeight:'bold'},
+    font:{fontSize:12, fontWeight:'bold'},
     right:0,
     left:75,
     color:'white'

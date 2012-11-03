@@ -25,7 +25,7 @@ exports = {
   infoLabel: {
     font:{fontSize:13},
     height:Ti.UI.SIZE,
-    width:'80%',
+    width:'75%',
     left:55,
     top:25,
     color:'#000',

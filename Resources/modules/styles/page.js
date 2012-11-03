@@ -79,7 +79,8 @@ exports = {
     title: 'View Project',
     top:7,
     left:5,
-    width:100  
+    width:100,
+    height:37
   }
 
 }
