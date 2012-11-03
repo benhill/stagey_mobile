@@ -7,7 +7,7 @@ exports = {
     scrollType:'vertical',
     verticalBounce:true,
     showVerticalScrollIndicator:true,
-    height:330,
+    height:'75%',
     top:50,
     left:0
   },
@@ -66,21 +66,24 @@ exports = {
     title: 'Helpful',
     top:7,
     left:5,
-    width:90
+    width:90,
+    height:37
   },
 
   not_helpful: {
     title: 'Not Helpful',
     top:7,
     left:5,
-    width:100  
+    width:100,
+    height:37
   },
 
   view_project: {
     title: 'View Project',
     top:7,
     left:5,
-    width:100  
+    width:100,
+    height:37
   },
 
   body: {

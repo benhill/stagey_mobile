@@ -79,11 +79,11 @@ function VenuesWindow(){
         self.add(contentView);
         spinner.hide();
       })
-    }
 
-    table.addEventListener('click', function(e){
-      openVenue(e);
-    });
+      table.addEventListener('click', function(e){
+        openVenue(e);
+      });
+    }    
 
     function openVenue(e, islongclick) { 
       app.openWindow('Venue', 'venue', [e.source.venue_id]);

@@ -21,6 +21,7 @@ function ApplicationTabGroup(windows) {
     icon:'iphone/nearby_30.png'
   });
   venuesTab.window = createWin('Venues', 'venues', venuesTab)
+  venuesTab.window.backgroundColor = 'white';
   venuesTab.window.orientationModes = [Titanium.UI.PORTRAIT]
   self.addTab(venuesTab);
   venuesTab.window.load();

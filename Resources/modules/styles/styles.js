@@ -45,10 +45,8 @@ exports = {
   },
 
   noDataLabel: {
-    font:{fontSize:14},
     height:Ti.UI.SIZE,
-    left:10,
-    top:70,    
+    top:150,
     touchEnabled:false
   }
 

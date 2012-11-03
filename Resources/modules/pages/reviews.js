@@ -18,7 +18,7 @@ function ReviewsWindow(user_id, project){
       }
       else{
         noDataLabel = Ti.UI.createLabel(styles.noDataLabel);
-        noDataLabel.text = "No feed data to display...";
+        noDataLabel.text = "No reviews listed...";
         self.add(noDataLabel);
         spinner.hide();
       }

@@ -194,14 +194,14 @@ function ProjectWindow(project_id){
       reviewView.add(reviewsLabel);
 
       var reviewsLabelName = Ti.UI.createLabel(projectStyles.reviewsLabelName);
-      reviewsLabelName.text = project.top_review_user_full_name + ': \"' + project.top_review_blurb + '\"',
+      reviewsLabelName.text = project.top_review_user_full_name + ': \"' + project.top_review_blurb + '\"', 
       reviewView.add(reviewsLabelName);
 
       var carrotImage = Ti.UI.createImageView(projectStyles.carrotImage);      
       reviewView.add(carrotImage);
 
       var line = Ti.UI.createView(projectStyles.line);
-      line.top = 65,
+      line.top = 75,
       reviewView.add(line);
 
       reviewView.height = reviewView.toImage().height + 8;
