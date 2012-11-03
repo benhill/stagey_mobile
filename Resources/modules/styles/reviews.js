@@ -22,7 +22,7 @@ exports = {
     height:Ti.UI.SIZE,
     left:60,
     top:5,
-    font:{fontSize:'16', fontWeight:'bold'}
+    font:{fontSize:'13', fontWeight:'bold'}
   },
 
   date: {    
