@@ -1,18 +1,19 @@
 exports = {
 
   userScroll: {
-  	contentWidth:Ti.UI.SIZE,
+  	contentWidth:'95%',
     contentHeight:Ti.UI.SIZE,
     touchEnabled:true,
     scrollType:'vertical',
     verticalBounce:true,
     showVerticalScrollIndicator:true,
-    height:350,
+    height:'89%',
     top:50
 	},
 
   wrapper: {
     height:Ti.UI.SIZE,
+    width:Ti.UI.SIZE,
     top:0
   },
 
@@ -62,7 +63,7 @@ exports = {
     width:300,
     left:10,
     top:120,
-    font:{fontSize:'12'}
+    font:{fontSize:'13'}
   }
 
 }

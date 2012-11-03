@@ -29,22 +29,20 @@ function UserWindow(user_id){
       	var profile = Ti.UI.createLabel(userStyles.profile);
         profile.text = (user.profile ? user.profile : 'No profile information available.');
       	wrapper.add(profile);
+        
+        var line = Ti.UI.createView(userStyles.line1);
+        wrapper.add(line);
 
-        if(user.review_count > 0){
-          var line = Ti.UI.createView(userStyles.line1);
-          wrapper.add(line);
+        var reviewsLabel = Ti.UI.createLabel(userStyles.reviewsLabel);
+        reviewsLabel.text = "Reviews by " + user.first_name;
+        wrapper.add(reviewsLabel);
 
-          var reviewsLabel = Ti.UI.createLabel(userStyles.reviewsLabel);
-          reviewsLabel.text = "Reviews by " + user.first_name;
-          wrapper.add(reviewsLabel);
+        reviewsLabel.addEventListener('click', function(e){
+          app.openWindow('Reviews by ' + user.first_name, 'reviews', [user.id, null]);
+        });
 
-          reviewsLabel.addEventListener('click', function(e){
-            app.openWindow('Reviews by ' + user.first_name, 'reviews', [user.id, null]);
-          });
-
-          var line = Ti.UI.createView(userStyles.line2);
-          wrapper.add(line);
-        }
+        var line = Ti.UI.createView(userStyles.line2);
+        wrapper.add(line);
 
       	userScroll.add(wrapper);
 
