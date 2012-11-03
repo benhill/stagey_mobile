@@ -119,13 +119,9 @@ function VenueWindow(venue_id){
       addressView.add(addressLabel);
 
       var address = Ti.UI.createLabel(venueStyles.address);
-      address.text = venue.address + "\n" + venue.city + ", " + venue.state + " " + venue.postal;
+      address.text = venue.address + '\n' + venue.city + ', ' + venue.state + ' ' + venue.postal + '\n' + String(miles_away) + ' miles away';
       addressView.add(address);
-
-      var distance = Ti.UI.createLabel(venueStyles.distance);
-      distance.text = miles_away + ' miles away'
-      addressView.add(distance);
-
+      
       venueScroll.add(addressView);
       
       var annotation = Ti.Map.createAnnotation(venueStyles.annotation);

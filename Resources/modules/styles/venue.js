@@ -60,7 +60,7 @@ exports = {
 
   addressLabel: {
     text: "address",
-    top:3,
+    top:0,
     left:5,
     font:{fontSize:12, fontWeight:'bold'},
     height:Ti.UI.SIZE,
@@ -72,15 +72,7 @@ exports = {
     left:70,
     font:{fontSize:12},
     height:Ti.UI.SIZE,
-    width: '95%'
-  },
-
-  distance: {
-    top:30,
-    left:70,
-    font:{fontSize:12},
-    height:Ti.UI.SIZE,
-    width: '95%'
+    width: '75%'
   },
 
   projectsView: {
@@ -119,7 +111,7 @@ exports = {
     animate:true,
     regionFit:true,
     userLocation:false,
-    top:15,
+    top:25,
     height:175
   },
 
