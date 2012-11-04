@@ -124,7 +124,7 @@ exports = {
   },
 
   reviewsLabel: {
-    text:"View All Reviews",
+    text:"Show Reviews",
     font:{fontSize:14},
     left:65,
     top:5,
@@ -164,7 +164,7 @@ exports = {
   },
 
   teamLabel: {
-    text:"View Project Team",
+    text:"Project Team",
     font:{fontSize:14},
     left:65,
     top:5,

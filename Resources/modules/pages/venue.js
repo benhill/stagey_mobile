@@ -32,11 +32,12 @@ function VenueWindow(venue_id){
       var titleLabel = Ti.UI.createLabel(styles.titleLabel);
       titleLabel.width = '95%';
       titleLabel.text = venue.name.toUpperCase();
+      if(venue.presenter.length == 0){titleLabel.bottom = 10};
       titleView.add(titleLabel);
 
       var subTitleLabel = Ti.UI.createLabel(styles.subTitleLabel);
       subTitleLabel.text = "presented by " + venue.presenter;
-      titleView.add(subTitleLabel);
+      if(venue.presenter.length > 0){titleView.add(subTitleLabel)};
 
       venueWrapper.add(titleView);      
 
