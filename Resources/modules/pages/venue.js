@@ -9,6 +9,8 @@ function VenueWindow(venue_id){
   var json, venue;
   var image_top = 0;
   var image_place = 0;
+  var table = Ti.UI.createTableView(venueStyles.table);
+  var tableData = [];  
 
   self.load = function(){
     new venueObj(url, function(venue){
@@ -22,7 +24,7 @@ function VenueWindow(venue_id){
 
     new venueDistObj(venue.id, function(miles_away){
 
-      var venueScroll = Titanium.UI.createScrollView(venueStyles.venueScroll);
+      var venueWrapper = Titanium.UI.createView(venueStyles.venueWrapper);
 
       var titleView = Ti.UI.createView(styles.titleView);
       titleView.top = 0;
@@ -36,8 +38,9 @@ function VenueWindow(venue_id){
       subTitleLabel.text = "presented by " + venue.presenter;
       titleView.add(subTitleLabel);
 
-      venueScroll.add(titleView);
+      venueWrapper.add(titleView);      
 
+      var allGalleryView = Ti.UI.createView(venueStyles.allGalleryView);
       var galleryView = Ti.UI.createView(venueStyles.galleryView);    
 
       var imageCollection = venue.images.slice(0,4);
@@ -61,28 +64,33 @@ function VenueWindow(venue_id){
 
       } 
 
-      venueScroll.add(galleryView);
+      allGalleryView.add(galleryView);
 
       var moreImagesLabel = Ti.UI.createLabel(venueStyles.moreImagesLabel);
 
       if(venue.images.length > 4){
 
-        venueScroll.add(moreImagesLabel);
+        allGalleryView.add(moreImagesLabel);
 
         moreImagesLabel.addEventListener('click', function(e){
           app.openWindow(venue.name, 'gallery', [venue.images]);
         });
       }
 
+      var row = Ti.UI.createTableViewRow(venueStyles.row);
+      row.selectedBackgroundColor = '#F4F1F1';
+      row.add(allGalleryView);
+      if(imageCollection.length > 0){tableData.push(row)};
+
       var description = Ti.UI.createLabel(venueStyles.description);
       description.text = venue.description;
-      venueScroll.add(description);
-
+      
+      var row = Ti.UI.createTableViewRow(venueStyles.row);
+      row.selectedBackgroundColor = '#F4F1F1';
+      row.add(description);
+      if(venue.description.length > 0){tableData.push(row)};
       
       if(venue.number_of_shows > 0){
-
-        var line = Ti.UI.createView(venueStyles.line);
-        venueScroll.add(line);
 
         var projectsView = Ti.UI.createView(venueStyles.projectsView);
 
@@ -101,7 +109,9 @@ function VenueWindow(venue_id){
         var carrotImage = Ti.UI.createImageView(venueStyles.carrotImage);
         projectsView.add(carrotImage);
 
-        venueScroll.add(projectsView);
+        var row = Ti.UI.createTableViewRow(venueStyles.row);
+        row.add(projectsView);
+        tableData.push(row);
 
         projectsView.addEventListener('click', function(e){
           var params = ['venue', null, null, venue.id];
@@ -109,9 +119,6 @@ function VenueWindow(venue_id){
         });
         
       }
-
-      var line = Ti.UI.createView(venueStyles.line);
-      venueScroll.add(line);
 
       var addressView = Ti.UI.createView(venueStyles.addressView);
 
@@ -122,8 +129,6 @@ function VenueWindow(venue_id){
       address.text = venue.address + '\n' + venue.city + ', ' + venue.state + ' ' + venue.postal + '\n' + String(miles_away) + ' miles away';
       addressView.add(address);
       
-      venueScroll.add(addressView);
-      
       var annotation = Ti.Map.createAnnotation(venueStyles.annotation);
       annotation.latitude = venue.lat;
       annotation.longitude = venue.lng;
@@ -132,10 +137,21 @@ function VenueWindow(venue_id){
 
       var mapView = Titanium.Map.createView(venueStyles.mapView);
       mapView.annotations = [annotation];
-      mapView.region = {latitude:venue.lat, longitude:venue.lng, latitudeDelta:0.01, longitudeDelta:0.01};
-      venueScroll.add(mapView);
+      mapView.region = {latitude:venue.lat, longitude:venue.lng, latitudeDelta:0.01, longitudeDelta:0.01};      
       
-      self.add(venueScroll);
+      var locationWrapper = Ti.UI.createView(venueStyles.locationWrapper);
+      locationWrapper.add(addressView);
+      locationWrapper.add(mapView);
+
+      var row = Ti.UI.createTableViewRow(venueStyles.row);
+      row.selectedBackgroundColor = '#F4F1F1';
+      row.add(locationWrapper);
+      tableData.push(row);
+
+      table.setData(tableData);
+      venueWrapper.add(table);
+      
+      self.add(venueWrapper);
       self.remove(spinner);
     }); 
   };

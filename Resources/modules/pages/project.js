@@ -13,6 +13,8 @@ function ProjectWindow(project_id){
   var make_fav_text = "Make Favorite";
   var remove_fav_text = "Remove Favorite"
   var is_favorite;
+  var table = Ti.UI.createTableView(projectStyles.table);
+  var tableData = [];  
 
   self.load = function(){
     var url = app.api_url + "project/" + project_id + "?event_id=7";
@@ -23,7 +25,6 @@ function ProjectWindow(project_id){
     });
 
     function loadProject(project){
-      var projectScroll = Ti.UI.createScrollView(projectStyles.projectScroll);      
 
       var projectWrapper = Ti.UI.createView(projectStyles.projectWrapper);
 
@@ -40,7 +41,8 @@ function ProjectWindow(project_id){
 
       projectWrapper.add(titleView);
 
-      var galleryView = Ti.UI.createView(projectStyles.galleryView);      
+      var allGalleryView = Ti.UI.createView(projectStyles.allGalleryView);
+      var galleryView = Ti.UI.createView(projectStyles.galleryView);
       
       var imageCollection = [];
       if(project.images.length > 0){imageCollection = project.images.slice(0,4)};    
@@ -61,28 +63,33 @@ function ProjectWindow(project_id){
         img.addEventListener('click', function(e){
           app.openWindow('Image', 'image', [e.source.full_image_path]);
         });
-      }
+      } 
 
-      projectWrapper.add(galleryView);
+      allGalleryView.add(galleryView);
 
-      var moreImagesLabel = Ti.UI.createLabel(projectStyles.moreImagesLabel);
+      var moreImagesLabel = Ti.UI.createLabel(projectStyles.moreImagesLabel);      
 
       if(project.images.length > 4){
-        projectWrapper.add(moreImagesLabel);
+        allGalleryView.add(moreImagesLabel);
 
         moreImagesLabel.addEventListener('click', function(e){
           app.openWindow(project.title, 'gallery', [project.images]);
         });
       }
 
+      var row = Ti.UI.createTableViewRow(projectStyles.row);
+      row.add(allGalleryView);
+      row.selectedBackgroundColor = '#F4F1F1';
+      if(imageCollection.length > 0){tableData.push(row)};
+
       var descriptionLabel = Ti.UI.createLabel(projectStyles.descriptionLabel);
       descriptionLabel.text = project.description;
-
-      projectWrapper.add(descriptionLabel);
       
-      var line = Ti.UI.createView(projectStyles.line);
-      projectWrapper.add(line);
-
+      var row = Ti.UI.createTableViewRow(projectStyles.row);
+      row.add(descriptionLabel);
+      row.selectedBackgroundColor = '#F4F1F1';
+      if(project.description.length > 0){tableData.push(row)};
+      
       var icons = [];
       var left = 0;
 
@@ -178,11 +185,11 @@ function ProjectWindow(project_id){
       function loadReview(review){
         app.openWindow('Show Review', 'review', [review.id]);
       }
-
-      projectWrapper.add(iconsView);
-
-      var line = Ti.UI.createView(projectStyles.line);
-      projectWrapper.add(line);
+      
+      var row = Ti.UI.createTableViewRow(projectStyles.row);      
+      row.add(iconsView);
+      row.selectedBackgroundColor = '#F4F1F1';
+      tableData.push(row);
 
       var reviewView = Ti.UI.createView(projectStyles.reviewView);
 
@@ -200,13 +207,11 @@ function ProjectWindow(project_id){
       var carrotImage = Ti.UI.createImageView(projectStyles.carrotImage);      
       reviewView.add(carrotImage);
 
-      var line = Ti.UI.createView(projectStyles.line);
-      line.top = 75,
-      reviewView.add(line);
-
       reviewView.height = reviewView.toImage().height + 8;
-
-      if(project.top_review_blurb){projectWrapper.add(reviewView);}
+      
+      var row = Ti.UI.createTableViewRow(projectStyles.row);
+      row.add(reviewView);
+      if(project.top_review_blurb){tableData.push(row)};
 
       reviewView.addEventListener('click', function(e){
         app.openWindow('Reviews', 'reviews', [null, project]);
@@ -227,16 +232,15 @@ function ProjectWindow(project_id){
 
       var carrotImage = Ti.UI.createImageView(projectStyles.carrotImage);
       teamView.add(carrotImage);
-
-      projectWrapper.add(teamView);
+      
+      var row = Ti.UI.createTableViewRow(projectStyles.row);
+      row.add(teamView);
+      tableData.push(row);
 
       teamView.addEventListener('click', function(e){
         app.openWindow('Project Team', 'users', [project.team]);
       });
-
-      var line = Ti.UI.createView(projectStyles.line);
-      projectWrapper.add(line);
-
+  
       var tagsList = 'tagged under:\n'
 
       for(i=0;i < project.tags.length;i++){
@@ -247,9 +251,15 @@ function ProjectWindow(project_id){
       var tagsLabel = Ti.UI.createLabel(projectStyles.tagsLabel);
       tagsLabel.text = tagsList;
 
-      if(project.tags.length > 0){
-        projectWrapper.add(tagsLabel);
+      if(project.tags.length > 0){        
+        var row = Ti.UI.createTableViewRow(projectStyles.row);
+        row.selectedBackgroundColor = '#F4F1F1';
+        row.add(tagsLabel);
+        tableData.push(row);
       }
+
+      table.setData(tableData);
+      projectWrapper.add(table);
 
       if(Ti.App.make_favorite == project.id){
         Ti.App.make_favorite = null;
@@ -266,9 +276,7 @@ function ProjectWindow(project_id){
         if(!project.is_favorite){toggleFavorite();}
       }
 
-      projectScroll.add(projectWrapper);
-      self.add(projectScroll);
-      projectScroll.contentHeight = projectWrapper.toImage().height + 60;
+      self.add(projectWrapper);
       self.remove(spinner);      
     };
 

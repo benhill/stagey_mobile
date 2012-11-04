@@ -1,19 +1,17 @@
 exports = {	
 
-  projectScroll: {
-    contentWidth:'95%',
-    top:50,
-    left:0,
-    height:'100%',
-    showVerticalScrollIndicator:true,
-    showHorizontalScrollIndicator:true,
-    layout:'vertical'
+  table: {
+    backgroundColor:'#F4F1F1'
+  },
+
+  row: {    
   },
 
   projectWrapper: {
     height:Ti.UI.SIZE,
     width:'100%',
-    layout:'vertical'
+    layout:'vertical',
+    top:50
   },
 
   titleView: {
@@ -42,11 +40,18 @@ exports = {
     bottom:10
   },
 
-  galleryView: {
+  allGalleryView: {
     height:Ti.UI.SIZE,
     width:'100%',
     top:10,
-    left:5
+    left:5,
+    layout:'vertical',
+    bottom:10
+  },
+
+  galleryView: {
+    height:Ti.UI.SIZE,
+    width:'100%',    
   },
 
   img: {
@@ -69,18 +74,11 @@ exports = {
 
   descriptionLabel: {
     top:15,
-    bottom:7,
+    bottom:10,
     left:5,
     font:{fontSize:13},
     height:Ti.UI.SIZE,
     width: '95%'
-  },
-
-  line: {
-    width:320,
-    height:1,
-    top:5,
-    backgroundColor:'gray'
   },
 
   iconsView: {
@@ -186,6 +184,7 @@ exports = {
     height:Ti.UI.SIZE,
     width:Ti.UI.SIZE,
     top:10,
+    bottom:10,
     left:5,
     font:{fontSize:12}
   }

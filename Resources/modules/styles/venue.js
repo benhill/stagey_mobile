@@ -1,21 +1,29 @@
 exports = {	
 
-  venueScroll: {
-    contentWidth:'95%',
-    contentHeight:950,
+  table: {
+    backgroundColor:'#F4F1F1'
+  },
+
+  venueWrapper: {    
     top:50,
     left:0,
-    height:800,
-    showVerticalScrollIndicator:true,
-    showHorizontalScrollIndicator:true,
+    height:Ti.UI.SIZE,
+    width:'100%',
     layout:'vertical'
+  },
+
+  allGalleryView: {
+    height:Ti.UI.SIZE,
+    width:'100%',
+    top:10,
+    bottom:10,
+    left:5,
+    layout:'vertical'    
   },
 
   galleryView: {
     height:Ti.UI.SIZE,
-    width:Ti.UI.SIZE,
-    top:5,
-    left:5   
+    width:'100%'
   },
 
   img: {
@@ -38,29 +46,22 @@ exports = {
 
   description: {
     top:12,
+    bottom:10,
     left:5,
     font:{fontSize:12},
     height:Ti.UI.SIZE,
     width: '95%'
   },
 
-  line: {
-    width:320,
-    height:1,
-    top:10,
-    bottom:5,
-    backgroundColor:'gray'
-  },
-
   addressView: {
     width:320,
-    height:45,
+    height:Ti.UI.SIZE,
     top:5
   },
 
   addressLabel: {
     text: "address",
-    top:0,
+    top:10,
     left:5,
     font:{fontSize:12, fontWeight:'bold'},
     height:Ti.UI.SIZE,
@@ -75,10 +76,17 @@ exports = {
     width: '75%'
   },
 
+  locationWrapper: {
+    width:'100%',
+    height:Ti.UI.SIZE,
+    layout:'vertical'
+  },
+
   projectsView: {
     width:320,
     height:60,
-    top:5
+    top:5,
+    bottom:10
   },
 
   projectThumb: {
