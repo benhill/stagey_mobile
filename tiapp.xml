@@ -9,10 +9,10 @@
         <target device="blackberry">false</target>
     </deployment-targets>
     <id>com.stagey.mobile</id>
-    <name>Stagey</name>
+    <name>HFF13</name>
     <version>1.0a</version>
     <publisher>Stagey Corp</publisher>
-    <url>http://www.stagey.net</url>
+    <url>http://www.hollywoodfringe.org</url>
     <description>not specified</description>
     <copyright>2012 by stagey corp</copyright>
     <icon>appicon.png</icon>

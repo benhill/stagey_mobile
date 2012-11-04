@@ -47,7 +47,6 @@ function PerformancesWindow(mode, schedule_page){
         titleLabel.text = performances[0].date_time;        
         titleView.add(titleLabel);        
       
-        
         var previousView = Ti.UI.createView(perfStyles.previousView);
 
         var previousImage = Ti.UI.createImageView(perfStyles.previousImage);
@@ -96,7 +95,7 @@ function PerformancesWindow(mode, schedule_page){
         var projectThumb = Ti.UI.createImageView(perfStyles.projectThumb);
         projectThumb.image = performance.project_thumbnail;
         projectThumb.performance = performance;
-        row.add(projectThumb);            
+        row.add(projectThumb);
 
         var title;
         (performance.project_name.length >= 25) ? title = performance.project_name.substr(0,25) + "..." : title = performance.project_name;
