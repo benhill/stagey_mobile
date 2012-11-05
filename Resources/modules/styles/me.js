@@ -32,7 +32,8 @@ exports = {
 
   table: {
     top:75,
-    height:250
+    height:250,
+    backgroundColor:'#F4F1F1'
   },
 
   row: {

@@ -4,16 +4,30 @@ function OrderWindow(cc_num, cc_fname, cc_lname, csv, expiry_month, expiry_year)
   var orderStyles = require('modules/styles/order');
   var self = Ti.UI.createWindow(styles.defaultWindow);
   var cartObj = require('modules/models/cart');
+  var spinner = Ti.UI.createActivityIndicator(styles.spinner);
   var payButton;
 
   self.load = function(){
 
+    spinner.show();
+    self.add(spinner);
+
     new cartObj(Ti.App.currentUser.id).get(function(e){
+
+      var titleView = Ti.UI.createView(styles.titleView);
+      titleView.top = 50;
+
+      var titleLabel = Ti.UI.createLabel(styles.titleLabel);
+      titleLabel.text = 'Review Your Order';
+      titleLabel.bottom = 10;
+      titleView.add(titleLabel);
+
+      self.add(titleView);
 
       var detailsView = Ti.UI.createView(orderStyles.detailsView);
 
       var cartTotal = Ti.UI.createLabel(orderStyles.cartTotal);
-      cartTotal.text = 'Total Order: $' + app.formatCurrency(e[0].total_cart);
+      cartTotal.text = 'Total: $' + app.formatCurrency(e[0].total_cart);
       detailsView.add(cartTotal);
 
       var ticketsTotal = Ti.UI.createLabel(orderStyles.ticketsTotal);
@@ -57,7 +71,7 @@ function OrderWindow(cc_num, cc_fname, cc_lname, csv, expiry_month, expiry_year)
       }
 
       table.setData(tableData);
-      self.add(table);      
+      self.add(table);    
       
       var buttonView = Ti.UI.createView(orderStyles.buttonView);
 
@@ -65,6 +79,8 @@ function OrderWindow(cc_num, cc_fname, cc_lname, csv, expiry_month, expiry_year)
       buttonView.add(payButton);
 
       self.add(buttonView);
+
+      self.remove(spinner);
     
       payButton.addEventListener('click', function(e){
 
@@ -72,6 +88,7 @@ function OrderWindow(cc_num, cc_fname, cc_lname, csv, expiry_month, expiry_year)
 
         var spinner = Ti.UI.createActivityIndicator(styles.spinner);
         spinner.message = '';
+        spinner.bottom = 10;
         buttonView.add(spinner);
         spinner.show();
 
@@ -82,8 +99,10 @@ function OrderWindow(cc_num, cc_fname, cc_lname, csv, expiry_month, expiry_year)
             buttonView.remove(spinner);
             buttonView.add(payButton);
           }
-          else{
+          else{            
             app.openWindow('Receipt', 'receipt', [e.sale_id]);
+            buttonView.remove(spinner);
+            buttonView.add(payButton);
           }
         })
       })

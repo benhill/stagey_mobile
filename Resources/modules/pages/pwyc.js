@@ -6,6 +6,22 @@ function PwycWindow(performance){
 
   self.load = function(){
 
+	  var titleView = Ti.UI.createView(styles.titleView);
+    titleView.top = 50;
+
+    (performance.project_title.length >= 25) ? title = performance.project_title.substr(0,25) + "..." : title = performance.project_title;
+
+    var titleLabel = Ti.UI.createLabel(styles.titleLabel);
+    titleLabel.text = title;
+    titleView.add(titleLabel);
+
+    var perfInfo = Ti.UI.createLabel(styles.subTitleLabel);
+    perfInfo.text = performance.performance_info;
+    perfInfo.bottom = 10;
+    titleView.add(perfInfo);
+
+    self.add(titleView);
+
 	  var pwycLabel = Ti.UI.createLabel(pwycStyles.pwycLabel);        
 	  self.add(pwycLabel);
 

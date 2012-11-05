@@ -3,12 +3,26 @@ function ReceiptWindow(sale_id){
   var styles = require('modules/styles/styles');
   var receiptStyles = require('modules/styles/receipt');
   var self = Ti.UI.createWindow(styles.defaultWindow);
-
+  var spinner = Ti.UI.createActivityIndicator(styles.spinner);
 
   self.load = function(){
+
+    spinner.show();
+    self.add(spinner);
     
     var saleObj = require('modules/models/sale');
     new saleObj(sale_id, function(sale){
+
+      var titleView = Ti.UI.createView(styles.titleView);
+      titleView.top = 0;
+      titleView.height = 50;
+
+      var titleLabel = Ti.UI.createLabel(styles.titleLabel);
+      titleLabel.text = 'Your Order is Complete';
+      titleLabel.top = 15;
+      titleView.add(titleLabel);
+
+      self.add(titleView);
 
       var detailsView = Ti.UI.createView(receiptStyles.detailsView);
 
@@ -57,6 +71,7 @@ function ReceiptWindow(sale_id){
 
       table.setData(tableData);
       self.add(table);
+      self.remove(spinner);
     })
   }
 

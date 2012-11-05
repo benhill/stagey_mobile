@@ -4,7 +4,7 @@ exports = {
     color:'#336699', 
     height:35, 
     width:150, 
-    top:60,
+    top:100,
     left:5,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
@@ -15,7 +15,7 @@ exports = {
     color:'#336699', 
     height:35, 
     width:150,
-    top:60,
+    top:100,
     left:160,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
@@ -26,7 +26,7 @@ exports = {
     color:'#336699', 
     height:35, 
     width:200, 
-    top:100,
+    top:140,
     left:5,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
@@ -37,7 +37,7 @@ exports = {
     color:'#336699', 
     height:35, 
     width:75, 
-    top:100,
+    top:140,
     right:10,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
@@ -46,13 +46,13 @@ exports = {
 
   expiryButton: {
     title:'Set Expiry Date',
-    top:150,
+    top:190,
     width:150,
     left:10
   },
 
   expiryLabel: {
-    top:158,
+    top:198,
     left:170,
     text:'no date selected',
     width:Ti.UI.SIZE,

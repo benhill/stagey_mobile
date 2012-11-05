@@ -17,7 +17,7 @@ exports = {
   },
 
   quantityLabel: {
-    top:120,
+    top:130,
     left:10,    
     width:Ti.UI.SIZE,
     height:Ti.UI.SIZE,
@@ -26,16 +26,17 @@ exports = {
 
   quantityButton: {
     title:'Change',
-    top:115,
+    top:125,
     width:75,
-    left:170
+    left:170,
+    height:30
   },
 
   codeText: {    
     color:'#336699', 
     height:35, 
     width:150, 
-    top:170,
+    top:180,
     left:10,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,

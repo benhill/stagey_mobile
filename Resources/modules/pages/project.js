@@ -277,7 +277,7 @@ function ProjectWindow(project_id){
       }
 
       self.add(projectWrapper);
-      self.remove(spinner);      
+      self.remove(spinner);
     };
 
     spinner.show();

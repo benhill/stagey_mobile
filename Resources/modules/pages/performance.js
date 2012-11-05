@@ -20,7 +20,7 @@ function PerformanceWindow(performance_id){
 
       perfView.remove(spinner);
 
-      var titleView = Ti.UI.createView(styles.titleView);      
+      var titleView = Ti.UI.createView(styles.titleView);
 
       (performance.project_title.length >= 25) ? title = performance.project_title.substr(0,25) + "..." : title = performance.project_title;
 
@@ -33,7 +33,7 @@ function PerformanceWindow(performance_id){
       perfInfo.bottom = 10;
       titleView.add(perfInfo);
 
-      perfView.add(titleView);      
+      perfView.add(titleView);
 
       var row = Ti.UI.createTableViewRow(perfStyles.row);
     

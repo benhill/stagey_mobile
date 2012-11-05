@@ -18,18 +18,26 @@ function QuantityWindow(performance_id, pwycPrice){
 
   	new perfObj(url, function(performance){
 
+      self.remove(spinner);
+
       var cost;
       pwycPrice ? cost = pwycPrice : cost = performance.cost;
 
+      var titleView = Ti.UI.createView(styles.titleView);
+      titleView.top = 50;
+
 	    (performance.project_title.length >= 25) ? title = performance.project_title.substr(0,25) + "..." : title = performance.project_title;
 
-      var titleLabel = Ti.UI.createLabel(perfStyles.titleLabel);
+      var titleLabel = Ti.UI.createLabel(styles.titleLabel);
 	    titleLabel.text = title;
-	    self.add(titleLabel);
+	    titleView.add(titleLabel);
 
-      var perfInfo = Ti.UI.createLabel(perfStyles.perfInfo);
+      var perfInfo = Ti.UI.createLabel(styles.subTitleLabel);
       perfInfo.text = performance.performance_info;
-      self.add(perfInfo);
+      perfInfo.bottom = 10;
+      titleView.add(perfInfo);
+
+      self.add(titleView);
 
       var data = [];      
       for(i=0; i<8; i++){        
@@ -57,7 +65,7 @@ function QuantityWindow(performance_id, pwycPrice){
       
       payButton = Ti.UI.createButton(perfStyles.payButton);      
       buttonView.add(payButton);
-      self.add(buttonView);
+      self.add(buttonView);      
 
       payButton.addEventListener('click', function(e){
         if(!quantityLabel.value){quantity = 1}else{quantity = quantityLabel.value}
@@ -66,6 +74,7 @@ function QuantityWindow(performance_id, pwycPrice){
         buttonView.remove(payButton);
 
         var spinner = Ti.UI.createActivityIndicator(styles.spinner);
+        spinner.bottom = 10;
         spinner.message = '';
         buttonView.add(spinner);
         spinner.show();
@@ -81,6 +90,8 @@ function QuantityWindow(performance_id, pwycPrice){
             }
             else{
               loadPayWindow();
+              buttonView.remove(spinner);
+              buttonView.add(payButton);
             }
           }
           else{
@@ -91,16 +102,16 @@ function QuantityWindow(performance_id, pwycPrice){
                 buttonView.remove(spinner);
                 buttonView.add(payButton);
               }
-              else{                
+              else{                                
                 app.openWindow('Receipt', 'receipt', [e.sale_id]);
+                buttonView.remove(spinner);
+                buttonView.add(payButton);
               }
             })
           }
 
         });
-      });
-
-      self.remove(spinner);
+      });      
 	  })
   }
 

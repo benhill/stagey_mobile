@@ -1,7 +1,7 @@
 exports = {
 
   detailsView: {
-    top:50,
+    top:90,
     left:0,
     height:100,
     layout:'absolute'
@@ -32,8 +32,11 @@ exports = {
   },
 
   table: {
-    top:100,
-    height:'80%'
+    top:145,
+    height:'60%',
+    borderColor:'gray',
+    borderWidth:1,
+    selectedBackgroundColor:'white'
   },
 
   row: {

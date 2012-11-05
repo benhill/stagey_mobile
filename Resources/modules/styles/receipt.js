@@ -32,8 +32,11 @@ exports = {
   },
 
   table: {
-    top:100,
-    height:'80%'
+    top:105,
+    height:'80%',
+    borderColor:'gray',
+    borderWidth:1,
+    selectedBackgroundColor:'white'
   },
 
   row: {

@@ -5,6 +5,17 @@ function PayWindow(){
   var self = Ti.UI.createWindow(styles.defaultWindow);
 
   self.load = function(){
+
+    var titleView = Ti.UI.createView(styles.titleView);
+    titleView.top = 50;    
+
+    var titleLabel = Ti.UI.createLabel(styles.titleLabel);
+    titleLabel.text = 'Your Credit Card';
+    titleLabel.bottom = 10;
+    titleView.add(titleLabel);
+
+    self.add(titleView);
+    
     var fNameText = Ti.UI.createTextField(payStyles.fNameText);
     self.add(fNameText);
     addKeyboardToolbar(fNameText);

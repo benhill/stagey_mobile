@@ -1,7 +1,7 @@
 exports = {
 
 	pwycLabel: {
-    top:60,
+    top:120,
     left:10,    
     width:Ti.UI.SIZE,
     height:Ti.UI.SIZE,
@@ -10,7 +10,7 @@ exports = {
   },
 
   dollarLabel: {
-    top:105,
+    top:170,
     left:10,
     width:20,
     width:Ti.UI.SIZE,
@@ -23,7 +23,7 @@ exports = {
     color:'#336699', 
     height:35, 
     width:80,
-    top:105,
+    top:165,
     left:25,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED
