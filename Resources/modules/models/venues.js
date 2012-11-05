@@ -12,7 +12,7 @@ function Venues(callback){
     Ti.API.info('Error');
   };
 
-  var url = app.api_url + "venues.json?event_id=7";
+  var url = app.api_url + "venues";
   xhr.open('GET', url);
   xhr.send();
 };

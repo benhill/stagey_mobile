@@ -62,7 +62,7 @@ function MapWindow(venue){
       add_view();  
     }
     else {
-      var url = app.api_url + "venues.json?event_id=5";    
+      var url = app.api_url + "venues";
       xhr.open("GET", url);
       xhr.send();
     }

@@ -5,7 +5,7 @@ function VenueWindow(venue_id){
   var self = Ti.UI.createWindow(styles.defaultWindow);
   var venueObj = require('modules/models/venue');
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
-  var url = app.api_url + "venue/" + venue_id + ".json?event_id=7";
+  var url = app.api_url + "venue/" + venue_id;
   var json, venue;
   var image_top = 0;
   var image_place = 0;

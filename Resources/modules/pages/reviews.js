@@ -184,7 +184,7 @@ function ReviewsWindow(user_id, project){
         url = app.api_url + "reviews/" + project.id;
       }
       else{
-        url = app.api_url + "reviews.json"
+        url = app.api_url + "reviews"
       }
       return url
     }

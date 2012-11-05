@@ -6,7 +6,7 @@ function UserWindow(user_id){
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
   var userScroll = Titanium.UI.createScrollView(userStyles.userScroll);
   var wrapper = Ti.UI.createView(userStyles.wrapper);
-  var url = app.api_url + "user/" + user_id + ".json";
+  var url = app.api_url + "user/" + user_id;
 
   self.load = function(){
 

@@ -213,16 +213,16 @@ function PerformancesWindow(mode, schedule_page){
 
   function getUrl(){
     if(mode == 'next'){
-      url = app.api_url + 'my_schedule.json?schedule_page=' + schedule_page + '&';
+      url = app.api_url + 'my_schedule?schedule_page=' + schedule_page + '&';
     }
     else if(mode == 'nearby'){      
-      url = app.api_url + 'performances/7.json?lat=' + lat + '&lng=' + lng + '&distance=50&';
+      url = app.api_url + 'performances/7?lat=' + lat + '&lng=' + lng + '&distance=50&';
     }
     else if(mode == 'schedule'){
-      url = app.api_url + 'my_schedule.json?email=' + Ti.App.currentUser.email + '&password=' + Ti.App.userPassword + '&schedule_page=' + schedule_page + '&';
+      url = app.api_url + 'my_schedule?email=' + Ti.App.currentUser.email + '&password=' + Ti.App.userPassword + '&schedule_page=' + schedule_page + '&';
     }
     else{
-      url = app.api_url + 'performances/7.json?project_id=' + mode.id + '&';
+      url = app.api_url + 'performances/7?project_id=' + mode.id + '&';
     }
 
     if(Ti.App.currentUser){url += 'user_id=' + Ti.App.currentUser.id};

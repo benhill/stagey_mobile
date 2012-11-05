@@ -15,7 +15,7 @@ function SearchModel(terms, callback){
     alert('There was an error retrieving the remote data. Try again.');
   };
 
-  var url = app.api_url + "search_projects.json?search_terms=" + terms;
+  var url = app.api_url + "search_projects?search_terms=" + terms;
   xhr.open('GET', url);
   xhr.send();
 };

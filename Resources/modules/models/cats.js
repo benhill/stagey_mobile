@@ -12,7 +12,7 @@ function Cats(callback){
     Ti.API.info('Error');
   };
 
-  var url = app.api_url + "cats.json?event_id=7";
+  var url = app.api_url + "cats";
 
   xhr.open('GET', url);
   xhr.send();

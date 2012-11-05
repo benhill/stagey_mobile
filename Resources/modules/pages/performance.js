@@ -14,7 +14,7 @@ function PerformanceWindow(performance_id, pwycPrice){
     self.add(spinner);
 
   	var perfObj = require('modules/models/performance');
-  	var url = app.api_url + "performance/" + performance_id + ".json?user_id=" + Ti.App.currentUser.id;
+  	var url = app.api_url + "performance/" + performance_id + "?user_id=" + Ti.App.currentUser.id;
 
   	new perfObj(url, function(performance){
 
