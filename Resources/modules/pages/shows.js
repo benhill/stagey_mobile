@@ -70,7 +70,7 @@ function ShowsWindow(){
     alertView = Ti.UI.createView(showStyles.alertView);
 
     alertLabel = Ti.UI.createLabel(showStyles.alertLabel);
-    alertLabel.text = "Registration is now open for HFF12!"
+    alertLabel.text = "Registration is now open for HFF13!"
     alertView.add(alertLabel);
 
     self.add(alertView);

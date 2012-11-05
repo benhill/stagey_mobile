@@ -1,137 +1,133 @@
-function PerformanceWindow(performance_id, pwycPrice){
+function PerformanceWindow(performance_id){
 
   var styles = require('modules/styles/styles');
   var perfStyles = require('modules/styles/performance');
   var self = Ti.UI.createWindow(styles.defaultWindow);
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
-  var quantity = 1;
-  var pwycPrice;
-  var payButton;
+  var table = Ti.UI.createTableView(perfStyles.table);
+  var tableData = [];
+  var perfView = Ti.UI.createView(perfStyles.perfView);
 
   self.load = function(){
 
+    var perfObj = require('modules/models/performance');
+    var url = app.api_url + "performance/" + performance_id + "?user_id=" + (Ti.App.currentUser ? Ti.App.currentUser.id : '');
+
     spinner.show();
-    self.add(spinner);
+    perfView.add(spinner);
 
-  	var perfObj = require('modules/models/performance');
-  	var url = app.api_url + "performance/" + performance_id + "?user_id=" + Ti.App.currentUser.id;
+    new perfObj(url, function(performance){
 
-  	new perfObj(url, function(performance){
+      perfView.remove(spinner);
 
-      var cost;
-      pwycPrice ? cost = pwycPrice : cost = performance.cost;
+      var titleView = Ti.UI.createView(styles.titleView);      
 
-	    (performance.project_title.length >= 25) ? title = performance.project_title.substr(0,25) + "..." : title = performance.project_title;
+      (performance.project_title.length >= 25) ? title = performance.project_title.substr(0,25) + "..." : title = performance.project_title;
 
-      var titleLabel = Ti.UI.createLabel(perfStyles.titleLabel);
-	    titleLabel.text = title;
-	    self.add(titleLabel);
+      var titleLabel = Ti.UI.createLabel(styles.titleLabel);
+      titleLabel.text = title;
+      titleView.add(titleLabel);
 
-      var perfInfo = Ti.UI.createLabel(perfStyles.perfInfo);
+      var perfInfo = Ti.UI.createLabel(styles.subTitleLabel);
       perfInfo.text = performance.performance_info;
-      self.add(perfInfo);
+      perfInfo.bottom = 10;
+      titleView.add(perfInfo);
 
-      var data = [];      
-      for(i=0; i<8; i++){        
-        i > 0 ? plural = 's' : plural = ''
-        data[i] = Ti.UI.createPickerRow({value:i+1, title:(i+1) +' Ticket' + plural + ' x $' + app.formatCurrency(cost)});
-      }
+      perfView.add(titleView);      
 
-      var quantityLabel = Ti.UI.createLabel(perfStyles.quantityLabel);
-      quantityLabel.text = data[0].title;
-      self.add(quantityLabel);
+      var row = Ti.UI.createTableViewRow(perfStyles.row);
+    
+      var buyLabel = Ti.UI.createLabel(perfStyles.perfLabel);
+      buyLabel.text = 'Buy Tickets';
+      row.add(buyLabel);
 
-      var quantityButton = Ti.UI.createButton(perfStyles.quantityButton);
-      self.add(quantityButton);
+      var carrotImage = Ti.UI.createImageView(perfStyles.carrotImage);      
+      row.add(carrotImage);
 
-      var selectObj = require('modules/common/select_box');
-      self.add(new selectObj(quantityLabel, quantityButton, data));
+      tableData.push(row);
 
-      var codeText = Ti.UI.createTextField(perfStyles.codeText);
-      if(!pwycPrice){
-        self.add(codeText);
-        addKeyboardToolbar(codeText);
-      }
+      row.addEventListener('click', function(e){
+        if(performance.pwyc){
+          var window = 'pwyc';
+          var title = 'PWYC';
+          var params = [performance];
+        }
+        else{
+          var window = 'quantity';
+          var title = 'Quantity';
+          var params = [performance.id];
+        }
 
-      var buttonView = Ti.UI.createView(perfStyles.buttonView);
-      
-      payButton = Ti.UI.createButton(perfStyles.payButton);      
-      buttonView.add(payButton);
-      self.add(buttonView);
+        if(Ti.App.currentUser){
+          app.openWindow(title, window, params);
+        }   
+        else{        
+          var newObj = require('modules/pages/' + window);
+          var newWindow = newObj.apply(this, params);
+          newWindow.navBarHidden = true;
 
-      payButton.addEventListener('click', function(e){
-        if(!quantityLabel.value){quantity = 1}else{quantity = quantityLabel.value}
-        var cartObj = require('modules/models/cart');
+          var headerObj = require('modules/common/header');
+          newWindow.add(new headerObj(title, self));
 
-        buttonView.remove(payButton);
-
-        var spinner = Ti.UI.createActivityIndicator(styles.spinner);
-        spinner.message = '';
-        buttonView.add(spinner);
-        spinner.show();
-
-        new cartObj(Ti.App.currentUser.id).add_to_cart(performance.id, quantity, pwycPrice, function(e){
-          if(e.cart_total > 0){
-            if(codeText.value.length > 0){
-              var cartObj = require('modules/models/cart');
-              new cartObj(Ti.App.currentUser.id).apply_discount_code(codeText.value, function(result){
-                if(result.success){loadPayWindow();}
-                else{alert('Discount Code Not Found')}
-              })
-            }
-            else{
-              loadPayWindow();
-            }
-          }
-          else{
-            var cartObj = require('modules/models/cart');
-            new cartObj(Ti.App.currentUser.id).purchase(null, null, null, null, null, null, function(e){
-              if (e.error){
-                alert(e.error)
-                buttonView.remove(spinner);
-                buttonView.add(payButton);
-              }
-              else{                
-                app.openWindow('Receipt', 'receipt', [e.sale_id]);
-              }
-            })
-          }
-
-        });
+          app.openWindow('Login', 'login', [newWindow]);
+        }
       });
 
-      self.remove(spinner);
-	  })
-  }
+      var row = Ti.UI.createTableViewRow(perfStyles.row);
+    
+      var projectLabel = Ti.UI.createLabel(perfStyles.perfLabel);
+      projectLabel.text = 'More Info';
+      row.add(projectLabel);
 
-  function addKeyboardToolbar(textbox){
-      var flexSpace = Ti.UI.createButton({
-        systemButton:Ti.UI.iPhone.SystemButton.FLEXIBLE_SPACE,
-        right:0
+      var carrotImage = Ti.UI.createImageView(perfStyles.carrotImage);      
+      row.add(carrotImage);
+
+      tableData.push(row);
+
+      row.addEventListener('click', function(e){
+        app.openWindow('Project', 'project', [performance.project_id])
       });
 
-      var doneButton = Ti.UI.createButton({
-        systemButton:Ti.UI.iPhone.SystemButton.DONE,
-        right:0
+      var row = Ti.UI.createTableViewRow(perfStyles.row);
+    
+      var perfsLabel = Ti.UI.createLabel(perfStyles.perfLabel);
+      perfsLabel.text = 'More Performances';
+      row.add(perfsLabel);
+
+      var carrotImage = Ti.UI.createImageView(perfStyles.carrotImage);      
+      row.add(carrotImage);
+
+      tableData.push(row);
+
+      row.addEventListener('click', function(e){
+        app.openWindow('Performances', 'performances', [performance.project_id])
       });
 
-      textbox.keyboardToolbar = [flexSpace, doneButton];
+      var row = Ti.UI.createTableViewRow(perfStyles.row);
+    
+      var venueLabel = Ti.UI.createLabel(perfStyles.perfLabel);
+      venueLabel.text = 'View Venue';
+      row.add(venueLabel);
 
-      textbox.addEventListener('focus', function(e) {
-        textbox.keyboardToolbar = [flexSpace, doneButton];
-        doneButton.activeFld = textbox;
+      var carrotImage = Ti.UI.createImageView(perfStyles.carrotImage);      
+      row.add(carrotImage);
+
+      tableData.push(row);
+
+      row.addEventListener('click', function(e){
+        app.openWindow('Venue', 'venue', [performance.venue_id])
       });
 
-      doneButton.addEventListener('click', function(e) {
-        e.source.activeFld.blur();
-      });
-    };
+      table.setData(tableData);
+      perfView.add(table);
+      self.add(perfView);
 
-  function loadPayWindow(){
-    app.openWindow('Credit Card', 'pay', []);
+    });
+
   }
 
   return self;
+
 }
 
 module.exports = PerformanceWindow;

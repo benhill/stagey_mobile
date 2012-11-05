@@ -93,7 +93,7 @@ function ProjectWindow(project_id){
       var icons = [];
       var left = 0;
 
-      var buy_ticket = new Icon('Buy Tickets', 'iphone/purchase_24.png', 'performances', project, false);
+      var buy_ticket = new Icon('Showtimes', 'iphone/purchase_24.png', 'performances', project, false);
       icons.push(buy_ticket);      
 
       if(project.is_favorite){

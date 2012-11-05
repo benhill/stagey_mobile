@@ -9,7 +9,7 @@ function PerformancesWindow(mode, schedule_page){
   var page = 1;
   var rows_per_page = 9;
   var lat,lng;
-  var table = Ti.UI.createTableView(perfStyles.table); 
+  var table = Ti.UI.createTableView(perfStyles.table);
 
   self.load = function(){
     if(mode == "nearby"){
@@ -112,10 +112,7 @@ function PerformancesWindow(mode, schedule_page){
         row.add(projectInfo);
 
         row.addEventListener('click', function(e){
-          if(mode == 'schedule' || mode == 'nearby' || mode == 'next'){
-            app.openWindow('Project', 'project', [e.source.performance.project_id]);
-          }            
-          else{loadPerformance(e);}
+          loadPerformance(e);
         });
 
         var carrotImage = Ti.UI.createImageView(perfStyles.carrotImage);
@@ -159,33 +156,8 @@ function PerformancesWindow(mode, schedule_page){
       spinner.hide();
     };
 
-    function loadPerformance(e, islongclick) {
-
-      if(e.source.performance.pwyc){
-        var window = 'pwyc';
-        var title = 'PWYC';
-        var params = [e.source.performance];
-      }
-      else{
-        var window = 'performance';
-        var title = 'Performance';
-        var params = [e.source.performance.id];
-      }
-
-      if(Ti.App.currentUser){
-        app.openWindow(title, window, params);
-      }   
-      else{        
-        var newObj = require('modules/pages/' + window);
-        var newWindow = newObj.apply(this, params);
-        newWindow.navBarHidden = true;
-
-        var headerObj = require('modules/common/header');
-        newWindow.add(new headerObj(title, self));
-
-        app.openWindow('Login', 'login', [newWindow]);
-      }
-      
+    function loadPerformance(e, islongclick) {      
+      app.openWindow('Performance', 'performance', [e.source.performance.id]);
     }
 
     function loadMore(e,islongclick){
@@ -222,7 +194,7 @@ function PerformancesWindow(mode, schedule_page){
       url = app.api_url + 'my_schedule?email=' + Ti.App.currentUser.email + '&password=' + Ti.App.userPassword + '&schedule_page=' + schedule_page + '&';
     }
     else{
-      url = app.api_url + 'performances/7?project_id=' + mode.id + '&';
+      url = app.api_url + 'performances/7?project_id=' + (mode.id || mode) + '&';
     }
 
     if(Ti.App.currentUser){url += 'user_id=' + Ti.App.currentUser.id};
