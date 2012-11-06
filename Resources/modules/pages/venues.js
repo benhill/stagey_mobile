@@ -17,10 +17,7 @@ function VenuesWindow(){
 
       if(self.children.length > 1){self.remove(contentView)};
 
-      contentView = Ti.UI.createView(venueStyles.contentView);
-
-      self.add(spinner);
-      spinner.show();
+      contentView = Ti.UI.createView(venueStyles.contentView);      
             
       if(label == 'LIST'){        
         loadVenues();
@@ -33,13 +30,20 @@ function VenuesWindow(){
     self.add(buttonBarView);
 
     function loadMap(){
+      self.add(spinner);
+      spinner.show();
+
       var mapObj = require('modules/common/map')
-      contentView.add(new mapObj());
-      self.add(contentView);
-      spinner.hide();
+      contentView.add(new mapObj(null, function(){
+        spinner.hide();
+      }));
+      self.add(contentView);      
     }
       
     function loadVenues(){
+      self.add(spinner);
+      spinner.show();
+
       table = Ti.UI.createTableView(venueStyles.table);
       var tableData = [];
       var venuesObj = require('modules/models/venues');    

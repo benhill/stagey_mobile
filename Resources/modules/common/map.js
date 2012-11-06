@@ -1,4 +1,4 @@
-function MapWindow(venue){
+function MapWindow(venue, callback){
 
   var styles = require('modules/styles/styles')
   var mapStyles = require('modules/styles/map')
@@ -7,10 +7,15 @@ function MapWindow(venue){
   var mapWrapper = Ti.UI.createView(mapStyles.mapWrapper);
 
   function add_view(){
-    var mapView = Titanium.Map.createView(mapStyles.mapView);
+    var mapView = Ti.Map.createView(mapStyles.mapView);
     mapView.annotations = annotations;
     mapView.region = coordinates;
     mapWrapper.add(mapView);
+
+    mapView.addEventListener('complete', function(e){
+      callback();
+    });
+    
   }
 
   function createAnnotation(venue){  
@@ -46,7 +51,7 @@ function MapWindow(venue){
       coordinates = {latitude:'34.090643', longitude:'-118.332067', latitudeDelta:0.018, longitudeDelta:0.018};
       add_view();
     });    
-  }
+  }  
 
   return mapWrapper;
 }
