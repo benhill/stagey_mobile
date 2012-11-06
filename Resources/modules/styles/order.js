@@ -33,14 +33,14 @@ exports = {
 
   table: {
     top:145,
-    height:'52%',
+    bottom:60,
     borderColor:'gray',
-    borderWidth:1,
-    selectedBackgroundColor:'white'
+    borderWidth:1
   },
 
   row: {
-    height:70
+    height:70,
+    selectedBackgroundColor:'#F4F1F1'
   },
 
   projectThumb: {
@@ -71,7 +71,7 @@ exports = {
   buttonView: {
     height:Ti.UI.SIZE,
     width:Ti.UI.SIZE,
-    bottom:10
+    bottom:8
   },
 
   payButton: {

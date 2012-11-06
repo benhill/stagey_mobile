@@ -33,14 +33,13 @@ exports = {
 
   table: {
     top:105,
-    height:'75%',
     borderColor:'gray',
-    borderWidth:1,
-    selectedBackgroundColor:'white'
+    borderWidth:1
   },
 
   row: {
-    height:75
+    height:75,
+    selectedBackgroundColor:'#F4F1F1'
   },
 
   projectThumb: {
