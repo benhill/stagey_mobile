@@ -10,7 +10,8 @@ exports = {
     animate:true,
     regionFit:true,
     userLocation:false,
-    backgroundColor:'white'
+    backgroundColor:'white',
+    zIndex:10000
   },
 
   viewButton: {

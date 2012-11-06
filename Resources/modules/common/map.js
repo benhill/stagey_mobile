@@ -10,12 +10,7 @@ function MapWindow(venue, callback){
     var mapView = Ti.Map.createView(mapStyles.mapView);
     mapView.annotations = annotations;
     mapView.region = coordinates;
-    mapWrapper.add(mapView);
-
-    mapView.addEventListener('complete', function(e){
-      callback();
-    });
-    
+    mapWrapper.add(mapView);    
   }
 
   function createAnnotation(venue){  
@@ -38,6 +33,7 @@ function MapWindow(venue, callback){
   if(venue){
     annotations.push(createAnnotation(venue));
     coordinates = {latitude:venue.lat, longitude:venue.lng, latitudeDelta:0.01, longitudeDelta:0.01};
+    callback();
     add_view();  
   }
   else {
@@ -49,6 +45,7 @@ function MapWindow(venue, callback){
       }
       //TODO: Add these to event meta data
       coordinates = {latitude:'34.090643', longitude:'-118.332067', latitudeDelta:0.018, longitudeDelta:0.018};
+      callback();
       add_view();
     });    
   }  
