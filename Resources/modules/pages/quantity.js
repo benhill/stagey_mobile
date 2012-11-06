@@ -85,7 +85,11 @@ function QuantityWindow(performance_id, pwycPrice){
               var cartObj = require('modules/models/cart');
               new cartObj(Ti.App.currentUser.id).apply_discount_code(codeText.value, function(result){
                 if(result.success){loadPayWindow();}
-                else{alert('Discount Code Not Found')}
+                else{
+                  alert('Discount Code Not Found')
+                  buttonView.remove(spinner);
+                  buttonView.add(payButton);
+                }
               })
             }
             else{

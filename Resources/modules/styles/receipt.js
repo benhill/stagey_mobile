@@ -33,7 +33,7 @@ exports = {
 
   table: {
     top:105,
-    height:'80%',
+    height:'75%',
     borderColor:'gray',
     borderWidth:1,
     selectedBackgroundColor:'white'
