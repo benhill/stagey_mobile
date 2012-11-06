@@ -46,12 +46,13 @@ exports = {
   buttonView: {
     height:Ti.UI.SIZE,
     width:Ti.UI.SIZE,
-    bottom:10
+    bottom:5
   },
 
   payButton: {
-    title:'Pay for Tickets',    
-    width:300
+    title:'Continue',
+    width:300,
+    height:50
   }
 
 }

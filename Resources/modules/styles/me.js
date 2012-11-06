@@ -27,13 +27,13 @@ exports = {
     title: 'Logout',
     bottom:60,
     left:10,
-    width:300
+    width:300,
+    height:50
   },
 
   table: {
     top:75,
-    height:250,
-    backgroundColor:'#F4F1F1'
+    bottom:120
   },
 
   row: {
@@ -56,6 +56,5 @@ exports = {
     width:Titanium.UI.SIZE,
     image:'iphone/more-arrow.png'
   }
-
 
 }

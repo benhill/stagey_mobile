@@ -31,8 +31,9 @@ exports = {
 
   quantButton: {
     title:'Next',
-    bottom:10,
-    width:300
+    bottom:5,
+    width:300,
+    height:50
   }
 
 }

@@ -48,7 +48,7 @@ exports = {
     left:5,
     top:10,
     borderColor:'black',
-    borderWidth:1,
+    borderWidth:1
   },
 
   projectTitle: {
