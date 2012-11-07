@@ -18,7 +18,7 @@ function ProjectWindow(project_id){
 
   self.load = function(){
     var url = app.api_url + "project/" + project_id;
-    if(Ti.App.currentUser){url += '&email=' + Ti.App.currentUser.email}
+    if(Ti.App.currentUser){url += '?email=' + Ti.App.currentUser.email}
 
     new projectObj(url, function(project){
       loadProject(project);

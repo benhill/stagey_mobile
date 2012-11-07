@@ -34,30 +34,17 @@ function ApplicationTabGroup(windows) {
   newsTab.window.orientationModes = [Titanium.UI.PORTRAIT]
   self.addTab(newsTab);
   newsTab.window.load();
-
-  newsTab.addEventListener('focus',function(e){
-    app.openWindow('Feed', 'feed', []);
-  })
   
   var meTab = Ti.UI.createTab({
     title:'Me',
     icon:'iphone/me_30.png'
   });
 
-  if(Ti.App.currentUser){
-    meTab.window = createWin('Me', 'me', meTab);  
-  }
-  else{
-    meTab.window = createWin('Login', 'login', []);
-  }
+  meTab.window = createWin('Me', 'me', meTab);    
   meTab.window.orientationModes = [Titanium.UI.PORTRAIT]
   self.addTab(meTab);
   meTab.window.load();
-
-  meTab.addEventListener('focus',function(e){
-  	app.openWindow('Me', 'me', []);
-  })
-
+  
   function createWin(title, winName, tab){
     var winObj = require('modules/pages/' + winName)
     win = new winObj();

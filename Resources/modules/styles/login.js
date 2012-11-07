@@ -4,7 +4,7 @@ exports = {
     color:'#336699', 
     height:35, 
     width:300, 
-    top:60,
+    top:10,
     left:5,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
@@ -15,7 +15,7 @@ exports = {
     color:'#336699', 
     height:35, 
     width:300, 
-    top:105,
+    top:55,
     left:5,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
@@ -25,12 +25,12 @@ exports = {
 
   loginButton: {
     title: 'Login',
-    top:150,
+    top:100,
     left:5
   },
 
   addUserLabel: {
-    top:200,
+    top:150,
     left:5,
     text:'Create an Account',
     width:Ti.UI.SIZE,

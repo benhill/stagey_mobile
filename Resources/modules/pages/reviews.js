@@ -46,6 +46,7 @@ function ReviewsWindow(user_id, project){
         title = 'RECENT REVIEWS';
         subtitle = 'sorted by date posted';
       }
+      subtitle.bottom = 10;
 
       var titleLabel = Ti.UI.createLabel(styles.titleLabel);
       titleLabel.text = title;
