@@ -1,6 +1,6 @@
 var default_search_text = 'search for a show';
 
-exports = {	
+styles = {	
 
 	searchView: {
 		top:52,
@@ -30,7 +30,6 @@ exports = {
   },
 
   searchButton: {
-    image:'iphone/search_24.png',
     width:'7%',
     height:Ti.UI.SIZE,
     top:5,
@@ -38,7 +37,7 @@ exports = {
   },
 
   iconsView: {
-    top:110,
+    top:85,
     left:0,
     height:260,
     layout:'absolute'
@@ -79,7 +78,19 @@ exports = {
   alertLabel: {
     height:Ti.UI.SIZE,
     width:Ti.UI.SIZE,
-    font:{fontSize:15, fontWeight:'bold'}
+    font:{fontSize:15, fontWeight:'bold'},
+    color:'white'
   }
 
 };
+
+exports.searchView = styles.searchView;
+exports.username = styles.username;
+exports.searchField = styles.searchField;
+exports.searchButton = styles.searchButton;
+exports.iconsView = styles.iconsView;
+exports.iconView = styles.iconView;
+exports.iconImage = styles.iconImage;
+exports.iconText = styles.iconText;
+exports.alertView = styles.alertView;
+exports.alertLabel = styles.alertLabel;

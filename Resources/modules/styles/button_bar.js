@@ -1,4 +1,4 @@
-exports = {
+styles = {
 
   buttonBar: {
     width:'100%',
@@ -30,3 +30,7 @@ exports = {
   }
 
 }
+
+exports.buttonBar = styles.buttonBar;
+exports.button = styles.button;
+exports.buttonLabel = styles.buttonLabel;

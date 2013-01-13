@@ -1,5 +1,6 @@
 function MeWindow(){
 
+  var app = require('modules/core');
   var styles = require('modules/styles/styles');
   var meStyles = require('modules/styles/me');  
   var self = Ti.UI.createWindow(styles.defaultWindow);

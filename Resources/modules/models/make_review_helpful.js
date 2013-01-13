@@ -1,3 +1,5 @@
+var app = require('modules/core');
+
 function MakeReviewHelpful(review_id, user_id, feedback, callback){
  
   var xhr = Ti.Network.createHTTPClient({

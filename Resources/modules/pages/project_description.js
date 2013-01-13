@@ -1,5 +1,6 @@
 function ProjectDescriptionWindow(project_id){
 
+  var app = require('modules/core');
   var styles = require('modules/styles/styles');
   var descStyles = require('modules/styles/project_description');
   var self = Ti.UI.createWindow(styles.defaultWindow);

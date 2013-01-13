@@ -1,3 +1,5 @@
+var app = require('modules/core');
+
 function Cart(user_id){
   this.user_id = user_id;
 };

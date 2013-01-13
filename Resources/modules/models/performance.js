@@ -1,3 +1,5 @@
+var app = require('modules/core');
+
 function Performance(url, callback){
  
   var xhr = Ti.Network.createHTTPClient({

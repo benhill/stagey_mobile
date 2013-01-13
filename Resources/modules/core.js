@@ -23,10 +23,17 @@ exports.register = function(name, object) {
 };
 
 exports.openWindow = function(title, newWindowName, params){
-  var windowObj = require('modules/pages/' + newWindowName);  
+  require_path = 'modules/pages/' + newWindowName;
+  if(Ti.Platform.name != 'iPhone OS'){require_path = '../' + require_path};
+  var windowObj = require(require_path);
   var newWindow = windowObj.apply(this, params);
   openWithWindow(title, newWindow);
 };
+
+var resdir_value = '';
+if(Ti.Platform.name != 'iPhone OS'){resdir_value = '../../'};
+
+exports.resdir = resdir_value;
 
 exports.openFromWindow = function(newWindow){
   openWithWindow('', newWindow);
@@ -34,7 +41,9 @@ exports.openFromWindow = function(newWindow){
 
 function openWithWindow(title, newWindow){
   newWindow.navBarHidden = true;
-  var headerObj = require('modules/common/header');
+  require_path = 'modules/common/header';
+  if(Ti.Platform.name != 'iPhone OS'){require_path = '../' + require_path};
+  var headerObj = require(require_path);
   newWindow.add(new headerObj(title, newWindow));
   Ti.API.activeTab.open(newWindow);
   newWindow.load();
@@ -73,8 +82,8 @@ exports.property = function(name) {
 
 exports.timeout = 15000;
 
-//exports.api_url = 'http://www.gwahir.com:3000/api/';
-exports.api_url = 'https://staging.hollywoodfringe.org/api/';
+exports.api_url = 'http://192.168.1.10/api/';
+//exports.api_url = 'https://staging.hollywoodfringe.org/api/';
 
 exports.site_url = 'http://staging.hollywoodfringe.org/';
 

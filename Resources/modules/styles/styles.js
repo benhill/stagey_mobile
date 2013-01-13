@@ -1,11 +1,11 @@
-exports = {	
+styles = {	
 
 	defaultWindow: {
   	backgroundColor:'#F4F1F1',
   	barColor:'black',
-  	borderColor:'white',
-    borderWidth:2,
-    borderRadius:0
+  	//borderColor:'white',
+    //borderWidth:2,
+    //borderRadius:0
 	},
 
 	spinner: {
@@ -51,3 +51,10 @@ exports = {
   }
 
 };
+
+exports.defaultWindow = styles.defaultWindow;
+exports.spinner = styles.spinner;
+exports.titleView = styles.titleView;
+exports.titleLabel = styles.titleLabel;
+exports.subTitleLabel = styles.subTitleLabel;
+exports.noDataLabel = styles.noDataLabel;

@@ -1,6 +1,7 @@
 function LoginWindow(return_win){
 
-  var styles = require('modules/styles/styles');
+  var app = require('modules/core');
+  var styles = require('modules/styles/styles');  
   var loginStyles = require('modules/styles/login');
   var self = Ti.UI.createView({
     height:Ti.UI.SIZE,

@@ -1,4 +1,4 @@
-exports = {
+styles = {
 
   headerView: {
     top:0,
@@ -36,3 +36,8 @@ exports = {
   }
 
 }
+
+exports.headerView = styles.headerView;
+exports.searchButton = styles.searchButton;
+exports.backButton = styles.backButton;
+exports.logoImage = styles.logoImage;

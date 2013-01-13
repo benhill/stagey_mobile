@@ -1,5 +1,6 @@
 function GalleryWindow(images){
 
+  var app = require('modules/core');
   var styles = require('modules/styles/styles');
   var galleryStyles = require('modules/styles/gallery');
   var self = Ti.UI.createWindow(styles.defaultWindow);

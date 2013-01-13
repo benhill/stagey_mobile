@@ -1,5 +1,6 @@
 function UserWindow(user_id){
 
+  var app = require('modules/core');
   var styles = require('modules/styles/styles');
   var userStyles = require('modules/styles/user');
   var self = Ti.UI.createWindow(styles.defaultWindow);

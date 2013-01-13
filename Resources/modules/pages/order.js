@@ -1,5 +1,6 @@
 function OrderWindow(cc_num, cc_fname, cc_lname, csv, expiry_month, expiry_year){
 
+  var app = require('modules/core');
   var styles = require('modules/styles/styles');
   var orderStyles = require('modules/styles/order');
   var self = Ti.UI.createWindow(styles.defaultWindow);

@@ -1,5 +1,6 @@
 function PageWindow(page_id){
 
+  var app = require('modules/core');
   var styles = require('modules/styles/styles');
   var pageStyles = require('modules/styles/page');
   var self = Ti.UI.createWindow(styles.defaultWindow);

@@ -1,5 +1,6 @@
 function PayWindow(){
 
+  var app = require('modules/core');
   var styles = require('modules/styles/styles');
   var payStyles = require('modules/styles/pay');
   var self = Ti.UI.createWindow(styles.defaultWindow);

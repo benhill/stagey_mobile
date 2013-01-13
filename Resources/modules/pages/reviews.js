@@ -1,5 +1,6 @@
 function ReviewsWindow(user_id, project){
 
+  var app = require('modules/core');
   var styles = require('modules/styles/styles');
   var reviewsStyles = require('modules/styles/reviews');
   var self = Ti.UI.createWindow(styles.defaultWindow);

@@ -1,5 +1,6 @@
 function ProjectsWindow(mode, startProjects, cat_id, venue_id){
 
+  var app = require('modules/core');
   var styles = require('modules/styles/styles');
   var projectsStyles = require('modules/styles/projects');
   var self = Ti.UI.createWindow(styles.defaultWindow);

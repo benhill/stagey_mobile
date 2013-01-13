@@ -1,5 +1,6 @@
 function MapWindow(venue, callback){
 
+  var app = require('modules/core');
   var styles = require('modules/styles/styles')
   var mapStyles = require('modules/styles/map')
   var annotations = [];

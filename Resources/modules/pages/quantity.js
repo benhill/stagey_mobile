@@ -1,5 +1,6 @@
 function QuantityWindow(performance_id, pwycPrice){
 
+  var app = require('modules/core');
   var styles = require('modules/styles/styles');
   var perfStyles = require('modules/styles/quantity');
   var self = Ti.UI.createWindow(styles.defaultWindow);

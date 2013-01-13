@@ -1,5 +1,6 @@
 function Header(title, window){
 
+  var app = require('modules/core');
   var styles = require('modules/styles/styles');
   var headerStyles = require('modules/styles/header');
   
@@ -24,7 +25,7 @@ function Header(title, window){
   }
   else{
     var logoImage =  Ti.UI.createImageView(headerStyles.logoImage);
-    logoImage.image = 'iphone/hff_logo.png';
+    logoImage.image = app.resdir + 'iphone/hff_logo.png';
     headerView.add(logoImage);
   }
   

@@ -1,3 +1,5 @@
+var app = require('modules/core');
+
 function Icon(text, image, window, object, auth_required, third_param, id){
   this.text = text;
   this.image = image;

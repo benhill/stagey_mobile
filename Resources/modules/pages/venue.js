@@ -1,5 +1,6 @@
 function VenueWindow(venue_id){
-
+  
+  var app = require('modules/core');
   var styles = require('modules/styles/styles');
   var venueStyles = require('modules/styles/venue')
   var self = Ti.UI.createWindow(styles.defaultWindow);

@@ -1,0 +1,35 @@
+Logfile initialized
+[INFO] logfile = /src/stagey_mobile/build.log
+[DEBUG] /Users/benhill/Library/Application Support/Titanium/mobilesdk/osx/3.0.0.GA/android/builder.py simulator hff13 /Users/benhill/android-sdk-macosx /src/stagey_mobile com.stagey.mobile 6 HVGA /127.0.0.1:49653
+[INFO] Building hff13 for Android ... one moment
+[INFO] Titanium SDK version: 3.0.0 (12/12/12 18:49 a5894b3)
+[DEBUG] Waiting for device to be ready ...
+[TRACE] adb devices returned 1 devices/emulators
+[DEBUG] Device connected... (waited 0 seconds)
+[DEBUG] waited 0.119459 seconds on emulator to get ready
+[DEBUG] com.stagey.mobile installed? True
+[INFO] Fastdev server running, deploying in Fastdev mode
+[INFO] Copying CommonJS modules...
+[INFO] Copying project resources..
+[TRACE] COPYING MODIFIED FILE: /src/stagey_mobile/Resources/modules/common/header.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/common/header.js
+[TRACE] COPYING MODIFIED FILE: /src/stagey_mobile/Resources/modules/core.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/core.js
+[TRACE] COPYING MODIFIED FILE: /src/stagey_mobile/Resources/modules/pages/shows.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/shows.js
+[TRACE] COPYING MODIFIED FILE: /src/stagey_mobile/Resources/modules/styles/shows.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/shows.js
+[INFO] Tiapp.xml unchanged, skipping class generation
+[DEBUG] Processing Android resource drawables
+[DEBUG] found drawable-long-land-hdpi splash screen at /src/stagey_mobile/Resources/android/images/res-long-land-hdpi/default.png
+[DEBUG] found drawable-long-land-ldpi splash screen at /src/stagey_mobile/Resources/android/images/res-long-land-ldpi/default.png
+[DEBUG] found drawable-long-port-hdpi splash screen at /src/stagey_mobile/Resources/android/images/res-long-port-hdpi/default.png
+[DEBUG] found drawable-long-port-ldpi splash screen at /src/stagey_mobile/Resources/android/images/res-long-port-ldpi/default.png
+[DEBUG] found drawable-notlong-land-hdpi splash screen at /src/stagey_mobile/Resources/android/images/res-notlong-land-hdpi/default.png
+[DEBUG] found drawable-notlong-land-ldpi splash screen at /src/stagey_mobile/Resources/android/images/res-notlong-land-ldpi/default.png
+[DEBUG] found drawable-notlong-land-mdpi splash screen at /src/stagey_mobile/Resources/android/images/res-notlong-land-mdpi/default.png
+[DEBUG] found drawable-notlong-port-hdpi splash screen at /src/stagey_mobile/Resources/android/images/res-notlong-port-hdpi/default.png
+[DEBUG] found drawable-notlong-port-ldpi splash screen at /src/stagey_mobile/Resources/android/images/res-notlong-port-ldpi/default.png
+[DEBUG] found drawable-notlong-port-mdpi splash screen at /src/stagey_mobile/Resources/android/images/res-notlong-port-mdpi/default.png
+[INFO] Re-launching application ... hff13
+[INFO] Launching application ... hff13
+[TRACE] Launch output: Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.stagey.mobile/.Hff13Activity }
+Warning: Activity not started, its current task has been brought to the front
+
+[INFO] Forwarding host port 49653 to device for debugging.

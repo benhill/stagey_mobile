@@ -1,5 +1,6 @@
 function SearchWindow(search_terms){
 
+  var app = require('modules/core');
   var styles = require('modules/styles/styles');
   var searchStyles = require('modules/styles/search');
   var self = Ti.UI.createWindow(styles.defaultWindow);

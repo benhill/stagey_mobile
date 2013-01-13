@@ -1,5 +1,6 @@
 function PerformanceWindow(performance_id){
 
+  var app = require('modules/core');
   var styles = require('modules/styles/styles');
   var perfStyles = require('modules/styles/performance');
   var self = Ti.UI.createWindow(styles.defaultWindow);

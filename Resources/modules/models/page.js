@@ -1,3 +1,5 @@
+var app = require('modules/core');
+
 function Page(page_id, callback){
  
   var xhr = Ti.Network.createHTTPClient({

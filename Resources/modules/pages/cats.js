@@ -1,5 +1,6 @@
 function CatsWindow(){
-  
+
+  var app = require('modules/core');  
   var styles = require('modules/styles/styles') 
   var catStyles = require('modules/styles/cats')    
   var self = Ti.UI.createWindow(styles.defaultWindow);

@@ -1,5 +1,6 @@
 function ProjectWindow(project_id){
 
+  var app = require('modules/core');
   var styles = require('modules/styles/styles');
   var projectStyles = require('modules/styles/project');
   var self = Ti.UI.createWindow(styles.defaultWindow);
@@ -106,8 +107,10 @@ function ProjectWindow(project_id){
       }
       icons.push(make_favorite);
 
-      var share = new Icon('Share', 'iphone/share_24.png', '', project);
-      icons.push(share);    
+      if(Ti.Platform.name == 'iPhone OS'){
+        var share = new Icon('Share', 'iphone/share_24.png', '', project);
+        icons.push(share);
+      }
 
       iconsView = Ti.UI.createView(projectStyles.iconsView);
 

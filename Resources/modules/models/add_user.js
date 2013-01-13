@@ -1,3 +1,5 @@
+var app = require('modules/core');
+
 function AddUser(email, first_name, last_name, password, callback){
  
   var xhr = Ti.Network.createHTTPClient({

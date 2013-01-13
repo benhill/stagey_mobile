@@ -1,5 +1,6 @@
 function ButtonBar(tabNames, callback){
 
+  var app = require('modules/core');
   var currbutton;
   var width = String(100/tabNames.length) + '%';
   var buttons = [];

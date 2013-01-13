@@ -1,5 +1,6 @@
 function PerformancesWindow(mode, schedule_page){
 
+  var app = require('modules/core');
   var styles = require('modules/styles/styles');
   var perfStyles = require('modules/styles/performances');
   var self = Ti.UI.createWindow(styles.defaultWindow);

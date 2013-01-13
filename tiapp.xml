@@ -21,7 +21,7 @@
     <fullscreen>false</fullscreen>
     <navbar-hidden>false</navbar-hidden>
     <analytics>true</analytics>
-    <guid>97d05b29-ab1f-4c5b-8999-2983c1762a6b</guid>
+    <guid>97d05b29-ab1f-4c5b-8999-2983c1762a6b</guid> 
     <property name="ti.ui.defaultunit" type="string">system</property>
     <iphone>
         <orientations device="iphone">
@@ -50,10 +50,10 @@
     </modules>
     <deployment-targets>
         <target device="blackberry">false</target>
-        <target device="android">false</target>
+        <target device="android">true</target>
         <target device="ipad">true</target>
         <target device="iphone">true</target>
         <target device="mobileweb">false</target>
     </deployment-targets>
     <sdk-version>3.0.0.GA</sdk-version>
-</ti:app>
+</ti:app> 

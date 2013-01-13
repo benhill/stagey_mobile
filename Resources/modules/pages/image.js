@@ -1,5 +1,6 @@
 function ImageWindow(image_path){
 
+  var app = require('modules/core');
   var styles = require('modules/styles/styles');
   var imageStyles = require('modules/styles/image');
   var self = Ti.UI.createWindow(styles.defaultWindow);

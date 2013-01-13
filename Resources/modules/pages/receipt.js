@@ -1,5 +1,6 @@
 function ReceiptWindow(sale_id){
 
+  var app = require('modules/core');
   var styles = require('modules/styles/styles');
   var receiptStyles = require('modules/styles/receipt');
   var self = Ti.UI.createWindow(styles.defaultWindow);

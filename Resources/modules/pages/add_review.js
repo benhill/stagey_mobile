@@ -1,5 +1,6 @@
 function AddReviewWindow(project){
 
+  var app = require('modules/core');
   var styles = require('modules/styles/styles');
   var addReviewStyles = require('modules/styles/add_review');
   var self = Ti.UI.createWindow(styles.defaultWindow);

@@ -1,3 +1,5 @@
+var app = require('modules/core');
+
 function Review(review_id, callback){
  
   var xhr = Ti.Network.createHTTPClient({

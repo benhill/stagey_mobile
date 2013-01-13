@@ -1,5 +1,6 @@
 function ShowsWindow(){
 
+  var app = require('modules/core');
   var styles = require('modules/styles/styles');
   var showStyles = require('modules/styles/shows');
   var self = Ti.UI.createWindow(styles.defaultWindow);
@@ -8,6 +9,7 @@ function ShowsWindow(){
   var icons = [];
   var top = 0;
   var left = 20;
+  var app = require('modules/core');
 
   self.load = function(){
 
@@ -30,6 +32,7 @@ function ShowsWindow(){
     searchView.add(searchField);
 
     var searchButton =  Ti.UI.createImageView(showStyles.searchButton);
+    searchButton.image = app.resdir + 'iphone/search_24.png';
     searchView.add(searchButton);
 
     self.add(searchView);
@@ -48,7 +51,7 @@ function ShowsWindow(){
       
       var iconImage = Ti.UI.createImageView(showStyles.iconImage);    
       iconImage.icon = icon;
-      iconImage.image = icon.image;
+      iconImage.image = app.resdir + icon.image;
       iconView.add(iconImage);
 
       var iconText = Ti.UI.createLabel(showStyles.iconText);

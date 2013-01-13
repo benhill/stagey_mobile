@@ -1,4 +1,4 @@
-exports = {	
+styles = {	
 
   buttonBarView: {
     top:50
@@ -61,3 +61,13 @@ exports = {
   }
 
 };
+
+exports.buttonBarView = styles.buttonBarView;
+exports.contentView = styles.contentView;
+exports.table = styles.table;
+exports.venueThumb = styles.venueThumb;
+exports.nameLabel = styles.nameLabel;
+exports.addressLabel = styles.addressLabel;
+exports.venueWindow = styles.venueWindow;
+exports.row = styles.row;
+exports.carrotImage = styles.carrotImage;

@@ -1,3 +1,5 @@
+var app = require('modules/core');
+
 function VenueDistance(venue_id, callback){
  
   var xhr = Ti.Network.createHTTPClient({

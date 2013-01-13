@@ -1,5 +1,6 @@
 function SelectBox(resultsLabel, submitButton, data_1, data_2){
 
+  var app = require('modules/core');
   var styles = require('modules/styles/styles');
   var pickerStyles = require('modules/styles/select_box');
 

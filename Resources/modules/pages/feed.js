@@ -1,5 +1,6 @@
 function FeedWindow(){
-  
+
+  var app = require('modules/core');  
   var styles = require('modules/styles/styles') 
   var feedStyles = require('modules/styles/feed')  
   var self = Ti.UI.createWindow(styles.defaultWindow);

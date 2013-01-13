@@ -1,5 +1,6 @@
 function VenuesWindow(){
 
+  var app = require('modules/core');
   var styles = require('modules/styles/styles');
   var venueStyles = require('modules/styles/venues');
   var self = Ti.UI.createWindow(styles.defaultWindow);
@@ -46,7 +47,7 @@ function VenuesWindow(){
 
       table = Ti.UI.createTableView(venueStyles.table);
       var tableData = [];
-      var venuesObj = require('modules/models/venues');    
+      var venuesObj = require(app.resdir + 'modules/models/venues');
       new venuesObj(function(venues){      
         for (i = 0; i < venues.length; i++) {
           var venue = venues[i];
