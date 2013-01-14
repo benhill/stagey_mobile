@@ -1,4 +1,4 @@
-exports = {	
+styles = {	
 
   table: {
     top:100
@@ -71,3 +71,14 @@ exports = {
   }
 
 };
+
+exports.table = styles.table;
+exports.row = styles.row;
+exports.imageLabel = styles.imageLabel;
+exports.nameLabel = styles.nameLabel;
+exports.date = styles.date;
+exports.blurb = styles.blurb;
+exports.moreRow = styles.moreRow;
+exports.moreLabel = styles.moreLabel;
+exports.spinner = styles.spinner;
+exports.carrotImage = styles.carrotImage;

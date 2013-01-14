@@ -1,4 +1,4 @@
-exports = {	
+styles = {	
 
   table: {
     backgroundColor:'#F4F1F1'
@@ -190,3 +190,29 @@ exports = {
   }
 
 };
+
+exports.table = styles.table;
+exports.row = styles.row;
+exports.projectWrapper = styles.projectWrapper;
+exports.titleView = styles.titleView;
+exports.title = styles.title;
+exports.subTitle = styles.subTitle;
+exports.allGalleryView = styles.allGalleryView;
+exports.galleryView = styles.galleryView;
+exports.img = styles.img;
+exports.moreImagesLabel = styles.moreImagesLabel;
+exports.descriptionLabel = styles.descriptionLabel;
+exports.iconsView = styles.iconsView;
+exports.iconView = styles.iconView;
+exports.iconImage = styles.iconImage;
+exports.iconText = styles.iconText;
+exports.reviewView = styles.reviewView;
+exports.reviewUserThumb = styles.reviewUserThumb;
+exports.reviewsLabel = styles.reviewsLabel;
+exports.reviewsLabelName = styles.reviewsLabelName;
+exports.carrotImage = styles.carrotImage;
+exports.teamThumb = styles.teamThumb;
+exports.teamView = styles.teamView;
+exports.teamLabel = styles.teamLabel;
+exports.teamLabelName = styles.teamLabelName;
+exports.tagsLabel = styles.tagsLabel;

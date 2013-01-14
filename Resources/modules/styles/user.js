@@ -1,4 +1,4 @@
-exports = {
+styles = {
 
   userScroll: {
   	contentWidth:'95%',
@@ -67,3 +67,12 @@ exports = {
   }
 
 }
+
+exports.userScroll = styles.userScroll;
+exports.wrapper = styles.wrapper;
+exports.image = styles.image;
+exports.name = styles.name;
+exports.line1 = styles.line1;
+exports.reviewsLabel = styles.reviewsLabel;
+exports.line2 = styles.line2;
+exports.profile = styles.profile;

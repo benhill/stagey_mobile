@@ -1,4 +1,4 @@
-exports = {
+styles = {
 
   perfView: {
     layout:'vertical',
@@ -34,3 +34,9 @@ exports = {
   }
 
 }
+
+exports.perfView = styles.perfView;
+exports.perfLabel = styles.perfLabel;
+exports.carrotImage = styles.carrotImage;
+exports.table = styles.table;
+exports.row  = styles.row;

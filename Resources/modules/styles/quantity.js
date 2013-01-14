@@ -1,4 +1,4 @@
-exports = {    
+styles = {    
 
   titleLabel: {
     height:Ti.UI.SIZE,
@@ -56,3 +56,11 @@ exports = {
   }
 
 }
+
+exports.titleLabel = styles.titleLabel;
+exports.perfInfo = styles.perfInfo;
+exports.quantityLabel = styles.quantityLabel;
+exports.quantityButton = styles.quantityButton;
+exports.codeText = styles.codeText;
+exports.buttonView = styles.buttonView;
+exports.payButton = styles.payButton;

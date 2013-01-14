@@ -1,4 +1,4 @@
-exports = {
+styles = {
  
   email: {
     color:'#336699', 
@@ -39,3 +39,8 @@ exports = {
   }
 
 }
+
+exports.email = styles.email;
+exports.password = styles.password;
+exports.loginButton = styles.loginButton;
+exports.addUserLabel = styles.addUserLabel;

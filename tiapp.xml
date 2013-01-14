@@ -56,4 +56,4 @@
         <target device="mobileweb">false</target>
     </deployment-targets>
     <sdk-version>3.0.0.GA</sdk-version>
-</ti:app> 
+</ti:app>

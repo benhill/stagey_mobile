@@ -1,4 +1,4 @@
-exports = {
+styles = {
 
   pageScroll: {
     contentWidth:Ti.UI.SIZE,
@@ -84,3 +84,14 @@ exports = {
   }
 
 }
+
+exports.pageScroll = styles.pageScroll;
+exports.titleView = styles.titleView;
+exports.nameLabel = styles.nameLabel;
+exports.projectLabel = styles.projectLabel;
+exports.line = styles.line;
+exports.body = styles.body;
+exports.bodyWrapper = styles.bodyWrapper;
+exports.wrapper = styles.wrapper;
+exports.buttonsWrapper = styles.buttonsWrapper;
+exports.view_project = styles.view_project;

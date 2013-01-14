@@ -1,4 +1,4 @@
-exports = {
+styles = {
 
 	imageScroll: {
     contentWidth:'95%',
@@ -15,3 +15,6 @@ exports = {
   }
 
 }
+
+exports.imageScroll = styles.imageScroll;
+exports.objectImage = styles.objectImage;

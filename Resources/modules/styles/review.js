@@ -1,4 +1,4 @@
-exports = {
+styles = {
 
   reviewScroll: {
     contentWidth:Ti.UI.SIZE,
@@ -118,3 +118,18 @@ exports = {
   }
 
 }
+
+exports.reviewScroll = styles.reviewScroll;
+exports.image = styles.image;
+exports.titleView = styles.titleView;
+exports.nameLabel = styles.nameLabel;
+exports.projectLabel = styles.projectLabel;
+exports.info = styles.info;
+exports.line = styles.line;
+exports.helpful = styles.helpful;
+exports.not_helpful = styles.not_helpful;
+exports.view_project = styles.view_project;
+exports.body = styles.body;
+exports.bodyWrapper = styles.bodyWrapper;
+exports.wrapper = styles.wrapper;
+exports.buttonsWrapper = styles.buttonsWrapper;

@@ -1,4 +1,4 @@
-exports = {
+styles = {
 
 	pwycLabel: {
     top:120,
@@ -37,3 +37,8 @@ exports = {
   }
 
 }
+
+exports.pwycLabel = styles.pwycLabel;
+exports.dollarLabel = styles.dollarLabel;
+exports.pwycText = styles.pwycText;
+exports.quantButton = styles.quantButton;

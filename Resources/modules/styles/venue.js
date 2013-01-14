@@ -1,4 +1,4 @@
-exports = {	
+styles = {	
 
   table: {
     backgroundColor:'#F4F1F1'
@@ -138,3 +138,22 @@ exports = {
   }
 
 };
+
+exports.table = styles.table;
+exports.venueWrapper = styles.venueWrapper;
+exports.allGalleryView = styles.allGalleryView;
+exports.galleryView = styles.galleryView;
+exports.img = styles.img;
+exports.moreImagesLabel = styles.moreImagesLabel;
+exports.description = styles.description;
+exports.addressView = styles.addressView;
+exports.addressLabel = styles.addressLabel;
+exports.address = styles.address;
+exports.locationWrapper = styles.locationWrapper;
+exports.projectsView = styles.projectsView;
+exports.projectThumb = styles.projectThumb;
+exports.projectLabel = styles.projectLabel;
+exports.titleLabel = styles.titleLabel;
+exports.mapView = styles.mapView;
+exports.annotation = styles.annotation;
+exports.carrotImage = styles.carrotImage;

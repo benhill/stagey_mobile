@@ -1,4 +1,4 @@
-exports = {
+styles = {
 
   emailLabel: {
     height:35, 
@@ -48,3 +48,9 @@ exports = {
   }
 
 }
+
+exports.emailLabel = styles.emailLabel;
+exports.firstNameLabel = styles.firstNameLabel;
+exports.lastNameLabel = styles.lastNameLabel;
+exports.passwordLabel = styles.passwordLabel;
+exports.addUserButton = styles.addUserButton;

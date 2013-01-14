@@ -43,8 +43,8 @@ function CatsWindow(){
     });
 
     function loadProjects(e, islongclick) { 
-      params = ['cat', null, e.rowData.cat.id];
-      app.openWindow(app.toTitleCase(e.rowData.cat.name), 'projects', params);
+      params = ['cat', null, e.row.cat.id];
+      app.openWindow(app.toTitleCase(e.row.cat.name), 'projects', params);
     }
 
     spinner.show();

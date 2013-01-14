@@ -1,4 +1,4 @@
-exports = {	
+styles = {	
 
   mapWrapper: {
     width:Ti.UI.SIZE,
@@ -26,3 +26,8 @@ exports = {
   }
 
 };
+
+exports.mapWrapper = styles.mapWrapper;
+exports.mapView = styles.mapView;
+exports.viewButton = styles.viewButton;
+exports.annotation = styles.annotation;

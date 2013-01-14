@@ -1,4 +1,4 @@
-exports = {	
+styles = {	
 
   table: {    
   },
@@ -119,3 +119,20 @@ exports = {
   }
 
 };
+
+exports.table = styles.table;
+exports.titleView = styles.titleView;
+exports.titleLabel = styles.titleLabel;
+exports.previousView = styles.previousView;
+exports.previousImage = styles.previousImage;
+exports.nextView = styles.nextView;
+exports.spacer = styles.spacer;
+exports.nextImage = styles.nextImage;
+exports.projectThumb = styles.projectThumb;
+exports.projectTitle = styles.projectTitle;
+exports.projectInfo = styles.projectInfo;
+exports.row = styles.row;
+exports.moreLabel = styles.moreLabel;
+exports.spinner = styles.spinner;
+exports.noPerfs = styles.noPerfs;
+exports.carrotImage = styles.carrotImage;

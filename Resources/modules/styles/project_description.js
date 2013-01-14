@@ -1,4 +1,4 @@
-exports = {
+styles = {
 
   projectScroll: {
     contentWidth:Ti.UI.SIZE,
@@ -43,3 +43,9 @@ exports = {
   }
 
 }
+
+exports.projectScroll = styles.projectScroll;
+exports.wrapper = styles.wrapper;
+exports.titleLabel = styles.titleLabel;
+exports.line = styles.line;
+exports.descriptionLabel = styles.descriptionLabel;

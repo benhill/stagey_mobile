@@ -1,4 +1,4 @@
-exports = {
+styles = {
 
   wrapper: {
     height:'100%',
@@ -58,3 +58,12 @@ exports = {
   }
 
 }
+
+exports.wrapper = styles.wrapper;
+exports.image = styles.image;
+exports.nameLabel = styles.nameLabel;
+exports.logoutButton = styles.logoutButton;
+exports.table = styles.table;
+exports.row = styles.row;
+exports.iconLabel = styles.iconLabel;
+exports.carrotImage = styles.carrotImage;

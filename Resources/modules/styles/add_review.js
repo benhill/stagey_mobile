@@ -1,4 +1,4 @@
-exports = {
+styles = {
 
   buttonSave: {
     title:'save',    
@@ -90,3 +90,15 @@ exports = {
   }
 
 }
+
+exports.buttonSave = styles.buttonSave;
+exports.labelBody = styles.labelBody;
+exports.textBody = styles.textBody;
+exports.tabBar = styles.tabBar;
+exports.tab1 = styles.tab1;
+exports.tab1Label = styles.tab1Label;
+exports.tab2 = styles.tab2;
+exports.tab2Label = styles.tab2Label;
+exports.tab3 = styles.tab3;
+exports.tab3Label = styles.tab3Label;
+exports.spacer = styles.spacer;

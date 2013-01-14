@@ -6,7 +6,7 @@ function ProjectWindow(project_id){
   var self = Ti.UI.createWindow(styles.defaultWindow);
   var projectObj = require('modules/models/project');
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
-  var sharekit = require('com.0x82.sharekit');  
+  if(Ti.Platform.name == 'iPhone OS'){var sharekit = require('com.0x82.sharekit');}
   var Icon = require('modules/models/icons');
   var reviewObj = require('modules/models/review');
   var json, project, iconsView;

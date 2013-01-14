@@ -1,4 +1,4 @@
-exports = {
+styles = {
 
   galleryScroll: {
     contentWidth:'95%',
@@ -20,3 +20,6 @@ exports = {
   }
 
 }
+
+exports.galleryScroll = styles.galleryScroll;
+exports.image = styles.image;

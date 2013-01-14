@@ -1,4 +1,4 @@
-exports = {
+styles = {
 
 	pickerView: {
     height:251,
@@ -37,3 +37,12 @@ exports = {
   }
 
 }
+
+exports.pickerView = styles.pickerView;
+exports.cancel = styles.cancel;
+exports.done = styles.done;
+exports.spacer = styles.spacer;
+exports.toolbar = styles.toolbar;
+exports.picker = styles.picker;
+exports.slide_in = styles.slide_in;
+exports.slide_out = styles.slide_out;

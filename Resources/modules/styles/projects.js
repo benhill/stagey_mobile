@@ -1,4 +1,4 @@
-exports = {	
+styles = {
 
   table: {
     top:50
@@ -73,3 +73,14 @@ exports = {
   }
 
 };
+
+exports.table = styles.table;
+exports.projectThumb = styles.projectThumb;
+exports.nameLabel = styles.nameLabel;
+exports.infoLabel = styles.infoLabel;
+exports.row = styles.row;
+exports.moreLabel = styles.moreLabel;
+exports.projectWindow = styles.projectWindow;
+exports.spinner = styles.spinner;
+exports.carrotImage = styles.carrotImage;
+exports.noResultsLabel = styles.noResultsLabel;

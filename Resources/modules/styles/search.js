@@ -1,4 +1,4 @@
-exports = {
+styles = {
 
   searchField: {
     height:35,
@@ -27,3 +27,7 @@ exports = {
   }
 
 }
+
+exports.searchField = styles.searchField;
+exports.searchButton = styles.searchButton;
+exports.noResultsLabel = styles.noResultsLabel;

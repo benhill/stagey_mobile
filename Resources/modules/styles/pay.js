@@ -1,4 +1,4 @@
-exports = {
+styles = {
 
 	fNameText: {
     color:'#336699', 
@@ -68,3 +68,11 @@ exports = {
   }
 
 }
+
+exports.fNameText = styles.fNameText;
+exports.lNameText = styles.lNameText;
+exports.cardText = styles.cardText;
+exports.csvText = styles.csvText;
+exports.expiryButton = styles.expiryButton;
+exports.expiryLabel = styles.expiryLabel;
+expiryLabel.payButton = styles.payButton;

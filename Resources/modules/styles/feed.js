@@ -1,4 +1,4 @@
-exports = {
+styles = {
 
   table: {
     top:50
@@ -92,3 +92,17 @@ exports = {
     backgroundColor:'black'
   }  
 }
+
+exports.table = styles.table;
+exports.row - styles.row;
+exports.imageView = styles.imageView;
+exports.baseImage = styles.baseImage;
+exports.cropView = styles.cropView;
+exports.moreRow = styles.moreRow;
+exports.labelView = styles.labelView;
+exports.objectLabel = styles.objectLabel;
+exports.textLabel = styles.textLabel;
+exports.carrotImage = styles.carrotImage;
+exports.moreLabel = styles.moreLabel;
+exports.spinner = styles.spinner;
+exports.line = styles.line;

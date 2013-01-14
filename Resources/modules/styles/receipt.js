@@ -1,4 +1,4 @@
-exports = {
+styles= {
 
   detailsView: {
     top:50,
@@ -67,3 +67,13 @@ exports = {
     width:240
   }
 }
+
+exports.detailsView = styles.detailsView;
+exports.cartTotal = styles.cartTotal;
+exports.ticketsTotal = styles.ticketsTotal;
+exports.feesTotal = styles.feesTotal;
+exports.table = styles.table;
+exports.row = styles.row;
+exports.projectThumb = styles.projectThumb;
+exports.projectTitle = styles.projectTitle;
+exports.projectInfo = styles.projectInfo;

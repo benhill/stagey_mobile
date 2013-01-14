@@ -1,4 +1,4 @@
-exports = {
+styles = {
 
   table:{
     top:50
@@ -27,3 +27,8 @@ exports = {
   }
 
 };
+
+exports.table = styles.table;
+exports.row = styles.row;
+exports.nameLabel = styles.nameLabel;
+exports.carrotImage = styles.carrotImage;
