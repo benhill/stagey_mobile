@@ -56,8 +56,7 @@ styles = {
     top:'40%',
     font:{fontSize:12, fontWeight:'bold'},
     height:Titanium.UI.SIZE,
-    width:Titanium.UI.SIZE,
-    image:'iphone/more-arrow.png'
+    width:Titanium.UI.SIZE
   }
 
 };

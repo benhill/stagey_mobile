@@ -28,6 +28,7 @@ function CatsWindow(){
         var nameLabel = Ti.UI.createLabel(catStyles.nameLabel);
 
         var carrotImage = Ti.UI.createImageView(catStyles.carrotImage);
+        carrotImage.image = app.resdir + 'iphone/more-arrow.png';
         row.add(carrotImage);
 
         row.add(nameLabel);      

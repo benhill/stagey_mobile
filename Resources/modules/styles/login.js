@@ -2,7 +2,7 @@ styles = {
  
   email: {
     color:'#336699', 
-    height:35, 
+    height:45, 
     width:300, 
     top:10,
     left:5,
@@ -13,7 +13,7 @@ styles = {
 
   password: {
     color:'#336699', 
-    height:35, 
+    height:45, 
     width:300, 
     top:55,
     left:5,

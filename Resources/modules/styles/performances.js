@@ -69,7 +69,8 @@ styles = {
     width:Ti.UI.SIZE,
     top:10,
     left:60,
-    font:{fontSize:14},
+    font:{fontSize:14},,
+    color:'black'
   },
 
   projectInfo: {
@@ -77,7 +78,8 @@ styles = {
     width:220,
     top:30,
     left:60,
-    font:{fontSize:12},
+    font:{fontSize:12},,
+    color:'black'
   },
 
   row: {
@@ -90,7 +92,8 @@ styles = {
     width:Ti.UI.SIZE,            
     top:20,        
     left:100,
-    font:{fontSize:14, fontWeight:'bold'}
+    font:{fontSize:14, fontWeight:'bold'},
+    color:'black'
   },
 
   spinner: {
@@ -114,7 +117,6 @@ styles = {
     font:{fontSize:12, fontWeight:'bold'},
     height:Titanium.UI.SIZE,
     width:Titanium.UI.SIZE,
-    image:'iphone/more-arrow.png',
     zIndex:-1000
   }
 

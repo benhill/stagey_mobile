@@ -17,8 +17,7 @@ styles = {
     top:15
   },
 
-  backButton: {
-    text:" \u21E6 back ",
+  backButton: {    
     font:{fontSize:14},
     color:'white',
     width:60,

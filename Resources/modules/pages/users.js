@@ -34,6 +34,7 @@ function UsersWindow(users){
       row.add(roleLabel);
 
       var carrotImage = Ti.UI.createImageView(usersStyles.carrotImage);
+      carrotImage.image = app.resdir + 'iphone/more-arrow.png';
       carrotImage.user = user;
       row.add(carrotImage);
 

@@ -48,12 +48,12 @@ function LoginWindow(return_win){
       if(user.error){
         alert(user.error);
       }
-      else{
-        Ti.App.fireEvent('app:refreshMeTab', {user:user});
+      else{        
         Ti.App.Properties.setString('currentUser', JSON.stringify(user));
         Ti.App.Properties.setString('userPassword', password.value);
         Ti.App.currentUser = user;
         Ti.App.userPassword = password.value;
+        Ti.App.fireEvent('app:refreshMeTab', {user:user});
 
         if(return_win){
           app.openFromWindow(return_win);

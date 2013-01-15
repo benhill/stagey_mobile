@@ -14,7 +14,7 @@ function Header(title, window){
     app.openWindow('Search', 'search', []);
   });
 
-  if(window && title != 'Me' && title != 'Login'){
+  if(window && title != 'Me' && title != 'Login' && Ti.Platform.name == 'iPhone OS'){
     
     var backButton =  Ti.UI.createLabel(headerStyles.backButton);
     headerView.add(backButton);

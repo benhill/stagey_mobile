@@ -1,7 +1,7 @@
 function ApplicationTabGroup(windows) {
 
   var app = require('modules/core');
-  var self = Ti.UI.createTabGroup();
+  var self = Ti.UI.createTabGroup();  
 
   self.addEventListener('focus', function(e){
     if(e.tab){Ti.API.activeTab = e.tab;}    
@@ -56,6 +56,8 @@ function ApplicationTabGroup(windows) {
 
     return win;
   }
+
+  Ti.App.tabGroup = self;
 
   return self;
 };

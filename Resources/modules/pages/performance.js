@@ -42,7 +42,8 @@ function PerformanceWindow(performance_id){
       buyLabel.text = 'Buy Tickets';
       row.add(buyLabel);
 
-      var carrotImage = Ti.UI.createImageView(perfStyles.carrotImage);      
+      var carrotImage = Ti.UI.createImageView(perfStyles.carrotImage);
+      carrotImage.image = app.resdir + 'iphone/more-arrow.png';
       row.add(carrotImage);
 
       tableData.push(row);
@@ -80,7 +81,8 @@ function PerformanceWindow(performance_id){
       projectLabel.text = 'More Info';
       row.add(projectLabel);
 
-      var carrotImage = Ti.UI.createImageView(perfStyles.carrotImage);      
+      var carrotImage = Ti.UI.createImageView(perfStyles.carrotImage);
+      carrotImage.image = app.resdir + 'iphone/more-arrow.png';
       row.add(carrotImage);
 
       tableData.push(row);
@@ -95,7 +97,8 @@ function PerformanceWindow(performance_id){
       perfsLabel.text = 'More Performances';
       row.add(perfsLabel);
 
-      var carrotImage = Ti.UI.createImageView(perfStyles.carrotImage);      
+      var carrotImage = Ti.UI.createImageView(perfStyles.carrotImage);
+      carrotImage.image = app.resdir + 'iphone/more-arrow.png';     
       row.add(carrotImage);
 
       tableData.push(row);
@@ -110,7 +113,8 @@ function PerformanceWindow(performance_id){
       venueLabel.text = 'View Venue';
       row.add(venueLabel);
 
-      var carrotImage = Ti.UI.createImageView(perfStyles.carrotImage);      
+      var carrotImage = Ti.UI.createImageView(perfStyles.carrotImage);
+      carrotImage.image = app.resdir + 'iphone/more-arrow.png';   
       row.add(carrotImage);
 
       tableData.push(row);

@@ -84,6 +84,7 @@ function MeWindow(){
 
       var carrotImage = Ti.UI.createImageView(meStyles.carrotImage);
       carrotImage.icon = icon;
+      carrotImage.image = app.resdir + 'iphone/more-arrow.png';
       row.add(carrotImage);
 
       row.addEventListener('click', function(e){

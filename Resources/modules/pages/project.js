@@ -123,7 +123,7 @@ function ProjectWindow(project_id){
 
         var iconImage = Ti.UI.createImageView(projectStyles.iconImage);        
         iconImage.icon = icon;
-        iconImage.image = icon.image;
+        iconImage.image = app.resdir + icon.image;
         iconView.add(iconImage);
 
         var iconText = Ti.UI.createLabel(projectStyles.iconText);
@@ -207,7 +207,8 @@ function ProjectWindow(project_id){
       reviewsLabelName.text = project.top_review_user_full_name + ': \"' + project.top_review_blurb + '\"', 
       reviewView.add(reviewsLabelName);
 
-      var carrotImage = Ti.UI.createImageView(projectStyles.carrotImage);      
+      var carrotImage = Ti.UI.createImageView(projectStyles.carrotImage);
+      carrotImage.image = app.resdir + 'iphone/more-arrow.png';
       reviewView.add(carrotImage);
 
       reviewView.height = reviewView.toImage().height + 8;
@@ -234,6 +235,7 @@ function ProjectWindow(project_id){
       teamView.add(teamLabelName);
 
       var carrotImage = Ti.UI.createImageView(projectStyles.carrotImage);
+      carrotImage.image = app.resdir + 'iphone/more-arrow.png';
       teamView.add(carrotImage);
       
       var row = Ti.UI.createTableViewRow(projectStyles.row);

@@ -106,6 +106,7 @@ function ReviewsWindow(user_id, project){
         row.add(blurb);
 
         var carrotImage = Ti.UI.createImageView(reviewsStyles.carrotImage);
+        carrotImage.image = app.resdir + 'iphone/more-arrow.png';
         row.add(carrotImage);
 
         row.height = row.toImage().height + 8;
@@ -153,7 +154,7 @@ function ReviewsWindow(user_id, project){
     }
 
     function loadReview(e, islongclick) { 
-      app.openWindow('Show Review', 'review', [e.rowData.review.id]);
+      app.openWindow('Show Review', 'review', [e.row.review.id]);
     }
 
     function loadMore(e,islongclick){

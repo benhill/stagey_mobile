@@ -118,6 +118,7 @@ function PerformancesWindow(mode, schedule_page){
 
         var carrotImage = Ti.UI.createImageView(perfStyles.carrotImage);
         carrotImage.performance = performance;
+        carrotImage.image = app.resdir + 'iphone/more-arrow.png';
         row.add(carrotImage);
 
         tableData.push(row);

@@ -133,8 +133,7 @@ styles = {
     top:'40%',
     font:{fontSize:12, fontWeight:'bold'},
     height:Ti.UI.SIZE,
-    width:Ti.UI.SIZE,
-    image:'iphone/more-arrow.png'
+    width:Ti.UI.SIZE
   }
 
 };

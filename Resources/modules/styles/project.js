@@ -69,7 +69,8 @@ styles = {
     text:'more images',
     width:Ti.UI.SIZE,
     height:Ti.UI.SIZE,
-    font:{fontSize:14}
+    font:{fontSize:14},
+    color:'black'
   },
 
   descriptionLabel: {
@@ -78,7 +79,8 @@ styles = {
     left:5,
     font:{fontSize:13},
     height:Ti.UI.SIZE,
-    width: '95%'
+    width: '95%',
+    color:'black'
   },
 
   iconsView: {
@@ -106,7 +108,8 @@ styles = {
     font:{fontSize:13},
     left:0,
     top:5,
-    textAlign:'center'
+    textAlign:'center',
+    color:'black'
   },
 
   reviewView: {
@@ -129,14 +132,16 @@ styles = {
     left:65,
     top:5,
     height:Ti.UI.SIZE,
-    width:'90%'
+    width:'90%',
+    color:'black'
   },
 
   reviewsLabelName: {
     font:{fontSize:12},
     left:65,
     top:23,    
-    width:230
+    width:230,
+    color:'black'
   },
 
   carrotImage: {
@@ -144,8 +149,7 @@ styles = {
     top:'40%',
     font:{fontSize:12, fontWeight:'bold'},
     height:Titanium.UI.SIZE,
-    width:Titanium.UI.SIZE,
-    image:'iphone/more-arrow.png'
+    width:Titanium.UI.SIZE
   },
 
   teamThumb: {
@@ -169,7 +173,8 @@ styles = {
     left:65,
     top:5,
     height:Ti.UI.SIZE,
-    width:'90%'
+    width:'90%',
+    color:'black'
   },
 
   teamLabelName: {
@@ -177,7 +182,8 @@ styles = {
     left:65,
     top:23,
     height:Ti.UI.SIZE,
-    width:250
+    width:250,
+    color:'black'
   },
 
   tagsLabel: {
@@ -186,7 +192,8 @@ styles = {
     top:10,
     bottom:10,
     left:5,
-    font:{fontSize:12}
+    font:{fontSize:12},
+    color:'black'
   }
 
 };

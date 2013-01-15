@@ -20,7 +20,7 @@ styles = {
 
 	searchField: {
     value:default_search_text,
-    height:30,
+    height:40,
     clearOnEdit:true,
     top:0,
     left:0,
@@ -37,7 +37,7 @@ styles = {
   },
 
   iconsView: {
-    top:85,
+    top:95,
     left:0,
     height:260,
     layout:'absolute'
@@ -70,7 +70,7 @@ styles = {
 
   alertView: {
     bottom:0,
-    height:50,
+    height:40,
     width:'100%',
     backgroundColor:'#bbbbbb'
   },

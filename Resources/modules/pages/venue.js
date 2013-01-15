@@ -109,6 +109,7 @@ function VenueWindow(venue_id){
         projectsView.add(titleLabel);
 
         var carrotImage = Ti.UI.createImageView(venueStyles.carrotImage);
+        carrotImage.image = app.resdir + 'iphone/more-arrow.png';
         projectsView.add(carrotImage);
 
         var row = Ti.UI.createTableViewRow(venueStyles.row);
