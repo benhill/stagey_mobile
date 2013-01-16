@@ -25,20 +25,44 @@ function ShowsWindow(){
     var reviews = new Icon('Recent\nReviews', 'iphone/reviews_48.png', 'reviews', null, false, null, 'reviews');
     icons.push(reviews);
 
-    var searchView = Ti.UI.createView(showStyles.searchView);
-
-    var searchField = Titanium.UI.createTextField(showStyles.searchField);
-    app.addKeyboardToolbar(searchField);
-    searchView.add(searchField);
-
-    var searchButton =  Ti.UI.createImageView(showStyles.searchButton);
-    searchButton.image = app.resdir + 'iphone/search_24.png';
-    searchView.add(searchButton);
-
-    self.add(searchView);
-
     var iconsView = Ti.UI.createView(showStyles.iconsView);
 
+    if(Ti.Platform.name == 'iPhone OS'){
+
+      var searchView = Ti.UI.createView(showStyles.searchView);
+
+      var searchField = Titanium.UI.createTextField(showStyles.searchField);
+      app.addKeyboardToolbar(searchField);
+      searchView.add(searchField);
+
+      var searchButton =  Ti.UI.createImageView(showStyles.searchButton);
+      searchButton.image = app.resdir + 'iphone/search_24.png';
+      searchView.add(searchButton);
+
+      self.add(searchView);
+
+      searchButton.addEventListener('click', function(e){
+        runSearch(searchField.value);
+      });
+
+      searchField.addEventListener('return', function(e){
+        runSearch(searchField.value);
+      });
+
+      iconsView.height = 260;
+      iconsView.top = 95;
+    }
+    else{
+      var venues = new Icon('Venues', 'iphone/nearby_48.png', 'venues', null, false, null, 'nearby');
+      icons.push(venues);
+
+      var news = new Icon('News', 'iphone/reviews_48.png', 'feed', null, false, null, 'reviews');
+      icons.push(news);
+
+      iconsView.height = 340;
+      iconsView.top = 60;      
+    }
+    
     for(var i = 0;i < icons.length; i++){
       if(i > 0 && i % 2 === 0){left = 20;top += 120;}
       
@@ -76,15 +100,7 @@ function ShowsWindow(){
     alertLabel.text = "Registration is now open for HFF13!"
     alertView.add(alertLabel);
 
-    self.add(alertView);
-
-    searchButton.addEventListener('click', function(e){
-      runSearch(searchField.value);
-    });
-
-    searchField.addEventListener('return', function(e){
-      runSearch(searchField.value);
-    });
+    self.add(alertView);    
 
     function runSearch(terms, e, islongclick){
       new searchObj(terms, function(data){

@@ -36,10 +36,8 @@ styles = {
     right:5
   },
 
-  iconsView: {
-    top:95,
+  iconsView: {    
     left:0,
-    height:260,
     layout:'absolute'
   },
 

@@ -1,3 +1,5 @@
+var app = require('modules/core');
+
 if(Ti.App.Properties.getString('currentUser')){
   Ti.App.currentUser = JSON.parse(Ti.App.Properties.getString('currentUser'));
   Ti.App.userPassword = Ti.App.Properties.getString('userPassword');
@@ -5,10 +7,11 @@ if(Ti.App.Properties.getString('currentUser')){
 Ti.App.token = '8kj@!!00990j34Ad'
 Ti.API.info("module is => " + sharekit);
 
-var ApplicationTabGroup = require('modules/common/tab_group');
-new ApplicationTabGroup().open();
-
 if(Ti.Platform.name == 'iPhone OS'){
+
+  var ApplicationTabGroup = require('modules/common/tab_group');
+  new ApplicationTabGroup().open();
+
   var sharekit = require('com.0x82.sharekit');
 
   var testflight = require("com.0x82.testflight");
@@ -53,4 +56,7 @@ if(Ti.Platform.name == 'iPhone OS'){
     allow_offline: true,
     allow_auto_share: true
   });
+}
+else{
+  app.openWindow('Home', 'shows', []);
 }
