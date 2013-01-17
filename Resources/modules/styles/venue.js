@@ -41,7 +41,8 @@ styles = {
     text:'more images',
     width:Ti.UI.SIZE,
     height:Ti.UI.SIZE,
-    font:{fontSize:14}
+    font:{fontSize:14},
+    color:'black'
   },
 
   description: {
@@ -50,7 +51,8 @@ styles = {
     left:5,
     font:{fontSize:12},
     height:Ti.UI.SIZE,
-    width: '95%'
+    width: '95%',
+    color:'black'
   },
 
   addressView: {
@@ -65,7 +67,8 @@ styles = {
     left:5,
     font:{fontSize:12, fontWeight:'bold'},
     height:Ti.UI.SIZE,
-    width: '95%'
+    width: '95%',
+    color:'black'
   },
 
   address: {
@@ -73,7 +76,8 @@ styles = {
     left:70,
     font:{fontSize:12},
     height:Ti.UI.SIZE,
-    width: '75%'
+    width: '75%',
+    color:'black'
   },
 
   locationWrapper: {
@@ -103,7 +107,8 @@ styles = {
     left:65,
     top:5,
     height:Ti.UI.SIZE,
-    width:'80%'
+    width:'80%',
+    color:'black'
   },
 
   titleLabel: {
@@ -111,7 +116,8 @@ styles = {
     left:65,
     top:25,
     height:Ti.UI.SIZE,
-    width:220
+    width:220,
+    color:'black'
   },
 
   mapView: {

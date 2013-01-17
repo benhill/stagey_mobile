@@ -11,7 +11,8 @@ styles = {
     width:'100%',
     height:Ti.UI.SIZE,    
     font:{fontSize:'16', fontWeight:'bold'},
-    left:15
+    left:15,
+    color:'black'
   },
 
   carrotImage: {

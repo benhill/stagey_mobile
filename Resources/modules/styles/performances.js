@@ -69,7 +69,7 @@ styles = {
     width:Ti.UI.SIZE,
     top:10,
     left:60,
-    font:{fontSize:14},,
+    font:{fontSize:14},
     color:'black'
   },
 
@@ -78,7 +78,7 @@ styles = {
     width:220,
     top:30,
     left:60,
-    font:{fontSize:12},,
+    font:{fontSize:12},
     color:'black'
   },
 

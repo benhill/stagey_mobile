@@ -131,26 +131,28 @@ function VenueWindow(venue_id){
       var address = Ti.UI.createLabel(venueStyles.address);
       address.text = venue.address + '\n' + venue.city + ', ' + venue.state + ' ' + venue.postal + '\n' + String(miles_away) + ' miles away';
       addressView.add(address);
+
+      var locationWrapper = Ti.UI.createView(venueStyles.locationWrapper);
       
       var annotation = Ti.Map.createAnnotation(venueStyles.annotation);
       annotation.latitude = venue.lat;
       annotation.longitude = venue.lng;
       annotation.title = venue.name;
       annotation.subtitle = venue.address;
-
+    
       var mapView = Titanium.Map.createView(venueStyles.mapView);
       mapView.annotations = [annotation];
       mapView.region = {latitude:venue.lat, longitude:venue.lng, latitudeDelta:0.01, longitudeDelta:0.01};      
+              
+      locationWrapper.add(addressView);      
       
-      var locationWrapper = Ti.UI.createView(venueStyles.locationWrapper);
-      locationWrapper.add(addressView);
-      locationWrapper.add(mapView);
+      if(Ti.Platform.name == 'iPhone OS'){locationWrapper.add(mapView);}
 
       var row = Ti.UI.createTableViewRow(venueStyles.row);
       row.selectedBackgroundColor = '#F4F1F1';
       row.add(locationWrapper);
-      tableData.push(row);
-
+      tableData.push(row);      
+      
       table.setData(tableData);
       venueWrapper.add(table);
       
