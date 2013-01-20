@@ -22,7 +22,8 @@ styles = {
     height:45,
     left:60,
     top:-7,
-    font:{fontSize:'13', fontWeight:'bold'}
+    font:{fontSize:'13', fontWeight:'bold'},
+    color:'black'
   },
 
   roleLabel: {

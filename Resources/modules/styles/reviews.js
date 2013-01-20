@@ -1,11 +1,10 @@
 styles = {	
 
   table: {
-    top:100
+    top:110
   },
 
   row: {
-    //height:100
   },
 
   imageLabel: {    
@@ -22,14 +21,16 @@ styles = {
     height:Ti.UI.SIZE,
     left:60,
     top:5,
-    font:{fontSize:'13', fontWeight:'bold'}
+    font:{fontSize:'13', fontWeight:'bold'},
+    color: 'black',
   },
 
   date: {    
     height:Ti.UI.SIZE,
     left:60,
     top:24,
-    font:{fontSize:'13'}
+    font:{fontSize:'13'},
+    color: 'black'
   },
 
   blurb: {
@@ -37,7 +38,8 @@ styles = {
     left:60,
     top:39,
     width:220,
-    font:{fontSize:'13'}
+    font:{fontSize:'13'},
+    color: 'black',
   },
 
   moreRow: {
@@ -50,7 +52,8 @@ styles = {
     width:Ti.UI.SIZE,            
     top:20,        
     left:100,
-    font:{fontSize:14, fontWeight:'bold'}
+    font:{fontSize:14, fontWeight:'bold'},
+    color: 'black',
   },
 
   spinner: {

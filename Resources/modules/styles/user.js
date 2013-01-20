@@ -31,7 +31,8 @@ styles = {
     width:300,
     left:70,
     top:20,
-    font:{fontSize:'14', fontWeight:'bold'}
+    font:{fontSize:'14', fontWeight:'bold'},
+    color:'black'
   },
 
   line1: {
@@ -47,7 +48,8 @@ styles = {
     width:300,
     left:10,
     top:80,
-    font:{fontSize:'14', fontWeight:'bold'}
+    font:{fontSize:'14', fontWeight:'bold'},
+    color:'black'
   },
 
   line2: {
@@ -63,7 +65,8 @@ styles = {
     width:300,
     left:10,
     top:120,
-    font:{fontSize:'13'}
+    font:{fontSize:'13'},
+    color:'black'
   }
 
 }

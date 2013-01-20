@@ -30,8 +30,7 @@ styles = {
     left:15,
     top:20,
     height:Titanium.UI.SIZE,
-    width:Titanium.UI.SIZE,
-    image:'iphone/less-arrow-white.png'
+    width:Titanium.UI.SIZE    
   },
 
   nextView: {
@@ -51,8 +50,7 @@ styles = {
     right:15,
     top:20,
     height:Titanium.UI.SIZE,
-    width:Titanium.UI.SIZE,
-    image:'iphone/more-arrow-white.png'          
+    width:Titanium.UI.SIZE    
   },
 
   projectThumb: {

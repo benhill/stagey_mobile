@@ -5,7 +5,8 @@ styles = {
     width:Ti.UI.SIZE,
     font:{fontSize:20},
     left:10,
-    top:55
+    top:55,
+    color:'black'
   },
 
   perfInfo: {
@@ -13,7 +14,8 @@ styles = {
     width:Ti.UI.SIZE,
     font:{fontSize:12},
     top:80,
-    left:10
+    left:10,
+    color:'black'
   },
 
   quantityLabel: {
@@ -21,7 +23,8 @@ styles = {
     left:10,    
     width:Ti.UI.SIZE,
     height:Ti.UI.SIZE,
-    font:{fontSize:18}
+    font:{fontSize:18},
+    color:'black'
   },
 
   quantityButton: {

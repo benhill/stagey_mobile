@@ -109,7 +109,7 @@ function ReviewsWindow(user_id, project){
         carrotImage.image = app.resdir + 'iphone/more-arrow.png';
         row.add(carrotImage);
 
-        row.height = row.toImage().height + 8;
+        if(Ti.Platform.name == 'iPhone OS'){row.height = row.toImage().height + 8;}
 
         tableData.push(row);
 

@@ -31,6 +31,7 @@ function SearchWindow(search_terms){
     app.addKeyboardToolbar(searchField);
 
     var searchButton =  Ti.UI.createImageView(searchStyles.searchButton);
+    searchButton.image = app.resdir + 'iphone/search_24.png',
     self.add(searchButton);
 
     if(search_terms){

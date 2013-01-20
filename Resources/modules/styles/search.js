@@ -1,8 +1,8 @@
 styles = {
 
   searchField: {
-    height:35,
-    top:10,
+    height:40,
+    top:55,
     left:5,
     width:'85%',
     borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
@@ -11,11 +11,10 @@ styles = {
     color:'gray'
   },
 
-  searchButton: {
-    image:'iphone/search_24.png',
+  searchButton: {    
     width:24,
     height:24,
-    top:12,    
+    top:57,    
     left:285
   },
 

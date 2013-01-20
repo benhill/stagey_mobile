@@ -1,3 +1,5 @@
+var app = require('modules/core');
+
 var primitives   = require('modules/helpers/primitives'),
   properties   = {},    // Any app-wide properties
 	plugins      = {},    // Any plugins added to the app
@@ -27,6 +29,30 @@ exports.openWindow = function(title, newWindowName, params){
   if(Ti.Platform.name != 'iPhone OS'){require_path = '../' + require_path};
   var windowObj = require(require_path);
   var newWindow = windowObj.apply(this, params);
+
+  if(Ti.Platform.name != 'iPhone OS'){
+
+    newWindow.activity.onCreateOptionsMenu = function(e){
+      var menu = e.menu;
+      var menuItem = menu.add({ title: "My Account" });
+      //menuItem.icon = "item1.png";
+      menuItem.addEventListener("click", function(e) {
+        app.openWindow('Me', 'me', []);
+      });
+    }
+
+    newWindow.addEventListener("android:search", function(e) {
+      app.openWindow('Search', 'search', []);
+    });
+
+    newWindow.addEventListener('android:back', function(e){
+      if(newWindow._sourceUrl != "app://modules/pages/shows.js"){
+        newWindow.close();
+      }
+    });
+
+  };
+
   openWithWindow(title, newWindow);
 };
 

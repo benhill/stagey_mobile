@@ -35,7 +35,8 @@ styles = {
     text:'Create an Account',
     width:Ti.UI.SIZE,
     height:Ti.UI.SIZE,
-    font:{fontSize:14}
+    font:{fontSize:14},
+    color:'black'
   }
 
 }

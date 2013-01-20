@@ -47,7 +47,8 @@ styles = {
   noDataLabel: {
     height:Ti.UI.SIZE,
     top:150,
-    touchEnabled:false
+    touchEnabled:false,
+    color:'black'
   }
 
 };

@@ -15,8 +15,14 @@ function PerformancesWindow(mode, schedule_page){
   self.load = function(){
     if(mode == "nearby"){
       Ti.Geolocation.getCurrentPosition(function(e){
-        lat = e.coords.latitude;
-        lng = e.coords.longitude;
+        if(e.coords){
+          var lat = e.coords.latitude;
+          var lng = e.coords.longitude;
+        }
+        else{
+          var lat = '34.090643';
+          var lng = '-118.332067';
+        }
         loadForm();
       });
     }
@@ -51,6 +57,7 @@ function PerformancesWindow(mode, schedule_page){
         var previousView = Ti.UI.createView(perfStyles.previousView);
 
         var previousImage = Ti.UI.createImageView(perfStyles.previousImage);
+        previousImage.image = app.resdir + 'iphone/less-arrow-white.png';
         previousView.add(previousImage);
 
         var spacer = Ti.UI.createView(perfStyles.spacer);
@@ -66,6 +73,7 @@ function PerformancesWindow(mode, schedule_page){
         var nextView = Ti.UI.createView(perfStyles.nextView);
 
         var nextImage = Ti.UI.createImageView(perfStyles.nextImage);
+        nextImage.image = app.resdir + 'iphone/more-arrow-white.png';
         nextView.add(nextImage);
 
         var spacer = Ti.UI.createView(perfStyles.spacer);

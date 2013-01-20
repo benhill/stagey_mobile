@@ -20,7 +20,8 @@ styles = {
     width:300,
     left:65,
     top:20,
-    font:{fontSize:'18', fontWeight:'bold'}
+    font:{fontSize:'18', fontWeight:'bold'},
+    color:'black'
   },
 
   logoutButton: {
@@ -45,7 +46,8 @@ styles = {
     width:300,
     left:10,
     top:15,
-    font:{fontSize:'16', fontWeight:'bold'}
+    font:{fontSize:'16', fontWeight:'bold'},
+    color:'black'
   },
 
   carrotImage: {

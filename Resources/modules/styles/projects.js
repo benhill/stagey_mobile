@@ -42,7 +42,8 @@ styles = {
     width:Ti.UI.SIZE,            
     top:20,        
     left:100,
-    font:{fontSize:14, fontWeight:'bold'}
+    font:{fontSize:14, fontWeight:'bold'},
+    color:'black'
   },
 
   projectWindow: {    

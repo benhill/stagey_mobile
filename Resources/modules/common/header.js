@@ -27,6 +27,12 @@ function Header(title, window){
     var logoImage =  Ti.UI.createImageView(headerStyles.logoImage);
     logoImage.image = app.resdir + 'iphone/hff_logo.png';
     headerView.add(logoImage);
+
+    if(Ti.Platform.name != 'iPhone OS' && title != "Home"){
+      logoImage.addEventListener('click', function(e){
+        app.openWindow('Home', 'shows', []);
+      })
+    }
   }
   
 	return headerView;
