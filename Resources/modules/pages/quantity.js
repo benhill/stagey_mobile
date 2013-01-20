@@ -47,16 +47,23 @@ function QuantityWindow(performance_id, pwycPrice){
       }
 
       var quantityLabel = Ti.UI.createLabel(perfStyles.quantityLabel);
-      quantityLabel.text = data[0].title;
+
+      if(Ti.Platform.name == 'iPhone OS'){        
+        quantityLabel.text = data[0].title;        
+
+        var quantityButton = Ti.UI.createButton(perfStyles.quantityButton);
+        self.add(quantityButton);
+      }
+      else{
+        quantityLabel.hide();
+      }
       self.add(quantityLabel);
 
-      var quantityButton = Ti.UI.createButton(perfStyles.quantityButton);
-      self.add(quantityButton);
-
       var selectObj = require('modules/common/select_box');
-      self.add(new selectObj(quantityLabel, quantityButton, data));
+      self.add(new selectObj(quantityLabel, quantityButton, data));      
 
       var codeText = Ti.UI.createTextField(perfStyles.codeText);
+      if(Ti.Platform.name != 'iPhone OS'){codeText.left = null}
       if(!pwycPrice){
         self.add(codeText);
         addKeyboardToolbar(codeText);

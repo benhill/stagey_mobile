@@ -1,8 +1,7 @@
 styles = {
 
 	pickerView: {
-    height:251,
-    bottom:0,
+    height:251,    
     zIndex:100
   },
 

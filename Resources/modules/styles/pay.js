@@ -57,7 +57,8 @@ styles = {
     text:'no date selected',
     width:Ti.UI.SIZE,
     height:Ti.UI.SIZE,
-    font:{fontSize:14}
+    font:{fontSize:14},
+    color:'black'
   },
 
   payButton: {
@@ -75,4 +76,4 @@ exports.cardText = styles.cardText;
 exports.csvText = styles.csvText;
 exports.expiryButton = styles.expiryButton;
 exports.expiryLabel = styles.expiryLabel;
-expiryLabel.payButton = styles.payButton;
+exports.payButton = styles.payButton;

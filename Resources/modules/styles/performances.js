@@ -106,7 +106,8 @@ styles = {
     text:'No performances match your criteria...',
     height:Ti.UI.SIZE,
     width:Ti.UI.SIZE,
-    top:150
+    top:150,
+    color:'black'
   },
 
   carrotImage: {

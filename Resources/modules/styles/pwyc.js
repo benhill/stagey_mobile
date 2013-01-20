@@ -6,7 +6,8 @@ styles = {
     width:Ti.UI.SIZE,
     height:Ti.UI.SIZE,
     font:{fontSize:16},
-    text:"This performance is Pay What You Can.  Set your price."
+    text:"This performance is Pay What You Can.  Set your price.",
+    color:'black'
   },
 
   dollarLabel: {
@@ -21,12 +22,13 @@ styles = {
 
   pwycText: {
     color:'#336699', 
-    height:35, 
+    height:45, 
     width:80,
     top:165,
     left:25,
     clearOnEdit:true,
-    borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED
+    borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
+    color:'black'
   },
 
   quantButton: {

@@ -6,15 +6,25 @@ function SelectBox(resultsLabel, submitButton, data_1, data_2){
 
   var pickerView = Ti.UI.createView(pickerStyles.pickerView);
    
-  var cancel =  Ti.UI.createButton(pickerStyles.cancel);
-   
-  var done =  Ti.UI.createButton(pickerStyles.done);
-   
-  var spacer =  Ti.UI.createButton(pickerStyles.spacer);
-   
-  var toolbar =  Ti.UI.iOS.createToolbar(pickerStyles.toolbar);
-  toolbar.items = [cancel,spacer,done]
-  pickerView.add(toolbar);
+  if(Ti.Platform.name == 'iPhone OS'){
+    var cancel =  Ti.UI.createButton(pickerStyles.cancel);
+     
+    var done =  Ti.UI.createButton(pickerStyles.done);
+     
+    var spacer =  Ti.UI.createButton(pickerStyles.spacer);
+     
+    var toolbar =  Ti.UI.iOS.createToolbar(pickerStyles.toolbar);
+    toolbar.items = [cancel,spacer,done]
+    pickerView.add(toolbar);
+
+    pickerView.bottom = 0;
+    pickerView.hide();
+  }
+  else{
+    pickerView.left = 0
+    pickerView.top = 80;
+    pickerView.show();
+  }
    
   var picker = Ti.UI.createPicker(pickerStyles.picker);
   picker.selectionIndicator=true;
@@ -76,30 +86,32 @@ function SelectBox(resultsLabel, submitButton, data_1, data_2){
   var slide_in =  Ti.UI.createAnimation(pickerStyles.slide_in);
   var slide_out =  Ti.UI.createAnimation(pickerStyles.slide_out);
 
-  submitButton.addEventListener('click',function() {
-    pickerView.show();
-  });
-   
-  cancel.addEventListener('click',function() {
-    pickerView.hide();
-  });
+  if(Ti.Platform.name == 'iPhone OS'){
 
-  done.addEventListener('click',function() {
-    if(data_2){      
-      resultsLabel.text = selectedTitle + ' ' + selectedTitle2;
-      resultsLabel.value = selectedValue + ',' + selectedValue2;
-    }
-    else if(data_1){      
-      resultsLabel.text = selectedTitle;
-      resultsLabel.value = selectedValue;
-    }
-    else{
-      resultsLabel.text =  selectedDate;
-    }
-    pickerView.hide();
-  });
-  
-  pickerView.hide();
+    submitButton.addEventListener('click',function() {
+      pickerView.show();
+    });
+   
+    cancel.addEventListener('click',function() {
+      pickerView.hide();
+    });
+
+    done.addEventListener('click',function() {
+      if(data_2){      
+        resultsLabel.text = selectedTitle + ' ' + selectedTitle2;
+        resultsLabel.value = selectedValue + ',' + selectedValue2;
+      }
+      else if(data_1){      
+        resultsLabel.text = selectedTitle;
+        resultsLabel.value = selectedValue;
+      }
+      else{
+        resultsLabel.text =  selectedDate;
+      }
+      pickerView.hide();
+    });
+
+  }  
 
 	return pickerView;
 }

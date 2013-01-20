@@ -37,7 +37,7 @@ styles = {
 
   codeText: {    
     color:'#336699', 
-    height:35, 
+    height:45, 
     width:150, 
     top:180,
     left:10,
