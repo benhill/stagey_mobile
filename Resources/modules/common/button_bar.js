@@ -27,7 +27,9 @@ function ButtonBar(tabNames, callback){
     buttons.push(button);
 
     button.addEventListener('click', function(e){
-      selectButton(e.source);
+      if(e.source.toString() == "[object Label]"){button = e.source.parent}
+      else{button = e.source}
+      selectButton(button);
     })
   } 
 
