@@ -60,7 +60,14 @@ function QuantityWindow(performance_id, pwycPrice){
       self.add(quantityLabel);
 
       var selectObj = require('modules/common/select_box');
-      self.add(new selectObj(quantityLabel, quantityButton, data));      
+      quantPicker = new selectObj(quantityLabel, quantityButton, data);
+
+      quantView = Ti.UI.createView();
+      quantView.height = Ti.UI.SIZE;
+      quantView.width = Ti.UI.SIZE;
+      quantView.top = 80;
+      quantView.add(quantPicker);
+      self.add(quantView);
 
       var codeText = Ti.UI.createTextField(perfStyles.codeText);
       if(Ti.Platform.name != 'iPhone OS'){codeText.left = null}

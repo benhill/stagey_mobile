@@ -19,31 +19,45 @@ function PayWindow(){
     
     var fNameText = Ti.UI.createTextField(payStyles.fNameText);
     self.add(fNameText);
-    addKeyboardToolbar(fNameText);
+    app.addKeyboardToolbar(fNameText);
 
     var lNameText = Ti.UI.createTextField(payStyles.lNameText);
     self.add(lNameText);
-    addKeyboardToolbar(lNameText);
+    app.addKeyboardToolbar(lNameText);
 
     var cardText = Ti.UI.createTextField(payStyles.cardText);
     self.add(cardText);
-    addKeyboardToolbar(cardText);
+    app.addKeyboardToolbar(cardText);
     
     var csvText = Ti.UI.createTextField(payStyles.csvText);
     self.add(csvText);
-    addKeyboardToolbar(csvText);
+    app.addKeyboardToolbar(csvText);    
 
-    csvText.addEventListener('change', function(e){
-      if(e.value.length == 3){
-        e.source.blur();
-      }      
-    })
+    if(Ti.Platform.name == 'iPhone OS'){
 
-    var expiryLabel = Ti.UI.createLabel(payStyles.expiryLabel);    
-    self.add(expiryLabel);
+      var expiryLabel = Ti.UI.createLabel(payStyles.expiryLabel);    
+      self.add(expiryLabel);
 
-    var expiryButton = Ti.UI.createButton(payStyles.expiryButton);    
-    self.add(expiryButton);
+      csvText.addEventListener('change', function(e){
+        if(e.value.length == 3){
+          e.source.blur();
+        }      
+      })
+      
+      var expiryLabel = Ti.UI.createLabel(payStyles.expiryLabel);    
+      self.add(expiryLabel);
+
+      var expiryButton = Ti.UI.createButton(payStyles.expiryButton);    
+      self.add(expiryButton);
+
+      expiryButton.addEventListener('click', function(e){
+        fNameText.blur();
+        lNameText.blur();
+        cardText.blur();
+        csvText.blur();
+        payButton.show();
+      })
+    }    
 
     var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     var data_1 = [];
@@ -59,49 +73,37 @@ function PayWindow(){
     var data_2 = [];
     for(i=0; i < years.length; i++){
       data_2[i] = Ti.UI.createPickerRow({value:years[i], title:years[i]});
-    }    
+    }
+        
+    var monthObj = require('modules/common/select_box');
+    monthPicker = new monthObj(expiryLabel, expiryButton, data_1, data_2);        
+    self.add(monthPicker);
 
-    var selectObj = require('modules/common/select_box');
-    self.add(new selectObj(expiryLabel, expiryButton, data_1, data_2));
+    if(Ti.Platform.name != 'iPhone OS'){
+      monthPicker.top = 200;
+      monthPicker.left = 20;
+
+      var yearObj = require('modules/common/select_box');      
+      yearPicker = new yearObj(expiryLabel, expiryButton, data_2);      
+      self.add(yearPicker);
+      yearPicker.top = 200;
+      yearPicker.right = 20;
+    }
+    else{payButton.hide();}    
 
     var payButton = Ti.UI.createButton(payStyles.payButton);
-    payButton.hide();
-    self.add(payButton);
 
-    expiryButton.addEventListener('click', function(e){
-      fNameText.blur();
-      lNameText.blur();
-      cardText.blur();
-      csvText.blur();
-      payButton.show();
-    })
-
-    function addKeyboardToolbar(textbox){
-      var flexSpace = Ti.UI.createButton({
-        systemButton:Ti.UI.iPhone.SystemButton.FLEXIBLE_SPACE,
-        right:0
-      });
-
-      var doneButton = Ti.UI.createButton({
-        systemButton:Ti.UI.iPhone.SystemButton.DONE,
-        right:0
-      });
-
-      textbox.keyboardToolbar = [flexSpace, doneButton];
-
-      textbox.addEventListener('focus', function(e) {
-        textbox.keyboardToolbar = [flexSpace, doneButton];
-        doneButton.activeFld = textbox;
-      });
-
-      doneButton.addEventListener('click', function(e) {
-        e.source.activeFld.blur();
-      });
-    };
+    self.add(payButton);        
 
     payButton.addEventListener('click', function(e){
-      expiryMonth = expiryLabel.value.split(',')[0];
-      expiryYear = expiryLabel.value.split(',')[1];        
+      if(Ti.Platform.name == 'iPhone OS'){
+        expiryMonth = expiryLabel.value.split(',')[0];
+        expiryYear = expiryLabel.value.split(',')[1];
+      }
+      else{
+        expiryMonth = monthPicker.value;
+        expiryYear = yearPicker.value;
+      }
       params = [cardText.value, fNameText.value, lNameText.value, csvText.value, expiryMonth, expiryYear];
       app.openWindow('Review Order', 'order', params);
     });

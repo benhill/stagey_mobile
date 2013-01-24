@@ -2,11 +2,11 @@ function SelectBox(resultsLabel, submitButton, data_1, data_2){
 
   var app = require('modules/core');
   var styles = require('modules/styles/styles');
-  var pickerStyles = require('modules/styles/select_box');
-
-  var pickerView = Ti.UI.createView(pickerStyles.pickerView);
+  var pickerStyles = require('modules/styles/select_box');  
    
   if(Ti.Platform.name == 'iPhone OS'){
+    var pickerView = Ti.UI.createView(pickerStyles.pickerView);  
+    pickerView.height = 251;
     var cancel =  Ti.UI.createButton(pickerStyles.cancel);
      
     var done =  Ti.UI.createButton(pickerStyles.done);
@@ -20,14 +20,13 @@ function SelectBox(resultsLabel, submitButton, data_1, data_2){
     pickerView.bottom = 0;
     pickerView.hide();
   }
-  else{
-    pickerView.left = 0
-    pickerView.top = 80;
-    pickerView.show();
+  else{    
+    
   }
    
   var picker = Ti.UI.createPicker(pickerStyles.picker);
   picker.selectionIndicator=true;
+  picker.value = data_1[0].value;
   
   if(data_1){
     var selectedValue = data_1[0].value;
@@ -61,9 +60,12 @@ function SelectBox(resultsLabel, submitButton, data_1, data_2){
     picker.type = Ti.UI.PICKER_TYPE_DATE;      
   }  
    
-  pickerView.add(picker);
+  if(Ti.Platform.name == 'iPhone OS'){
+    pickerView.add(picker);
+  }
 
   picker.addEventListener("change", function(e){
+  	picker.value = e.row.value;
     if(data_2){
       if(e.columnIndex == 0){
         selectedTitle = e.row.title;
@@ -96,10 +98,10 @@ function SelectBox(resultsLabel, submitButton, data_1, data_2){
       pickerView.hide();
     });
 
-    done.addEventListener('click',function() {
+    done.addEventListener('click',function() {      
       if(data_2){      
         resultsLabel.text = selectedTitle + ' ' + selectedTitle2;
-        resultsLabel.value = selectedValue + ',' + selectedValue2;
+        resultsLabel.value = selectedValue + ',' + selectedValue2;        
       }
       else if(data_1){      
         resultsLabel.text = selectedTitle;
@@ -113,7 +115,8 @@ function SelectBox(resultsLabel, submitButton, data_1, data_2){
 
   }  
 
-	return pickerView;
+	if(Ti.Platform.name == 'iPhone OS'){return pickerView;}
+  else{return picker;}
 }
 
 module.exports = SelectBox;
