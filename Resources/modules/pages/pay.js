@@ -35,7 +35,7 @@ function PayWindow(){
 
     if(Ti.Platform.name == 'iPhone OS'){
 
-      var expiryLabel = Ti.UI.createLabel(payStyles.expiryLabel);    
+      var expiryLabel = Ti.UI.createLabel(payStyles.expiryLabel);
       self.add(expiryLabel);
 
       csvText.addEventListener('change', function(e){
@@ -43,10 +43,7 @@ function PayWindow(){
           e.source.blur();
         }      
       })
-      
-      var expiryLabel = Ti.UI.createLabel(payStyles.expiryLabel);    
-      self.add(expiryLabel);
-
+            
       var expiryButton = Ti.UI.createButton(payStyles.expiryButton);    
       self.add(expiryButton);
 
@@ -79,6 +76,8 @@ function PayWindow(){
     monthPicker = new monthObj(expiryLabel, expiryButton, data_1, data_2);        
     self.add(monthPicker);
 
+    var payButton = Ti.UI.createButton(payStyles.payButton);
+
     if(Ti.Platform.name != 'iPhone OS'){
       monthPicker.top = 200;
       monthPicker.left = 20;
@@ -89,9 +88,7 @@ function PayWindow(){
       yearPicker.top = 200;
       yearPicker.right = 20;
     }
-    else{payButton.hide();}    
-
-    var payButton = Ti.UI.createButton(payStyles.payButton);
+    else{payButton.hide();}        
 
     self.add(payButton);        
 

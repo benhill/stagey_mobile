@@ -48,7 +48,7 @@ function QuantityWindow(performance_id, pwycPrice){
 
       var quantityLabel = Ti.UI.createLabel(perfStyles.quantityLabel);
 
-      if(Ti.Platform.name == 'iPhone OS'){        
+      if(Ti.Platform.name == 'iPhone OS'){
         quantityLabel.text = data[0].title;        
 
         var quantityButton = Ti.UI.createButton(perfStyles.quantityButton);
@@ -61,13 +61,19 @@ function QuantityWindow(performance_id, pwycPrice){
 
       var selectObj = require('modules/common/select_box');
       quantPicker = new selectObj(quantityLabel, quantityButton, data);
-
-      quantView = Ti.UI.createView();
-      quantView.height = Ti.UI.SIZE;
-      quantView.width = Ti.UI.SIZE;
-      quantView.top = 80;
-      quantView.add(quantPicker);
-      self.add(quantView);
+      
+      if(Ti.Platform.name != 'iPhone OS'){
+        quantView = Ti.UI.createView();
+        quantView.height = Ti.UI.SIZE;
+        quantView.width = Ti.UI.SIZE;
+        quantView.top = 80;
+        quantView.add(quantPicker);
+        
+        self.add(quantView);
+      }
+      else{
+        self.add(quantPicker);
+      }
 
       var codeText = Ti.UI.createTextField(perfStyles.codeText);
       if(Ti.Platform.name != 'iPhone OS'){codeText.left = null}

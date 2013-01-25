@@ -26,7 +26,7 @@ function SelectBox(resultsLabel, submitButton, data_1, data_2){
    
   var picker = Ti.UI.createPicker(pickerStyles.picker);
   picker.selectionIndicator=true;
-  picker.value = data_1[0].value;
+  if(Ti.Platform.name != 'iPhone OS'){picker.value = data_1[0].value;}
   
   if(data_1){
     var selectedValue = data_1[0].value;
@@ -65,7 +65,7 @@ function SelectBox(resultsLabel, submitButton, data_1, data_2){
   }
 
   picker.addEventListener("change", function(e){
-  	picker.value = e.row.value;
+  	if(Ti.Platform.name != 'iPhone OS'){picker.value = e.row.value;};
     if(data_2){
       if(e.columnIndex == 0){
         selectedTitle = e.row.title;

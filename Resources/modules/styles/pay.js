@@ -46,13 +46,13 @@ styles = {
 
   expiryButton: {
     title:'Set Expiry Date',
-    top:190,
+    top:200,
     width:150,
     left:10
   },
 
   expiryLabel: {
-    top:198,
+    top:208,
     left:170,
     text:'no date selected',
     width:Ti.UI.SIZE,

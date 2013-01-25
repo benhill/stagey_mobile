@@ -19,3 +19,4 @@ Logfile initialized
 [TRACE] Launch output: Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.stagey.mobile/.Hff13Activity }
 
 [INFO] Forwarding host port 49729 to device for debugging.
+[INFO] Android Emulator has exited

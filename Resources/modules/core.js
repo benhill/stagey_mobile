@@ -1,4 +1,4 @@
-var app = require('modules/core');
+if(Ti.Platform.name != 'iPhone OS'){var app = require('modules/core');}
 
 var primitives   = require('modules/helpers/primitives'),
   properties   = {},    // Any app-wide properties

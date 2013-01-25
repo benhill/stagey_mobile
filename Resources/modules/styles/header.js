@@ -17,7 +17,8 @@ styles = {
     top:15
   },
 
-  backButton: {    
+  backButton: {  
+    text:" \u21E6 back ",
     font:{fontSize:14},
     color:'white',
     width:60,
@@ -26,7 +27,7 @@ styles = {
     left:5,
     borderWidth:.5,
     borderColor:'gray',
-    borerRadius:5
+    borderRadius:5
   },
 
   logoImage: {
