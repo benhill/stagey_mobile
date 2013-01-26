@@ -49,7 +49,8 @@ styles = {
     width:290,
     left:10,
     top:0,
-    font:{fontSize:'15'}
+    font:{fontSize:'15'},
+    color:'black'
   },
 
   bodyWrapper: {

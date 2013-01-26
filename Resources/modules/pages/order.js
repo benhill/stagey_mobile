@@ -65,7 +65,7 @@ function OrderWindow(cc_num, cc_fname, cc_lname, csv, expiry_month, expiry_year)
         if(cart_item.discount){projectInfo.text += ' \u00B7 ' + cart_item.discount};
         row.add(projectInfo);
 
-        row.height = row.toImage().height + 8;        
+        if(Ti.Platform.name == 'iPhone OS'){row.height = row.toImage().height + 8;}
 
         tableData.push(row);
 

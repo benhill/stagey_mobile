@@ -36,7 +36,7 @@ styles = {
     backgroundColor:'#777777',
     backgroundRepeat:true,
     opacity:.85,
-    height:70
+    height:100
   },
 
   objectLabel: {
@@ -53,7 +53,7 @@ styles = {
     height:Ti.UI.SIZE,
     width:'90%',
     left:10,
-    top:18,
+    top:20,
     color:'white',
     touchEnabled:false
   },

@@ -12,7 +12,8 @@ styles= {
     width:Ti.UI.SIZE,
     top:10,
     left:10,
-    font:{fontSize:16, fontWeight:'bold'}
+    font:{fontSize:16, fontWeight:'bold'},
+    color:'black'
   },
 
   ticketsTotal: {
@@ -20,7 +21,8 @@ styles= {
     width:Ti.UI.SIZE,
     top:30,
     left:10,
-    font:{fontSize:14}
+    font:{fontSize:14},
+    color:'black'
   },
 
   feesTotal: {
@@ -28,7 +30,8 @@ styles= {
     width:Ti.UI.SIZE,
     top:30,
     left:140,
-    font:{fontSize:14}
+    font:{fontSize:14},
+    color:'black'
   },
 
   table: {
@@ -57,6 +60,7 @@ styles= {
     top:10,
     left:60,
     font:{fontSize:14},
+    color:'black'
   },
 
   projectInfo: {
@@ -64,7 +68,8 @@ styles= {
     top:27,
     left:60,
     font:{fontSize:12},
-    width:240
+    width:240,
+    color:'black'
   }
 }
 

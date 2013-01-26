@@ -53,10 +53,10 @@ function ShowsWindow(){
       iconsView.top = 95;
     }
     else{
-      var venues = new Icon('Venues', 'iphone/nearby_48.png', 'venues', null, false, null, 'nearby');
+      var venues = new Icon('Venues', 'iphone/venues_droid_48.png', 'venues', null, false, null, 'nearby');
       icons.push(venues);
 
-      var news = new Icon('News', 'iphone/reviews_48.png', 'feed', null, false, null, 'reviews');
+      var news = new Icon('News', 'iphone/news_48.png', 'feed', null, false, null, 'feed');
       icons.push(news);
 
       iconsView.height = 340;

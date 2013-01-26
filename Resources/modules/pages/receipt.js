@@ -65,7 +65,7 @@ function ReceiptWindow(sale_id){
         if(ticket.discount){projectInfo.text += ' \u00B7 ' + ticket.discount};
         row.add(projectInfo);
 
-        row.height = row.toImage().height + 8;       
+        if(Ti.Platform.name == 'iPhone OS'){row.height = row.toImage().height + 8;}
 
         tableData.push(row);
       }

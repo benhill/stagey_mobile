@@ -89,7 +89,10 @@ function QuantityWindow(performance_id, pwycPrice){
       self.add(buttonView);      
 
       payButton.addEventListener('click', function(e){
-        if(!quantityLabel.value){quantity = 1}else{quantity = quantityLabel.value}
+        if(Ti.Platform.name == 'iPhone OS'){
+          if(!quantityLabel.value){quantity = 1}else{quantity = quantityLabel.value}
+        }
+        else{quantity = quantPicker.value;}
         var cartObj = require('modules/models/cart');
 
         buttonView.remove(payButton);

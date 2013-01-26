@@ -60,7 +60,7 @@ function FeedWindow(){
         labelView.add(objectLabel);
 
         var textLabel = Ti.UI.createLabel(feedStyles.textLabel);
-        textLabel.text = feed_item.text;
+        textLabel.text = feed_item.text + '...';
         textLabel.feed_item = feed_item;
         labelView.add(textLabel);
 
