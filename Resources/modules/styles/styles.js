@@ -3,9 +3,9 @@ styles = {
 	defaultWindow: {
   	backgroundColor:'#F4F1F1',
   	barColor:'black',
-  	//borderColor:'white',
-    //borderWidth:2,
-    //borderRadius:0
+  	borderColor:'white',
+    borderWidth:2,
+    borderRadius:0
 	},
 
 	spinner: {

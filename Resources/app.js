@@ -1,3 +1,5 @@
+Ti.UI.orientation = Ti.UI.PORTRAIT;
+
 var app = require('modules/core');
 
 if(Ti.App.Properties.getString('currentUser')){

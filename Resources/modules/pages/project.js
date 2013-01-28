@@ -94,21 +94,21 @@ function ProjectWindow(project_id){
       var icons = [];
       var left = 0;
 
-      var buy_ticket = new Icon('Showtimes', 'iphone/purchase_24.png', 'performances', project, false);
+      var buy_ticket = new Icon('Showtimes', 'http://stagey-mobile.s3.amazonaws.com/purchase_24.png', 'performances', project, false);
       icons.push(buy_ticket);      
 
       if(project.is_favorite){
-        var make_favorite = new Icon(remove_fav_text, 'iphone/favorite_24.png', 'favorite', project);
+        var make_favorite = new Icon(remove_fav_text, 'http://stagey-mobile.s3.amazonaws.com/favorite_24.png', 'favorite', project);
         is_favorite = true
       }
       else{
-        var make_favorite = new Icon(make_fav_text, 'iphone/favorite_24.png', 'favorite', project);
+        var make_favorite = new Icon(make_fav_text, 'http://stagey-mobile.s3.amazonaws.com/favorite_24.png', 'favorite', project);
         is_favorite = false
       }
       icons.push(make_favorite);
 
       if(Ti.Platform.name == 'iPhone OS'){
-        var share = new Icon('Share', 'iphone/share_24.png', '', project);
+        var share = new Icon('Share', 'http://stagey-mobile.s3.amazonaws.com/share_24.png', '', project);
         icons.push(share);
       }
 
@@ -123,7 +123,7 @@ function ProjectWindow(project_id){
 
         var iconImage = Ti.UI.createImageView(projectStyles.iconImage);        
         iconImage.icon = icon;
-        iconImage.image = app.resdir + icon.image;
+        iconImage.image = icon.image;
         iconView.add(iconImage);
 
         var iconText = Ti.UI.createLabel(projectStyles.iconText);
@@ -208,10 +208,11 @@ function ProjectWindow(project_id){
       reviewView.add(reviewsLabelName);
 
       var carrotImage = Ti.UI.createImageView(projectStyles.carrotImage);
-      carrotImage.image = app.resdir + 'iphone/more-arrow.png';
+      carrotImage.image = 'http://stagey-mobile.s3.amazonaws.com/more-arrow.png';
       reviewView.add(carrotImage);
 
-      reviewView.height = reviewView.toImage().height + 8;
+      if(Ti.Platform.name == 'iPhone OS'){reviewView.height = reviewView.toImage().height + 8;}
+      else{reviewView.height = 90;}
       
       var row = Ti.UI.createTableViewRow(projectStyles.row);
       row.add(reviewView);
@@ -235,7 +236,7 @@ function ProjectWindow(project_id){
       teamView.add(teamLabelName);
 
       var carrotImage = Ti.UI.createImageView(projectStyles.carrotImage);
-      carrotImage.image = app.resdir + 'iphone/more-arrow.png';
+      carrotImage.image = 'http://stagey-mobile.s3.amazonaws.com/more-arrow.png';
       teamView.add(carrotImage);
       
       var row = Ti.UI.createTableViewRow(projectStyles.row);

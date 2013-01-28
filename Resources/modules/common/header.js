@@ -24,8 +24,8 @@ function Header(title, window){
     })
   }
   else{
-    var logoImage =  Ti.UI.createImageView(headerStyles.logoImage);
-    logoImage.image = app.resdir + 'iphone/hff_logo.png';
+    var logoImage =  Ti.UI.createImageView(headerStyles.logoImage);    
+    logoImage.image = 'http://stagey-mobile.s3.amazonaws.com/hff_logo.png';
     headerView.add(logoImage);
 
     if(Ti.Platform.name != 'iPhone OS' && title != "Home"){

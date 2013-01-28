@@ -106,7 +106,7 @@ function ReviewsWindow(user_id, project){
         row.add(blurb);
 
         var carrotImage = Ti.UI.createImageView(reviewsStyles.carrotImage);
-        carrotImage.image = app.resdir + 'iphone/more-arrow.png';
+        carrotImage.image = 'http://stagey-mobile.s3.amazonaws.com/more-arrow.png';
         row.add(carrotImage);
 
         if(Ti.Platform.name == 'iPhone OS'){row.height = row.toImage().height + 8;}

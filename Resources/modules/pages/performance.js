@@ -43,7 +43,7 @@ function PerformanceWindow(performance_id){
       row.add(buyLabel);
 
       var carrotImage = Ti.UI.createImageView(perfStyles.carrotImage);
-      carrotImage.image = app.resdir + 'iphone/more-arrow.png';
+      carrotImage.image = 'http://stagey-mobile.s3.amazonaws.com/more-arrow.png';
       row.add(carrotImage);
 
       tableData.push(row);
@@ -82,7 +82,7 @@ function PerformanceWindow(performance_id){
       row.add(projectLabel);
 
       var carrotImage = Ti.UI.createImageView(perfStyles.carrotImage);
-      carrotImage.image = app.resdir + 'iphone/more-arrow.png';
+      carrotImage.image = 'http://stagey-mobile.s3.amazonaws.com/more-arrow.png';
       row.add(carrotImage);
 
       tableData.push(row);
@@ -98,7 +98,7 @@ function PerformanceWindow(performance_id){
       row.add(perfsLabel);
 
       var carrotImage = Ti.UI.createImageView(perfStyles.carrotImage);
-      carrotImage.image = app.resdir + 'iphone/more-arrow.png';     
+      carrotImage.image = 'http://stagey-mobile.s3.amazonaws.com/more-arrow.png';     
       row.add(carrotImage);
 
       tableData.push(row);
@@ -114,7 +114,7 @@ function PerformanceWindow(performance_id){
       row.add(venueLabel);
 
       var carrotImage = Ti.UI.createImageView(perfStyles.carrotImage);
-      carrotImage.image = app.resdir + 'iphone/more-arrow.png';   
+      carrotImage.image = 'http://stagey-mobile.s3.amazonaws.com/more-arrow.png';   
       row.add(carrotImage);
 
       tableData.push(row);

@@ -8,21 +8,21 @@ function ShowsWindow(){
   var Icon = require('modules/models/icons');
   var icons = [];
   var top = 0;
-  var left = 20;
+  var left = 26;
   var app = require('modules/core');
 
   self.load = function(){
 
-    var projects = new Icon('Browse Current\nShows', 'iphone/all_shows_48.png', 'cats', null, false, null, 'browse');
+    var projects = new Icon('Browse Current\nShows', 'http://stagey-mobile.s3.amazonaws.com/all_shows_48.png', 'cats', null, false, null, 'browse');
     icons.push(projects);
 
-    var whats_next = new Icon('Upcoming\nPerformances', 'iphone/whats_next_48.png', 'performances', null, false, null, 'next');
+    var whats_next = new Icon('Upcoming\nPerformances', 'http://stagey-mobile.s3.amazonaws.com/whats_next_48.png', 'performances', null, false, null, 'next');
     icons.push(whats_next);
 
-    var nearby = new Icon('Playing\nNearby', 'iphone/nearby_48.png', 'performances', null, false, null, 'nearby');
+    var nearby = new Icon('Playing\nNearby', 'http://stagey-mobile.s3.amazonaws.com/nearby_48.png', 'performances', null, false, null, 'nearby');
     icons.push(nearby);
 
-    var reviews = new Icon('Recent\nReviews', 'iphone/reviews_48.png', 'reviews', null, false, null, 'reviews');
+    var reviews = new Icon('Recent\nReviews', 'http://stagey-mobile.s3.amazonaws.com/reviews_48.png', 'reviews', null, false, null, 'reviews');
     icons.push(reviews);
 
     var iconsView = Ti.UI.createView(showStyles.iconsView);
@@ -36,7 +36,7 @@ function ShowsWindow(){
       searchView.add(searchField);
 
       var searchButton =  Ti.UI.createImageView(showStyles.searchButton);
-      searchButton.image = app.resdir + 'iphone/search_24.png';
+      searchButton.image = 'http://stagey-mobile.s3.amazonaws.com/search_24.png';
       searchView.add(searchButton);
 
       self.add(searchView);
@@ -53,10 +53,10 @@ function ShowsWindow(){
       iconsView.top = 95;
     }
     else{
-      var venues = new Icon('Venues', 'iphone/venues_droid_48.png', 'venues', null, false, null, 'nearby');
+      var venues = new Icon('Venues', 'http://stagey-mobile.s3.amazonaws.com/venues_droid_48.png', 'venues', null, false, null, 'nearby');
       icons.push(venues);
 
-      var news = new Icon('News', 'iphone/news_48.png', 'feed', null, false, null, 'feed');
+      var news = new Icon('News', 'http://stagey-mobile.s3.amazonaws.com/news_48.png', 'feed', null, false, null, 'feed');
       icons.push(news);
 
       iconsView.height = 340;
@@ -64,7 +64,7 @@ function ShowsWindow(){
     }
     
     for(var i = 0;i < icons.length; i++){
-      if(i > 0 && i % 2 === 0){left = 20;top += 120;}
+      if(i > 0 && i % 2 === 0){left = 26;top += 120;}
       
       icon = icons[i];
       
@@ -75,7 +75,7 @@ function ShowsWindow(){
       
       var iconImage = Ti.UI.createImageView(showStyles.iconImage);    
       iconImage.icon = icon;
-      iconImage.image = app.resdir + icon.image;
+      iconImage.image = icon.image;
       iconView.add(iconImage);
 
       var iconText = Ti.UI.createLabel(showStyles.iconText);
@@ -85,7 +85,7 @@ function ShowsWindow(){
       
       iconsView.add(iconView);
 
-      left += 140;  
+      left += 146;
 
       iconView.addEventListener('click', function(e){
         runIconEvent(e);

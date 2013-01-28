@@ -65,7 +65,7 @@ function FeedWindow(){
         labelView.add(textLabel);
 
         var carrotImage = Ti.UI.createImageView(feedStyles.carrotImage);
-        carrotImage.image = app.resdir + 'iphone/more-arrow.png';
+        carrotImage.image = 'http://stagey-mobile.s3.amazonaws.com/more-arrow.png';
         carrotImage.feed_item = feed_item;
         labelView.add(carrotImage);
 

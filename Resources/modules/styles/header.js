@@ -32,7 +32,9 @@ styles = {
 
   logoImage: {
     top:10,
-    left:5
+    left:5,
+    height:Ti.UI.SIZE,
+    width:Ti.UI.SIZE
   }
 
 }

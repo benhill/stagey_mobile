@@ -72,7 +72,7 @@ function VenuesWindow(){
           row.add(addressLabel);
 
           var carrotImage = Ti.UI.createImageView(venueStyles.carrotImage);
-          carrotImage.image = app.resdir + 'iphone/more-arrow.png';
+          carrotImage.image = 'http://stagey-mobile.s3.amazonaws.com/more-arrow.png';
           carrotImage.venue_id = venue.id;
 
           row.add(carrotImage);

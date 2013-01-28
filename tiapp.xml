@@ -28,13 +28,20 @@
             <orientation>Ti.UI.PORTRAIT</orientation>
         </orientations>
         <orientations device="ipad">
-            <orientation>Ti.UI.PORTRAIT</orientation>
-            <orientation>Ti.UI.UPSIDE_PORTRAIT</orientation>
-            <orientation>Ti.UI.LANDSCAPE_LEFT</orientation>
-            <orientation>Ti.UI.LANDSCAPE_RIGHT</orientation>
+            <orientation>Ti.UI.PORTRAIT</orientation>            
         </orientations>
     </iphone>
-    <android xmlns:android="http://schemas.android.com/apk/res/android"/>
+    <android xmlns:android="http://schemas.android.com/apk/res/android">
+      <manifest>
+        <supports-screens android:anyDensity="false"/>
+        <application>
+            <activity android:name="org.appcelerator.titanium.TiActivity" 
+                android:screenOrientation="portrait" 
+                android:configChanges="keyboardHidden|orientation">
+            </activity>
+        </application>
+      </manifest>
+    </android>
     <mobileweb>
         <precache/>
         <splash>

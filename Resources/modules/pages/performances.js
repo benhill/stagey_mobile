@@ -57,7 +57,7 @@ function PerformancesWindow(mode, schedule_page){
         var previousView = Ti.UI.createView(perfStyles.previousView);
 
         var previousImage = Ti.UI.createImageView(perfStyles.previousImage);
-        previousImage.image = app.resdir + 'iphone/less-arrow-white.png';
+        previousImage.image = 'http://stagey-mobile.s3.amazonaws.com/less-arrow-white.png';
         previousView.add(previousImage);
 
         var spacer = Ti.UI.createView(perfStyles.spacer);
@@ -73,7 +73,7 @@ function PerformancesWindow(mode, schedule_page){
         var nextView = Ti.UI.createView(perfStyles.nextView);
 
         var nextImage = Ti.UI.createImageView(perfStyles.nextImage);
-        nextImage.image = app.resdir + 'iphone/more-arrow-white.png';
+        nextImage.image = 'http://stagey-mobile.s3.amazonaws.com/more-arrow-white.png';
         nextView.add(nextImage);
 
         var spacer = Ti.UI.createView(perfStyles.spacer);
@@ -126,7 +126,7 @@ function PerformancesWindow(mode, schedule_page){
 
         var carrotImage = Ti.UI.createImageView(perfStyles.carrotImage);
         carrotImage.performance = performance;
-        carrotImage.image = app.resdir + 'iphone/more-arrow.png';
+        carrotImage.image = 'http://stagey-mobile.s3.amazonaws.com/more-arrow.png';
         row.add(carrotImage);
 
         tableData.push(row);

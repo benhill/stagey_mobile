@@ -48,7 +48,7 @@ styles = {
   },
 
   row: {
-    height:'60dp'
+    height:60
   },
 
   carrotImage: {
