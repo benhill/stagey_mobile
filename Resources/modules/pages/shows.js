@@ -60,7 +60,7 @@ function ShowsWindow(){
       icons.push(news);
 
       iconsView.height = 340;
-      iconsView.top = 60;      
+      iconsView.top = 80;
     }
     
     for(var i = 0;i < icons.length; i++){
@@ -94,13 +94,23 @@ function ShowsWindow(){
     
     self.add(iconsView);
 
-    alertView = Ti.UI.createView(showStyles.alertView);
+    var alertObj = require('modules/models/alert');
 
-    alertLabel = Ti.UI.createLabel(showStyles.alertLabel);
-    alertLabel.text = "Registration is now open for HFF13!"
-    alertView.add(alertLabel);
+    new alertObj(function(alertObj){
+      alertView = Ti.UI.createView(showStyles.alertView);      
 
-    self.add(alertView);    
+      alertLabel = Ti.UI.createLabel(showStyles.alertLabel);
+      alertLabel.text = alertObj.text;
+      alertLabel.url = alertObj.link;
+      alertView.add(alertLabel);
+
+      self.add(alertView);
+
+      alertView.addEventListener('click', function(e){
+       Ti.Platform.openURL(e.source.url);
+      })
+
+    });
 
     function runSearch(terms, e, islongclick){
       new searchObj(terms, function(data){

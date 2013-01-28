@@ -131,7 +131,7 @@ function ProjectWindow(project_id){
         iconText.icon = icon;
         iconView.add(iconText);
 
-        iconView.addEventListener('click', function(e){        
+        iconView.addEventListener('click', function(e){
          runIconEvent(e);
         })
 

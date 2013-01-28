@@ -5,7 +5,7 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.023735 seconds on emulator to get ready
+[DEBUG] waited 0.029005 seconds on emulator to get ready
 [DEBUG] com.stagey.mobile installed? False
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
@@ -43,6 +43,7 @@ Logfile initialized
 [DEBUG] from resource zip => assets/Resources/modules/helpers/primitives.js
 [DEBUG] from resource zip => assets/Resources/modules/models/add_review.js
 [DEBUG] from resource zip => assets/Resources/modules/models/add_user.js
+[DEBUG] from resource zip => assets/Resources/modules/models/alert.js
 [DEBUG] from resource zip => assets/Resources/modules/models/cart.js
 [DEBUG] from resource zip => assets/Resources/modules/models/cats.js
 [DEBUG] from resource zip => assets/Resources/modules/models/feed.js
@@ -173,7 +174,7 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.024987 seconds on emulator to get ready
+[DEBUG] waited 0.025910 seconds on emulator to get ready
 [INFO] Installing application on device
 [INFO] Application installed. Launch from drawer on Home Screen
 [INFO] Forwarding host port 9419 to device for debugging.
