@@ -114,9 +114,25 @@ styles = {
     right:10,
     top:'40%',
     font:{fontSize:12, fontWeight:'bold'},
-    height:Titanium.UI.SIZE,
-    width:Titanium.UI.SIZE,
+    height:Ti.UI.SIZE,
+    width:Ti.UI.SIZE,
     zIndex:-1000
+  },
+
+  helperView: {
+    width:'100%',
+    height:30,
+    top:100,
+    backgroundColor:'white',
+    borderColor:'black',
+    borderWidth:1,
+  },
+
+  helperLabel: {
+    width:Ti.UI.SIZE,
+    height:Ti.UI.SIZE,
+    color:'black',
+    font:{fontSize:12},
   }
 
 };
@@ -137,3 +153,5 @@ exports.moreLabel = styles.moreLabel;
 exports.spinner = styles.spinner;
 exports.noPerfs = styles.noPerfs;
 exports.carrotImage = styles.carrotImage;
+exports.helperView = styles.helperView;
+exports.helperLabel = styles.helperLabel;

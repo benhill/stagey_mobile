@@ -1,7 +1,7 @@
 styles= {
 
   detailsView: {
-    top:50,
+    top:90,
     left:0,
     height:100,
     layout:'absolute'
@@ -35,13 +35,14 @@ styles= {
   },
 
   table: {
-    top:105,
+    top:145,
+    bottom:60,
     borderColor:'gray',
     borderWidth:1
   },
 
   row: {
-    height:75,
+    height:70,
     selectedBackgroundColor:'#F4F1F1'
   },
 
@@ -70,7 +71,20 @@ styles= {
     font:{fontSize:12},
     width:240,
     color:'black'
+  },
+
+  buttonView: {
+    height:Ti.UI.SIZE,
+    width:Ti.UI.SIZE,
+    bottom:5
+  },
+
+  homeButton: {
+    title:'Return Home',
+    width:300,
+    height:50
   }
+
 }
 
 exports.detailsView = styles.detailsView;
@@ -82,3 +96,5 @@ exports.row = styles.row;
 exports.projectThumb = styles.projectThumb;
 exports.projectTitle = styles.projectTitle;
 exports.projectInfo = styles.projectInfo;
+exports.buttonView = styles.buttonView;
+exports.homeButton = styles.homeButton

@@ -5,11 +5,11 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.029005 seconds on emulator to get ready
+[DEBUG] waited 0.024039 seconds on emulator to get ready
 [DEBUG] com.stagey.mobile installed? False
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: /src/stagey_mobile/Resources/modules/pages/shows.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/shows.js
+[TRACE] COPYING MODIFIED FILE: /src/stagey_mobile/Resources/modules/pages/performances.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/performances.js
 [TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
 [TRACE] COPYING FILE: /src/stagey_mobile/Resources/android/images/res-long-land-hdpi/Default.png => /src/stagey_mobile/build/android/res/drawable-long-land-hdpi/default_d44e27d97b.png
@@ -32,6 +32,7 @@ Logfile initialized
 [DEBUG] adding /src/stagey_mobile/build/android/gen/com/stagey/mobile/R.java to javac build list
 [DEBUG] Building Java Sources: "/src/stagey_mobile/build/android/gen/com/stagey/mobile/Hff13Activity.java" "/src/stagey_mobile/build/android/gen/com/stagey/mobile/Hff13AppInfo.java" "/src/stagey_mobile/build/android/gen/com/stagey/mobile/Hff13Application.java" "/src/stagey_mobile/build/android/gen/com/stagey/mobile/R.java"
 [INFO] Compiling Android Resources... This could take some time
+[INFO] Application installed. Launch from drawer on Home Screen
 [DEBUG] Android classes.dex built
 [DEBUG] creating unsigned apk: /src/stagey_mobile/build/android/bin/app-unsigned.apk
 [DEBUG] from resource zip => assets/Resources/modules/common/button_bar.js
@@ -174,7 +175,7 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.025910 seconds on emulator to get ready
+[DEBUG] waited 0.023525 seconds on emulator to get ready
 [INFO] Installing application on device
 [INFO] Application installed. Launch from drawer on Home Screen
 [INFO] Forwarding host port 9419 to device for debugging.

@@ -150,13 +150,15 @@ function ProjectWindow(project_id){
             link:app.site_url + 'projects/' + e.source.icon.object.id
           });
         }
-        else if(e.source.icon.window == 'favorite' && !is_favorite){  
+        else if(e.source.icon.window == 'favorite' && !is_favorite){
+          if(Ti.App.currentUser){alert('added to favorites');};
           favTextView.text = remove_fav_text;
           favImgView.text = remove_fav_text;
           is_favorite = true;
-          toggleFavorite();          
+          toggleFavorite();
         }
         else if(e.source.icon.window == 'favorite' && is_favorite){
+          if(Ti.App.currentUser){alert('removed from favorites');};
           favTextView.text = make_fav_text;
           favImgView.text = make_fav_text;
           is_favorite = false;
@@ -317,7 +319,7 @@ function ProjectWindow(project_id){
         var headerObj = require('modules/common/header');
         newWindow.add(new headerObj());
 
-        app.openWindow('Login', 'Login', [newWindow])
+        app.openWindow('Login', 'login', [newWindow])
       }
     }
 

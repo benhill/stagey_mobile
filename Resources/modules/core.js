@@ -25,6 +25,10 @@ exports.register = function(name, object) {
 };
 
 exports.openWindow = function(title, newWindowName, params){
+
+  Ti.API.info("loading " + newWindowName);
+  Ti.API.info("Available memory: " + Ti.Platform.availableMemory);
+
   require_path = 'modules/pages/' + newWindowName;
   if(Ti.Platform.name != 'iPhone OS'){require_path = '../' + require_path};
   var windowObj = require(require_path);
@@ -109,8 +113,8 @@ exports.property = function(name) {
 
 exports.timeout = 15000;
 
-exports.api_url = 'http://192.168.1.65/api/';
-//exports.api_url = 'https://staging.hollywoodfringe.org/api/';
+//exports.api_url = 'http://192.168.1.65/api/';
+exports.api_url = 'https://staging.hollywoodfringe.org/api/';
 
 exports.site_url = 'http://staging.hollywoodfringe.org/';
 

@@ -64,11 +64,19 @@ function PerformancesWindow(mode, schedule_page){
         spacer.right = 0;
         previousView.add(spacer);
 
-        if(performances[0].has_less){titleView.add(previousView)};
+        if(performances[0].has_less){
+          titleView.add(previousView);
 
-        previousView.addEventListener('click', function(e){
-          app.openWindow('Schedule', 'performances', [mode, schedule_page -= 1]);
-        })
+          previousView.addEventListener('click', function(e){
+            loadLast();
+          })
+
+          self.addEventListener('swipe', function(e) {
+            if (e.direction == 'right') {
+              loadLast();        
+            }
+          });
+        };        
 
         var nextView = Ti.UI.createView(perfStyles.nextView);
 
@@ -80,16 +88,34 @@ function PerformancesWindow(mode, schedule_page){
         spacer.left = 0;
         nextView.add(spacer);
 
-        if(performances[0].has_more){titleView.add(nextView)};
+        if(performances[0].has_more){
+          titleView.add(nextView);
 
-        nextView.addEventListener('click', function(e){
-          app.openWindow('Schedule', 'performances', [mode, schedule_page += 1]);
-        })
+          nextView.addEventListener('click', function(e){
+            loadNext();
+          })
+
+          self.addEventListener('swipe', function(e) {
+            if (e.direction == 'left') {
+              loadNext();
+            }             
+          });
+
+        };        
 
         self.add(titleView);
-      }
+
+        var helperView = Ti.UI.createView(perfStyles.helperView);
+
+        var helperLabel = Ti.UI.createLabel(perfStyles.helperLabel);
+        helperLabel.text = "swipe or use arrows to traverse schedule";
+        helperView.add(helperLabel);
+
+        self.add(helperView);
+
+      }      
       
-      mode == 'schedule' || mode == 'next' ? table.top = 100 : table.top = 50;
+      mode == 'schedule' || mode == 'next' ? table.top = 130 : table.top = 50;
 
       var tableData = [];
       var total_results = performances[0].total_results;
@@ -130,22 +156,19 @@ function PerformancesWindow(mode, schedule_page){
         row.add(carrotImage);
 
         tableData.push(row);
-      }
-
-      var row = Ti.UI.createTableViewRow(perfStyles.row);
-
-      var moreLabel = Ti.UI.createLabel(perfStyles.moreLabel);
+      }      
       
       if(total_results > (rows_per_page * page)){
+        var row = Ti.UI.createTableViewRow(perfStyles.row);
+        var moreLabel = Ti.UI.createLabel(perfStyles.moreLabel);
         row.add(moreLabel);
-      }
+        tableData.push(row);
 
-      row.addEventListener('click', function(e){
-        page += 1;
-        loadMore(e);
-      });
-
-      tableData.push(row);
+        row.addEventListener('click', function(e){
+          page += 1;
+          loadMore(e);
+        });
+      }      
 
       if(page > 1){
 
@@ -165,6 +188,15 @@ function PerformancesWindow(mode, schedule_page){
       self.open();
       spinner.hide();
     };
+
+    function loadNext(){
+      app.openWindow('Schedule', 'performances', [mode, schedule_page + 1]);
+    }
+
+    function loadLast(){
+      self.close();
+      //app.openWindow('Schedule', 'performances', [mode, schedule_page -= 1]);
+    }
 
     function loadPerformance(e, islongclick) {      
       app.openWindow('Performance', 'performance', [e.source.performance.id]);

@@ -50,7 +50,7 @@ function ShowsWindow(){
       });
 
       iconsView.height = 260;
-      iconsView.top = 95;
+      iconsView.top = 115;
     }
     else{
       var venues = new Icon('Venues', 'http://stagey-mobile.s3.amazonaws.com/venues_droid_48.png', 'venues', null, false, null, 'nearby');

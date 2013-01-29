@@ -10,7 +10,7 @@ styles = {
   },
 
   searchButton: {
-    image:'iphone/search_24.png',
+    image:'http://stagey-mobile.s3.amazonaws.com/search_24.png',
     width:24,
     height:24,
     right:15,

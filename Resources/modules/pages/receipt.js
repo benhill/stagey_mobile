@@ -15,12 +15,11 @@ function ReceiptWindow(sale_id){
     new saleObj(sale_id, function(sale){
 
       var titleView = Ti.UI.createView(styles.titleView);
-      titleView.top = 0;
-      titleView.height = 50;
+      titleView.top = 50;      
 
       var titleLabel = Ti.UI.createLabel(styles.titleLabel);
       titleLabel.text = 'Your Order is Complete';
-      titleLabel.top = 15;
+      titleLabel.bottom = 10;
       titleView.add(titleLabel);
 
       self.add(titleView);
@@ -72,6 +71,18 @@ function ReceiptWindow(sale_id){
 
       table.setData(tableData);
       self.add(table);
+
+      var buttonView = Ti.UI.createView(receiptStyles.buttonView);
+
+      homeButton = Ti.UI.createButton(receiptStyles.homeButton);
+      buttonView.add(homeButton);
+
+      homeButton.addEventListener('click', function(e){
+        app.openWindow('Home', 'shows', []);
+      });
+
+      self.add(buttonView);
+
       self.remove(spinner);
     })
   }

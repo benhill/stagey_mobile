@@ -7,7 +7,7 @@ styles = {
     scrollType:'vertical',
     verticalBounce:true,
     showVerticalScrollIndicator:true,
-    height:330,
+    height:'75%',
     top:50,
     left:0
   },

@@ -3,7 +3,7 @@ var default_search_text = 'search for a show';
 styles = {	
 
 	searchView: {
-		top:52,
+		top:60,
     left:1,
     height:50,
     layout:'absolute'
@@ -23,8 +23,8 @@ styles = {
     height:40,
     clearOnEdit:true,
     top:0,
-    left:0,
-    width:'90%',
+    left:26,
+    width:'74%',
     borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
     color:'gray'		
   },
@@ -33,7 +33,7 @@ styles = {
     width:'7%',
     height:Ti.UI.SIZE,
     top:5,
-    right:5
+    right:27
   },
 
   iconsView: {    

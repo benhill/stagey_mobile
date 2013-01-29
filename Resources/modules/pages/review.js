@@ -89,7 +89,7 @@ function ReviewWindow(review_id){
 
   function make_helpful(is_helpful){
     var helpfulObj = require('modules/models/make_review_helpful');
-    new helpfulObj(review.id, Ti.App.currentUser.id, is_helpful, function(response){
+    new helpfulObj(review_id, Ti.App.currentUser.id, is_helpful, function(response){
       alert("Thanks for your feedback");
     })
   }

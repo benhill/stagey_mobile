@@ -13,7 +13,7 @@ function Reviews(url, callback){
   xhr.onerror = function(){ 
     Ti.API.info('Error');
   };
-
+  
   xhr.open('GET', url);
   xhr.send();
 };

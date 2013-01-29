@@ -14,8 +14,7 @@ styles = {
 	  top:150,
 	  message:'loading...',
 	  color:'black',
-	  style:Titanium.UI.iPhone.ActivityIndicatorStyle.DARK,
-    zIndex:1000
+	  style:Titanium.UI.iPhone.ActivityIndicatorStyle.DARK
 	},
 
 	titleView: {
