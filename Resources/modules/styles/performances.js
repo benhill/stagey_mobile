@@ -7,37 +7,37 @@ styles = {
     width:'100%',
     height:50,
     backgroundColor:'black',    
-    top:50    
+    top:50
   },
 
   titleLabel: {
     height:Ti.UI.SIZE,
     width:Ti.UI.SIZE,
     color:'white',
-    font:{fontSize:20, fontWeight:'bold'},
-    left:85,
-    top:15
+    font:{fontSize:20, fontWeight:'bold'},    
+    top:15,
+    textAlign:'center'
   },
 
   previousView: {
     left:0,
     top:0,
     height:'100%',
-    width:40
+    width:80
   },
   
-  previousImage: {    
-    left:15,
-    top:20,
+  previousLabel: {
     height:Titanium.UI.SIZE,
-    width:Titanium.UI.SIZE    
+    width:Titanium.UI.SIZE,
+    font:{fontSize:14},
+    color:'white'
   },
 
   nextView: {
     right:0,
     top:0,
     height:'100%',
-    width:40
+    width:80
   },
 
   spacer: {
@@ -46,11 +46,11 @@ styles = {
     backgroundColor:'white'
   },
 
-  nextImage: {    
-    right:15,
-    top:20,
+  nextLabel: {    
     height:Titanium.UI.SIZE,
-    width:Titanium.UI.SIZE    
+    width:Titanium.UI.SIZE,
+    font:{fontSize:14},
+    color:'white'
   },
 
   projectThumb: {
@@ -117,22 +117,6 @@ styles = {
     height:Ti.UI.SIZE,
     width:Ti.UI.SIZE,
     zIndex:-1000
-  },
-
-  helperView: {
-    width:'100%',
-    height:30,
-    top:100,
-    backgroundColor:'white',
-    borderColor:'black',
-    borderWidth:1,
-  },
-
-  helperLabel: {
-    width:Ti.UI.SIZE,
-    height:Ti.UI.SIZE,
-    color:'black',
-    font:{fontSize:12},
   }
 
 };
@@ -141,10 +125,10 @@ exports.table = styles.table;
 exports.titleView = styles.titleView;
 exports.titleLabel = styles.titleLabel;
 exports.previousView = styles.previousView;
-exports.previousImage = styles.previousImage;
+exports.previousLabel = styles.previousLabel;
 exports.nextView = styles.nextView;
 exports.spacer = styles.spacer;
-exports.nextImage = styles.nextImage;
+exports.nextLabel = styles.nextLabel;
 exports.projectThumb = styles.projectThumb;
 exports.projectTitle = styles.projectTitle;
 exports.projectInfo = styles.projectInfo;

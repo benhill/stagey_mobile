@@ -17,6 +17,14 @@ styles = {
     top:15
   },
 
+  userButton: {
+    image:'http://stagey-mobile.s3.amazonaws.com/user_24.png',
+    width:24,
+    height:24,
+    right:47,
+    top:14
+  },
+
   backButton: {  
     text:" \u21E6 back ",
     font:{fontSize:14},
@@ -43,3 +51,4 @@ exports.headerView = styles.headerView;
 exports.searchButton = styles.searchButton;
 exports.backButton = styles.backButton;
 exports.logoImage = styles.logoImage;
+exports.userButton = styles.userButton;

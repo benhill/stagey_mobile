@@ -51,14 +51,14 @@ function PerformancesWindow(mode, schedule_page){
         var titleView = Ti.UI.createView(perfStyles.titleView);
         
         var titleLabel = Ti.UI.createLabel(perfStyles.titleLabel);
-        titleLabel.text = performances[0].date_time;        
+        titleLabel.text = performances[0].date_time;
         titleView.add(titleLabel);        
       
         var previousView = Ti.UI.createView(perfStyles.previousView);
 
-        var previousImage = Ti.UI.createImageView(perfStyles.previousImage);
-        previousImage.image = 'http://stagey-mobile.s3.amazonaws.com/less-arrow-white.png';
-        previousView.add(previousImage);
+        var previousLabel = Ti.UI.createLabel(perfStyles.previousLabel);
+        previousLabel.text = performances[0].previous_date;
+        previousView.add(previousLabel);
 
         var spacer = Ti.UI.createView(perfStyles.spacer);
         spacer.right = 0;
@@ -80,9 +80,9 @@ function PerformancesWindow(mode, schedule_page){
 
         var nextView = Ti.UI.createView(perfStyles.nextView);
 
-        var nextImage = Ti.UI.createImageView(perfStyles.nextImage);
-        nextImage.image = 'http://stagey-mobile.s3.amazonaws.com/more-arrow-white.png';
-        nextView.add(nextImage);
+        var nextLabel = Ti.UI.createLabel(perfStyles.nextLabel);
+        nextLabel.text = performances[0].next_date;
+        nextView.add(nextLabel);
 
         var spacer = Ti.UI.createView(perfStyles.spacer);
         spacer.left = 0;
@@ -104,18 +104,10 @@ function PerformancesWindow(mode, schedule_page){
         };        
 
         self.add(titleView);
-
-        var helperView = Ti.UI.createView(perfStyles.helperView);
-
-        var helperLabel = Ti.UI.createLabel(perfStyles.helperLabel);
-        helperLabel.text = "swipe or use arrows to traverse schedule";
-        helperView.add(helperLabel);
-
-        self.add(helperView);
-
+        
       }      
       
-      mode == 'schedule' || mode == 'next' ? table.top = 130 : table.top = 50;
+      mode == 'schedule' || mode == 'next' ? table.top = 100 : table.top = 50;
 
       var tableData = [];
       var total_results = performances[0].total_results;

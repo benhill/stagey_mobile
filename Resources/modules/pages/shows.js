@@ -26,42 +26,15 @@ function ShowsWindow(){
     icons.push(reviews);
 
     var iconsView = Ti.UI.createView(showStyles.iconsView);
+    iconsView.height = 340;      
+    
+    if(Ti.Platform.name == 'iPhone OS'){iconsView.top = 65}else{iconsView.top = 80;};
 
-    if(Ti.Platform.name == 'iPhone OS'){
+    var venues = new Icon('Venues', 'http://stagey-mobile.s3.amazonaws.com/venues_droid_48.png', 'venues', null, false, null, 'nearby');
+    icons.push(venues);
 
-      var searchView = Ti.UI.createView(showStyles.searchView);
-
-      var searchField = Titanium.UI.createTextField(showStyles.searchField);
-      app.addKeyboardToolbar(searchField);
-      searchView.add(searchField);
-
-      var searchButton =  Ti.UI.createImageView(showStyles.searchButton);
-      searchButton.image = 'http://stagey-mobile.s3.amazonaws.com/search_24.png';
-      searchView.add(searchButton);
-
-      self.add(searchView);
-
-      searchButton.addEventListener('click', function(e){
-        runSearch(searchField.value);
-      });
-
-      searchField.addEventListener('return', function(e){
-        runSearch(searchField.value);
-      });
-
-      iconsView.height = 260;
-      iconsView.top = 115;
-    }
-    else{
-      var venues = new Icon('Venues', 'http://stagey-mobile.s3.amazonaws.com/venues_droid_48.png', 'venues', null, false, null, 'nearby');
-      icons.push(venues);
-
-      var news = new Icon('News', 'http://stagey-mobile.s3.amazonaws.com/news_48.png', 'feed', null, false, null, 'feed');
-      icons.push(news);
-
-      iconsView.height = 340;
-      iconsView.top = 80;
-    }
+    var news = new Icon('News', 'http://stagey-mobile.s3.amazonaws.com/news_48.png', 'feed', null, false, null, 'feed');
+    icons.push(news);
     
     for(var i = 0;i < icons.length; i++){
       if(i > 0 && i % 2 === 0){left = 26;top += 120;}

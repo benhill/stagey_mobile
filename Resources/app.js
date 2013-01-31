@@ -10,16 +10,7 @@ Ti.App.token = '8kj@!!00990j34Ad'
 Ti.API.info("module is => " + sharekit);
 
 if(Ti.Platform.name == 'iPhone OS'){
-
-  var ApplicationTabGroup = require('modules/common/tab_group');
-  new ApplicationTabGroup().open();
-
   var sharekit = require('com.0x82.sharekit');
-
-  var testflight = require("com.0x82.testflight");
-  testflight.takeOff('6ea7c45a611258af025dea6d421f5d22_MTQ4NjYwMjAxMi0xMC0yOCAxNzowNjo1OC4wNjU1NTE');
-
-  Ti.Geolocation.purpose = "Receive User Location";
 
   sharekit.configure({
     my_app_name: 'stagey',
@@ -58,7 +49,11 @@ if(Ti.Platform.name == 'iPhone OS'){
     allow_offline: true,
     allow_auto_share: true
   });
+
+  var testflight = require("com.0x82.testflight");
+  testflight.takeOff('6ea7c45a611258af025dea6d421f5d22_MTQ4NjYwMjAxMi0xMC0yOCAxNzowNjo1OC4wNjU1NTE');
 }
-else{
-  app.openWindow('Home', 'shows', []);
-}
+
+Ti.Geolocation.purpose = "Receive User Location";
+
+app.openWindow('Home', 'shows', []);

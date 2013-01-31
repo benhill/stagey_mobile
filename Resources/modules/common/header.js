@@ -6,22 +6,39 @@ function Header(title, window){
   
   var headerView = Ti.UI.createView(headerStyles.headerView);
 
-  var searchButton =  Ti.UI.createImageView(headerStyles.searchButton);
+  if(Ti.Platform.name == 'iPhone OS'){
 
-  if(title != 'Search' && title != 'Shows'){headerView.add(searchButton)};
+    var searchButton =  Ti.UI.createImageView(headerStyles.searchButton);
+    if(title != 'Search'){headerView.add(searchButton)};  
 
-  searchButton.addEventListener('click', function(e){
-    app.openWindow('Search', 'search', []);
-  });
+    searchButton.addEventListener('click', function(e){
+      app.openWindow('Search', 'search', []);
+    });  
 
-  if(window && title != 'Me' && title != 'Login' && Ti.Platform.name == 'iPhone OS'){
-    
+    var userButton =  Ti.UI.createImageView(headerStyles.userButton);
+    headerView.add(userButton);
+
+    userButton.addEventListener('click', function(e){
+      app.openWindow('Me', 'me', []);
+    });  
+  }
+
+  if(window && title != 'Home' && Ti.Platform.name == 'iPhone OS'){    
     var backButton =  Ti.UI.createLabel(headerStyles.backButton);
     headerView.add(backButton);
 
     backButton.addEventListener('click', function(e){    
-      window.close();
+      if(title == 'Schedule'){
+        app.openWindow('Home', 'shows', []);  
+      }
+      else if (title == 'My Schedule'){
+        app.openWindow('Me', 'me', []);
+      }
+      else{
+        window.close();
+      }
     })
+    
   }
   else{
     var logoImage =  Ti.UI.createImageView(headerStyles.logoImage);    
