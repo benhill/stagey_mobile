@@ -21,7 +21,7 @@ styles = {
     image:'http://stagey-mobile.s3.amazonaws.com/user_24.png',
     width:24,
     height:24,
-    right:47,
+    right:55,
     top:14
   },
 

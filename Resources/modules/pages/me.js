@@ -68,7 +68,10 @@ function MeWindow(){
     icons.push(favorites);
 
     var schedule = new iconObj('My Schedule', 'iphone/all_shows_48.png', 'performances', null, false, 'schedule', 'schedule');
-    icons.push(schedule);          
+    icons.push(schedule);
+
+    var schedule = new iconObj('My Profile', 'iphone/all_shows_48.png', 'user', null, false, user.id, 'user');
+    icons.push(schedule);
 
     for(i=0; i< icons.length; i++){
 

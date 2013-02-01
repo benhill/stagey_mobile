@@ -39,7 +39,7 @@ exports.openWindow = function(title, newWindowName, params){
     newWindow.activity.onCreateOptionsMenu = function(e){
       var menu = e.menu;
       var menuItem = menu.add({ title: "My Account" });
-      //menuItem.icon = "item1.png";
+            
       menuItem.addEventListener("click", function(e) {
         app.openWindow('Me', 'me', []);
       });
@@ -112,8 +112,8 @@ exports.property = function(name) {
 
 exports.timeout = 15000;
 
-exports.api_url = 'http://www.gwahir.com/api/';
-//exports.api_url = 'https://staging.hollywoodfringe.org/api/';
+//exports.api_url = 'http://www.gwahir.com/api/';
+exports.api_url = 'https://staging.hollywoodfringe.org/api/';
 
 exports.site_url = 'http://staging.hollywoodfringe.org/';
 
