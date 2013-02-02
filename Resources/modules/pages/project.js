@@ -145,7 +145,7 @@ function ProjectWindow(project_id){
         var favImgView = iconsView.children[1].children[0];
         if(e.source.icon.text == 'Share'){
           sharekit.share({
-            title:'I am checking out this show a show on stagey.net',
+            title:'I am checking out this show at the Fringe',
             view:e.source,
             link:app.site_url + 'projects/' + e.source.icon.object.id
           });

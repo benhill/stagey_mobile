@@ -10,17 +10,18 @@ Ti.App.token = '8kj@!!00990j34Ad'
 Ti.API.info("module is => " + sharekit);
 
 if(Ti.Platform.name == 'iPhone OS'){
+
   var sharekit = require('com.0x82.sharekit');
 
   sharekit.configure({
-    my_app_name: 'stagey',
-    my_app_url: 'http://www.stagey.net',
+    my_app_name: 'HollywoodFringe',
+    my_app_url: 'http://www.hollywoodfringe.org',
     share_menu_alphabetical_order: true,
     hide_more_button: false,
     shared_with_signature: false,
     sharers_plist_name: '/Sharers.plist',
-    twitter_consumer_key: '0b8vwDL8LYPLmyNDRyjXA',
-    twitter_consumer_secret: 'Va533q2nMEPAx9QYXNbiP7BcWUHW6XGAJAoaBsBJg',
+    twitter_consumer_key: 'FzLrxzD2hduXgfG6jzVCRw',
+    twitter_consumer_secret: 'SrRHc8GmnzRvmmRmWhlSwGJ2mgcsFhclqAbwyHtA',
     twitter_callback_url: 'http://0x82.com/auth/twitter/callback',
     facebook_key: '396565060404796',
     facebook_secret: '4a745067aa494dec416dcf2e9f78e296',
