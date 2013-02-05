@@ -141,6 +141,9 @@ function ProjectsWindow(mode, startProjects, cat_id, venue_id, user_id){
     else if(mode == 'favorites'){    
       url = app.api_url + "favorites?email=" + Ti.App.currentUser.email + "&password=" + Ti.App.userPassword;
     }
+    else if(user_id != null){
+      url = app.api_url + "projects?user_id=" + user_id;
+    }
     else {
       url = app.api_url + "projects";
     }

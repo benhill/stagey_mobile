@@ -7,9 +7,15 @@ styles = {
     scrollType:'vertical',
     verticalBounce:true,
     showVerticalScrollIndicator:true,
-    height:'89%',
-    top:50
+    height:Ti.UI.SIZE,
+    top:220
 	},
+
+  nameView: {
+    width:Ti.UI.SIZE,
+    height:Ti.UI.SIZE,
+    top:55
+  },
 
   wrapper: {
     height:Ti.UI.SIZE,
@@ -21,7 +27,7 @@ styles = {
     width:45,
     height:45,
     left:10,
-    top:10,
+    top:0,
     borderColor:'black',
     borderWidth:1
   },
@@ -29,44 +35,48 @@ styles = {
   name: {
     height:Ti.UI.SIZE,
     width:300,
-    left:70,
-    top:20,
-    font:{fontSize:'14', fontWeight:'bold'},
+    left:65,
+    top:10,
+    font:{fontSize:'15', fontWeight:'bold'},
     color:'black'
-  },
-
-  line1: {
-    width:320,
-    height:1,
-    top:70,
-    left:0,
-    backgroundColor:'gray'
-  },
-
-  reviewsLabel: {    
-    height:Ti.UI.SIZE,
-    width:300,
-    left:10,
-    top:80,
-    font:{fontSize:'14', fontWeight:'bold'},
-    color:'black'
-  },
-
-  line2: {
-    width:320,
-    height:1,
-    top:110,
-    left:0,
-    backgroundColor:'gray'
-  },
-
+  },  
+  
   profile: {
     height:Ti.UI.SIZE,
     width:300,
     left:10,
-    top:120,
+    top:10,
+    bottom:10,
     font:{fontSize:'13'},
     color:'black'
+  },
+
+  table: {
+    top:110,
+    height:Ti.UI.SIZE,
+    borderColor:'black',
+    borderWidth:1
+  },
+
+  row: {
+    height:50
+  },
+
+  iconLabel: {    
+    height:Ti.UI.SIZE,
+    width:300,
+    left:10,
+    top:14,
+    font:{fontSize:'16', fontWeight:'bold'},
+    color:'black'
+  },
+
+  carrotImage: {
+    right:10,
+    top:'40%',
+    font:{fontSize:12, fontWeight:'bold'},
+    height:Titanium.UI.SIZE,
+    width:Titanium.UI.SIZE
   }
 
 }
@@ -75,7 +85,9 @@ exports.userScroll = styles.userScroll;
 exports.wrapper = styles.wrapper;
 exports.image = styles.image;
 exports.name = styles.name;
-exports.line1 = styles.line1;
-exports.reviewsLabel = styles.reviewsLabel;
-exports.line2 = styles.line2;
 exports.profile = styles.profile;
+exports.table = styles.table;
+exports.row = styles.row;
+exports.iconLabel = styles.iconLabel;
+exports.carrotImage = styles.carrotImage;
+exports.nameView = styles.nameView;
