@@ -28,7 +28,11 @@ function SearchWindow(search_terms){
       runSearch(searchField.value);
     });
     self.add(searchField);
-    app.addKeyboardToolbar(searchField);
+    app.addKeyboardToolbar(searchField, function(){
+      if(Ti.Platform.name == 'iPhone OS'){
+        runSearch(searchField.value);
+      }
+    });
 
     var searchButton =  Ti.UI.createImageView(searchStyles.searchButton);
     searchButton.image = app.resdir + 'iphone/search_24.png',

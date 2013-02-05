@@ -79,7 +79,8 @@ function openWithWindow(title, newWindow){
   newWindow.load();
 }
 
-exports.addKeyboardToolbar = function(textbox){
+exports.addKeyboardToolbar = function(textbox, doneCallback){  
+  
   var flexSpace = Ti.UI.createButton({
     systemButton:Ti.UI.iPhone.SystemButton.FLEXIBLE_SPACE,
     right:0
@@ -97,8 +98,9 @@ exports.addKeyboardToolbar = function(textbox){
     doneButton.activeFld = textbox;
   });
 
-  doneButton.addEventListener('click', function(e) {
+  doneButton.addEventListener('click', function(e) {    
     e.source.activeFld.blur();
+    doneCallback();
   });
 };	
 
