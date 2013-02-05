@@ -112,8 +112,8 @@ exports.property = function(name) {
 
 exports.timeout = 15000;
 
-//exports.api_url = 'http://www.gwahir.com/api/';
-exports.api_url = 'https://staging.hollywoodfringe.org/api/';
+exports.api_url = 'http://192.168.1.65/api/';
+//exports.api_url = 'https://staging.hollywoodfringe.org/api/';
 
 exports.site_url = 'http://staging.hollywoodfringe.org/';
 

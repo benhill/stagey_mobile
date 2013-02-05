@@ -1,4 +1,4 @@
-function ProjectsWindow(mode, startProjects, cat_id, venue_id){
+function ProjectsWindow(mode, startProjects, cat_id, venue_id, user_id){
 
   var app = require('modules/core');
   var styles = require('modules/styles/styles');
