@@ -100,9 +100,9 @@ exports.addKeyboardToolbar = function(textbox, doneCallback){
 
   doneButton.addEventListener('click', function(e) {    
     e.source.activeFld.blur();
-    doneCallback();
+    if(doneCallback){doneCallback();};
   });
-};	
+};
 
 exports.properties = function() { 
   return properties; 

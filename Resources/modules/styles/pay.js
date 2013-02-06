@@ -30,7 +30,9 @@ styles = {
     left:5,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-    hintText: 'Credit Card Number'
+    hintText:'Credit Card Number',
+    keyboardType:Ti.UI.KEYBOARD_NUMBER_PAD,
+    passwordMask:true,
   },
 
   csvText: {    
@@ -41,7 +43,9 @@ styles = {
     right:10,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-    hintText: 'CSV'
+    hintText: 'CSV',
+    keyboardType:Ti.UI.KEYBOARD_NUMBER_PAD,
+    passwordMask:true,
   },  
 
   expiryButton: {
