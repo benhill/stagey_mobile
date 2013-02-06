@@ -63,7 +63,7 @@ styles = {
 
   addressLabel: {
     text: "address",
-    top:10,
+    top:3,
     left:5,
     font:{fontSize:12, fontWeight:'bold'},
     height:Ti.UI.SIZE,

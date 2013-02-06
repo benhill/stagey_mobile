@@ -70,8 +70,11 @@ function MeWindow(){
     var schedule = new iconObj('My Schedule', 'iphone/all_shows_48.png', 'performances', null, false, 'schedule', 'schedule');
     icons.push(schedule);
 
-    var schedule = new iconObj('My Profile', 'iphone/all_shows_48.png', 'user', null, false, user.id, 'user');
-    icons.push(schedule);
+    var projects = new iconObj('My Projects', '', 'projects', null, false, 'favorites');
+    icons.push(projects);
+
+    var profile = new iconObj('My Profile', 'iphone/all_shows_48.png', 'user', null, false, user.id, 'user');
+    icons.push(profile);
 
     for(i=0; i< icons.length; i++){
 
@@ -94,6 +97,9 @@ function MeWindow(){
         icon = e.source.icon;
         if(e.source.icon.id == 'schedule'){
           app.openWindow(e.source.icon.text, icon.window, [icon.third_param, 1]);
+        }
+        else if(e.source.icon.window == 'projects'){
+          app.openWindow(e.source.icon.text, icon.window, [null, null, null, null, user.id]);
         }
         else{
           app.openWindow(e.source.icon.text, icon.window, [icon.third_param]);

@@ -114,8 +114,8 @@ exports.property = function(name) {
 
 exports.timeout = 15000;
 
-exports.api_url = 'http://192.168.1.65/api/';
-//exports.api_url = 'https://staging.hollywoodfringe.org/api/';
+//exports.api_url = 'http://192.168.1.65/api/';
+exports.api_url = 'https://staging.hollywoodfringe.org/api/';
 
 exports.site_url = 'http://staging.hollywoodfringe.org/';
 
@@ -157,3 +157,33 @@ exports.getOrientation = function(o) {
 		}
 	}
 };
+
+exports.dynamic_scoller = function(e, beginUpdateCallback, updating, lastDistance, page){
+  if(Ti.Platform.name == 'iPhone OS'){
+    var offset = e.contentOffset.y;
+    var height = e.size.height;
+    var total = offset + height;
+    var theEnd = e.contentSize.height;
+    var distance = theEnd - total;
+    
+    if (distance < lastDistance){
+      var nearEnd = theEnd * .65;
+      if (!updating && (total >= nearEnd)){
+        beginUpdateCallback();
+      }
+    }
+    lastDistance = distance;
+  }
+  else{
+    if (!updating && e.totalItemCount % page === 0) {
+      var distance = e.totalItemCount - e.firstVisibleItem;
+      if (distance <= e.visibleItemCount) {
+        if (!updating) {
+          //extract
+          updating = true;
+          beginUpdateCallback();
+        }
+      }
+    }
+  }
+}

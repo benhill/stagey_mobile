@@ -11,6 +11,9 @@ function PerformancesWindow(mode, schedule_page){
   var rows_per_page = 9;
   var lat,lng;
   var table = Ti.UI.createTableView(perfStyles.table);
+  var lastDistance = 0;
+  var updating = false;
+  var lastRow = rows_per_page;
 
   self.load = function(){
     if(mode == "nearby"){
@@ -113,8 +116,11 @@ function PerformancesWindow(mode, schedule_page){
       var total_results = performances[0].total_results;
 
       for (var i = 0; i < performances.length; i++) {
+        row = createRow(performances[i]);
+        tableData.push(row);
+      }
 
-        var performance = performances[i];
+      function createRow(performance){
 
         var row = Ti.UI.createTableViewRow(perfStyles.row);
         row.performance = performance;
@@ -147,39 +153,49 @@ function PerformancesWindow(mode, schedule_page){
         carrotImage.image = 'http://stagey-mobile.s3.amazonaws.com/more-arrow.png';
         row.add(carrotImage);
 
-        tableData.push(row);
-      }      
-      
-      if(total_results > (rows_per_page * page)){
-        var row = Ti.UI.createTableViewRow(perfStyles.row);
-        var moreLabel = Ti.UI.createLabel(perfStyles.moreLabel);
-        row.add(moreLabel);
-        tableData.push(row);
-
-        row.addEventListener('click', function(e){
-          page += 1;
-          loadMore(e);
-        });
-      }      
-
-      if(page > 1){
-
-        table.deleteRow(rows_per_page * (page-1),{animationStyle:Ti.UI.iPhone.RowAnimationStyle.NONE})
-
-        for(var i = 0; i < tableData.length; i++){
-          table.appendRow(tableData[i]);
-        }
-
-        table.scrollToIndex((page * rows_per_page) - rows_per_page);
+        return row;
       }
-      else {
-        table.setData(tableData);
-        self.add(table);
-      } 
+         
+      table.setData(tableData);
+      self.add(table); 
+            
+      var loadingRow = Ti.UI.createTableViewRow({title:"Loading...", color:'black'});   
+      
+      function beginUpdate(){
+        page += 1;
+        if(performances[0].total_results > (page * rows_per_page)){
+          updating = true;
+
+          table.appendRow(loadingRow);
+
+          url = getUrl() + '&page=' + page;
+
+          new performancesObj(url, function(performances){
+            var rows = [];
+            for (var i = 0; i < performances.length; i++){
+              row = createRow(performances[i]);
+              rows.push(row);              
+            }            
+            endUpdate(rows);
+          });
+        }
+      }
+
+      function endUpdate(rows){                
+        updating = false;        
+        table.appendRow(rows);
+        table.deleteRow(lastRow);
+        lastRow += rows_per_page;
+      }
+
+      table.addEventListener('scroll',function(e){
+        app.dynamic_scoller(e, beginUpdate, updating, lastDistance, page)
+      });
 
       self.open();
       spinner.hide();
     };
+   
 
     function loadNext(){
       app.openWindow('Schedule', 'performances', [mode, schedule_page + 1]);
@@ -187,31 +203,11 @@ function PerformancesWindow(mode, schedule_page){
 
     function loadLast(){
       self.close();
-      //app.openWindow('Schedule', 'performances', [mode, schedule_page -= 1]);
     }
 
     function loadPerformance(e, islongclick) {      
       app.openWindow('Performance', 'performance', [e.source.performance.id]);
-    }
-
-    function loadMore(e,islongclick){
-      table.deleteRow(rows_per_page * (page-1),{animationStyle:Ti.UI.iPhone.RowAnimationStyle.NONE})
-      var row = Ti.UI.createTableViewRow(perfStyles.row);
-
-      var spinner = Ti.UI.createActivityIndicator(perfStyles.spinner);
-      row.add(spinner);
-      spinner.show();
-
-      table.appendRow(row);
-
-      table.scrollToIndex((page * rows_per_page) - rows_per_page);
-
-      url = getUrl() + '&page=' + page;
-
-      new performancesObj(url, function(performances){
-        loadPerformances(performances);
-      });
-    }
+    }    
 
     self.add(spinner);
     spinner.show();

@@ -11,6 +11,9 @@ function ProjectsWindow(mode, startProjects, cat_id, venue_id, user_id){
   var page = 1
   var rows_per_page = 9
   var seed, total_results, startProjects;
+  var lastDistance = 0;
+  var updating = false;
+  var lastRow = rows_per_page;
 
   self.load = function(){
 
@@ -35,96 +38,95 @@ function ProjectsWindow(mode, startProjects, cat_id, venue_id, user_id){
       if (projects.length > 0){
         total_results = projects[0].total_results;
         seed = projects[0].seed;
-      }
-      
-      for(i = 0; i < projects.length; i++){
+            
+        for(i = 0; i < projects.length; i++){
+          row = createRow(projects[i])
+          tableData.push(row);
+        }        
 
-        var project = projects[i];      
-        var row = Ti.UI.createTableViewRow(projectsStyles.row);
-        row.project_id = project.id;
+        function createRow(project){
+          
+          var row = Ti.UI.createTableViewRow(projectsStyles.row);
+          row.project_id = project.id;
 
-        projectsStyles.projectThumb.image = project.thumbnail;
-        projectsStyles.projectThumb.project_id = project.id;
-        var projectThumb = Titanium.UI.createImageView(projectsStyles.projectThumb);  
-        row.add(projectThumb);
+          projectsStyles.projectThumb.image = project.thumbnail;
+          projectsStyles.projectThumb.project_id = project.id;
+          var projectThumb = Titanium.UI.createImageView(projectsStyles.projectThumb);  
+          row.add(projectThumb);
 
-        (project.title.length >= 25) ? title = project.title.substr(0,25) + "..." : title = project.title;
+          (project.title.length >= 25) ? title = project.title.substr(0,25) + "..." : title = project.title;
 
-        projectsStyles.nameLabel.text = title.toLowerCase();
-        projectsStyles.nameLabel.project_id = project.id;
-        var nameLabel = Ti.UI.createLabel(projectsStyles.nameLabel);
-        row.add(nameLabel);
+          projectsStyles.nameLabel.text = title.toLowerCase();
+          projectsStyles.nameLabel.project_id = project.id;
+          var nameLabel = Ti.UI.createLabel(projectsStyles.nameLabel);
+          row.add(nameLabel);
 
-        var infoLabel = Ti.UI.createLabel(projectsStyles.infoLabel);
-        infoLabel.text = project.cat_name 
-        if(project.cost_range){infoLabel.text += " \u00B7 " + project.cost_range + " \u00B7 " + project.duration};
-        infoLabel.project_id = project.id;
-        row.add(infoLabel);
+          var infoLabel = Ti.UI.createLabel(projectsStyles.infoLabel);
+          infoLabel.text = project.cat_name 
+          if(project.cost_range){infoLabel.text += " \u00B7 " + project.cost_range + " \u00B7 " + project.duration};
+          infoLabel.project_id = project.id;
+          row.add(infoLabel);
 
-        var carrotImage = Ti.UI.createImageView(projectsStyles.carrotImage);
-        carrotImage.image = 'http://stagey-mobile.s3.amazonaws.com/more-arrow.png';
-        carrotImage.project_id = project.id;
-        row.add(carrotImage);
+          var carrotImage = Ti.UI.createImageView(projectsStyles.carrotImage);
+          carrotImage.image = 'http://stagey-mobile.s3.amazonaws.com/more-arrow.png';
+          carrotImage.project_id = project.id;
+          row.add(carrotImage);
 
-        tableData.push(row);
+          row.addEventListener('click', function(e){
+            loadProject(e);
+          });
 
-        row.addEventListener('click', function(e){
-          loadProject(e);
-        });
-      }
-
-      var row = Ti.UI.createTableViewRow(projectsStyles.row);
-      var moreLabel = Ti.UI.createLabel(projectsStyles.moreLabel);
-      row.add(moreLabel);
-
-      row.addEventListener('click', function(e){
-        page += 1;
-        loadMore(e);
-      });
-
-      if(page * rows_per_page < total_results){
-        tableData.push(row);
-      }
-
-      if(page > 1){      
-        table.deleteRow(rows_per_page * (page-1),{animationStyle:Titanium.UI.iPhone.RowAnimationStyle.NONE})
-
-        for(var i = 0; i < tableData.length; i++){
-          table.appendRow(tableData[i]);
+          return row;          
         }
-
-        table.scrollToIndex((page * rows_per_page) - rows_per_page);
-      }
-      else {
+    
         table.setData(tableData);
         self.add(table);
-      }    
+
+        var loadingRow = Ti.UI.createTableViewRow({title:"Loading...", color:'black'});   
+      
+        function beginUpdate(){
+          page += 1;
+          if(projects[0].total_results > (page * rows_per_page)){
+            updating = true;
+
+            table.appendRow(loadingRow);
+
+            var url = setUrl();
+            url += "&seed=" + seed + "&page=" + page;
+
+            new projectsObj(url, function(projects){
+              var rows = [];
+              for (var i = 0; i < projects.length; i++){
+                row = createRow(projects[i]);
+                rows.push(row);              
+              }            
+              endUpdate(rows);
+            });
+          }
+        }
+
+        function endUpdate(rows){                
+          updating = false;        
+          table.appendRow(rows);
+          table.deleteRow(lastRow);
+          lastRow += rows_per_page;
+        }
+
+        table.addEventListener('scroll',function(e){
+          app.dynamic_scoller(e, beginUpdate, updating, lastDistance, page)
+        });
+      }
+      else{
+        noDataLabel = Ti.UI.createLabel(styles.noDataLabel);
+        noDataLabel.text = "No projects listed...";
+        self.add(noDataLabel);
+      }  
 
       spinner.hide();  
     }
 
     function loadProject(e, islongclick){
       app.openWindow('Project', 'project', [e.source.project_id])
-    }
-
-    function loadMore(e,islongclick){
-      table.deleteRow(rows_per_page * (page-1),{animationStyle:Titanium.UI.iPhone.RowAnimationStyle.NONE})
-      var row = Ti.UI.createTableViewRow(projectsStyles.row);
-      var spinner = Ti.UI.createActivityIndicator(projectsStyles.spinner);
-
-      row.add(spinner);
-      spinner.show();
-
-      table.appendRow(row);
-
-      table.scrollToIndex((page * rows_per_page) - rows_per_page);
-      
-      var url = setUrl();
-      url += "&seed=" + seed + "&page=" + page;
-
-      new projectsObj(url, function(results){
-        loadProjects(results);
-      });
     }
 
     spinner.show();

@@ -8,6 +8,9 @@ function ReviewsWindow(user_id, project){
   var table = Ti.UI.createTableView(reviewsStyles.table);
   var page = 1
   var rows_per_page = 9
+  var lastDistance = 0;
+  var updating = false;
+  var lastRow = rows_per_page;
   
   self.load = function(){
     url = getUrl();
@@ -64,7 +67,11 @@ function ReviewsWindow(user_id, project){
       var tableData = [];
 
       for(i = 0; i < reviews.length; i++){
-        review = reviews[i];
+        row = createRow(reviews[i]);
+        tableData.push(row);
+      };      
+
+      function createRow(review){        
 
         var row = Ti.UI.createTableViewRow(reviewsStyles.row);
         row.link = 'review.js';      
@@ -109,74 +116,59 @@ function ReviewsWindow(user_id, project){
         carrotImage.image = 'http://stagey-mobile.s3.amazonaws.com/more-arrow.png';
         row.add(carrotImage);
 
-        if(Ti.Platform.name == 'iPhone OS'){row.height = row.toImage().height + 8;}
-
-        tableData.push(row);
+        if(Ti.Platform.name == 'iPhone OS'){row.height = row.toImage().height + 8;}        
 
         row.addEventListener('click', function(e){
           loadReview(e);
-        });      
+        });
 
-      };
+        return row;
+      }
+      
+      table.setData(tableData);
+      self.add(table);
 
-      var row = Ti.UI.createTableViewRow(reviewsStyles.moreRow);
-
-      var moreLabel = Ti.UI.createLabel(reviewsStyles.moreLabel);
-
-      row.add(moreLabel);
-
-      row.addEventListener('click', function(e){
+      var loadingRow = Ti.UI.createTableViewRow({title:"Loading...", color:'black'});   
+      
+      function beginUpdate(){
         page += 1;
-        loadMore(e);
-      });
+        if(reviews[0].total_results > (page * rows_per_page)){
+          updating = true;
 
-      if(page * rows_per_page < total_results){
-        tableData.push(row);
-      }
+          table.appendRow(loadingRow);
 
-      if(page > 1){
+          if(user_id){var url = getUrl() + "&page=" + page;}
+          else{var url = getUrl() + "?page=" + page;}  
 
-        table.deleteRow(rows_per_page * (page-1),{animationStyle:Titanium.UI.iPhone.RowAnimationStyle.NONE})
+          new reviewsObj(url, function(reviews){
+            var rows = [];
+            for (var i = 0; i < reviews.length; i++){
+              row = createRow(reviews[i]);
+              rows.push(row);              
+            }            
+            endUpdate(rows);
+          });
 
-        for(var i = 0; i < tableData.length; i++){
-          table.appendRow(tableData[i]);
         }
-
-        table.scrollToIndex((page * rows_per_page) - rows_per_page);
-
       }
-      else {
-        table.setData(tableData);
-        self.add(table);
-      }    
+
+      function endUpdate(rows){                
+        updating = false;        
+        table.appendRow(rows);
+        table.deleteRow(lastRow);
+        lastRow += rows_per_page;
+      }
+
+      table.addEventListener('scroll',function(e){
+        app.dynamic_scoller(e, beginUpdate, updating, lastDistance, page)
+      });
+      
       self.add(table);
       spinner.hide();  
     }
 
     function loadReview(e, islongclick) { 
       app.openWindow('Show Review', 'review', [e.row.review.id]);
-    }
-
-    function loadMore(e,islongclick){
-
-      table.deleteRow(rows_per_page * (page-1),{animationStyle:Titanium.UI.iPhone.RowAnimationStyle.NONE})
-
-      var row = Ti.UI.createTableViewRow(reviewsStyles.moreRow);
-
-      var spinner = Ti.UI.createActivityIndicator(reviewsStyles.spinner);
-      row.add(spinner);
-      spinner.show();
-
-      table.appendRow(row);
-      table.scrollToIndex((page * rows_per_page) - rows_per_page);
-
-      if(user_id){var url = getUrl() + "&page=" + page;}
-      else{var url = getUrl() + "?page=" + page;}  
-
-      var reviewsObj = require('modules/models/reviews');
-      new reviewsObj(url, function(reviews){
-        loadReviews(reviews);
-      });
     }
 
     function getUrl(){

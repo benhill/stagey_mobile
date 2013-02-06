@@ -146,15 +146,16 @@ function VenueWindow(venue_id){
               
       locationWrapper.add(addressView); 
 
-      addressView.addEventListener('click',function(){
-        var intent = Ti.Android.createIntent({
-          action: Ti.Android.ACTION_VIEW,
-          data:'geo:0,0+?q=' + venue.address + ", " + venue.city + ", " + venue.state + " " + venue.postal
-        });
-        Ti.Android.currentActivity.startActivity(intent);
-      });     
-      
       if(Ti.Platform.name == 'iPhone OS'){locationWrapper.add(mapView);}
+      else{
+        addressView.addEventListener('click',function(){
+          var intent = Ti.Android.createIntent({
+            action: Ti.Android.ACTION_VIEW,
+            data:'geo:0,0+?q=' + venue.address + ", " + venue.city + ", " + venue.state + " " + venue.postal
+          });
+          Ti.Android.currentActivity.startActivity(intent);
+        });     
+      }
       
       var row = Ti.UI.createTableViewRow(venueStyles.row);
       row.selectedBackgroundColor = '#F4F1F1';

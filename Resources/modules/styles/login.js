@@ -15,7 +15,7 @@ styles = {
     color:'#336699', 
     height:45, 
     width:300, 
-    top:55,
+    top:56,
     left:5,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
@@ -25,7 +25,7 @@ styles = {
 
   loginButton: {
     title: 'Login',
-    top:100,
+    top:101,
     left:5
   },
 
