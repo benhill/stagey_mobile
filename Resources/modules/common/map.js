@@ -45,7 +45,7 @@ function MapWindow(venue, callback){
         annotations.push(createAnnotation(venue));
       }
       //TODO: Add these to event meta data
-      coordinates = {latitude:'34.090643', longitude:'-118.332067', latitudeDelta:0.018, longitudeDelta:0.018};
+      coordinates = {latitude:'34.090643', longitude:'-118.332067', latitudeDelta:0.027, longitudeDelta:0.027};
       callback();
       add_view();
     });    
