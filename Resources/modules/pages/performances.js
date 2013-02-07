@@ -19,12 +19,12 @@ function PerformancesWindow(mode, schedule_page){
     if(mode == "nearby"){
       Ti.Geolocation.getCurrentPosition(function(e){
         if(e.coords){
-          var lat = e.coords.latitude;
-          var lng = e.coords.longitude;
+          lat = e.coords.latitude;
+          lng = e.coords.longitude;
         }
         else{
-          var lat = '34.090643';
-          var lng = '-118.332067';
+          lat = '34.090643';
+          lng = '-118.332067';
         }
         loadForm();
       });
@@ -218,7 +218,7 @@ function PerformancesWindow(mode, schedule_page){
       url = app.api_url + 'my_schedule?schedule_page=' + schedule_page + '&';
     }
     else if(mode == 'nearby'){      
-      url = app.api_url + 'performances/7?lat=' + lat + '&lng=' + lng + '&distance=50&';
+      url = app.api_url + 'performances/7?lat=' + lat + '&lng=' + lng + '&distance=1&';
     }
     else if(mode == 'schedule'){
       url = app.api_url + 'my_schedule?email=' + Ti.App.currentUser.email + '&password=' + Ti.App.userPassword + '&schedule_page=' + schedule_page + '&';
