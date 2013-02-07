@@ -30,7 +30,9 @@ function ReviewWindow(review_id){
     titleView.add(image);
 
     var nameLabel = Ti.UI.createLabel(reviewStyles.nameLabel);
-    nameLabel.text = review.reviewer_first_name.toUpperCase() + " " + review.reviewer_last_name.toUpperCase();
+    var fullName = (review.reviewer_first_name +  ' ' + review.reviewer_last_name);
+    if(fullName.length > 25){fullName = fullName.substr(0,24) + '...';}
+    nameLabel.text = fullName;
     titleView.add(nameLabel);
 
     var projectLabel = Ti.UI.createLabel(reviewStyles.projectLabel);

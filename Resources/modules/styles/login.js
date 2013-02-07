@@ -4,7 +4,7 @@ styles = {
     color:'#336699', 
     height:45, 
     width:300, 
-    top:10,
+    top:12,
     left:5,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
@@ -15,7 +15,7 @@ styles = {
     color:'#336699', 
     height:45, 
     width:300, 
-    top:56,
+    top:61,
     left:5,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
@@ -25,12 +25,12 @@ styles = {
 
   loginButton: {
     title: 'Login',
-    top:101,
+    top:112,
     left:5
   },
 
   addUserLabel: {
-    top:150,
+    top:165,
     left:5,
     text:'Create an Account',
     width:Ti.UI.SIZE,

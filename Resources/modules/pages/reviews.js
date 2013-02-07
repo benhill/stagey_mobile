@@ -38,8 +38,10 @@ function ReviewsWindow(user_id, project){
       var title;
 
       if(user_id){
-        title = 'REVIEWS BY ' + reviews[0].reviewer_first_name.toUpperCase() + " " + reviews[0].reviewer_last_name.substr(0,1).toUpperCase();
-        subtitle = 'sorted by date posted';
+        var fullName = (reviews[0].reviewer_first_name +  ' ' + reviews[0].reviewer_last_name).toUpperCase();
+        if(fullName.length > 25){fullName = fullName.substr(0,24) + '...';}
+        title = 'reviews by\n' + fullName;        
+        if(Ti.Platform.name != 'iPhone OS'){titleView.height = 62;};
       }
       else if(project){
         (reviews[0].project_title.length >= 50) ?  project_title = reviews[0].project_title.substr(0,50) + "..." :  project_title = reviews[0].project_title;
@@ -50,7 +52,7 @@ function ReviewsWindow(user_id, project){
         title = 'RECENT REVIEWS';
         subtitle = 'sorted by date posted';
       }
-      subtitle.bottom = 10;
+      if(subtitle){subtitle.bottom = 10;};
 
       var titleLabel = Ti.UI.createLabel(styles.titleLabel);
       titleLabel.text = title;
