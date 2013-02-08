@@ -31,7 +31,8 @@ styles = {
     height:45,
     left:60,
     top:10,
-    font:{fontSize:'13'}
+    font:{fontSize:'13'},
+    color:'black'
   },
 
   carrotImage: {

@@ -5,6 +5,7 @@ styles = {
   },
 
   row: {
+    height:155
   },
 
   imageLabel: {    
@@ -17,45 +18,40 @@ styles = {
   },  
 
   nameLabel: {    
-    width:'100%',
     height:Ti.UI.SIZE,
+    width:Ti.UI.SIZE,
     left:60,
     top:5,
-    font:{fontSize:'13', fontWeight:'bold'},
+    font:{fontSize:'15', fontWeight:'bold'},
     color: 'black',
   },
 
   date: {    
     height:Ti.UI.SIZE,
     left:60,
-    top:24,
+    top:25,
     font:{fontSize:'13'},
     color: 'black'
   },
 
+  rating: {
+    height:Ti.UI.SIZE,
+    width:240,
+    top:42,
+    left:60,
+    font:{fontSize:12},
+    color:'black'    
+  },
+
   blurb: {
     height:Ti.UI.SIZE,
-    left:60,
-    top:39,
-    width:220,
+    left:5,
+    top:65,
+    width:'90%',
     font:{fontSize:'13'},
     color: 'black',
   },
-
-  moreRow: {
-    height:60
-  },
-
-  moreLabel: {
-    text:"LOAD MORE",
-    height:Ti.UI.SIZE,
-    width:Ti.UI.SIZE,            
-    top:20,        
-    left:100,
-    font:{fontSize:14, fontWeight:'bold'},
-    color: 'black',
-  },
-
+  
   spinner: {
     width:50,
     height:50,      
@@ -80,7 +76,6 @@ exports.imageLabel = styles.imageLabel;
 exports.nameLabel = styles.nameLabel;
 exports.date = styles.date;
 exports.blurb = styles.blurb;
-exports.moreRow = styles.moreRow;
-exports.moreLabel = styles.moreLabel;
 exports.spinner = styles.spinner;
 exports.carrotImage = styles.carrotImage;
+exports.rating = styles.rating;

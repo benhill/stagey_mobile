@@ -84,9 +84,9 @@ function ProjectsWindow(mode, startProjects, cat_id, venue_id, user_id){
 
         var loadingRow = Ti.UI.createTableViewRow({title:"Loading...", color:'black'});   
       
-        function beginUpdate(){
-          page += 1;
+        function beginUpdate(){          
           if(projects[0].total_results > (page * rows_per_page)){
+            page += 1;
             updating = true;
 
             table.appendRow(loadingRow);

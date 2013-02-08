@@ -14,7 +14,7 @@ styles = {
     height:Ti.UI.SIZE,
     width:Ti.UI.SIZE,
     color:'white',
-    font:{fontSize:20, fontWeight:'bold'},    
+    font:{fontSize:20, fontWeight:'bold'},
     top:15,
     textAlign:'center'
   },
@@ -65,23 +65,40 @@ styles = {
   projectTitle: {
     height:Ti.UI.SIZE,
     width:Ti.UI.SIZE,
-    top:10,
+    top:5,
     left:60,
-    font:{fontSize:14},
+    font:{fontSize:15, fontWeight:'bold'},
     color:'black'
   },
 
-  projectInfo: {
+  dateTimeInfo: {
     height:Ti.UI.SIZE,
-    width:220,
-    top:30,
+    width:240,
+    top:25, 
     left:60,
     font:{fontSize:12},
+    color:'black'    
+  },
+
+  venueInfo: {
+    height:Ti.UI.SIZE,
+    width:240,
+    top:42,
+    left:60,
+    font:{fontSize:12},
+    color:'black'    
+  },
+
+  descriptionLabel: {
+    height:Ti.UI.SIZE,
+    width:'90%',
+    top:65,
+    left:5,
+    font:{fontSize:13},
     color:'black'
   },
 
-  row: {
-    height:65
+  row: {    
   },
 
   moreLabel: {
@@ -131,7 +148,7 @@ exports.spacer = styles.spacer;
 exports.nextLabel = styles.nextLabel;
 exports.projectThumb = styles.projectThumb;
 exports.projectTitle = styles.projectTitle;
-exports.projectInfo = styles.projectInfo;
+exports.dateTimeInfo = styles.dateTimeInfo;
 exports.row = styles.row;
 exports.moreLabel = styles.moreLabel;
 exports.spinner = styles.spinner;
@@ -139,3 +156,5 @@ exports.noPerfs = styles.noPerfs;
 exports.carrotImage = styles.carrotImage;
 exports.helperView = styles.helperView;
 exports.helperLabel = styles.helperLabel;
+exports.descriptionLabel = styles.descriptionLabel;
+exports.venueInfo = styles.venueInfo;

@@ -36,11 +36,13 @@ function ReviewWindow(review_id){
     titleView.add(nameLabel);
 
     var projectLabel = Ti.UI.createLabel(reviewStyles.projectLabel);
-    projectLabel.text = "on " + ((review.project_title.length >= 32) ? review.project_title.substr(0,32).toLowerCase() + "..." : review.project_title.toLowerCase());
+    projectLabel.text = 'on ' + ((review.project_title.length >= 32) ? review.project_title.substr(0,32).toLowerCase() + "..." : review.project_title.toLowerCase());
     titleView.add(projectLabel);
 
     var info = Ti.UI.createLabel(reviewStyles.info);
-    info.text = review.rating_text + " \u00B7 " + review.time_passed + " ago";
+    info.text = '';
+    if(review.rating_text){info.text += 'Rating:' + review.rating_text + ' \u00B7 '};
+    info.text += review.time_passed + ' ago';
     titleView.add(info);    
 
     titleView.addEventListener('click', function(e){

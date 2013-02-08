@@ -52,7 +52,7 @@ function PerformanceWindow(performance_id){
         if(performance.pwyc){
           var window = 'pwyc';
           var title = 'PWYC';
-          var params = [performance];
+          var params = [performance.id];
         }
         else{
           var window = 'quantity';

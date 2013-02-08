@@ -28,7 +28,8 @@ styles = {
     left:25,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
-    color:'black'
+    color:'black',
+    keyboardType:Ti.UI.KEYBOARD_NUMBER_PAD
   },
 
   quantButton: {

@@ -1,4 +1,4 @@
-function UsersWindow(users){
+function UsersWindow(project_id){
 
   var app = require('modules/core');
   var styles = require('modules/styles/styles');
@@ -10,49 +10,55 @@ function UsersWindow(users){
 
   self.load = function(){
 
-    for(i = 0; i < users.length; i++){
+    users = [];
 
-      user = users[i];
+    var usersObj = require('modules/models/users');
+    new usersObj(project_id, function(users){
+                  
+      for(i = 0; i < users.length; i++){
 
-      var row = Ti.UI.createTableViewRow(usersStyles.row);
-      row.link = 'user.js';
-      row.user = user;
+        user = users[i];
 
-      var image = Ti.UI.createImageView(usersStyles.image);
-      image.image = user.image_url;
-      image.user = user; 
-      row.add(image);
+        var row = Ti.UI.createTableViewRow(usersStyles.row);
+        row.link = 'user.js';
+        row.user = user;
 
-      var nameLabel = Ti.UI.createLabel(usersStyles.nameLabel);
-      nameLabel.text = user.first_name + ' ' + user.last_name;
-      nameLabel.user = user; 
-      row.add(nameLabel);
+        var image = Ti.UI.createImageView(usersStyles.image);
+        image.image = user.image_url;
+        image.user = user; 
+        row.add(image);
 
-      var roleLabel = Ti.UI.createLabel(usersStyles.roleLabel);
-      roleLabel.text = user.role;
-      roleLabel.user = user;
-      row.add(roleLabel);
+        var nameLabel = Ti.UI.createLabel(usersStyles.nameLabel);
+        nameLabel.text = user.first_name + ' ' + user.last_name;
+        nameLabel.user = user; 
+        row.add(nameLabel);
 
-      var carrotImage = Ti.UI.createImageView(usersStyles.carrotImage);
-      carrotImage.image = 'http://stagey-mobile.s3.amazonaws.com/more-arrow.png';
-      carrotImage.user = user;
-      row.add(carrotImage);
+        var roleLabel = Ti.UI.createLabel(usersStyles.roleLabel);
+        roleLabel.text = user.role;
+        roleLabel.user = user;
+        row.add(roleLabel);
 
-      usersData.push(row);
-    }
+        var carrotImage = Ti.UI.createImageView(usersStyles.carrotImage);
+        carrotImage.image = 'http://stagey-mobile.s3.amazonaws.com/more-arrow.png';
+        carrotImage.user = user;
+        row.add(carrotImage);
 
-    usersTable.setData(usersData);
-    self.add(usersTable);
+        usersData.push(row);
+      }
 
-    self.remove(spinner);
+      usersTable.setData(usersData);
+      self.add(usersTable);
 
-    usersTable.addEventListener('click', function(e){  
-      loadUser(e);
+      self.remove(spinner);
+
+      usersTable.addEventListener('click', function(e){  
+        loadUser(e);
+      });
+
+      function loadUser(e, islongclick) { 
+        app.openWindow('User', 'user', [e.source.user.id]);
+      }
     });
-
-    function loadUser(e, islongclick) { 
-      app.openWindow('User', 'user', [e.source.user.id]);
-    }
   }
 
   return(self);

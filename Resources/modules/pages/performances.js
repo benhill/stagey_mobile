@@ -74,11 +74,13 @@ function PerformancesWindow(mode, schedule_page){
             loadLast();
           })
 
-          self.addEventListener('swipe', function(e) {
-            if (e.direction == 'right') {
-              loadLast();        
-            }
-          });
+          if(Ti.Platform.name == 'iPhone OS'){
+            self.addEventListener('swipe', function(e) {
+              if (e.direction == 'right') {
+                loadLast();        
+              }
+            });
+          }
         };        
 
         var nextView = Ti.UI.createView(perfStyles.nextView);
@@ -98,11 +100,13 @@ function PerformancesWindow(mode, schedule_page){
             loadNext();
           })
 
-          self.addEventListener('swipe', function(e) {
-            if (e.direction == 'left') {
-              loadNext();
-            }             
-          });
+          if(Ti.Platform.name == 'iPhone OS'){
+            self.addEventListener('swipe', function(e) {
+              if (e.direction == 'left') {
+                loadNext();
+              }             
+            });
+          }
 
         };        
 
@@ -138,11 +142,27 @@ function PerformancesWindow(mode, schedule_page){
         projectTitle.performance = performance;
         row.add(projectTitle);
 
-        var projectInfo = Ti.UI.createLabel(perfStyles.projectInfo);
-        projectInfo.text = performance.info;
-        if(mode == "schedule"){projectInfo.text += ' \u00B7 ' + performance.quantity + ' Tickets'};
-        projectInfo.performance = performance;
-        row.add(projectInfo);
+        var dateTimeInfo = Ti.UI.createLabel(perfStyles.dateTimeInfo);
+        dateTimeInfo.text = performance.date_time_info;        
+        dateTimeInfo.performance = performance;
+        row.add(dateTimeInfo);
+
+        var venueInfo = Ti.UI.createLabel(perfStyles.venueInfo);
+        venueInfo.text = performance.venue_name;
+        if(mode == "schedule"){venueInfo.text += ' \u00B7 ' + performance.quantity + ' Tickets'};
+        venueInfo.performance = performance;
+        row.add(venueInfo);
+
+        if(mode == 'next' || mode == 'nearby'){          
+          var descriptionLabel = Ti.UI.createLabel(perfStyles.descriptionLabel);                
+          descriptionLabel.performance = performance;          
+          descriptionLabel.text = performance.description.substr(0,150).replace(/(\r\n|\n|\r)/gm,"") + '...';
+          row.add(descriptionLabel);          
+          row.height = 135;
+        }
+        else{
+          row.height = 65
+        }
 
         row.addEventListener('click', function(e){
           loadPerformance(e);
@@ -161,9 +181,9 @@ function PerformancesWindow(mode, schedule_page){
             
       var loadingRow = Ti.UI.createTableViewRow({title:"Loading...", color:'black'});   
       
-      function beginUpdate(){
-        page += 1;
+      function beginUpdate(){        
         if(performances[0].total_results > (page * rows_per_page)){
+          page += 1;
           updating = true;
 
           table.appendRow(loadingRow);

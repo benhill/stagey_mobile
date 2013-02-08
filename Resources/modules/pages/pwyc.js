@@ -1,68 +1,80 @@
-function PwycWindow(performance){
+function PwycWindow(performance_id){
 
   var app = require('modules/core');
   var styles = require('modules/styles/styles');
   var pwycStyles = require('modules/styles/pwyc');  
   var self = Ti.UI.createWindow(styles.defaultWindow);
+  var spinner = Ti.UI.createActivityIndicator(styles.spinner);
 
   self.load = function(){
+
+    spinner.show();
+    self.add(spinner);
 
 	  var titleView = Ti.UI.createView(styles.titleView);
     titleView.top = 50;
 
-    (performance.project_title.length >= 25) ? title = performance.project_title.substr(0,25) + "..." : title = performance.project_title;
+    var perfObj = require('modules/models/performance');
+    var url = app.api_url + "performance/" + performance_id + "?user_id=" + (Ti.App.currentUser ? Ti.App.currentUser.id : '');
 
-    var titleLabel = Ti.UI.createLabel(styles.titleLabel);
-    titleLabel.text = title;
-    titleView.add(titleLabel);
+    new perfObj(url, function(performance){
 
-    var perfInfo = Ti.UI.createLabel(styles.subTitleLabel);
-    perfInfo.text = performance.performance_info;
-    perfInfo.bottom = 10;
-    titleView.add(perfInfo);
+      (performance.project_title.length >= 25) ? title = performance.project_title.substr(0,25) + "..." : title = performance.project_title;
 
-    self.add(titleView);
+      var titleLabel = Ti.UI.createLabel(styles.titleLabel);
+      titleLabel.text = title;
+      titleView.add(titleLabel);
 
-	  var pwycLabel = Ti.UI.createLabel(pwycStyles.pwycLabel);        
-	  self.add(pwycLabel);
+      var perfInfo = Ti.UI.createLabel(styles.subTitleLabel);
+      perfInfo.text = performance.performance_info;
+      perfInfo.bottom = 10;
+      titleView.add(perfInfo);
 
-	  var dollarLabel = Ti.UI.createLabel(pwycStyles.dollarLabel);
-	  self.add(dollarLabel);
+      self.add(titleView);
 
-	  var pwycText = Ti.UI.createTextField(pwycStyles.pwycText);
-	  pwycText.value = app.formatCurrency(performance.cost);
-	  self.add(pwycText);
-	  addKeyboardToolbar(pwycText);
+  	  var pwycLabel = Ti.UI.createLabel(pwycStyles.pwycLabel);        
+  	  self.add(pwycLabel);
 
-	  var quantButton = Ti.UI.createButton(pwycStyles.quantButton);
-	  self.add(quantButton);
+  	  var dollarLabel = Ti.UI.createLabel(pwycStyles.dollarLabel);
+  	  self.add(dollarLabel);
 
-	  quantButton.addEventListener('click', function(e){
-	    app.openWindow('Performance', 'quantity', [performance.id, pwycText.value]);
-	  })
+  	  var pwycText = Ti.UI.createTextField(pwycStyles.pwycText);
+  	  pwycText.value = app.formatCurrency(performance.cost);
+  	  self.add(pwycText);
+  	  addKeyboardToolbar(pwycText);
 
-	  function addKeyboardToolbar(textbox){
-	    var flexSpace = Ti.UI.createButton({
-	      systemButton:Ti.UI.iPhone.SystemButton.FLEXIBLE_SPACE,
-	      right:0
-	    });
+  	  var quantButton = Ti.UI.createButton(pwycStyles.quantButton);
+  	  self.add(quantButton);
 
-	    var doneButton = Ti.UI.createButton({
-	      systemButton:Ti.UI.iPhone.SystemButton.DONE,
-	      right:0
-	    });
+      self.remove(spinner);
 
-	    textbox.keyboardToolbar = [flexSpace, doneButton];
+  	  quantButton.addEventListener('click', function(e){
+  	    app.openWindow('Performance', 'quantity', [performance.id, pwycText.value]);
+  	  })
 
-	    textbox.addEventListener('focus', function(e) {
-	      textbox.keyboardToolbar = [flexSpace, doneButton];
-	      doneButton.activeFld = textbox;
-	    });
+  	  function addKeyboardToolbar(textbox){
+  	    var flexSpace = Ti.UI.createButton({
+  	      systemButton:Ti.UI.iPhone.SystemButton.FLEXIBLE_SPACE,
+  	      right:0
+  	    });
 
-	    doneButton.addEventListener('click', function(e) {
-	      e.source.activeFld.blur();
-	    });
-	  };
+  	    var doneButton = Ti.UI.createButton({
+  	      systemButton:Ti.UI.iPhone.SystemButton.DONE,
+  	      right:0
+  	    });
+
+  	    textbox.keyboardToolbar = [flexSpace, doneButton];
+
+  	    textbox.addEventListener('focus', function(e) {
+  	      textbox.keyboardToolbar = [flexSpace, doneButton];
+  	      doneButton.activeFld = textbox;
+  	    });
+
+  	    doneButton.addEventListener('click', function(e) {
+  	      e.source.activeFld.blur();
+  	    });
+  	  };
+    });
   }
 
 	return self;

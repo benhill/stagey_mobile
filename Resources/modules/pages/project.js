@@ -221,7 +221,7 @@ function ProjectWindow(project_id){
       if(project.top_review_blurb){tableData.push(row)};
 
       reviewView.addEventListener('click', function(e){
-        app.openWindow('Reviews', 'reviews', [null, project]);
+        app.openWindow('Reviews', 'reviews', [null, project.id]);
       });
 
       var teamView = Ti.UI.createView(projectStyles.teamView);
@@ -246,7 +246,7 @@ function ProjectWindow(project_id){
       tableData.push(row);
 
       teamView.addEventListener('click', function(e){
-        app.openWindow('Project Team', 'users', [project.team]);
+        app.openWindow('Project Team', 'users', [project.id]);
       });
   
       var tagsList = 'tagged under:\n'

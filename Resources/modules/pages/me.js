@@ -29,7 +29,7 @@ function MeWindow(){
       var userObj = require('modules/models/user');
       new userObj(Ti.App.currentUser.id, function(user){
         loadUser(user);
-      });      
+      });
 
       spinner.show();
       self.add(spinner);
@@ -64,13 +64,13 @@ function MeWindow(){
     var reviews = new iconObj('My Reviews', 'iphone/all_shows_48.png', 'reviews', null, false, Ti.App.currentUser.id);
     icons.push(reviews);
 
-    var favorites = new iconObj('My Favorites', 'iphone/all_shows_48.png', 'projects', null, false, 'favorites');
+    var favorites = new iconObj('My Favorites', 'iphone/all_shows_48.png', 'projects', null, false, 'favorites', 'favorites');
     icons.push(favorites);
 
     var schedule = new iconObj('My Schedule', 'iphone/all_shows_48.png', 'performances', null, false, 'schedule', 'schedule');
     icons.push(schedule);
 
-    var projects = new iconObj('My Projects', '', 'projects', null, false, 'favorites');
+    var projects = new iconObj('My Projects', '', 'projects', null, false, 'projects', 'my_projects');
     icons.push(projects);
 
     var profile = new iconObj('My Profile', 'iphone/all_shows_48.png', 'user', null, false, user.id, 'user');
@@ -97,8 +97,8 @@ function MeWindow(){
         icon = e.source.icon;
         if(e.source.icon.id == 'schedule'){
           app.openWindow(e.source.icon.text, icon.window, [icon.third_param, 1]);
-        }
-        else if(e.source.icon.window == 'projects'){
+        }        
+        else if(e.source.icon.id == 'my_projects'){
           app.openWindow(e.source.icon.text, icon.window, [null, null, null, null, user.id]);
         }
         else{

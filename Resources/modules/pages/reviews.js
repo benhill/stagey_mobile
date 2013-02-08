@@ -1,4 +1,4 @@
-function ReviewsWindow(user_id, project){
+function ReviewsWindow(user_id, project_id){
 
   var app = require('modules/core');
   var styles = require('modules/styles/styles');
@@ -43,7 +43,7 @@ function ReviewsWindow(user_id, project){
         title = 'reviews by\n' + fullName;        
         if(Ti.Platform.name != 'iPhone OS'){titleView.height = 62;};
       }
-      else if(project){
+      else if(project_id){
         (reviews[0].project_title.length >= 50) ?  project_title = reviews[0].project_title.substr(0,50) + "..." :  project_title = reviews[0].project_title;
         title = 'SHOW REVIEWS ';
         subtitle = 'for ' + project_title.toLowerCase();
@@ -75,17 +75,13 @@ function ReviewsWindow(user_id, project){
 
       function createRow(review){        
 
-        var row = Ti.UI.createTableViewRow(reviewsStyles.row);
+        var row = Ti.UI.createTableViewRow(reviewsStyles.row);        
         row.link = 'review.js';      
         row.review = review;   
 
         var imageLabel = Ti.UI.createImageView(reviewsStyles.imageLabel);
-        if(user_id || project == null){
-          imageLabel.image = review.project_image_url;
-        }
-        else{
-          imageLabel.image = review.reviewer_image_url;
-        }
+        if(user_id || project_id == null){imageLabel.image = review.project_image_url;}
+        else{imageLabel.image = review.reviewer_image_url;}
         row.add(imageLabel);
         
         var project_title;
@@ -95,7 +91,7 @@ function ReviewsWindow(user_id, project){
         reviewer_name = review.reviewer_first_name + " " + review.reviewer_last_name.substr(0,1);
 
         var nameLabel = Ti.UI.createLabel(reviewsStyles.nameLabel);
-        if(user_id || project == null){
+        if(user_id || project_id == null){
           nameLabel.text = project_title;
         }
         else{
@@ -105,20 +101,24 @@ function ReviewsWindow(user_id, project){
 
         var date = Ti.UI.createLabel(reviewsStyles.date);
         date.text = review.time_passed + " ago";
-        if(project == null && user_id == null){date.text += " by " + reviewer_name};
+        if(project_id == null && user_id == null){date.text += " by " + (reviewer_name.length > 15 ? reviewer_name.substr(0,14) + '...' : reviewer_name)};
         row.add(date);
 
-        var blurb = Ti.UI.createLabel(reviewsStyles.blurb);
-        if(review.body){
-          blurb.text = review.body.substr(0,130).replace(/\n/gm, '').replace(/\r/gm, ' ') + '...';
+        var rating = Ti.UI.createLabel(reviewsStyles.rating);        
+        if(review.rating_text){
+          rating.text = "Rating: " + review.rating_text;
+          row.add(rating);
         }
+
+        var blurb = Ti.UI.createLabel(reviewsStyles.blurb);
+        if(review.body){blurb.text = review.body.substr(0,200).replace(/(\r\n|\n|\r)/gm,"") + '...';}
         row.add(blurb);
 
         var carrotImage = Ti.UI.createImageView(reviewsStyles.carrotImage);
         carrotImage.image = 'http://stagey-mobile.s3.amazonaws.com/more-arrow.png';
         row.add(carrotImage);
 
-        if(Ti.Platform.name == 'iPhone OS'){row.height = row.toImage().height + 8;}        
+        //if(Ti.Platform.name == 'iPhone OS'){row.height = row.toImage().height + 8;}        
 
         row.addEventListener('click', function(e){
           loadReview(e);
@@ -132,9 +132,9 @@ function ReviewsWindow(user_id, project){
 
       var loadingRow = Ti.UI.createTableViewRow({title:"Loading...", color:'black'});   
       
-      function beginUpdate(){
-        page += 1;
+      function beginUpdate(){        
         if(reviews[0].total_results > (page * rows_per_page)){
+          page += 1;
           updating = true;
 
           table.appendRow(loadingRow);
@@ -177,8 +177,8 @@ function ReviewsWindow(user_id, project){
       if(user_id){
         url = app.api_url + "reviews?user_id=" + user_id;
       }
-      else if(project){    
-        url = app.api_url + "reviews/" + project.id;
+      else if(project_id){    
+        url = app.api_url + "reviews/" + project_id;
       }
       else{
         url = app.api_url + "reviews"
