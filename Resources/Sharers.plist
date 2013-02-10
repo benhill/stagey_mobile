@@ -12,8 +12,7 @@
     <string>SHKLogout</string>
   </array>
   <key>services</key>
-  <array>
-    <string>SHKEvernote</string>
+  <array>    
     <string>SHKTwitter</string>
     <string>SHKFacebook</string>        
     <string>SHKTumblr</string>

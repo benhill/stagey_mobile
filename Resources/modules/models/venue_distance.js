@@ -10,8 +10,8 @@ function VenueDistance(venue_id, callback){
     callback(this.responseText);
   };
 
-  xhr.onerror = function(){ 
-    Ti.API.info('Error');
+  xhr.onerror = function(e){ 
+    app.throwError(this, e);
   };
 
   Ti.Geolocation.getCurrentPosition(function(e){
@@ -24,8 +24,11 @@ function VenueDistance(venue_id, callback){
       var lng = '-118.332067';
     }
     url = app.api_url + 'venue_distance/' + venue_id + '?lat=' + lat + '&lng=' + lng;
-    xhr.open('GET', url);
-    xhr.send();
+
+    try{
+      xhr.open('GET', url);
+      xhr.send();}
+    catch(e){};
   });
 
 };

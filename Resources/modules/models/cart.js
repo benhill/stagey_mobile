@@ -16,8 +16,8 @@ Cart.prototype.add_to_cart = function(performance_id, quantity, pwyc_price, call
     callback(JSON.parse(this.responseText));
   };
 
-  xhr.onerror = function(){ 
-    Ti.API.info('Error');
+  xhr.onerror = function(e){ 
+    app.throwError(this, e);
   };
 
   xhr.open('GET', url);
@@ -35,8 +35,8 @@ Cart.prototype.get = function(callback) {
     callback(JSON.parse(this.responseText).contents);
   };
 
-  xhr.onerror = function(){ 
-    Ti.API.info('Error');
+  xhr.onerror = function(e){ 
+    app.throwError(this, e);
   };
 
   xhr.open('GET', url);
@@ -54,12 +54,14 @@ Cart.prototype.apply_discount_code = function(code_name, callback) {
     callback(JSON.parse(this.responseText));
   };
 
-  xhr.onerror = function(){ 
-    Ti.API.info('Error');
+  xhr.onerror = function(e){ 
+    app.throwError(this, e);
   };
-
-  xhr.open('GET', url);
-  xhr.send();  
+  
+  try{
+    xhr.open('GET', url);
+    xhr.send();}
+  catch(e){};
 };
 
 Cart.prototype.purchase = function(cc_first_name, cc_last_name, cc_number, cc_month, cc_year, csv, callback) {  
@@ -73,12 +75,14 @@ Cart.prototype.purchase = function(cc_first_name, cc_last_name, cc_number, cc_mo
     callback(JSON.parse(this.responseText));
   };
 
-  xhr.onerror = function(){ 
-    Ti.API.info('Error');
+  xhr.onerror = function(e){ 
+    app.throwError(this, e);
   };
 
-  xhr.open('GET', url);
-  xhr.send();  
+  try{
+    xhr.open('GET', url);
+    xhr.send();}
+  catch(e){};
 };
  
 module.exports = Cart;

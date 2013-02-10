@@ -10,8 +10,8 @@ function AddUser(email, first_name, last_name, password, callback){
     callback(JSON.parse(this.responseText));
   };
 
-  xhr.onerror = function(){ 
-    Ti.API.info('Error');
+  xhr.onerror = function(e){ 
+    app.throwError(this, e);
   };
 
   url = app.api_url + 'add_user?first_name=' + first_name + '&last_name=' + last_name + '&email=' + email + '&password=' + password;

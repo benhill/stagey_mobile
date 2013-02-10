@@ -24,6 +24,13 @@ exports.register = function(name, object) {
   plugins[name] = object;
 };
 
+exports.throwError = function(me, e) {
+  Ti.API.debug("STATUS: " + me.status);
+  Ti.API.debug("TEXT:   " + me.responseText);
+  Ti.API.debug("ERROR:  " + e.error);
+  alert('There was an error retrieving the remote data. Try again.');
+};
+
 exports.openWindow = function(title, newWindowName, params){
 
   Ti.API.info("loading " + newWindowName);

@@ -10,13 +10,15 @@ function AddReview(project_id, rating, body, callback){
     callback(JSON.parse(this.responseText));
   };
 
-  xhr.onerror = function(){ 
-    Ti.API.info('Error');
+  xhr.onerror = function(e){ 
+    app.throwError(this, e);
   };
 
   url = app.api_url + 'add_review?email=' + Ti.App.currentUser.email + '&password=' + Ti.App.userPassword + '&project_id=' + project_id + '&body=' + body + '&rating=' + rating;
-  xhr.open('GET', url);
-  xhr.send();
+  try{
+    xhr.open('GET', url);
+    xhr.send();}
+  catch(e){};
 };
  
 module.exports = AddReview;

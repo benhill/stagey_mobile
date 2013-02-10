@@ -10,12 +10,14 @@ function Projects(url, callback){
     callback(JSON.parse(this.responseText).projects);
   };
 
-  xhr.onerror = function(){ 
-    Ti.API.info('Error');
+  xhr.onerror = function(e){ 
+    app.throwError(this, e);
   };
 
-  xhr.open('GET', url);
-  xhr.send();
+  try{
+    xhr.open('GET', url);
+    xhr.send();}
+  catch(e){};    
 };
  
 module.exports = Projects;

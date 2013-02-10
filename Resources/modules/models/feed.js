@@ -10,14 +10,17 @@ function Feed(page, callback){
     callback(JSON.parse(this.responseText).feed_items);
   };
 
-  xhr.onerror = function(){ 
-    Ti.API.info('Error');
+  xhr.onerror = function(e){ 
+    app.throwError(this, e);
   };
 
   url = app.api_url + "feed"
   if(page){url += '?page=' + page};
-  xhr.open('GET', url);
-  xhr.send();
+
+  try{
+    xhr.open('GET', url);
+    xhr.send();}
+  catch(e){};
 };
  
 module.exports = Feed;

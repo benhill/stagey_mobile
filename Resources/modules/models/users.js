@@ -10,14 +10,16 @@ function Users(project_id, callback){
     callback(JSON.parse(this.responseText).team);
   };
 
-  xhr.onerror = function(){ 
-    Ti.API.info('Error');
+  xhr.onerror = function(e){ 
+    app.throwError(this, e);
   };
 
   var url = app.api_url + "team?project_id=" + project_id;
 
-  xhr.open('GET', url);
-  xhr.send();
+  try{
+    xhr.open('GET', url);
+    xhr.send();}
+  catch(e){};
 };
  
 module.exports = Users;
