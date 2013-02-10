@@ -15,11 +15,11 @@ function PerformanceWindow(performance_id){
     var url = app.api_url + "performance/" + performance_id + "?user_id=" + (Ti.App.currentUser ? Ti.App.currentUser.id : '');
 
     spinner.show();
-    perfView.add(spinner);
+    self.add(spinner);
 
     new perfObj(url, function(performance){
 
-      perfView.remove(spinner);
+      self.remove(spinner);
 
       var titleView = Ti.UI.createView(styles.titleView);
 
