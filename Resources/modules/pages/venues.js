@@ -38,7 +38,7 @@ function VenuesWindow(){
       spinner.show();
 
       var mapObj = require('modules/common/map')
-      contentView.add(new mapObj(null, function(){
+      contentView.add(new mapObj(null, self, function(){
         spinner.hide();
       }));
       self.add(contentView);      

@@ -8,9 +8,9 @@ styles = {
   	height:60
   },
 
-  image: {
-  	width:45,
+  image: {  	
     height:45,
+    width:45,
     left:5,
     top:10,
     borderColor:'black',

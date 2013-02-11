@@ -8,7 +8,7 @@ styles = {
     borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
     hintText:'search for a show',
     clearOnEdit:true,
-    color:'gray'
+    color:'black'
   },
 
   searchButton: {    

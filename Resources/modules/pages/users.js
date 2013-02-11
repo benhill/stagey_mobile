@@ -24,7 +24,7 @@ function UsersWindow(project_id){
         row.user = user;
 
         var image = Ti.UI.createImageView(usersStyles.image);
-        image.image = user.image_url;
+        image.image = user.thumbnail_url;
         image.user = user; 
         row.add(image);
 

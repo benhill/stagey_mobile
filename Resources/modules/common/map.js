@@ -1,4 +1,4 @@
-function MapWindow(venue, callback){
+function MapWindow(venue, window, callback){
 
   var app = require('modules/core');
   var styles = require('modules/styles/styles')
@@ -18,7 +18,7 @@ function MapWindow(venue, callback){
     var viewButton = Ti.UI.createButton(mapStyles.viewButton);
 
     viewButton.addEventListener('click', function(e){
-      app.openWindow(self, 'Venue', 'venue', [venue.id]);
+      app.openWindow(window, 'Venue', 'venue', [venue.id]);
     });
 
     var annotation = Ti.Map.createAnnotation(mapStyles.annotation);
