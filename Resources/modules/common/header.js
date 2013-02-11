@@ -47,7 +47,7 @@ function Header(title, window){
 
     if(Ti.Platform.name != 'iPhone OS' && title != "Home"){
       logoImage.addEventListener('click', function(e){
-        app.openWindow('Home', 'shows', []);
+        app.openWindow(window, 'Home', 'shows', []);
       })
     }
   }

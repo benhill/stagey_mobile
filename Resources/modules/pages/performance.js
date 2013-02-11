@@ -49,7 +49,12 @@ function PerformanceWindow(performance_id){
       tableData.push(row);
 
       row.addEventListener('click', function(e){
-        if(performance.pwyc){
+        if(!performance.on_sale){
+          var window = 'not_onsale';
+          var title = 'not_onsale';
+          var params = [performance.onsale_date];
+        }
+        else if(performance.pwyc){
           var window = 'pwyc';
           var title = 'PWYC';
           var params = [performance.id];

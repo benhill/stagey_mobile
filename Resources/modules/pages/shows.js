@@ -9,7 +9,6 @@ function ShowsWindow(){
   var icons = [];
   var top = 0;
   var left = 26;
-  var app = require('modules/core');
 
   self.load = function(){
 

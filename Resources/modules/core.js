@@ -31,7 +31,12 @@ exports.throwError = function(me, e) {
   alert('There was an error retrieving the remote data. Try again.');
 };
 
-exports.openWindow = function(title, newWindowName, params){
+exports.openWindow = function(currentWindow, title, newWindowName, params){
+
+  if(currentWindow != null){
+    Ti.App.prevWindow = currentWindow;
+    currentWindow.close();
+  }  
 
   Ti.API.info("loading " + newWindowName);
   Ti.API.info("Available memory: " + Ti.Platform.availableMemory);
@@ -58,7 +63,7 @@ exports.openWindow = function(title, newWindowName, params){
 
     newWindow.addEventListener('android:back', function(e){
       if(newWindow._sourceUrl != "app://modules/pages/shows.js"){
-        newWindow.close();
+        currentWindow.open();
       }
     });
 
@@ -66,6 +71,25 @@ exports.openWindow = function(title, newWindowName, params){
 
   openWithWindow(title, newWindow);
 };
+
+function openWithWindow(title, newWindow){
+  newWindow.navBarHidden = true;
+  require_path = 'modules/common/header';
+  if(Ti.Platform.name != 'iPhone OS'){require_path = '../' + require_path};
+  var headerObj = require(require_path);
+  newWindow.add(new headerObj(title, newWindow));
+  
+  Ti.App.windowStack.push(newWindow);
+  if(Ti.App.windowStack.length > 5){
+    twoWindow = Ti.App.windowStack[1];
+    twoWindow.close();
+    Ti.App.windowStack.splice(2,1);
+    twoWindow = null;
+  }
+
+  newWindow.open();
+  newWindow.load();
+}
 
 var resdir_value = '';
 if(Ti.Platform.name != 'iPhone OS'){resdir_value = '../../'};
@@ -76,15 +100,7 @@ exports.openFromWindow = function(newWindow){
   openWithWindow('', newWindow);
 };
 
-function openWithWindow(title, newWindow){
-  newWindow.navBarHidden = true;
-  require_path = 'modules/common/header';
-  if(Ti.Platform.name != 'iPhone OS'){require_path = '../' + require_path};
-  var headerObj = require(require_path);
-  newWindow.add(new headerObj(title, newWindow));
-  newWindow.open();
-  newWindow.load();
-}
+
 
 exports.addKeyboardToolbar = function(textbox, doneCallback){  
   
@@ -121,7 +137,7 @@ exports.property = function(name) {
 
 exports.timeout = 15000;
 
-//exports.api_url = 'http://192.168.1.65/api/';
+//exports.api_url = 'http://www.gwahir.com/api/';
 exports.api_url = 'https://staging.hollywoodfringe.org/api/';
 
 exports.site_url = 'http://staging.hollywoodfringe.org/';

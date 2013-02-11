@@ -1,11 +1,12 @@
 Ti.UI.orientation = Ti.UI.PORTRAIT;
 
-var app = require('modules/core');
-
 if(Ti.App.Properties.getString('currentUser')){
   Ti.App.currentUser = JSON.parse(Ti.App.Properties.getString('currentUser'));
   Ti.App.userPassword = Ti.App.Properties.getString('userPassword');
 }
+
+Ti.App.windowStack = [];
+
 Ti.App.token = '8kj@!!00990j34Ad'
 Ti.API.info("module is => " + sharekit);
 
@@ -57,4 +58,4 @@ if(Ti.Platform.name == 'iPhone OS'){
 
 Ti.Geolocation.purpose = "Receive User Location";
 
-app.openWindow('Home', 'shows', []);
+require('modules/core').openWindow(null, 'Home', 'shows', []);
