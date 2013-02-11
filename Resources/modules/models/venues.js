@@ -1,6 +1,6 @@
 var app = require('modules/core');
 
-function Venues(callback){
+function Venues(page, callback){
  
   var xhr = Ti.Network.createHTTPClient({
     timeout:app.timeout
@@ -14,7 +14,8 @@ function Venues(callback){
     app.throwError(this, e);
   };
 
-  var url = app.api_url + "venues";
+  var url = app.api_url + "venues"
+  if(page){url = url + "?page=" + page};
 
   try{
     xhr.open('GET', url);

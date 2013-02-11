@@ -7,12 +7,10 @@ function VenuesWindow(){
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);  
   var venuesTab = Titanium.UI.currentTab;
   var contentView;
-  var table;
-  var page = 1
+  var table;  
   var rows_per_page = 9  
   var lastDistance = 0;
   var updating = false;
-  var lastRow = rows_per_page;
 
   self.load = function(){
 
@@ -47,13 +45,16 @@ function VenuesWindow(){
     }
       
     function loadVenues(){
+      var page = 1
+      var lastRow = rows_per_page;
+
       self.add(spinner);
       spinner.show();
 
       table = Ti.UI.createTableView(venueStyles.table);
       var tableData = [];
       var venuesObj = require(app.resdir + 'modules/models/venues');
-      new venuesObj(function(venues){      
+      new venuesObj(page, function(venues){      
         for (i = 0; i < venues.length; i++) {
           row = createRow(venues[i]);          
           tableData.push(row);
@@ -73,7 +74,7 @@ function VenuesWindow(){
 
             table.appendRow(loadingRow);
             
-            new venuesObj(function(venues){
+            new venuesObj(page, function(venues){
               var rows = [];
               for (var i = 0; i < venues.length; i++){
                 row = createRow(venues[i]);

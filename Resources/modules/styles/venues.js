@@ -26,17 +26,17 @@ styles = {
   nameLabel: {
     font:{fontSize:16,fontWeight:'bold'},
     height:Titanium.UI.SIZE,
-    left:'55dp',
+    left:55,
     top:10,
     color:'#000',
     touchEnabled:false
   },
 
   addressLabel: {
-    font:{fontSize:'12dp'},
+    font:{fontSize:12},
     width:'80%',
     height:Titanium.UI.SIZE,
-    left:'55dp',
+    left:55,
     top:30,
     color:'#000',
     touchEnabled:false

@@ -39,7 +39,7 @@ function MapWindow(venue, callback){
   }
   else {
     var venuesObj = require('modules/models/venues');
-    new venuesObj(function(venues){
+    new venuesObj(null, function(venues){
       for (i = 0; i < venues.length; i++) {
         var venue = venues[i];
         annotations.push(createAnnotation(venue));

@@ -5,11 +5,12 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.022880 seconds on emulator to get ready
+[DEBUG] waited 0.037476 seconds on emulator to get ready
 [DEBUG] com.stagey.mobile installed? False
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: /src/stagey_mobile/Resources/modules/core.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/core.js
+[TRACE] COPYING MODIFIED FILE: /src/stagey_mobile/Resources/modules/pages/venues.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/venues.js
+[TRACE] COPYING MODIFIED FILE: /src/stagey_mobile/Resources/modules/styles/venues.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/venues.js
 [TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
 [TRACE] COPYING FILE: /src/stagey_mobile/Resources/android/images/res-long-land-hdpi/Default.png => /src/stagey_mobile/build/android/res/drawable-long-land-hdpi/default_d44e27d97b.png
@@ -177,7 +178,7 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.025284 seconds on emulator to get ready
+[DEBUG] waited 0.144239 seconds on emulator to get ready
 [INFO] Installing application on device
 [INFO] Application installed. Launch from drawer on Home Screen
 [INFO] Forwarding host port 9419 to device for debugging.
