@@ -6,7 +6,10 @@ styles = {
 
   row: {
     height:150,
-    bottom:10
+    bottom:10,
+    className: 'row',
+    objName: 'row',
+    touchEnabled: true
   },
 
   imageView: {    

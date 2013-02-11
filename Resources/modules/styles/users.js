@@ -5,7 +5,10 @@ styles = {
   },
 
   row: {
-  	height:60
+  	height:60,
+    className: 'row',
+    objName: 'row',
+    touchEnabled: true
   },
 
   image: {  	

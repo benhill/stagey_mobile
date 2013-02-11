@@ -98,7 +98,10 @@ styles = {
     color:'black'
   },
 
-  row: {    
+  row:{
+    className: 'row',
+    objName: 'row',
+    touchEnabled: true,
   },
 
   moreLabel: {

@@ -5,11 +5,16 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.065977 seconds on emulator to get ready
+[DEBUG] waited 0.066881 seconds on emulator to get ready
 [DEBUG] com.stagey.mobile installed? False
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: /src/stagey_mobile/Resources/modules/pages/reviews.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/reviews.js
+[TRACE] COPYING MODIFIED FILE: /src/stagey_mobile/Resources/modules/pages/performances.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/performances.js
+[TRACE] COPYING MODIFIED FILE: /src/stagey_mobile/Resources/modules/styles/cats.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/cats.js
+[TRACE] COPYING MODIFIED FILE: /src/stagey_mobile/Resources/modules/styles/feed.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/feed.js
+[TRACE] COPYING MODIFIED FILE: /src/stagey_mobile/Resources/modules/styles/reviews.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/reviews.js
+[TRACE] COPYING MODIFIED FILE: /src/stagey_mobile/Resources/modules/styles/users.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/users.js
+[TRACE] COPYING MODIFIED FILE: /src/stagey_mobile/Resources/modules/styles/venues.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/venues.js
 [TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
 [TRACE] COPYING FILE: /src/stagey_mobile/Resources/android/images/res-long-land-hdpi/Default.png => /src/stagey_mobile/build/android/res/drawable-long-land-hdpi/default_d44e27d97b.png
@@ -177,6 +182,6 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.035837 seconds on emulator to get ready
+[DEBUG] waited 0.032996 seconds on emulator to get ready
 [INFO] Installing application on device
 [INFO] Application installed. Launch from drawer on Home Screen

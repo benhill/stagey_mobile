@@ -5,7 +5,10 @@ styles = {
   },
 
   row: {
-    height:45
+    height:45,
+    className: 'row',
+    objName: 'row',
+    touchEnabled: true
   },
 
   nameLabel: {

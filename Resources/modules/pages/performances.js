@@ -222,7 +222,7 @@ function PerformancesWindow(mode, schedule_page){
     }
 
     function loadLast(){
-      self.close();
+      app.openWindow(self, 'Schedule', 'performances', [mode, schedule_page - 1]);
     }
 
     function loadPerformance(e, islongclick) {      
