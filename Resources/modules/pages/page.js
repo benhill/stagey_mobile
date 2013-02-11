@@ -35,7 +35,7 @@ function PageWindow(page_id){
     titleView.add(projectLabel);
 
     titleView.addEventListener('click', function(e){
-      app.openWindow('Project', 'project', [page.project_id]);
+      app.openWindow(self, 'Project', 'project', [page.project_id]);
     });
 
     pageScroll.add(titleView);
@@ -54,7 +54,7 @@ function PageWindow(page_id){
     buttonsWrapper.add(view_project);
 
     view_project.addEventListener('click', function(e){
-      app.openWindow('Project', 'project', [page.project_id]);
+      app.openWindow(self, 'Project', 'project', [page.project_id]);
     });
 
     self.add(buttonsWrapper);

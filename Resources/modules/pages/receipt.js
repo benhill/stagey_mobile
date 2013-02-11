@@ -78,7 +78,7 @@ function ReceiptWindow(sale_id){
       buttonView.add(homeButton);
 
       homeButton.addEventListener('click', function(e){
-        app.openWindow('Home', 'shows', []);
+        app.openWindow(self, 'Home', 'shows', []);
       });
 
       self.add(buttonView);

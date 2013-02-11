@@ -126,7 +126,7 @@ function ProjectsWindow(mode, startProjects, cat_id, venue_id, user_id){
     }
 
     function loadProject(e, islongclick){
-      app.openWindow('Project', 'project', [e.source.project_id])
+      app.openWindow(self, 'Project', 'project', [e.source.project_id])
     }
 
     spinner.show();

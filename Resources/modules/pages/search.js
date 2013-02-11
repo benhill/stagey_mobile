@@ -56,7 +56,7 @@ function SearchWindow(search_terms){
 
     function loadResults(projects){
       if(projects.length > 0){
-        app.openWindow('Search Results', 'projects', [null, projects]);
+        app.openWindow(self, 'Search Results', 'projects', [null, projects]);
       }
       else{
         var noResultsLabel = Ti.UI.createLabel(searchStyles.noResultsLabel);

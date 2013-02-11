@@ -46,7 +46,7 @@ function ReviewWindow(review_id){
     titleView.add(info);    
 
     titleView.addEventListener('click', function(e){
-      if(!review.anonymous){app.openWindow('User', 'user', [review.fringe_user_id]);}
+      if(!review.anonymous){app.openWindow(self, 'User', 'user', [review.fringe_user_id]);}
     });
 
     reviewScroll.add(titleView);
@@ -79,7 +79,7 @@ function ReviewWindow(review_id){
     buttonsWrapper.add(view_project);
 
     view_project.addEventListener('click', function(e){
-      app.openWindow('Project', 'project', [review.project_id]);
+      app.openWindow(self, 'Project', 'project', [review.project_id]);
     });
 
     self.add(buttonsWrapper);

@@ -8,6 +8,11 @@ function VenuesWindow(){
   var venuesTab = Titanium.UI.currentTab;
   var contentView;
   var table;
+  var page = 1
+  var rows_per_page = 9  
+  var lastDistance = 0;
+  var updating = false;
+  var lastRow = rows_per_page;
 
   self.load = function(){
 
@@ -50,33 +55,7 @@ function VenuesWindow(){
       var venuesObj = require(app.resdir + 'modules/models/venues');
       new venuesObj(function(venues){      
         for (i = 0; i < venues.length; i++) {
-          var venue = venues[i];
-          var row = Ti.UI.createTableViewRow(venueStyles.row);      
-          row.venue_id = venue.id;
-
-          var venueThumb = Titanium.UI.createImageView(venueStyles.venueThumb);
-          venueThumb.image = venue.thumbnail;
-          venueThumb.venue_id = venue.id;
-          row.add(venueThumb);
-
-          var name;
-          (venue.name.length >= 25) ? name = venue.name.substr(0,25) + "..." : name = venue.name;
-          var nameLabel = Ti.UI.createLabel(venueStyles.nameLabel);
-          nameLabel.text = name;
-          name.venue_id = venue.id;
-          row.add(nameLabel);
-
-          var addressLabel = Ti.UI.createLabel(venueStyles.addressLabel);
-          addressLabel.text = venue.address;
-          addressLabel.venue_id = venue.id;
-          row.add(addressLabel);
-
-          var carrotImage = Ti.UI.createImageView(venueStyles.carrotImage);
-          carrotImage.image = 'http://stagey-mobile.s3.amazonaws.com/more-arrow.png';
-          carrotImage.venue_id = venue.id;
-
-          row.add(carrotImage);
-          row.venue_id = venue.id;
+          row = createRow(venues[i]);          
           tableData.push(row);
         }
 
@@ -84,15 +63,77 @@ function VenuesWindow(){
         contentView.add(table);
         self.add(contentView);
         spinner.hide();
+
+        var loadingRow = Ti.UI.createTableViewRow({title:"Loading...", color:'black'});   
+      
+        function beginUpdate(){          
+          if(venues[0].total_results > (page * rows_per_page)){
+            page += 1;
+            updating = true;
+
+            table.appendRow(loadingRow);
+            
+            new venuesObj(function(venues){
+              var rows = [];
+              for (var i = 0; i < venues.length; i++){
+                row = createRow(venues[i]);
+                rows.push(row);              
+              }            
+              endUpdate(rows);
+            });
+          }
+        }
+
+        function endUpdate(rows){                
+          updating = false;        
+          table.appendRow(rows);
+          table.deleteRow(lastRow);
+          lastRow += rows_per_page;
+        }
+
+        table.addEventListener('scroll',function(e){
+          app.dynamic_scoller(e, beginUpdate, updating, lastDistance, page)
+        });
       })
 
       table.addEventListener('click', function(e){
         openVenue(e);
       });
-    }    
+    }
+
+    function createRow(venue){
+      var row = Ti.UI.createTableViewRow(venueStyles.row);      
+      row.venue_id = venue.id;
+
+      var venueThumb = Titanium.UI.createImageView(venueStyles.venueThumb);
+      venueThumb.image = venue.thumbnail;
+      venueThumb.venue_id = venue.id;
+      row.add(venueThumb);
+
+      var name;
+      (venue.name.length >= 25) ? name = venue.name.substr(0,25) + "..." : name = venue.name;
+      var nameLabel = Ti.UI.createLabel(venueStyles.nameLabel);
+      nameLabel.text = name;
+      name.venue_id = venue.id;
+      row.add(nameLabel);
+
+      var addressLabel = Ti.UI.createLabel(venueStyles.addressLabel);
+      addressLabel.text = venue.address;
+      addressLabel.venue_id = venue.id;
+      row.add(addressLabel);
+
+      var carrotImage = Ti.UI.createImageView(venueStyles.carrotImage);
+      carrotImage.image = 'http://stagey-mobile.s3.amazonaws.com/more-arrow.png';
+      carrotImage.venue_id = venue.id;
+
+      row.add(carrotImage);
+      row.venue_id = venue.id;
+
+      return row;
+    }
 
     function openVenue(e, islongclick) { 
-      app.openWindow('Venue', 'venue', [e.source.venue_id]);
+      app.openWindow(self, 'Venue', 'venue', [e.source.venue_id]);
     }
         
   }

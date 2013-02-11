@@ -170,7 +170,7 @@ function ReviewsWindow(user_id, project_id){
     }
 
     function loadReview(e, islongclick) { 
-      app.openWindow('Show Review', 'review', [e.row.review.id]);
+      app.openWindow(self, 'Show Review', 'review', [e.row.review.id]);
     }
 
     function getUrl(){

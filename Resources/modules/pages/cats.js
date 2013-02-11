@@ -45,7 +45,7 @@ function CatsWindow(){
 
     function loadProjects(e, islongclick) { 
       params = ['cat', null, e.row.cat.id];
-      app.openWindow(app.toTitleCase(e.row.cat.name), 'projects', params);
+      app.openWindow(self, app.toTitleCase(e.row.cat.name), 'projects', params);
     }
 
     spinner.show();

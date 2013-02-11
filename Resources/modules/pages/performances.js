@@ -218,7 +218,7 @@ function PerformancesWindow(mode, schedule_page){
    
 
     function loadNext(){
-      app.openWindow('Schedule', 'performances', [mode, schedule_page + 1]);
+      app.openWindow(self, 'Schedule', 'performances', [mode, schedule_page + 1]);
     }
 
     function loadLast(){
@@ -226,7 +226,7 @@ function PerformancesWindow(mode, schedule_page){
     }
 
     function loadPerformance(e, islongclick) {      
-      app.openWindow('Performance', 'performance', [e.source.performance.id]);
+      app.openWindow(self, 'Performance', 'performance', [e.source.performance.id]);
     }    
 
     self.add(spinner);

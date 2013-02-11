@@ -151,7 +151,7 @@ function FeedWindow(){
         var title = 'Page';
       }
 
-      app.openWindow(title, win_name, [feed_item.object_id]);
+      app.openWindow(self, title, win_name, [feed_item.object_id]);
     }
 
     spinner.show();

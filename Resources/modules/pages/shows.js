@@ -91,7 +91,7 @@ function ShowsWindow(){
     }
 
     function loadResults(projects){
-      app.openWindow('Search Results', 'projects', [null, projects]);
+      app.openWindow(self, 'Search Results', 'projects', [null, projects]);
     }
 
     function runIconEvent(e, islongclick){
@@ -101,7 +101,7 @@ function ShowsWindow(){
         fourthParam = 1;
       }
       if(e.source.icon.id == 'nearby'){thirdParam = 'nearby';}
-      app.openWindow(e.source.icon.text, e.source.icon.window, [thirdParam, fourthParam]);
+      app.openWindow(self, e.source.icon.text, e.source.icon.window, [thirdParam, fourthParam]);
     }
   }
   

@@ -12,14 +12,14 @@ function Header(title, window){
     if(title != 'Search'){headerView.add(searchButton)};  
 
     searchButton.addEventListener('click', function(e){
-      app.openWindow('Search', 'search', []);
+      app.openWindow(self, 'Search', 'search', []);
     });  
 
     var userButton =  Ti.UI.createImageView(headerStyles.userButton);
     headerView.add(userButton);
 
     userButton.addEventListener('click', function(e){
-      app.openWindow('Me', 'me', []);
+      app.openWindow(self, 'Me', 'me', []);
     });  
   }
 
@@ -29,10 +29,10 @@ function Header(title, window){
 
     backButton.addEventListener('click', function(e){    
       if(title == 'Schedule'){
-        app.openWindow('Home', 'shows', []);  
+        app.openWindow(self, 'Home', 'shows', []);  
       }
       else if (title == 'My Schedule'){
-        app.openWindow('Me', 'me', []);
+        app.openWindow(self, 'Me', 'me', []);
       }
       else{
         window.close();

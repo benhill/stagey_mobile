@@ -22,7 +22,7 @@ function MapWindow(venue){
       var viewButton = Ti.UI.createButton(mapStyles.viewButton);
 
       viewButton.addEventListener('click', function(e){
-        app.openWindow('Venue', 'venue', [venue.id]);
+        app.openWindow(self, 'Venue', 'venue', [venue.id]);
       });
 
       var annotation = Ti.Map.createAnnotation(mapStyles.annotation);

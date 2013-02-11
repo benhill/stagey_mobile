@@ -44,7 +44,7 @@ function MeWindow(){
     image.image = user.thumbnail_url;
 
     image.addEventListener('click', function(e){
-      app.openWindow('Image', 'image', [user.image_url])
+      app.openWindow(self, 'Image', 'image', [user.image_url])
     });
 
     wrapper.add(image);   
@@ -96,13 +96,13 @@ function MeWindow(){
       row.addEventListener('click', function(e){
         icon = e.source.icon;
         if(e.source.icon.id == 'schedule'){
-          app.openWindow(e.source.icon.text, icon.window, [icon.third_param, 1]);
+          app.openWindow(self, e.source.icon.text, icon.window, [icon.third_param, 1]);
         }        
         else if(e.source.icon.id == 'my_projects'){
-          app.openWindow(e.source.icon.text, icon.window, [null, null, null, null, user.id]);
+          app.openWindow(self, e.source.icon.text, icon.window, [null, null, null, null, user.id]);
         }
         else{
-          app.openWindow(e.source.icon.text, icon.window, [icon.third_param]);
+          app.openWindow(self, e.source.icon.text, icon.window, [icon.third_param]);
         }
       });
 

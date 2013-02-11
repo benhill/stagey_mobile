@@ -62,7 +62,7 @@ function ProjectWindow(project_id){
         galleryView.add(img);            
 
         img.addEventListener('click', function(e){
-          app.openWindow('Image', 'image', [e.source.full_image_path]);
+          app.openWindow(self, 'Image', 'image', [e.source.full_image_path]);
         });
       } 
 
@@ -74,7 +74,7 @@ function ProjectWindow(project_id){
         allGalleryView.add(moreImagesLabel);
 
         moreImagesLabel.addEventListener('click', function(e){
-          app.openWindow(project.title, 'gallery', [project.images]);
+          app.openWindow(self, project.title, 'gallery', [project.images]);
         });
       }
 
@@ -171,7 +171,7 @@ function ProjectWindow(project_id){
         }
         else{          
           if(Ti.App.currentUser || e.source.icon.auth_required == false){
-            app.openWindow(e.source.icon.text, e.source.icon.window, [e.source.icon.object])
+            app.openWindow(self, e.source.icon.text, e.source.icon.window, [e.source.icon.object])
           }
           else{
             var windowObj = require('modules/pages/' + e.source.icon.window);
@@ -182,13 +182,13 @@ function ProjectWindow(project_id){
             var headerObj = require('modules/common/header');
             newWindow.add(new headerObj());
 
-            app.openWindow('Login', 'Login', [newWindow])
+            app.openWindow(self, 'Login', 'Login', [newWindow])
           }
         }
       }
 
       function loadReview(review){
-        app.openWindow('Show Review', 'review', [review.id]);
+        app.openWindow(self, 'Show Review', 'review', [review.id]);
       }
       
       var row = Ti.UI.createTableViewRow(projectStyles.row);      
@@ -221,7 +221,7 @@ function ProjectWindow(project_id){
       if(project.top_review_blurb){tableData.push(row)};
 
       reviewView.addEventListener('click', function(e){
-        app.openWindow('Reviews', 'reviews', [null, project.id]);
+        app.openWindow(self, 'Reviews', 'reviews', [null, project.id]);
       });
 
       var teamView = Ti.UI.createView(projectStyles.teamView);
@@ -246,7 +246,7 @@ function ProjectWindow(project_id){
       tableData.push(row);
 
       teamView.addEventListener('click', function(e){
-        app.openWindow('Project Team', 'users', [project.id]);
+        app.openWindow(self, 'Project Team', 'users', [project.id]);
       });
   
       var tagsList = 'tagged under:\n'
@@ -319,7 +319,7 @@ function ProjectWindow(project_id){
         var headerObj = require('modules/common/header');
         newWindow.add(new headerObj());
 
-        app.openWindow('Login', 'login', [newWindow])
+        app.openWindow(self, 'Login', 'login', [newWindow])
       }
     }
 

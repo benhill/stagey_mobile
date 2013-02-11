@@ -51,7 +51,7 @@ function AddUserWindow(return_win){
           app.openFromWindow(return_win);
         }
         else{          
-          app.openWindow('Me', 'me', []);
+          app.openWindow(self, 'Me', 'me', []);
         }
       }
     };

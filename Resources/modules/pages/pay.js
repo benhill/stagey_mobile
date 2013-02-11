@@ -102,7 +102,7 @@ function PayWindow(){
         expiryYear = yearPicker.value;
       }
       params = [cardText.value, fNameText.value, lNameText.value, csvText.value, expiryMonth, expiryYear];
-      app.openWindow('Review Order', 'order', params);
+      app.openWindow(self, 'Review Order', 'order', params);
     });
   }
 

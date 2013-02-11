@@ -56,7 +56,7 @@ function UsersWindow(project_id){
       });
 
       function loadUser(e, islongclick) { 
-        app.openWindow('User', 'user', [e.source.user.id]);
+        app.openWindow(self, 'User', 'user', [e.source.user.id]);
       }
     });
   }

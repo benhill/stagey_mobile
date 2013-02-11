@@ -131,7 +131,7 @@ function QuantityWindow(performance_id, pwycPrice){
                 buttonView.add(payButton);
               }
               else{                                
-                app.openWindow('Receipt', 'receipt', [e.sale_id]);
+                app.openWindow(self, 'Receipt', 'receipt', [e.sale_id]);
                 buttonView.remove(spinner);
                 buttonView.add(payButton);
               }
@@ -167,7 +167,7 @@ function QuantityWindow(performance_id, pwycPrice){
     };
 
   function loadPayWindow(){
-    app.openWindow('Credit Card', 'pay', []);
+    app.openWindow(self, 'Credit Card', 'pay', []);
   }
 
   return self;

@@ -61,7 +61,7 @@ function VenueWindow(venue_id){
         galleryView.add(img);            
 
         img.addEventListener('click', function(e){
-          app.openWindow('Image', 'image', [e.source.full_image_path]);
+          app.openWindow(self, 'Image', 'image', [e.source.full_image_path]);
         });
 
       } 
@@ -75,7 +75,7 @@ function VenueWindow(venue_id){
         allGalleryView.add(moreImagesLabel);
 
         moreImagesLabel.addEventListener('click', function(e){
-          app.openWindow(venue.name, 'gallery', [venue.images]);
+          app.openWindow(self, venue.name, 'gallery', [venue.images]);
         });
       }
 
@@ -118,7 +118,7 @@ function VenueWindow(venue_id){
 
         projectsView.addEventListener('click', function(e){
           var params = ['venue', null, null, venue.id];
-          app.openWindow('Shows', 'projects', params);
+          app.openWindow(self, 'Shows', 'projects', params);
         });
         
       }

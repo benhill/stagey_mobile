@@ -66,7 +66,7 @@ function PerformanceWindow(performance_id){
         }
 
         if(Ti.App.currentUser){
-          app.openWindow(title, window, params);
+          app.openWindow(self, title, window, params);
         }   
         else{        
           var newObj = require('modules/pages/' + window);
@@ -76,7 +76,7 @@ function PerformanceWindow(performance_id){
           var headerObj = require('modules/common/header');
           newWindow.add(new headerObj(title, self));
 
-          app.openWindow('Login', 'login', [newWindow]);
+          app.openWindow(self, 'Login', 'login', [newWindow]);
         }
       });
 
@@ -93,7 +93,7 @@ function PerformanceWindow(performance_id){
       tableData.push(row);
 
       row.addEventListener('click', function(e){
-        app.openWindow('Project', 'project', [performance.project_id])
+        app.openWindow(self, 'Project', 'project', [performance.project_id])
       });
 
       var row = Ti.UI.createTableViewRow(perfStyles.row);
@@ -109,7 +109,7 @@ function PerformanceWindow(performance_id){
       tableData.push(row);
 
       row.addEventListener('click', function(e){
-        app.openWindow('Performances', 'performances', [performance.project_id])
+        app.openWindow(self, 'Performances', 'performances', [performance.project_id])
       });
 
       var row = Ti.UI.createTableViewRow(perfStyles.row);
@@ -125,7 +125,7 @@ function PerformanceWindow(performance_id){
       tableData.push(row);
 
       row.addEventListener('click', function(e){
-        app.openWindow('Venue', 'venue', [performance.venue_id])
+        app.openWindow(self, 'Venue', 'venue', [performance.venue_id])
       });
 
       table.setData(tableData);

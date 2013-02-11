@@ -21,7 +21,7 @@ function UserWindow(user_id){
       nameView.add(image);
 
       image.addEventListener('click', function(e){
-        app.openWindow('Image', 'image', [user.image_url]);
+        app.openWindow(self, 'Image', 'image', [user.image_url]);
       });
 
       var name = Ti.UI.createLabel(userStyles.name);
@@ -62,10 +62,10 @@ function UserWindow(user_id){
         row.addEventListener('click', function(e){
           icon = e.source.icon;
           if(e.source.icon.window == 'reviews'){
-            app.openWindow(e.source.icon.text, icon.window, [user.id, 1]);
+            app.openWindow(self, e.source.icon.text, icon.window, [user.id, 1]);
           }
           else if(e.source.icon.window == 'projects'){
-            app.openWindow(e.source.icon.text, icon.window, [null, null, null, null, user.id]);
+            app.openWindow(self, e.source.icon.text, icon.window, [null, null, null, null, user.id]);
           }
         });
 

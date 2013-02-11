@@ -32,7 +32,7 @@ function LoginWindow(return_win){
   self.add(addUserLabel);
 
   addUserLabel.addEventListener('click', function(e){
-    app.openWindow('Create an Account', 'add_user', [return_win]);
+    app.openWindow(self, 'Create an Account', 'add_user', [return_win]);
   });
 
   function loginUser(){
@@ -59,7 +59,7 @@ function LoginWindow(return_win){
           app.openFromWindow(return_win);
         }
         else{            
-          app.openWindow('Me', 'me', []);
+          app.openWindow(self, 'Me', 'me', []);
         }
       }
     },

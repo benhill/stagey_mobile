@@ -49,7 +49,7 @@ function PwycWindow(performance_id){
       self.remove(spinner);
 
   	  quantButton.addEventListener('click', function(e){
-  	    app.openWindow('Performance', 'quantity', [performance.id, pwycText.value]);
+  	    app.openWindow(self, 'Performance', 'quantity', [performance.id, pwycText.value]);
   	  })
 
   	  function addKeyboardToolbar(textbox){

@@ -65,7 +65,7 @@ function AddReviewWindow(project){
       new addReviewObj(project.id, currTab.value, textBody.value, function(results){
         if(results.id){
           alert('The Review has been Added');
-          app.openWindow('Project', 'project', [project.id]);
+          app.openWindow(self, 'Project', 'project', [project.id]);
         }
         else{
           alert('there was an issue adding this review');

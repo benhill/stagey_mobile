@@ -33,7 +33,7 @@ exports.throwError = function(me, e) {
 
 exports.openWindow = function(currentWindow, title, newWindowName, params){
 
-  if(currentWindow != null){
+  if(currentWindow != null && Ti.Platform.name != 'iPhone OS'){
     Ti.App.prevWindow = currentWindow;
     currentWindow.close();
   }  
@@ -53,12 +53,12 @@ exports.openWindow = function(currentWindow, title, newWindowName, params){
       var menuItem = menu.add({ title: "My Account" });
             
       menuItem.addEventListener("click", function(e) {
-        app.openWindow('Me', 'me', []);
+        app.openWindow(newWindow, 'Me', 'me', []);
       });
     }
 
     newWindow.addEventListener("android:search", function(e) {
-      app.openWindow('Search', 'search', []);
+      app.openWindow(newWindow, 'Search', 'search', []);
     });
 
     newWindow.addEventListener('android:back', function(e){
@@ -78,15 +78,7 @@ function openWithWindow(title, newWindow){
   if(Ti.Platform.name != 'iPhone OS'){require_path = '../' + require_path};
   var headerObj = require(require_path);
   newWindow.add(new headerObj(title, newWindow));
-  
-  Ti.App.windowStack.push(newWindow);
-  if(Ti.App.windowStack.length > 5){
-    twoWindow = Ti.App.windowStack[1];
-    twoWindow.close();
-    Ti.App.windowStack.splice(2,1);
-    twoWindow = null;
-  }
-
+    
   newWindow.open();
   newWindow.load();
 }

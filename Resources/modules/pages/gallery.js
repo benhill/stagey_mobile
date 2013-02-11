@@ -23,7 +23,7 @@ function GalleryWindow(images){
       galleryScroll.add(image);
 
       image.addEventListener('click', function(e){
-        app.openWindow('Image', 'image', [e.source.full_image_path]);
+        app.openWindow(self, 'Image', 'image', [e.source.full_image_path]);
       });
 
       image_place ++;
