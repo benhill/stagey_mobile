@@ -31,13 +31,14 @@ function GalleryWindow(project_id){
 
         image.addEventListener('click', function(e){
           app.openWindow(self, 'Image', 'image', [e.source.full_image_path]);
-        });
+        });        
 
         image_place ++;
       }
 
       spinner.hide();
       self.add(galleryScroll);
+
     });
   }
   

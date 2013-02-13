@@ -63,6 +63,7 @@ exports.openWindow = function(currentWindow, title, newWindowName, params){
 
     newWindow.addEventListener('android:back', function(e){
       if(newWindow._sourceUrl != "app://modules/pages/shows.js"){
+        newWindow.close();
         currentWindow.open();
       }
     });
