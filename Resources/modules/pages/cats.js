@@ -49,7 +49,7 @@ function CatsWindow(){
     }
 
     spinner.show();
-    self.add(spinner);    
+    self.add(spinner);
   }
 
   return self;

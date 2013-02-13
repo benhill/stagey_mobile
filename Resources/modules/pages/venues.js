@@ -4,7 +4,7 @@ function VenuesWindow(){
   var styles = require('modules/styles/styles');
   var venueStyles = require('modules/styles/venues');
   var self = Ti.UI.createWindow(styles.defaultWindow);
-  var spinner = Ti.UI.createActivityIndicator(styles.spinner);  
+  var spinner = Ti.UI.createActivityIndicator(styles.spinner);
   var venuesTab = Titanium.UI.currentTab;
   var contentView;
   var table;  

@@ -1,35 +1,44 @@
-function GalleryWindow(images){
+function GalleryWindow(project_id){
 
   var app = require('modules/core');
   var styles = require('modules/styles/styles');
   var galleryStyles = require('modules/styles/gallery');
   var self = Ti.UI.createWindow(styles.defaultWindow);
-  var galleryScroll = Titanium.UI.createScrollView(galleryStyles.galleryScroll);;
+  var galleryScroll = Titanium.UI.createScrollView(galleryStyles.galleryScroll);
+  var spinner = Ti.UI.createActivityIndicator(styles.spinner);  
 
   self.load = function(){
 
-    var image_place = 0;
-    var image_top = 0;
+    spinner.show();
+    self.add(spinner);
 
-    for(i = 0;i < images.length; i++){
+    var imagesObj = require('modules/models/images');
+    new imagesObj(project_id, function(images){
 
-      if(i > 0 && i % 4 === 0){image_place = 0;image_top += 75;}
+      var image_place = 0;
+      var image_top = 0;
 
-      var image = Ti.UI.createImageView(galleryStyles.image);
-      image.image = images[i].image.thumbnail_path;
-      image.full_image_path = images[i].image.image_path;
-      image.left = image_place * 77;
-      image.top = image_top;
-      galleryScroll.add(image);
+      for(i = 0;i < images.length; i++){
 
-      image.addEventListener('click', function(e){
-        app.openWindow(self, 'Image', 'image', [e.source.full_image_path]);
-      });
+        if(i > 0 && i % 4 === 0){image_place = 0;image_top += 75;}
 
-      image_place ++;
-    }
+        var image = Ti.UI.createImageView(galleryStyles.image);
+        image.image = images[i].thumbnail_path;
+        image.full_image_path = images[i].image_path;
+        image.left = image_place * 77;
+        image.top = image_top;
+        galleryScroll.add(image);
 
-    self.add(galleryScroll);
+        image.addEventListener('click', function(e){
+          app.openWindow(self, 'Image', 'image', [e.source.full_image_path]);
+        });
+
+        image_place ++;
+      }
+
+      spinner.hide();
+      self.add(galleryScroll);
+    });
   }
   
   return(self)

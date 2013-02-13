@@ -11,7 +11,9 @@ styles = {
   },
 
   objectImage: {    
-    top:-50
+    top:0,
+    width:'100%',
+    height:Ti.UI.SIZE
   }
 
 }

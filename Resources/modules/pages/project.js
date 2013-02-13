@@ -74,7 +74,7 @@ function ProjectWindow(project_id){
         allGalleryView.add(moreImagesLabel);
 
         moreImagesLabel.addEventListener('click', function(e){
-          app.openWindow(self, project.title, 'gallery', [project.images]);
+          app.openWindow(self, project.title, 'gallery', [project.id]);
         });
       }
 
