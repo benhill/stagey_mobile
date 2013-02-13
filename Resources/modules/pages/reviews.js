@@ -175,13 +175,13 @@ function ReviewsWindow(user_id, project_id){
 
     function getUrl(){
       if(user_id){
-        url = app.api_url + "reviews?user_id=" + user_id;
+        url = Ti.App.api_url + "reviews?user_id=" + user_id;
       }
       else if(project_id){    
-        url = app.api_url + "reviews/" + project_id;
+        url = Ti.App.api_url + "reviews/" + project_id;
       }
       else{
-        url = app.api_url + "reviews"
+        url = Ti.App.api_url + "reviews"
       }
       return url
     }

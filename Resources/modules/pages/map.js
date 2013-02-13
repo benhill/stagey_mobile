@@ -63,7 +63,7 @@ function MapWindow(venue){
       add_view();  
     }
     else {
-      var url = app.api_url + "venues";
+      var url = Ti.App.api_url + "venues";
       xhr.open("GET", url);
       xhr.send();
     }

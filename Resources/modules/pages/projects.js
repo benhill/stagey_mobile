@@ -135,19 +135,19 @@ function ProjectsWindow(mode, startProjects, cat_id, venue_id, user_id){
 
   function setUrl(){
     if(mode == 'venue'){
-      url = app.api_url + "projects?venue_id=" + venue_id;
+      url = Ti.App.api_url + "projects?venue_id=" + venue_id;
     }  
     else if(mode == 'cat'){
-      url = app.api_url + "projects?cat_id=" + cat_id;
+      url = Ti.App.api_url + "projects?cat_id=" + cat_id;
     }
     else if(mode == 'favorites'){    
-      url = app.api_url + "favorites?email=" + Ti.App.currentUser.email + "&password=" + Ti.App.userPassword;
+      url = Ti.App.api_url + "favorites?email=" + Ti.App.currentUser.email + "&password=" + Ti.App.userPassword;
     }
     else if(user_id != null){
-      url = app.api_url + "projects?user_id=" + user_id;
+      url = Ti.App.api_url + "projects?user_id=" + user_id;
     }
     else {
-      url = app.api_url + "projects";
+      url = Ti.App.api_url + "projects";
     }
 
     return url;

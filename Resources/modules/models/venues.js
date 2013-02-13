@@ -14,7 +14,7 @@ function Venues(page, callback){
     app.throwError(this, e);
   };
 
-  var url = app.api_url + "venues"
+  var url = Ti.App.api_url + "venues"
   if(page){url = url + "?page=" + page};
 
   try{

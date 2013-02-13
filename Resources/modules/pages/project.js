@@ -18,7 +18,7 @@ function ProjectWindow(project_id){
   var tableData = [];  
 
   self.load = function(){
-    var url = app.api_url + "project/" + project_id;
+    var url = Ti.App.api_url + "project/" + project_id;
     if(Ti.App.currentUser){url += '?email=' + Ti.App.currentUser.email}
 
     new projectObj(url, function(project){
@@ -305,7 +305,7 @@ function ProjectWindow(project_id){
 
     function toggleFavorite(){
       if(Ti.App.currentUser){
-        url = app.api_url + "toggle_favorite?project_id=" + project_id + "&email=" + Ti.App.currentUser.email + "&password=" + Ti.App.userPassword;
+        url = Ti.App.api_url + "toggle_favorite?project_id=" + project_id + "&email=" + Ti.App.currentUser.email + "&password=" + Ti.App.userPassword;
         favXhr.open("GET", url);
         favXhr.send();
       }

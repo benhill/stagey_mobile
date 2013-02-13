@@ -14,7 +14,7 @@ function Users(project_id, callback){
     app.throwError(this, e);
   };
 
-  var url = app.api_url + "team?project_id=" + project_id;
+  var url = Ti.App.api_url + "team?project_id=" + project_id;
 
   try{
     xhr.open('GET', url);

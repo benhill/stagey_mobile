@@ -28,12 +28,12 @@ function Header(title, window){
     headerView.add(backButton);
 
     backButton.addEventListener('click', function(e){    
-      if(title == 'Schedule'){
+      if(title == 'Schedule' || title == 'Me'){
         app.openWindow(window, 'Home', 'shows', []);  
       }
       else if (title == 'My Schedule'){
         app.openWindow(window, 'Me', 'me', []);
-      }
+      }      
       else{
         window.close();
       }

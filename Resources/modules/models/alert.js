@@ -14,7 +14,7 @@ function Alert(callback){
     app.throwError(this, e);
   };
 
-  var url = app.api_url + "alert"
+  var url = Ti.App.api_url + "alert"
   try{
     xhr.open('GET', url);
     xhr.send();}

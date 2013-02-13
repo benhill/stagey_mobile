@@ -14,7 +14,7 @@ function SaleModel(sale_id, callback){
     app.throwError(this, e);
   };
 
-  var url = app.api_url + "sale/" + sale_id + '?token=' + Ti.App.token;
+  var url = Ti.App.api_url + "sale/" + sale_id + '?token=' + Ti.App.token;
 
   try{
     xhr.open('GET', url);

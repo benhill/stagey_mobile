@@ -14,7 +14,7 @@ function MakeReviewHelpful(review_id, user_id, feedback, callback){
     app.throwError(this, e);
   };
 
-  url = app.api_url + 'make_review_helpful/' + review_id + '?user_id=' + user_id + '&feedback=' + feedback
+  url = Ti.App.api_url + 'make_review_helpful/' + review_id + '?user_id=' + user_id + '&feedback=' + feedback
 
   try{
     xhr.open('GET', url);

@@ -14,7 +14,7 @@ function Feed(page, callback){
     app.throwError(this, e);
   };
 
-  url = app.api_url + "feed"
+  url = Ti.App.api_url + "feed"
   if(page){url += '?page=' + page};
 
   try{

@@ -14,7 +14,7 @@ function Cats(callback){
     app.throwError(this, e);
   };
 
-  var url = app.api_url + "cats";
+  var url = Ti.App.api_url + "cats";
   try{
     xhr.open('GET', url);
     xhr.send();}

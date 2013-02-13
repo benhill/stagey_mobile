@@ -14,7 +14,7 @@ function SearchModel(terms, callback){
     app.throwError(this, e);
   };
 
-  var url = app.api_url + "search_projects?search_terms=" + terms;
+  var url = Ti.App.api_url + "search_projects?search_terms=" + terms;
 
   try{
     xhr.open('GET', url);

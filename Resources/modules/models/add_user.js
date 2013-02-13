@@ -14,7 +14,7 @@ function AddUser(email, first_name, last_name, password, callback){
     app.throwError(this, e);
   };
 
-  url = app.api_url + 'add_user?first_name=' + first_name + '&last_name=' + last_name + '&email=' + email + '&password=' + password;
+  url = Ti.App.api_url + 'add_user?first_name=' + first_name + '&last_name=' + last_name + '&email=' + email + '&password=' + password;
   xhr.open('GET', url);
   xhr.send();
 };

@@ -1,4 +1,4 @@
-function PerformancesWindow(mode, schedule_page){
+function PerformancesWindow(mode, schedule_page, title){
 
   var app = require('modules/core');
   var styles = require('modules/styles/styles');
@@ -14,6 +14,7 @@ function PerformancesWindow(mode, schedule_page){
   var lastDistance = 0;
   var updating = false;
   var lastRow = rows_per_page;
+  title && title == 'My Schedule' ? schedule_title = 'My Schedule' : schedule_title = 'Schedule'
 
   self.load = function(){
     if(mode == "nearby"){
@@ -218,11 +219,11 @@ function PerformancesWindow(mode, schedule_page){
    
 
     function loadNext(){
-      app.openWindow(self, 'Schedule', 'performances', [mode, schedule_page + 1]);
+      app.openWindow(self, schedule_title, 'performances', [mode, schedule_page + 1, schedule_title]);
     }
 
     function loadLast(){
-      app.openWindow(self, 'Schedule', 'performances', [mode, schedule_page - 1]);
+      app.openWindow(self, schedule_title, 'performances', [mode, schedule_page - 1, schedule_title]);
     }
 
     function loadPerformance(e, islongclick) {      
@@ -235,16 +236,16 @@ function PerformancesWindow(mode, schedule_page){
 
   function getUrl(){
     if(mode == 'next'){
-      url = app.api_url + 'my_schedule?schedule_page=' + schedule_page + '&';
+      url = Ti.App.api_url + 'my_schedule?schedule_page=' + schedule_page + '&';
     }
     else if(mode == 'nearby'){      
-      url = app.api_url + 'performances/7?lat=' + lat + '&lng=' + lng + '&distance=1&';
+      url = Ti.App.api_url + 'performances/7?lat=' + lat + '&lng=' + lng + '&distance=1&';
     }
     else if(mode == 'schedule'){
-      url = app.api_url + 'my_schedule?email=' + Ti.App.currentUser.email + '&password=' + Ti.App.userPassword + '&schedule_page=' + schedule_page + '&';
+      url = Ti.App.api_url + 'my_schedule?email=' + Ti.App.currentUser.email + '&password=' + Ti.App.userPassword + '&schedule_page=' + schedule_page + '&';
     }
     else{
-      url = app.api_url + 'performances/7?project_id=' + (mode.id || mode) + '&';
+      url = Ti.App.api_url + 'performances/7?project_id=' + (mode.id || mode) + '&';
     }
 
     if(Ti.App.currentUser){url += 'user_id=' + Ti.App.currentUser.id};

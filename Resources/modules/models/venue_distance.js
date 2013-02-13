@@ -23,7 +23,7 @@ function VenueDistance(venue_id, callback){
       var lat = '34.090643';
       var lng = '-118.332067';
     }
-    url = app.api_url + 'venue_distance/' + venue_id + '?lat=' + lat + '&lng=' + lng;
+    url = Ti.App.api_url + 'venue_distance/' + venue_id + '?lat=' + lat + '&lng=' + lng;
 
     try{
       xhr.open('GET', url);

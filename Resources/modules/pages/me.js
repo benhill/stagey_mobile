@@ -96,7 +96,7 @@ function MeWindow(){
       row.addEventListener('click', function(e){
         icon = e.source.icon;
         if(e.source.icon.id == 'schedule'){
-          app.openWindow(self, e.source.icon.text, icon.window, [icon.third_param, 1]);
+          app.openWindow(self, e.source.icon.text, icon.window, [icon.third_param, 1, "My Schedule"]);
         }        
         else if(e.source.icon.id == 'my_projects'){
           app.openWindow(self, e.source.icon.text, icon.window, [null, null, null, null, user.id]);

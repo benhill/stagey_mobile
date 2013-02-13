@@ -5,7 +5,7 @@ function ProjectDescriptionWindow(project_id){
   var descStyles = require('modules/styles/project_description');
   var self = Ti.UI.createWindow(styles.defaultWindow);
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
-  var url = app.api_url + "project_description/" + project_id;
+  var url = Ti.App.api_url + "project_description/" + project_id;
 
   self.load = function(){
 

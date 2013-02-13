@@ -1,6 +1,6 @@
 var app = require('modules/core');
 
-function User(user_id, callback){
+function MobileConfig(callback){
  
   var xhr = Ti.Network.createHTTPClient({
     timeout:app.timeout
@@ -10,16 +10,16 @@ function User(user_id, callback){
     callback(JSON.parse(this.responseText));
   };
 
-  xhr.onerror = function(e){ 
+  xhr.onerror = function(e){
     app.throwError(this, e);
   };
 
-  var url = Ti.App.api_url + "user/" + user_id;
-
+  var url = 'https://www.hollywoodfringe.org/api/mobile_config/1';
   try{
     xhr.open('GET', url);
+    xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
     xhr.send();}
   catch(e){};
 };
  
-module.exports = User;
+module.exports = MobileConfig;

@@ -14,7 +14,7 @@ function AddReview(project_id, rating, body, callback){
     app.throwError(this, e);
   };
 
-  url = app.api_url + 'add_review?email=' + Ti.App.currentUser.email + '&password=' + Ti.App.userPassword + '&project_id=' + project_id + '&body=' + body + '&rating=' + rating;
+  url = Ti.App.api_url + 'add_review?email=' + Ti.App.currentUser.email + '&password=' + Ti.App.userPassword + '&project_id=' + project_id + '&body=' + body + '&rating=' + rating;
   try{
     xhr.open('GET', url);
     xhr.send();}

@@ -12,7 +12,7 @@ function PerformanceWindow(performance_id){
   self.load = function(){
 
     var perfObj = require('modules/models/performance');
-    var url = app.api_url + "performance/" + performance_id + "?user_id=" + (Ti.App.currentUser ? Ti.App.currentUser.id : '');
+    var url = Ti.App.api_url + "performance/" + performance_id + "?user_id=" + (Ti.App.currentUser ? Ti.App.currentUser.id : '');
 
     spinner.show();
     self.add(spinner);

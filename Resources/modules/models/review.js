@@ -14,7 +14,7 @@ function Review(review_id, callback){
     app.throwError(this, e);
   };
 
-  var url = app.api_url + "review/" + review_id;
+  var url = Ti.App.api_url + "review/" + review_id;
 
   try{
     xhr.open('GET', url);
