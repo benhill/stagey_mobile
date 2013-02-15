@@ -108,8 +108,12 @@ function ProjectWindow(project_id){
       icons.push(make_favorite);
 
       if(Ti.Platform.name == 'iPhone OS'){
-        var share = new Icon('Share', 'http://stagey-mobile.s3.amazonaws.com/share_24.png', '', project);
+        var share = new Icon('Share', 'http://stagey-mobile.s3.amazonaws.com/share_24.png', '', project, false, null, 'Share');
         icons.push(share);
+      }
+      else{
+        var share = new Icon('Open in Browser', 'http://stagey-mobile.s3.amazonaws.com/share_24.png', '', project, false, null, 'Share');
+        icons.push(share);  
       }
 
       iconsView = Ti.UI.createView(projectStyles.iconsView);
@@ -143,12 +147,17 @@ function ProjectWindow(project_id){
       function runIconEvent(e, islongclick){
         var favTextView = iconsView.children[1].children[1];
         var favImgView = iconsView.children[1].children[0];
-        if(e.source.icon.text == 'Share'){
-          sharekit.share({
-            title:'I am checking out this show at the Fringe',
-            view:e.source,
-            link:app.site_url + 'projects/' + e.source.icon.object.id
-          });
+        if(e.source.icon.id == 'Share'){
+          if(Ti.Platform.name == 'iPhone OS'){
+            sharekit.share({
+              title:'I am checking out this show at the Fringe',
+              view:e.source,
+              link:Ti.App.site_url + 'projects/' + e.source.icon.object.id
+            });
+          }
+          else{            
+            Ti.Platform.openURL(Ti.App.site_url + 'projects/' + project.id);            
+          }
         }
         else if(e.source.icon.window == 'favorite' && !is_favorite){
           if(Ti.App.currentUser){alert('added to favorites');};

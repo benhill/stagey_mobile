@@ -1,16 +1,38 @@
 Logfile initialized
 [INFO] logfile = /src/stagey_mobile/build.log
-[DEBUG] /Users/benhill/Library/Application Support/Titanium/mobilesdk/osx/3.0.0.GA/android/builder.py install hff13 /Users/benhill/android-sdk-macosx /src/stagey_mobile com.stagey.mobile 6  
+[DEBUG] /Users/benhill/Library/Application Support/Titanium/mobilesdk/osx/3.0.0.GA/android/builder.py install hff13 /Users/benhill/android-sdk-macosx /src/stagey_mobile com.stagey.mobile 6  adb:9419
 [INFO] Titanium SDK version: 3.0.0 (12/12/12 18:49 a5894b3)
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.022021 seconds on emulator to get ready
+[DEBUG] waited 0.022696 seconds on emulator to get ready
 [DEBUG] com.stagey.mobile installed? False
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[INFO] Tiapp.xml unchanged, skipping class generation
+[TRACE] COPYING MODIFIED FILE: /src/stagey_mobile/Resources/modules/pages/project.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/project.js
+[TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
+[TRACE] COPYING FILE: /src/stagey_mobile/Resources/android/images/res-long-land-hdpi/Default.png => /src/stagey_mobile/build/android/res/drawable-long-land-hdpi/default_d44e27d97b.png
+[TRACE] COPYING FILE: /src/stagey_mobile/Resources/android/images/res-long-land-ldpi/Default.png => /src/stagey_mobile/build/android/res/drawable-long-land-ldpi/default_d44e27d97b.png
+[TRACE] COPYING FILE: /src/stagey_mobile/Resources/android/images/res-long-port-hdpi/Default.png => /src/stagey_mobile/build/android/res/drawable-long-port-hdpi/default_d44e27d97b.png
+[TRACE] COPYING FILE: /src/stagey_mobile/Resources/android/images/res-long-port-ldpi/Default.png => /src/stagey_mobile/build/android/res/drawable-long-port-ldpi/default_d44e27d97b.png
+[TRACE] COPYING FILE: /src/stagey_mobile/Resources/android/images/res-notlong-land-hdpi/Default.png => /src/stagey_mobile/build/android/res/drawable-notlong-land-hdpi/default_d44e27d97b.png
+[TRACE] COPYING FILE: /src/stagey_mobile/Resources/android/images/res-notlong-land-ldpi/Default.png => /src/stagey_mobile/build/android/res/drawable-notlong-land-ldpi/default_d44e27d97b.png
+[TRACE] COPYING FILE: /src/stagey_mobile/Resources/android/images/res-notlong-land-mdpi/Default.png => /src/stagey_mobile/build/android/res/drawable-notlong-land-mdpi/default_d44e27d97b.png
+[TRACE] COPYING FILE: /src/stagey_mobile/Resources/android/images/res-notlong-port-hdpi/Default.png => /src/stagey_mobile/build/android/res/drawable-notlong-port-hdpi/default_d44e27d97b.png
+[TRACE] COPYING FILE: /src/stagey_mobile/Resources/android/images/res-notlong-port-ldpi/Default.png => /src/stagey_mobile/build/android/res/drawable-notlong-port-ldpi/default_d44e27d97b.png
+[TRACE] COPYING FILE: /src/stagey_mobile/Resources/android/images/res-notlong-port-mdpi/Default.png => /src/stagey_mobile/build/android/res/drawable-notlong-port-mdpi/default_d44e27d97b.png
+[DEBUG] copying app icon: /src/stagey_mobile/build/android/bin/assets/Resources/appicon.png
+[DEBUG] generating theme.xml
+[DEBUG] found splash screen at /src/stagey_mobile/build/android/bin/assets/Resources/default.png
+[TRACE] Writing out AndroidManifest.xml
+[DEBUG] adding /src/stagey_mobile/build/android/gen/com/stagey/mobile/Hff13Activity.java to javac build list
+[DEBUG] adding /src/stagey_mobile/build/android/gen/com/stagey/mobile/Hff13AppInfo.java to javac build list
+[DEBUG] adding /src/stagey_mobile/build/android/gen/com/stagey/mobile/Hff13Application.java to javac build list
+[DEBUG] adding /src/stagey_mobile/build/android/gen/com/stagey/mobile/R.java to javac build list
+[DEBUG] Building Java Sources: "/src/stagey_mobile/build/android/gen/com/stagey/mobile/Hff13Activity.java" "/src/stagey_mobile/build/android/gen/com/stagey/mobile/Hff13AppInfo.java" "/src/stagey_mobile/build/android/gen/com/stagey/mobile/Hff13Application.java" "/src/stagey_mobile/build/android/gen/com/stagey/mobile/R.java"
+[INFO] Compiling Android Resources... This could take some time
+[DEBUG] Android classes.dex built
 [DEBUG] creating unsigned apk: /src/stagey_mobile/build/android/bin/app-unsigned.apk
 [DEBUG] from resource zip => assets/Resources/modules/common/button_bar.js
 [DEBUG] from resource zip => assets/Resources/modules/common/header.js
@@ -153,3 +175,10 @@ Logfile initialized
 [DEBUG] from JAR /Users/benhill/Library/Application Support/Titanium/mobilesdk/osx/3.0.0.GA/android/modules/titanium-ui.jar => ti/modules/titanium/ui/widget/webview/polling.js
 [DEBUG] from JAR /Users/benhill/Library/Application Support/Titanium/mobilesdk/osx/3.0.0.GA/android/modules/titanium-ui.jar => ti/modules/titanium/ui/widget/webview/polling.min.js
 [DEBUG] installing native SDK libs
+[DEBUG] Waiting for device to be ready ...
+[TRACE] adb devices returned 1 devices/emulators
+[DEBUG] Device connected... (waited 0 seconds)
+[DEBUG] waited 0.022478 seconds on emulator to get ready
+[INFO] Installing application on device
+[INFO] Application installed. Launch from drawer on Home Screen
+[INFO] Forwarding host port 9419 to device for debugging.

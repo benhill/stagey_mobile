@@ -10,6 +10,9 @@ function UsersWindow(project_id){
 
   self.load = function(){
 
+    spinner.show();
+    self.add(spinner);
+
     users = [];
 
     var usersObj = require('modules/models/users');

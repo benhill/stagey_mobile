@@ -3,6 +3,7 @@ Ti.UI.orientation = Ti.UI.PORTRAIT;
 var mobileConfigObj = require('modules/models/mobile_config');
 new mobileConfigObj(function(config){
   Ti.App.api_url = config.api_url;
+  Ti.App.site_url = config.site_url;
 
   if(Ti.App.Properties.getString('currentUser')){
     Ti.App.currentUser = JSON.parse(Ti.App.Properties.getString('currentUser'));

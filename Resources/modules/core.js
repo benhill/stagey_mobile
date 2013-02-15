@@ -128,8 +128,6 @@ exports.property = function(name) {
 
 exports.timeout = 15000;
 
-exports.site_url = 'http://staging.hollywoodfringe.org/';
-
 exports.orientationObserverUpdate = function(_event) {
 	// Example of how you can control the current page with global events
 	var type = (_event.source.isLandscape()) ? 'landscape' : 'portrait' ;
