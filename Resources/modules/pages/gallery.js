@@ -1,4 +1,4 @@
-function GalleryWindow(project_id){
+function GalleryWindow(mode, object_id){
 
   var app = require('modules/core');
   var styles = require('modules/styles/styles');
@@ -13,7 +13,7 @@ function GalleryWindow(project_id){
     self.add(spinner);
 
     var imagesObj = require('modules/models/images');
-    new imagesObj(project_id, function(images){
+    new imagesObj(object_id, mode, function(images){
 
       var image_place = 0;
       var image_top = 0;

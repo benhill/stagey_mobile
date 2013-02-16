@@ -75,7 +75,7 @@ function VenueWindow(venue_id){
         allGalleryView.add(moreImagesLabel);
 
         moreImagesLabel.addEventListener('click', function(e){
-          app.openWindow(self, venue.name, 'gallery', [venue.images]);
+          app.openWindow(self, venue.name, 'gallery', ['venue', venue.id]);
         });
       }
 

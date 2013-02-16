@@ -36,7 +36,8 @@ styles = {
   },
 
   moreImagesLabel: {
-    top:9,
+    top:20,
+    bottom:10,
     left:220,
     text:'more images',
     width:Ti.UI.SIZE,

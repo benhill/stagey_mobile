@@ -1,6 +1,6 @@
 var app = require('modules/core');
 
-function Images(project_id, callback){
+function Images(object_id, mode, callback){
  
   var xhr = Ti.Network.createHTTPClient({
     timeout:app.timeout
@@ -14,7 +14,12 @@ function Images(project_id, callback){
     app.throwError(this, e);
   };
 
-  url = Ti.App.api_url + 'project_images/' + project_id;
+  if(mode == 'project'){
+    url = Ti.App.api_url + 'project_images/' + object_id;
+  }
+  else{
+   url = Ti.App.api_url + 'venue_images/' + object_id; 
+  }
   
   try{
     xhr.open('GET', url);
