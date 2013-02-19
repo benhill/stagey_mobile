@@ -10,6 +10,9 @@ function FeedWindow(){
   var feedObj;
   var total_results;
   var table = Ti.UI.createTableView(feedStyles.table);
+  var lastDistance = 0;
+  var updating = false;
+  var lastRow = rows_per_page;
 
   self.load = function(){    
 
@@ -33,104 +36,47 @@ function FeedWindow(){
     function loadForm(feed_items){
       var tableData = [];
       for(i = 0; i < feed_items.length; i++){
-        var feed_item = feed_items[i]
-
-        var row = Ti.UI.createTableViewRow(feedStyles.row);
-
-        var baseImage = Ti.UI.createImageView(feedStyles.baseImage);
-        baseImage.image = feed_item.item_image_path;
-
-        var cropView = Ti.UI.createView(feedStyles.cropView);        
-        cropView.add(baseImage);        
-         
-        var croppedImage = cropView.toImage();
-         
-        var imageView = Ti.UI.createImageView(feedStyles.imageView);
-        imageView.image = croppedImage;
-
-        row.add(imageView);
-                  
-        var labelView = Ti.UI.createView(feedStyles.labelView);
-        labelView.feed_item = feed_item;
-    
-        (feed_item.object_name.length >= 30) ? title = feed_item.object_name.substr(0,30) + "..." : title = feed_item.object_name;
-        var objectLabel = Ti.UI.createLabel(feedStyles.objectLabel);      
-        objectLabel.text = title;
-        objectLabel.feed_item = feed_item;
-        labelView.add(objectLabel);
-
-        var textLabel = Ti.UI.createLabel(feedStyles.textLabel);
-        textLabel.text = feed_item.text + '...';
-        textLabel.feed_item = feed_item;
-        labelView.add(textLabel);
-
-        var carrotImage = Ti.UI.createImageView(feedStyles.carrotImage);
-        carrotImage.image = 'http://stagey-mobile.s3.amazonaws.com/more-arrow.png';
-        carrotImage.feed_item = feed_item;
-        labelView.add(carrotImage);
-
-        row.add(labelView);
-
-        var line = Ti.UI.createView(feedStyles.line);
-        row.add(line);
-
-        tableData.push(row);
-
-        labelView.addEventListener('click', function(e){  
-          loadWindow(e);
-        });
+        row = createRow(feed_items[i]);
+        tableData.push(row);        
       }
-
-      var row = Ti.UI.createTableViewRow(feedStyles.moreRow);
-
-      var moreLabel = Ti.UI.createLabel(feedStyles.moreLabel);
       
-      if(total_results > (rows_per_page * page)){
-        row.add(moreLabel);
-      }
+      table.setData(tableData);
+      self.add(table);
 
-      row.addEventListener('click', function(e){
-        page += 1;
-        loadMore(e);
-      });
+      spinner.hide();
+      var loadingRow = Ti.UI.createTableViewRow({title:"Loading...", color:'black'});   
+      
+      function beginUpdate(){          
+        if(feed_items[0].total_results > (page * rows_per_page)){
+          page += 1;
+          updating = true;
 
-      tableData.push(row);
-
-      if(page > 1){
-
-        table.deleteRow(rows_per_page * (page-1),{animationStyle:Ti.UI.iPhone.RowAnimationStyle.NONE})
-
-        for(var i = 0; i < tableData.length; i++){
-          table.appendRow(tableData[i]);
+          table.appendRow(loadingRow);
+          
+          new feedObj(page, function(feed_items){
+            var rows = [];
+            for (var i = 0; i < feed_items.length; i++){
+              row = createRow(feed_items[i]);
+              rows.push(row);              
+            }            
+            endUpdate(rows);
+          });
         }
-
-        table.scrollToIndex((page * rows_per_page) - rows_per_page);
-      }
-      else {
-        table.setData(tableData);
-        self.add(table);
       }
 
-      spinner.hide();      
-    }
+      function endUpdate(rows){
+        updating = false;        
+        table.appendRow(rows);
+        table.deleteRow(lastRow);
+        lastRow += rows_per_page;
+      }
 
-    function loadMore(e,islongclick){
-      table.deleteRow(rows_per_page * (page-1),{animationStyle:Ti.UI.iPhone.RowAnimationStyle.NONE})
-      var row = Ti.UI.createTableViewRow(feedStyles.moreRow);
-
-      var spinner = Ti.UI.createActivityIndicator(feedStyles.spinner);
-      row.add(spinner);
-      spinner.show();
-
-      table.appendRow(row);
-
-      table.scrollToIndex((page * rows_per_page) - rows_per_page);        
-      
-      new feedObj(page, function(feed_items){
-        loadForm(feed_items);
+      table.addEventListener('scroll',function(e){
+        app.dynamic_scoller(e, beginUpdate, updating, lastDistance, page)
       });
     }
 
+    
     function loadWindow(e){    
       feed_item = e.source.feed_item;
 
@@ -156,6 +102,44 @@ function FeedWindow(){
 
     spinner.show();
     self.add(spinner);
+
+    function createRow(feed_item){
+      var row = Ti.UI.createTableViewRow(feedStyles.row);
+
+      var baseImage = Ti.UI.createImageView(feedStyles.baseImage);
+      baseImage.image = feed_item.item_image_path;
+      row.add(baseImage);
+                
+      var labelView = Ti.UI.createView(feedStyles.labelView);
+      labelView.feed_item = feed_item;
+  
+      (feed_item.object_name.length >= 30) ? title = feed_item.object_name.substr(0,30) + "..." : title = feed_item.object_name;
+      var objectLabel = Ti.UI.createLabel(feedStyles.objectLabel);      
+      objectLabel.text = title;
+      objectLabel.feed_item = feed_item;
+      labelView.add(objectLabel);
+
+      var textLabel = Ti.UI.createLabel(feedStyles.textLabel);
+      textLabel.text = feed_item.text + '...';
+      textLabel.feed_item = feed_item;
+      labelView.add(textLabel);
+
+      var carrotImage = Ti.UI.createImageView(feedStyles.carrotImage);
+      carrotImage.image = 'http://stagey-mobile.s3.amazonaws.com/more-arrow.png';
+      carrotImage.feed_item = feed_item;
+      labelView.add(carrotImage);
+
+      row.add(labelView);
+
+      var line = Ti.UI.createView(feedStyles.line);
+      row.add(line);      
+
+      labelView.addEventListener('click', function(e){  
+        loadWindow(e);
+      });
+
+      return row;
+    }
   }
   
   return self;

@@ -52,7 +52,7 @@
     <modules>
         <module platform="commonjs" version="2.3.0">ti.cloud</module>
         <module platform="iphone" version="1.6">com.0x82.testflight</module>
-        <module platform="iphone" version="3.4">com.0x82.sharekit</module>
+        <module platform="iphone" version="3.4">com.0x82.sharekit</module>        
     </modules>
     <deployment-targets>
         <target device="blackberry">false</target>
@@ -61,5 +61,5 @@
         <target device="iphone">true</target>
         <target device="mobileweb">false</target>
     </deployment-targets>
-    <sdk-version>2.1.3.GA</sdk-version>
+    <sdk-version>3.0.0.GA</sdk-version>
 </ti:app>

@@ -13,7 +13,7 @@ styles = {
   },
 
   imageView: {    
-    width: 320, 
+    //width: 320, 
     height:150
   },
 
@@ -96,7 +96,7 @@ styles = {
 }
 
 exports.table = styles.table;
-exports.row - styles.row;
+exports.row = styles.row;
 exports.imageView = styles.imageView;
 exports.baseImage = styles.baseImage;
 exports.cropView = styles.cropView;

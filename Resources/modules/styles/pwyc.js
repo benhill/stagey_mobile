@@ -12,16 +12,14 @@ styles = {
 
   dollarLabel: {
     top:170,
-    left:10,
-    width:20,
+    left:10,    
     width:Ti.UI.SIZE,
     height:Ti.UI.SIZE,
     font:{fontSize:18, fontWeight:'bold'},
     text:"$"
   },
 
-  pwycText: {
-    color:'#336699', 
+  pwycText: {    
     height:45, 
     width:80,
     top:165,

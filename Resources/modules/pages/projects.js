@@ -8,14 +8,17 @@ function ProjectsWindow(mode, startProjects, cat_id, venue_id, user_id){
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
   var table = Titanium.UI.createTableView(projectsStyles.table);
   var currentTab = Ti.UI.currentTab;
-  var page = 1
-  var rows_per_page = 9
+  var page = 1;
+  var rows_per_page = 9;
   var seed, total_results, startProjects;
   var lastDistance = 0;
   var updating = false;
   var lastRow = rows_per_page;
 
   self.load = function(){
+
+    spinner.show();
+    self.add(spinner);
 
     var url = setUrl();
 
@@ -27,9 +30,9 @@ function ProjectsWindow(mode, startProjects, cat_id, venue_id, user_id){
       }
       else{
       	loadProjects(results);        
-      }
+      };
     });
-
+    
     function loadProjects(results){
       startProjects ? projects = startProjects : projects = results;
       startProjects = null;
@@ -40,45 +43,10 @@ function ProjectsWindow(mode, startProjects, cat_id, venue_id, user_id){
         seed = projects[0].seed;
             
         for(i = 0; i < projects.length; i++){
-          row = createRow(projects[i])
+          row = createARow(projects[i]);
           tableData.push(row);
-        }        
+        };
 
-        function createRow(project){
-          
-          var row = Ti.UI.createTableViewRow(projectsStyles.row);
-          row.project_id = project.id;
-
-          projectsStyles.projectThumb.image = project.thumbnail;
-          projectsStyles.projectThumb.project_id = project.id;
-          var projectThumb = Titanium.UI.createImageView(projectsStyles.projectThumb);  
-          row.add(projectThumb);
-
-          (project.title.length >= 25) ? title = project.title.substr(0,25) + "..." : title = project.title;
-
-          projectsStyles.nameLabel.text = title.toLowerCase();
-          projectsStyles.nameLabel.project_id = project.id;
-          var nameLabel = Ti.UI.createLabel(projectsStyles.nameLabel);
-          row.add(nameLabel);
-
-          var infoLabel = Ti.UI.createLabel(projectsStyles.infoLabel);
-          infoLabel.text = project.cat_name 
-          if(project.cost_range){infoLabel.text += " \u00B7 " + project.cost_range + " \u00B7 " + project.duration};
-          infoLabel.project_id = project.id;
-          row.add(infoLabel);
-
-          var carrotImage = Ti.UI.createImageView(projectsStyles.carrotImage);
-          carrotImage.image = 'http://stagey-mobile.s3.amazonaws.com/more-arrow.png';
-          carrotImage.project_id = project.id;
-          row.add(carrotImage);
-
-          row.addEventListener('click', function(e){
-            loadProject(e);
-          });
-
-          return row;          
-        }
-    
         table.setData(tableData);
         self.add(table);
 
@@ -97,41 +65,73 @@ function ProjectsWindow(mode, startProjects, cat_id, venue_id, user_id){
             new projectsObj(url, function(projects){
               var rows = [];
               for (var i = 0; i < projects.length; i++){
-                row = createRow(projects[i]);
+                row = createARow(projects[i]);
                 rows.push(row);              
-              }            
+              };
               endUpdate(rows);
             });
-          }
-        }
+          };
+        };
 
         function endUpdate(rows){                
           updating = false;        
           table.appendRow(rows);
           table.deleteRow(lastRow);
           lastRow += rows_per_page;
-        }
+        };        
 
         table.addEventListener('scroll',function(e){
-          app.dynamic_scoller(e, beginUpdate, updating, lastDistance, page)
+          app.dynamic_scoller(e, beginUpdate, updating, lastDistance, page);
         });
       }
       else{
         noDataLabel = Ti.UI.createLabel(styles.noDataLabel);
         noDataLabel.text = "No projects listed...";
         self.add(noDataLabel);
-      }  
+      };
 
       spinner.hide();  
-    }
+    };
 
     function loadProject(e, islongclick){
-      app.openWindow(self, 'Project', 'project', [e.source.project_id])
-    }
+      app.openWindow(self, 'Project', 'project', [e.source.project_id]);
+    };
 
-    spinner.show();
-    self.add(spinner);
-  }
+    function createARow(project){
+      var row = Ti.UI.createTableViewRow(projectsStyles.row);
+      row.project_id = project.id;
+
+      projectsStyles.projectThumb.image = project.thumbnail;
+      projectsStyles.projectThumb.project_id = project.id;
+      var projectThumb = Titanium.UI.createImageView(projectsStyles.projectThumb);  
+      row.add(projectThumb);
+
+      (project.title.length >= 25) ? title = project.title.substr(0,25) + "..." : title = project.title;
+
+      projectsStyles.nameLabel.text = title.toLowerCase();
+      projectsStyles.nameLabel.project_id = project.id;
+      var nameLabel = Ti.UI.createLabel(projectsStyles.nameLabel);
+      row.add(nameLabel);
+
+      var infoLabel = Ti.UI.createLabel(projectsStyles.infoLabel);
+      infoLabel.text = project.cat_name;
+      if(project.cost_range){infoLabel.text += " \u00B7 " + project.cost_range + " \u00B7 " + project.duration};
+      infoLabel.project_id = project.id;
+      row.add(infoLabel);
+
+      var carrotImage = Ti.UI.createImageView(projectsStyles.carrotImage);
+      carrotImage.image = 'http://stagey-mobile.s3.amazonaws.com/more-arrow.png';
+      carrotImage.project_id = project.id;
+      row.add(carrotImage);
+
+      row.addEventListener('click', function(e){
+        loadProject(e);
+      });
+
+      return row;          
+    };
+    
+  };
 
   function setUrl(){
     if(mode == 'venue'){
@@ -148,12 +148,12 @@ function ProjectsWindow(mode, startProjects, cat_id, venue_id, user_id){
     }
     else {
       url = Ti.App.api_url + "projects";
-    }
+    };
 
     return url;
-  }
+  };
   
   return self;
-}
+};
 
 module.exports = ProjectsWindow;
