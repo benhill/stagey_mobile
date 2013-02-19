@@ -146,7 +146,12 @@ function VenueWindow(venue_id){
               
       locationWrapper.add(addressView); 
 
-      if(Ti.Platform.name == 'iPhone OS'){locationWrapper.add(mapView);}
+      if(Ti.Platform.name == 'iPhone OS'){
+        addressView.addEventListener('click',function(){
+          Ti.Platform.openURL('http://maps.apple.com/?q=' + venue.address + ", " + venue.city + ", " + venue.state + " " + venue.postal);
+        });
+        locationWrapper.add(mapView);   
+      }
       else{
         addressView.addEventListener('click',function(){
           var intent = Ti.Android.createIntent({
