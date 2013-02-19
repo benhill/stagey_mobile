@@ -106,9 +106,13 @@ function FeedWindow(){
     function createRow(feed_item){
       var row = Ti.UI.createTableViewRow(feedStyles.row);
 
+      var cropImageView = Ti.UI.createView(feedStyles.cropImageView);
+
       var baseImage = Ti.UI.createImageView(feedStyles.baseImage);
-      baseImage.image = feed_item.item_image_path;
-      row.add(baseImage);
+      baseImage.image = feed_item.item_image_path;      
+
+      cropImageView.add(baseImage);
+      row.add(cropImageView);
                 
       var labelView = Ti.UI.createView(feedStyles.labelView);
       labelView.feed_item = feed_item;

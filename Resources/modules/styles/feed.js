@@ -12,6 +12,12 @@ styles = {
     touchEnabled: true
   },
 
+  cropImageView: {
+    height:150,
+    width:Ti.UI.SIZE,
+    borderRadius:2
+  },
+
   imageView: {    
     //width: 320, 
     height:150
@@ -108,3 +114,4 @@ exports.carrotImage = styles.carrotImage;
 exports.moreLabel = styles.moreLabel;
 exports.spinner = styles.spinner;
 exports.line = styles.line;
+exports.cropImageView = styles.cropImageView;
