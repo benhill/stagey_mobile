@@ -1,7 +1,8 @@
 styles = {	
 
   table: {
-    backgroundColor:'#F4F1F1'
+    backgroundColor:'#F4F1F1',
+    height:Ti.UI.SIZE
   },
 
   venueWrapper: {    
@@ -58,7 +59,7 @@ styles = {
 
   addressView: {
     width:320,
-    height:Ti.UI.SIZE,
+    height:300,
     top:5
   },
 

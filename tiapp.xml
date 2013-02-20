@@ -6,9 +6,9 @@
     <property name="acs-oauth-secret-development" type="string">UtmCPU52ipA0W59W182g9qvjZQ4bFZBC</property>
     <property name="acs-oauth-key-development" type="string">ofZ73xchWubaCrpsZXjTogrZNR87qnMC</property>
     <property name="acs-api-key-development" type="string">rc9Whh7eWl2K1MGbzznMI0eEiNJnG71w</property>
-    <id>com.stagey.mobile</id>
-    <name>hff13</name>
-    <version>1.0b</version>
+    <id>com.hff.mobile</id>
+    <name>Fringe 2013</name>
+    <version>1.0</version>
     <publisher>Stagey Corp</publisher>
     <url>http://www.hollywoodfringe.org</url>
     <description>not specified</description>

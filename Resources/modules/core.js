@@ -3,8 +3,7 @@ if(Ti.Platform.name != 'iPhone OS'){var app = require('modules/core');}
 var primitives   = require('modules/helpers/primitives'),
   properties   = {},    // Any app-wide properties
 	plugins      = {},    // Any plugins added to the app
-	currentPage  = null,  // Reference to the current page module
-	models       = {};    // Holds the Joli models
+	currentPage  = null  // Reference to the current page module
 
 exports.addProperty = function(name, value) {
 	properties[name] = value;

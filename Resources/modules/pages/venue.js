@@ -140,17 +140,12 @@ function VenueWindow(venue_id){
       annotation.title = venue.name;
       annotation.subtitle = venue.address;
     
-      var mapView = Titanium.Map.createView(venueStyles.mapView);
-      mapView.annotations = [annotation];
-      mapView.region = {latitude:venue.lat, longitude:venue.lng, latitudeDelta:0.01, longitudeDelta:0.01};      
-              
       locationWrapper.add(addressView); 
 
       if(Ti.Platform.name == 'iPhone OS'){
         addressView.addEventListener('click',function(){
           Ti.Platform.openURL('http://maps.apple.com/?q=' + venue.address + ", " + venue.city + ", " + venue.state + " " + venue.postal);
-        });
-        locationWrapper.add(mapView);   
+        });        
       }
       else{
         addressView.addEventListener('click',function(){
