@@ -96,15 +96,9 @@ function ProjectWindow(project_id){
 
       var buy_ticket = new Icon('Showtimes', 'http://stagey-mobile.s3.amazonaws.com/purchase_24.png', 'performances', project, false);
       icons.push(buy_ticket);      
-
-      if(project.is_favorite){
-        var make_favorite = new Icon(remove_fav_text, 'http://stagey-mobile.s3.amazonaws.com/favorite_24.png', 'favorite', project);
-        is_favorite = true
-      }
-      else{
-        var make_favorite = new Icon(make_fav_text, 'http://stagey-mobile.s3.amazonaws.com/favorite_24.png', 'favorite', project);
-        is_favorite = false
-      }
+      
+      var make_favorite = new Icon(make_fav_text, 'http://stagey-mobile.s3.amazonaws.com/favorite_24.png', 'favorite', project);
+      is_favorite = false      
       icons.push(make_favorite);
 
       if(Ti.Platform.name == 'iPhone OS'){
@@ -159,14 +153,14 @@ function ProjectWindow(project_id){
             Ti.Platform.openURL(Ti.App.site_url + 'projects/' + project.id);            
           }
         }
-        else if(e.source.icon.window == 'favorite' && !is_favorite){
+        else if(e.source.icon.window == 'favorite' && iconsView.children[1].children[1].text == make_fav_text){
           if(Ti.App.currentUser){alert('added to favorites');};
           favTextView.text = remove_fav_text;
           favImgView.text = remove_fav_text;
           is_favorite = true;
           toggleFavorite();
         }
-        else if(e.source.icon.window == 'favorite' && is_favorite){
+        else if(e.source.icon.window == 'favorite' && iconsView.children[1].children[1].text != make_fav_text){
           if(Ti.App.currentUser){alert('removed from favorites');};
           favTextView.text = make_fav_text;
           favImgView.text = make_fav_text;
@@ -295,6 +289,21 @@ function ProjectWindow(project_id){
 
       self.add(projectWrapper);
       self.remove(spinner);
+
+
+      if(Ti.App.currentUser){
+        var favObj = require('modules/models/is_favorite');
+        new favObj(Ti.App.currentUser.email, project.id, function(is_favorite){
+          if(is_favorite){
+            var favTextView = iconsView.children[1].children[1];
+            var favImgView = iconsView.children[1].children[0];
+            favTextView.text = remove_fav_text;
+            favImgView.text = remove_fav_text;
+            is_favorite = true;
+          }
+        })
+      };
+
     };
 
     spinner.show();
