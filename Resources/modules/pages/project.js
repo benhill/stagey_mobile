@@ -153,15 +153,13 @@ function ProjectWindow(project_id){
             Ti.Platform.openURL(Ti.App.site_url + 'projects/' + project.id);            
           }
         }
-        else if(e.source.icon.window == 'favorite' && iconsView.children[1].children[1].text == make_fav_text){
-          if(Ti.App.currentUser){alert('added to favorites');};
+        else if(e.source.icon.window == 'favorite' && iconsView.children[1].children[1].text == make_fav_text){          
           favTextView.text = remove_fav_text;
           favImgView.text = remove_fav_text;
           is_favorite = true;
           toggleFavorite();
         }
         else if(e.source.icon.window == 'favorite' && iconsView.children[1].children[1].text != make_fav_text){
-          if(Ti.App.currentUser){alert('removed from favorites');};
           favTextView.text = make_fav_text;
           favImgView.text = make_fav_text;
           is_favorite = false;

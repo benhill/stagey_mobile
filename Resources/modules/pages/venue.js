@@ -101,7 +101,7 @@ function VenueWindow(venue_id){
         projectsView.add(projectThumb);
 
         var projectLabel = Ti.UI.createLabel(venueStyles.projectLabel);
-        projectLabel.text = "View " + venue.number_of_shows + " Shows at this Venue",
+        projectLabel.text = "View Shows at this Venue",
         projectsView.add(projectLabel);
 
         var titleLabel = Ti.UI.createLabel(venueStyles.titleLabel);
