@@ -1,4 +1,4 @@
-function OrderWindow(cc_num, cc_fname, cc_lname, csv, expiry_month, expiry_year){
+function OrderWindow(cc_num, cc_fname, cc_lname, csv, expiry_month, expiry_year, no_charge){
 
   var app = require('modules/core');
   var styles = require('modules/styles/styles');
@@ -39,6 +39,13 @@ function OrderWindow(cc_num, cc_fname, cc_lname, csv, expiry_month, expiry_year)
       feesTotal.text = '$' + app.formatCurrency(e[0].total_fees) + ' in fees';
       detailsView.add(feesTotal);
 
+      var subscriptionSwitch = Ti.UI.createSwitch(orderStyles.subscriptionSwitch);
+      subscriptionSwitch.value = Ti.App.subscription_opt_out;
+      detailsView.add(subscriptionSwitch);
+
+      var subscriptionLabel = Ti.UI.createLabel(orderStyles.subscriptionLabel);
+      detailsView.add(subscriptionLabel);
+
       self.add(detailsView);
 
       var table = Ti.UI.createTableView(orderStyles.table);
@@ -77,6 +84,8 @@ function OrderWindow(cc_num, cc_fname, cc_lname, csv, expiry_month, expiry_year)
       var buttonView = Ti.UI.createView(orderStyles.buttonView);
 
       payButton = Ti.UI.createButton(orderStyles.payButton);
+      if(no_charge){payButton.title = "Reserve Tickets";}
+      else{payButton.title = "Buy Tickets"}
       buttonView.add(payButton);
 
       self.add(buttonView);
@@ -94,7 +103,7 @@ function OrderWindow(cc_num, cc_fname, cc_lname, csv, expiry_month, expiry_year)
         spinner.show();
 
         var cartObj = require('modules/models/cart');
-        new cartObj(Ti.App.currentUser.id).purchase(cc_fname, cc_lname, cc_num, expiry_month, expiry_year, csv, function(e){
+        new cartObj(Ti.App.currentUser.id).purchase(cc_fname, cc_lname, cc_num, expiry_month, expiry_year, csv, subscriptionSwitch.value, function(e){
           if (e.error){
             alert(e.error)
             buttonView.remove(spinner);

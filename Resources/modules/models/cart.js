@@ -64,11 +64,11 @@ Cart.prototype.apply_discount_code = function(code_name, callback) {
   catch(e){};
 };
 
-Cart.prototype.purchase = function(cc_first_name, cc_last_name, cc_number, cc_month, cc_year, csv, callback) {
+Cart.prototype.purchase = function(cc_first_name, cc_last_name, cc_number, cc_month, cc_year, csv, subscribe, callback) {
   if(Ti.Platform.name == 'iPhone OS'){source = "iphone";}
   else{source = "android"}
 
-  url = Ti.App.api_url + 'purchase_tickets?user_id=' + this.user_id + '&cc_first_name=' + cc_first_name + '&cc_last_name=' + cc_last_name + '&cc_number=' + cc_number + '&cc_month=' + cc_month + '&cc_year=' + cc_year + '&csv=' + csv + '&token=' + Ti.App.token + '&source=' + source;
+  url = Ti.App.api_url + 'purchase_tickets?user_id=' + this.user_id + '&cc_first_name=' + cc_first_name + '&cc_last_name=' + cc_last_name + '&cc_number=' + cc_number + '&cc_month=' + cc_month + '&cc_year=' + cc_year + '&csv=' + csv + '&token=' + Ti.App.token + '&source=' + source + '&subscribe=' + subscribe;
 
   var xhr = Ti.Network.createHTTPClient({
     timeout:app.timeout

@@ -3,7 +3,7 @@ styles = {
   detailsView: {
     top:90,
     left:0,
-    height:100,
+    height:130,
     layout:'absolute'
   },
 
@@ -28,14 +28,33 @@ styles = {
   feesTotal: {
     height:Ti.UI.SIZE,
     width:Ti.UI.SIZE,
-    top:30,
-    left:140,
+    top:50,
+    left:10,
     font:{fontSize:14},
     color:'black'
   },
 
+  subscriptionSwitch: {
+    top:10,
+    right:10,
+    titleOn:'Yes',
+    titleOff:'No',
+    width:45,
+    height:35
+  },
+
+  subscriptionLabel: {
+    text:'share personal info with this show',
+    font:{fontSize:14},
+    color:'black',
+    top:40,
+    right:10,
+    width:'40%',
+    textAlign: Ti.UI.TEXT_ALIGNMENT_RIGHT
+  },
+
   table: {
-    top:145,
+    top:175,
     bottom:60,
     borderColor:'gray',
     borderWidth:1
@@ -79,8 +98,7 @@ styles = {
     bottom:5
   },
 
-  payButton: {
-    title:'Buy Tickets',    
+  payButton: {    
     width:300,
     height:50
   }
@@ -98,3 +116,5 @@ exports.projectTitle = styles.projectTitle;
 exports.projectInfo = styles.projectInfo;
 exports.buttonView = styles.buttonView;
 exports.payButton = styles.payButton;
+exports.subscriptionSwitch = styles.subscriptionSwitch;
+exports.subscriptionLabel = styles.subscriptionLabel;

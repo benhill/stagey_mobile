@@ -93,15 +93,7 @@ function QuantityWindow(performance_id, pwycPrice){
           if(!quantityLabel.value){quantity = 1}else{quantity = quantityLabel.value}
         }
         else{quantity = quantPicker.value;}
-        var cartObj = require('modules/models/cart');
-
-        buttonView.remove(payButton);
-
-        var spinner = Ti.UI.createActivityIndicator(styles.spinner);
-        spinner.bottom = 10;
-        spinner.message = '';
-        buttonView.add(spinner);
-        spinner.show();
+        var cartObj = require('modules/models/cart');        
 
         new cartObj(Ti.App.currentUser.id).add_to_cart(performance.id, quantity, pwycPrice, function(e){
           if(e.cart_total > 0){
@@ -123,19 +115,7 @@ function QuantityWindow(performance_id, pwycPrice){
             }
           }
           else{
-            var cartObj = require('modules/models/cart');
-            new cartObj(Ti.App.currentUser.id).purchase(null, null, null, null, null, null, function(e){
-              if (e.error){
-                alert(e.error)
-                buttonView.remove(spinner);
-                buttonView.add(payButton);
-              }
-              else{                                
-                app.openWindow(self, 'Receipt', 'receipt', [e.sale_id]);
-                buttonView.remove(spinner);
-                buttonView.add(payButton);
-              }
-            })
+            app.openWindow(self, 'Review Order', 'order', [null, null, null, null, null, null, true]);
           }
 
         });
