@@ -50,10 +50,10 @@ styles = {
   },
 
   iconImage: {
-    height:40,
-    width:40,
+    height:60,
+    width:60,
     top:10,
-    left:40
+    left:25
   },
 
   iconText: {
@@ -61,7 +61,7 @@ styles = {
     width:100,
     font:{fontSize:12, fontWeight:'bold'},
     left:10,
-    top:5,
+    top:3,
     textAlign:'center',
     color:'white'
   },

@@ -12,16 +12,16 @@ function ShowsWindow(){
 
   self.load = function(){
 
-    var projects = new Icon('Browse Current\nShows', 'http://stagey-mobile.s3.amazonaws.com/all_shows_48.png', 'cats', null, false, null, 'browse');
+    var projects = new Icon('Browse Shows', 'http://stagey-mobile.s3.amazonaws.com/browse_icon.png', 'cats', null, false, null, 'browse');
     icons.push(projects);
 
-    var whats_next = new Icon('Upcoming\nPerformances', 'http://stagey-mobile.s3.amazonaws.com/whats_next_48.png', 'performances', null, false, null, 'next');
+    var whats_next = new Icon('Upcoming', 'http://stagey-mobile.s3.amazonaws.com/upcoming_icon.png', 'performances', null, false, null, 'next');
     icons.push(whats_next);
 
-    var nearby = new Icon('Playing\nNearby', 'http://stagey-mobile.s3.amazonaws.com/nearby_48.png', 'performances', null, false, null, 'nearby');
+    var nearby = new Icon('Playing Nearby', 'http://stagey-mobile.s3.amazonaws.com/nearby_icon.png', 'performances', null, false, null, 'nearby');
     icons.push(nearby);
 
-    var reviews = new Icon('Recent\nReviews', 'http://stagey-mobile.s3.amazonaws.com/reviews_48.png', 'reviews', null, false, null, 'reviews');
+    var reviews = new Icon('Recent Reviews', 'http://stagey-mobile.s3.amazonaws.com/reviews_icon.png', 'reviews', null, false, null, 'reviews');
     icons.push(reviews);
 
     var iconsView = Ti.UI.createView(showStyles.iconsView);
@@ -29,10 +29,10 @@ function ShowsWindow(){
     
     if(Ti.Platform.name == 'iPhone OS'){iconsView.top = 65}else{iconsView.top = 80;};
 
-    var venues = new Icon('Venues', 'http://stagey-mobile.s3.amazonaws.com/venues_droid_48.png', 'venues', null, false, null, 'nearby');
+    var venues = new Icon('Venues', 'http://stagey-mobile.s3.amazonaws.com/venues_icon.png', 'venues', null, false, null, 'nearby');
     icons.push(venues);
 
-    var news = new Icon('News', 'http://stagey-mobile.s3.amazonaws.com/news_48.png', 'feed', null, false, null, 'feed');
+    var news = new Icon('News', 'http://stagey-mobile.s3.amazonaws.com/news_icon.png', 'feed', null, false, null, 'feed');
     icons.push(news);
     
     for(var i = 0;i < icons.length; i++){

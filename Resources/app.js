@@ -2,11 +2,11 @@ Ti.UI.orientation = Ti.UI.PORTRAIT;
 
 var mobileConfigObj = require('modules/models/mobile_config');
 new mobileConfigObj(function(config){
-  Ti.App.api_url = 'http://www.gwahir.com/api/';
-  //Ti.App.api_url = config.api_url;
+  //Ti.App.api_url = 'http://www.gwahir.com/api/';
+  Ti.App.api_url = config.api_url;
   Ti.App.site_url = config.site_url;
 
-  Ti.App.subscription_opt_out = config.subscription_opt_out;
+  Ti.App.subscription_opt_out = false;//config.subscription_opt_out;
 
   if(Ti.App.Properties.getString('currentUser')){
     Ti.App.currentUser = JSON.parse(Ti.App.Properties.getString('currentUser'));
