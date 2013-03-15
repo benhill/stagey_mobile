@@ -10,18 +10,20 @@ function ShowsWindow(){
   var top = 0;
   var left = 26;
 
+  var container = Ti.UI.createView(showStyles.container);
+
   self.load = function(){
 
-    var projects = new Icon('Browse Shows', 'http://stagey-mobile.s3.amazonaws.com/browse_icon.png', 'cats', null, false, null, 'browse');
+    var projects = new Icon('Browse Shows', 'http://stagey-mobile.s3.amazonaws.com/icon_browse.png', 'cats', null, false, null, 'browse');
     icons.push(projects);
 
-    var whats_next = new Icon('Upcoming', 'http://stagey-mobile.s3.amazonaws.com/upcoming_icon.png', 'performances', null, false, null, 'next');
+    var whats_next = new Icon('Upcoming', 'http://stagey-mobile.s3.amazonaws.com/icon_next.png', 'performances', null, false, null, 'next');
     icons.push(whats_next);
 
-    var nearby = new Icon('Playing Nearby', 'http://stagey-mobile.s3.amazonaws.com/nearby_icon.png', 'performances', null, false, null, 'nearby');
+    var nearby = new Icon('Playing Nearby', 'http://stagey-mobile.s3.amazonaws.com/icon_nearby.png', 'performances', null, false, null, 'nearby');
     icons.push(nearby);
 
-    var reviews = new Icon('Recent Reviews', 'http://stagey-mobile.s3.amazonaws.com/reviews_icon.png', 'reviews', null, false, null, 'reviews');
+    var reviews = new Icon('Recent Reviews', 'http://stagey-mobile.s3.amazonaws.com/icon_reviews.png', 'reviews', null, false, null, 'reviews');
     icons.push(reviews);
 
     var iconsView = Ti.UI.createView(showStyles.iconsView);
@@ -29,10 +31,10 @@ function ShowsWindow(){
     
     if(Ti.Platform.name == 'iPhone OS'){iconsView.top = 65}else{iconsView.top = 80;};
 
-    var venues = new Icon('Venues', 'http://stagey-mobile.s3.amazonaws.com/venues_icon.png', 'venues', null, false, null, 'nearby');
+    var venues = new Icon('Venues', 'http://stagey-mobile.s3.amazonaws.com/icon_venues.png', 'venues', null, false, null, 'nearby');
     icons.push(venues);
 
-    var news = new Icon('News', 'http://stagey-mobile.s3.amazonaws.com/news_icon.png', 'feed', null, false, null, 'feed');
+    var news = new Icon('News', 'http://stagey-mobile.s3.amazonaws.com/icon_news.png', 'feed', null, false, null, 'feed');
     icons.push(news);
     
     for(var i = 0;i < icons.length; i++){
@@ -64,7 +66,7 @@ function ShowsWindow(){
       });  
     }
     
-    self.add(iconsView);
+    container.add(iconsView);
 
     var alertObj = require('modules/models/alert');
 
@@ -76,7 +78,11 @@ function ShowsWindow(){
       alertLabel.url = alertObj.link;
       alertView.add(alertLabel);
 
-      self.add(alertView);
+      var carrotImage = Ti.UI.createImageView(showStyles.carrotImage);
+      carrotImage.image = 'http://stagey-mobile.s3.amazonaws.com/more-arrow.png';
+      alertView.add(carrotImage);
+
+      container.add(alertView);
 
       alertView.addEventListener('click', function(e){
        Ti.Platform.openURL(e.source.url);
@@ -105,6 +111,8 @@ function ShowsWindow(){
     }
   }
   
+  self.add(container);
+
   return(self);
 }
 

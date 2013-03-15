@@ -132,23 +132,22 @@ function VenueWindow(venue_id){
       address.text = venue.address + '\n' + venue.city + ', ' + venue.state + ' ' + venue.postal + '\n' + String(miles_away) + ' miles away';
       addressView.add(address);
 
-      var locationWrapper = Ti.UI.createView(venueStyles.locationWrapper);
-      
-      var annotation = Ti.Map.createAnnotation(venueStyles.annotation);
-      annotation.latitude = venue.lat;
-      annotation.longitude = venue.lng;
-      annotation.title = venue.name;
-      annotation.subtitle = venue.address;
-    
-      locationWrapper.add(addressView); 
+      var carrotImage = Ti.UI.createImageView(venueStyles.carrotImage);
+      carrotImage.image = 'http://stagey-mobile.s3.amazonaws.com/more-arrow.png';
+      addressView.add(carrotImage);
+                  
+      var row = Ti.UI.createTableViewRow(venueStyles.row);
+      row.selectedBackgroundColor = '#F4F1F1';
+      row.add(addressView);
+      tableData.push(row);
 
       if(Ti.Platform.name == 'iPhone OS'){
-        addressView.addEventListener('click',function(){
+        row.addEventListener('click',function(){
           Ti.Platform.openURL('http://maps.apple.com/?q=' + venue.address + ", " + venue.city + ", " + venue.state + " " + venue.postal);
         });        
       }
       else{
-        addressView.addEventListener('click',function(){
+        row.addEventListener('click',function(){
           var intent = Ti.Android.createIntent({
             action: Ti.Android.ACTION_VIEW,
             data:'geo:0,0+?q=' + venue.address + ", " + venue.city + ", " + venue.state + " " + venue.postal
@@ -156,11 +155,6 @@ function VenueWindow(venue_id){
           Ti.Android.currentActivity.startActivity(intent);
         });     
       }
-      
-      var row = Ti.UI.createTableViewRow(venueStyles.row);
-      row.selectedBackgroundColor = '#F4F1F1';
-      row.add(locationWrapper);
-      tableData.push(row);      
       
       table.setData(tableData);
       venueWrapper.add(table);

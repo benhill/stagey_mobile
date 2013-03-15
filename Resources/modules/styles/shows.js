@@ -2,6 +2,12 @@ var default_search_text = 'search for a show';
 
 styles = {	
 
+  container: {
+    width:'100%',
+    height:'100%',
+    backgroundImage:'/images/bg.png'
+  },
+
 	searchView: {
 		top:60,
     left:1,
@@ -46,7 +52,11 @@ styles = {
     height:100,
     layout:'vertical',
     borderRadius:10,
-    backgroundColor:'black'
+    backgroundColor:'black',
+    borderColor:'white',
+    borderWidth:1,
+    borderColor:'white',
+    borderWidth:1
   },
 
   iconImage: {
@@ -70,14 +80,25 @@ styles = {
     bottom:0,
     height:40,
     width:'100%',
-    backgroundColor:'#bbbbbb'
+    backgroundColor:'black',
+    borderColor:'white',
+    borderWidth:2
   },
 
   alertLabel: {
+    left:30,
     height:Ti.UI.SIZE,
     width:Ti.UI.SIZE,
     font:{fontSize:15, fontWeight:'bold'},
     color:'white'
+  },
+
+  carrotImage: {
+    right:10,
+    top:'40%',
+    font:{fontSize:12, fontWeight:'bold'},
+    height:Titanium.UI.SIZE,
+    width:Titanium.UI.SIZE
   }
 
 };
@@ -92,3 +113,5 @@ exports.iconImage = styles.iconImage;
 exports.iconText = styles.iconText;
 exports.alertView = styles.alertView;
 exports.alertLabel = styles.alertLabel;
+exports.container = styles.container;
+exports.carrotImage = styles.carrotImage;

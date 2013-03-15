@@ -58,8 +58,8 @@ styles = {
   },
 
   addressView: {
-    width:320,
-    height:300,
+    width:Ti.UI.SIZE,
+    height:Ti.UI.SIZE,
     top:5
   },
 
@@ -81,13 +81,7 @@ styles = {
     width: '75%',
     color:'black'
   },
-
-  locationWrapper: {
-    width:'100%',
-    height:Ti.UI.SIZE,
-    layout:'vertical'
-  },
-
+  
   projectsView: {
     width:320,
     height:60,
@@ -156,7 +150,6 @@ exports.description = styles.description;
 exports.addressView = styles.addressView;
 exports.addressLabel = styles.addressLabel;
 exports.address = styles.address;
-exports.locationWrapper = styles.locationWrapper;
 exports.projectsView = styles.projectsView;
 exports.projectThumb = styles.projectThumb;
 exports.projectLabel = styles.projectLabel;

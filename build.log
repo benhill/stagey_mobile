@@ -5,7 +5,7 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.021995 seconds on emulator to get ready
+[DEBUG] waited 0.333165 seconds on emulator to get ready
 [DEBUG] com.hff.mobile installed? False
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
@@ -119,15 +119,25 @@ Logfile initialized
 [DEBUG] from resource zip => res/layout/titanium_tabgroup.xml
 [DEBUG] from resource zip => AndroidManifest.xml
 [DEBUG] from resource zip => resources.arsc
+[DEBUG] from resource zip => res/drawable-long-land-hdpi/bg_348a87abc5.png
 [DEBUG] from resource zip => res/drawable-long-land-hdpi/default_d44e27d97b.png
+[DEBUG] from resource zip => res/drawable-long-land-ldpi/bg_348a87abc5.png
 [DEBUG] from resource zip => res/drawable-long-land-ldpi/default_d44e27d97b.png
+[DEBUG] from resource zip => res/drawable-long-port-hdpi/bg_348a87abc5.png
 [DEBUG] from resource zip => res/drawable-long-port-hdpi/default_d44e27d97b.png
+[DEBUG] from resource zip => res/drawable-long-port-ldpi/bg_348a87abc5.png
 [DEBUG] from resource zip => res/drawable-long-port-ldpi/default_d44e27d97b.png
+[DEBUG] from resource zip => res/drawable-notlong-land-hdpi/bg_348a87abc5.png
 [DEBUG] from resource zip => res/drawable-notlong-land-hdpi/default_d44e27d97b.png
+[DEBUG] from resource zip => res/drawable-notlong-land-ldpi/bg_348a87abc5.png
 [DEBUG] from resource zip => res/drawable-notlong-land-ldpi/default_d44e27d97b.png
+[DEBUG] from resource zip => res/drawable-notlong-land-mdpi/bg_348a87abc5.png
 [DEBUG] from resource zip => res/drawable-notlong-land-mdpi/default_d44e27d97b.png
+[DEBUG] from resource zip => res/drawable-notlong-port-hdpi/bg_348a87abc5.png
 [DEBUG] from resource zip => res/drawable-notlong-port-hdpi/default_d44e27d97b.png
+[DEBUG] from resource zip => res/drawable-notlong-port-ldpi/bg_348a87abc5.png
 [DEBUG] from resource zip => res/drawable-notlong-port-ldpi/default_d44e27d97b.png
+[DEBUG] from resource zip => res/drawable-notlong-port-mdpi/bg_348a87abc5.png
 [DEBUG] from resource zip => res/drawable-notlong-port-mdpi/default_d44e27d97b.png
 [DEBUG] from JAR /Users/benhill/Library/Application Support/Titanium/mobilesdk/osx/3.0.2.GA/android/titanium.jar => org/appcelerator/titanium/build.properties
 [DEBUG] from JAR /Users/benhill/Library/Application Support/Titanium/mobilesdk/osx/3.0.2.GA/android/titanium.jar => org/appcelerator/titanium/res/drawable/background.png
@@ -156,6 +166,6 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.027172 seconds on emulator to get ready
+[DEBUG] waited 0.054501 seconds on emulator to get ready
 [INFO] Installing application on device
 [INFO] Application installed. Launch from drawer on Home Screen
