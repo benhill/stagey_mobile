@@ -26,7 +26,7 @@ function MapWindow(venue, window, callback){
     annotation.longitude = venue.lng;
     annotation.title = venue.name;
     annotation.subtitle = venue.address;
-    annotation.leftView = viewButton;
+    annotation.leftView = viewButton;    
 
     return annotation;
   }
@@ -42,7 +42,10 @@ function MapWindow(venue, window, callback){
     new venuesObj(null, function(venues){
       for (i = 0; i < venues.length; i++) {
         var venue = venues[i];
-        annotations.push(createAnnotation(venue));
+        annotation = createAnnotation(venue);
+        if(annotation.longitude && annotation.latitude){
+          annotations.push(annotation);
+        };
       }
       //TODO: Add these to event meta data
       coordinates = {latitude:'34.090643', longitude:'-118.332067', latitudeDelta:0.027, longitudeDelta:0.027};
