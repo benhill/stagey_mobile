@@ -1,5 +1,5 @@
 function VenueWindow(venue_id){
-  
+
   var app = require('modules/core');
   var styles = require('modules/styles/styles');
   var venueStyles = require('modules/styles/venue')
@@ -11,7 +11,7 @@ function VenueWindow(venue_id){
   var image_top = 0;
   var image_place = 0;
   var table = Ti.UI.createTableView(venueStyles.table);
-  var tableData = [];  
+  var tableData = [];
 
   self.load = function(){
     new venueObj(url, function(venue){
@@ -20,7 +20,7 @@ function VenueWindow(venue_id){
   }
 
   function loadVenue(venue){
-    
+
     var venueDistObj = require('modules/models/venue_distance');
 
     new venueDistObj(venue.id, function(miles_away){
@@ -40,10 +40,10 @@ function VenueWindow(venue_id){
       subTitleLabel.text = "presented by " + venue.presenter;
       if(venue.presenter.length > 0){titleView.add(subTitleLabel)};
 
-      venueWrapper.add(titleView);      
+      venueWrapper.add(titleView);
 
       var allGalleryView = Ti.UI.createView(venueStyles.allGalleryView);
-      var galleryView = Ti.UI.createView(venueStyles.galleryView);    
+      var galleryView = Ti.UI.createView(venueStyles.galleryView);
 
       var imageCollection = venue.images.slice(0,4);
 
@@ -58,13 +58,13 @@ function VenueWindow(venue_id){
         img.full_image_path = venue.images[i].image.image_path;
         image_place ++;
 
-        galleryView.add(img);            
+        galleryView.add(img);
 
         img.addEventListener('click', function(e){
           app.openWindow(self, 'Image', 'image', [e.source.full_image_path]);
         });
 
-      } 
+      }
 
       allGalleryView.add(galleryView);
 
@@ -86,18 +86,17 @@ function VenueWindow(venue_id){
 
       var description = Ti.UI.createLabel(venueStyles.description);
       description.text = venue.description;
-      
+
       var row = Ti.UI.createTableViewRow(venueStyles.row);
       row.selectedBackgroundColor = '#F4F1F1';
       row.add(description);
       if(venue.description.length > 0){tableData.push(row)};
-      
+
       if(venue.number_of_shows > 0){
 
         var projectsView = Ti.UI.createView(venueStyles.projectsView);
 
         var projectThumb = Ti.UI.createImageView(venueStyles.projectThumb);
-        projectThumb.image = venue.random_show_image_url;
         projectsView.add(projectThumb);
 
         var projectLabel = Ti.UI.createLabel(venueStyles.projectLabel);
@@ -105,7 +104,6 @@ function VenueWindow(venue_id){
         projectsView.add(projectLabel);
 
         var titleLabel = Ti.UI.createLabel(venueStyles.titleLabel);
-        titleLabel.text = 'including ' + venue.random_show_title;
         projectsView.add(titleLabel);
 
         var carrotImage = Ti.UI.createImageView(venueStyles.carrotImage);
@@ -120,12 +118,18 @@ function VenueWindow(venue_id){
           var params = ['venue', null, null, venue.id];
           app.openWindow(self, 'Shows', 'projects', params);
         });
-        
+
+        var projectObj = require('modules/models/random_project');
+        new projectObj(venue.id, function(project){
+          titleLabel.text = 'including ' + project.title;
+          projectThumb.image = project.primary_thumbnail_url;
+        });
+
       }
 
       var addressView = Ti.UI.createView(venueStyles.addressView);
 
-      var addressLabel = Ti.UI.createLabel(venueStyles.addressLabel);      
+      var addressLabel = Ti.UI.createLabel(venueStyles.addressLabel);
       addressView.add(addressLabel);
 
       var address = Ti.UI.createLabel(venueStyles.address);
@@ -135,7 +139,7 @@ function VenueWindow(venue_id){
       var carrotImage = Ti.UI.createImageView(venueStyles.carrotImage);
       carrotImage.image = 'http://stagey-mobile.s3.amazonaws.com/more-arrow.png';
       addressView.add(carrotImage);
-                  
+
       var row = Ti.UI.createTableViewRow(venueStyles.row);
       row.selectedBackgroundColor = '#F4F1F1';
       row.add(addressView);
@@ -144,7 +148,7 @@ function VenueWindow(venue_id){
       if(Ti.Platform.name == 'iPhone OS'){
         row.addEventListener('click',function(){
           Ti.Platform.openURL('http://maps.apple.com/?q=' + venue.address + ", " + venue.city + ", " + venue.state + " " + venue.postal);
-        });        
+        });
       }
       else{
         row.addEventListener('click',function(){
@@ -153,15 +157,15 @@ function VenueWindow(venue_id){
             data:'geo:0,0+?q=' + venue.address + ", " + venue.city + ", " + venue.state + " " + venue.postal
           });
           Ti.Android.currentActivity.startActivity(intent);
-        });     
+        });
       }
-      
+
       table.setData(tableData);
       venueWrapper.add(table);
-      
+
       self.add(venueWrapper);
       self.remove(spinner);
-    }); 
+    });
   };
 
   self.add(spinner);

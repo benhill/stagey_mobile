@@ -7,7 +7,7 @@ function SearchWindow(search_terms){
   var searchObj = require('modules/models/search');
 
   self.load = function(){
-  
+
     var xhr = Ti.Network.createHTTPClient({
       onload: function(){
         projects = JSON.parse(this.responseText).projects;
@@ -35,7 +35,7 @@ function SearchWindow(search_terms){
     });
 
     var searchButton =  Ti.UI.createImageView(searchStyles.searchButton);
-    searchButton.image = app.resdir + 'iphone/search_24.png',
+    searchButton.image = 'https://stagey-mobile.s3.amazonaws.com/search_24.png',
     self.add(searchButton);
 
     if(search_terms){

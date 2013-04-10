@@ -11,10 +11,10 @@ styles = {
     color:'black'
   },
 
-  searchButton: {    
+  searchButton: {
     width:24,
     height:24,
-    top:57,    
+    top:65,
     left:285
   },
 
