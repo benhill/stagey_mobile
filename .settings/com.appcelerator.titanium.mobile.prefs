@@ -1,7 +1,15 @@
 MOBILE_PROJECT_SDK_VERSION=1.7.5
+android/ATTR_MINIFY=true
+android/ATTR_PROJECT_NAME=stagey_mobile
+android/abi=armeabi
 android/alias=my android key
+android/distribute_path=/Users/benhill/Dropbox/Public/Android
 android/keystore=/Users/benhill/Dropbox/BenHill/Stagey/AndroidKey/AndroidKey
+android/keystore_alias=stagey-key
+android/keystore_password=Elsinore1
+android/keystore_path=/Users/benhill/Dropbox/BenHill/Stagey/Certs/AndroidKey/AndroidKey
 android/output_location=/Users/benhill/Dropbox/Public/Android
 android/recent_output=/Users/benhill/Dropbox/Public/Android
 android/sdk=Google APIs Android 2.2
+android/sdk_version=Google APIs Android 2.2
 eclipse.preferences.version=1
