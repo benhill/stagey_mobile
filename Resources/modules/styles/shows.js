@@ -1,6 +1,6 @@
 var default_search_text = 'search for a show';
 
-styles = {	
+styles = {
 
   container: {
     width:'100%',
@@ -32,7 +32,7 @@ styles = {
     left:26,
     width:'74%',
     borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
-    color:'gray'		
+    color:'gray'
   },
 
   searchButton: {
@@ -42,7 +42,7 @@ styles = {
     right:27
   },
 
-  iconsView: {    
+  iconsView: {
     left:0,
     layout:'absolute'
   },
@@ -95,7 +95,7 @@ styles = {
 
   carrotImage: {
     right:10,
-    top:'40%',
+    top:'30%',
     font:{fontSize:12, fontWeight:'bold'},
     height:Titanium.UI.SIZE,
     width:Titanium.UI.SIZE
