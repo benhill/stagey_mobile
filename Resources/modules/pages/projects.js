@@ -29,19 +29,19 @@ function ProjectsWindow(mode, startProjects, cat_id, venue_id, user_id){
         spinner.hide();
       }
       else{
-      	loadProjects(results);        
+      	loadProjects(results);
       };
     });
-    
+
     function loadProjects(results){
       startProjects ? projects = startProjects : projects = results;
       startProjects = null;
       var tableData = [];
-        
+
       if (projects.length > 0){
         total_results = projects[0].total_results;
         seed = projects[0].seed;
-            
+
         for(i = 0; i < projects.length; i++){
           row = createARow(projects[i]);
           tableData.push(row);
@@ -50,9 +50,9 @@ function ProjectsWindow(mode, startProjects, cat_id, venue_id, user_id){
         table.setData(tableData);
         self.add(table);
 
-        var loadingRow = Ti.UI.createTableViewRow({title:"Loading...", color:'black'});   
-      
-        function beginUpdate(){          
+        var loadingRow = Ti.UI.createTableViewRow({title:"Loading...", color:'black'});
+
+        function beginUpdate(){
           if(projects[0].total_results > (page * rows_per_page)){
             page += 1;
             updating = true;
@@ -66,19 +66,19 @@ function ProjectsWindow(mode, startProjects, cat_id, venue_id, user_id){
               var rows = [];
               for (var i = 0; i < projects.length; i++){
                 row = createARow(projects[i]);
-                rows.push(row);              
+                rows.push(row);
               };
               endUpdate(rows);
             });
           };
         };
 
-        function endUpdate(rows){                
-          updating = false;        
+        function endUpdate(rows){
+          updating = false;
           table.appendRow(rows);
           table.deleteRow(lastRow);
           lastRow += rows_per_page;
-        };        
+        };
 
         table.addEventListener('scroll',function(e){
           app.dynamic_scoller(e, beginUpdate, updating, lastDistance, page);
@@ -90,7 +90,7 @@ function ProjectsWindow(mode, startProjects, cat_id, venue_id, user_id){
         self.add(noDataLabel);
       };
 
-      spinner.hide();  
+      spinner.hide();
     };
 
     function loadProject(e, islongclick){
@@ -103,7 +103,7 @@ function ProjectsWindow(mode, startProjects, cat_id, venue_id, user_id){
 
       projectsStyles.projectThumb.image = project.thumbnail;
       projectsStyles.projectThumb.project_id = project.id;
-      var projectThumb = Titanium.UI.createImageView(projectsStyles.projectThumb);  
+      var projectThumb = Titanium.UI.createImageView(projectsStyles.projectThumb);
       row.add(projectThumb);
 
       (project.title.length >= 25) ? title = project.title.substr(0,25) + "..." : title = project.title;
@@ -128,20 +128,20 @@ function ProjectsWindow(mode, startProjects, cat_id, venue_id, user_id){
         loadProject(e);
       });
 
-      return row;          
+      return row;
     };
-    
+
   };
 
   function setUrl(){
     if(mode == 'venue'){
       url = Ti.App.api_url + "projects?venue_id=" + venue_id;
-    }  
+    }
     else if(mode == 'cat'){
       url = Ti.App.api_url + "projects?cat_id=" + cat_id;
     }
-    else if(mode == 'favorites'){    
-      url = Ti.App.api_url + "favorites?email=" + Ti.App.currentUser.email + "&password=" + Ti.App.userPassword;
+    else if(mode == 'favorites'){
+      url = Ti.App.api_url + "favorites?guid=" + Ti.App.Properties.getString('guid');
     }
     else if(user_id != null){
       url = Ti.App.api_url + "projects?user_id=" + user_id;
@@ -152,7 +152,7 @@ function ProjectsWindow(mode, startProjects, cat_id, venue_id, user_id){
 
     return url;
   };
-  
+
   return self;
 };
 

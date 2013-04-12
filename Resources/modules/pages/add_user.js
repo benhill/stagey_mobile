@@ -6,7 +6,7 @@ function AddUserWindow(return_win){
   var self = Ti.UI.createWindow(styles.defaultWindow);
   var addUserObj = require('modules/models/add_user');
 
-  self.load = function(){    
+  self.load = function(){
 
     var emailLabel = Ti.UI.createTextField(addUserStyles.emailLabel);
     self.add(emailLabel);
@@ -23,7 +23,7 @@ function AddUserWindow(return_win){
     var passwordLabel = Ti.UI.createTextField(addUserStyles.passwordLabel);
     self.add(passwordLabel);
     app.addKeyboardToolbar(passwordLabel);
-    
+
     var addUserButton = Ti.UI.createButton(addUserStyles.addUserButton);
     self.add(addUserButton);
 
@@ -31,7 +31,7 @@ function AddUserWindow(return_win){
       runAddUser();
     });
 
-    function runAddUser(){    
+    function runAddUser(){
       new addUserObj(emailLabel.value, firstNameLabel.value, lastNameLabel.value, passwordLabel.value, function(results){
         addUser(results);
       });
@@ -45,12 +45,13 @@ function AddUserWindow(return_win){
         Ti.App.Properties.setString('currentUser', JSON.stringify(results));
         Ti.App.Properties.setString('userPassword', passwordLabel.value);
         Ti.App.currentUser = results;
-        Ti.App.userPassword = passwordLabel.value;
+        Ti.App.Properties.setString('guid', results.guid);
+        Ti.App.guid = results.guid
 
         if(return_win){
           app.openFromWindow(return_win);
         }
-        else{          
+        else{
           app.openWindow(self, 'Me', 'me', []);
         }
       }

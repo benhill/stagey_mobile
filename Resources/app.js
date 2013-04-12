@@ -10,7 +10,6 @@ new mobileConfigObj(function(config){
 
   if(Ti.App.Properties.getString('currentUser')){
     Ti.App.currentUser = JSON.parse(Ti.App.Properties.getString('currentUser'));
-    Ti.App.userPassword = Ti.App.Properties.getString('userPassword');
   }
 
   Ti.App.token = '8kj@!!00990j34Ad'

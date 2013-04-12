@@ -94,7 +94,7 @@ function ProjectWindow(project_id){
       var icons = [];
       var left = 0;
 
-      var buy_ticket = new Icon('Showtimes', 'http://stagey-mobile.s3.amazonaws.com/purchase_24.png', 'performances', project, false);
+      var buy_ticket = new Icon('Tickets', 'http://stagey-mobile.s3.amazonaws.com/purchase_24.png', 'performances', project, false);
       icons.push(buy_ticket);
 
       var make_favorite = new Icon(make_fav_text, 'http://stagey-mobile.s3.amazonaws.com/favorite_24.png', 'favorite', project);
@@ -322,7 +322,7 @@ function ProjectWindow(project_id){
 
     function toggleFavorite(){
       if(Ti.App.currentUser){
-        url = Ti.App.api_url + "toggle_favorite?project_id=" + project_id + "&email=" + Ti.App.currentUser.email + "&password=" + Ti.App.userPassword;
+        url = Ti.App.api_url + "toggle_favorite?project_id=" + project_id + "&guid=" + Ti.App.Properties.getString('guid');
         favXhr.open("GET", url);
         favXhr.send();
       }

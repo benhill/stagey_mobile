@@ -1,7 +1,7 @@
 function LoginWindow(return_win){
 
   var app = require('modules/core');
-  var styles = require('modules/styles/styles');  
+  var styles = require('modules/styles/styles');
   var loginStyles = require('modules/styles/login');
   var self = Ti.UI.createView({
     height:Ti.UI.SIZE,
@@ -21,7 +21,7 @@ function LoginWindow(return_win){
     loginUser();
   });
 
-  var loginButton = Ti.UI.createButton(loginStyles.loginButton); 
+  var loginButton = Ti.UI.createButton(loginStyles.loginButton);
   self.add(loginButton);
 
   loginButton.addEventListener('click', function(e){
@@ -48,17 +48,17 @@ function LoginWindow(return_win){
       if(user.error){
         alert(user.error);
       }
-      else{        
+      else{
         Ti.App.Properties.setString('currentUser', JSON.stringify(user));
+        Ti.App.Properties.setString('guid', user.guid);
         Ti.App.Properties.setString('userPassword', password.value);
         Ti.App.currentUser = user;
-        Ti.App.userPassword = password.value;
         Ti.App.fireEvent('app:refreshMeTab', {user:user});
 
         if(return_win){
           app.openFromWindow(return_win);
         }
-        else{            
+        else{
           app.openWindow(self, 'Me', 'me', []);
         }
       }
@@ -73,7 +73,7 @@ function LoginWindow(return_win){
   })
 
   return(self);
-  
+
 }
 
 module.exports = LoginWindow;

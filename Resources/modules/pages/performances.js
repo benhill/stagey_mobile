@@ -6,7 +6,7 @@ function PerformancesWindow(mode, schedule_page, title){
   var self = Ti.UI.createWindow(styles.defaultWindow);
   var performancesObj = require('modules/models/performances');
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
-  var nowTab = Ti.UI.currentTab;  
+  var nowTab = Ti.UI.currentTab;
   var page = 1;
   var rows_per_page = 9;
   var lat,lng;
@@ -31,7 +31,7 @@ function PerformancesWindow(mode, schedule_page, title){
       });
     }
     else{
-      loadForm();    
+      loadForm();
     }
   }
 
@@ -53,11 +53,11 @@ function PerformancesWindow(mode, schedule_page, title){
 
       if(schedule_page){
         var titleView = Ti.UI.createView(perfStyles.titleView);
-        
+
         var titleLabel = Ti.UI.createLabel(perfStyles.titleLabel);
         titleLabel.text = performances[0].date_time;
-        titleView.add(titleLabel);        
-      
+        titleView.add(titleLabel);
+
         var previousView = Ti.UI.createView(perfStyles.previousView);
 
         var previousLabel = Ti.UI.createLabel(perfStyles.previousLabel);
@@ -78,11 +78,11 @@ function PerformancesWindow(mode, schedule_page, title){
           if(Ti.Platform.name == 'iPhone OS'){
             self.addEventListener('swipe', function(e) {
               if (e.direction == 'right') {
-                loadLast();        
+                loadLast();
               }
             });
           }
-        };        
+        };
 
         var nextView = Ti.UI.createView(perfStyles.nextView);
 
@@ -105,16 +105,16 @@ function PerformancesWindow(mode, schedule_page, title){
             self.addEventListener('swipe', function(e) {
               if (e.direction == 'left') {
                 loadNext();
-              }             
+              }
             });
           }
 
-        };        
+        };
 
         self.add(titleView);
-        
-      }      
-      
+
+      }
+
       mode == 'schedule' || mode == 'next' ? table.top = 100 : table.top = 50;
 
       var tableData = [];
@@ -144,7 +144,7 @@ function PerformancesWindow(mode, schedule_page, title){
         row.add(projectTitle);
 
         var dateTimeInfo = Ti.UI.createLabel(perfStyles.dateTimeInfo);
-        dateTimeInfo.text = performance.date_time_info;        
+        dateTimeInfo.text = performance.date_time_info;
         dateTimeInfo.performance = performance;
         row.add(dateTimeInfo);
 
@@ -154,11 +154,11 @@ function PerformancesWindow(mode, schedule_page, title){
         venueInfo.performance = performance;
         row.add(venueInfo);
 
-        if(mode == 'next' || mode == 'nearby'){          
-          var descriptionLabel = Ti.UI.createLabel(perfStyles.descriptionLabel);                
-          descriptionLabel.performance = performance;          
+        if(mode == 'next' || mode == 'nearby'){
+          var descriptionLabel = Ti.UI.createLabel(perfStyles.descriptionLabel);
+          descriptionLabel.performance = performance;
           descriptionLabel.text = performance.description.substr(0,150).replace(/(\r\n|\n|\r)/gm,"") + '...';
-          row.add(descriptionLabel);          
+          row.add(descriptionLabel);
           row.height = 135;
         }
         else{
@@ -176,13 +176,13 @@ function PerformancesWindow(mode, schedule_page, title){
 
         return row;
       }
-         
+
       table.setData(tableData);
-      self.add(table); 
-            
-      var loadingRow = Ti.UI.createTableViewRow({title:"Loading...", color:'black'});   
-      
-      function beginUpdate(){        
+      self.add(table);
+
+      var loadingRow = Ti.UI.createTableViewRow({title:"Loading...", color:'black'});
+
+      function beginUpdate(){
         if(performances[0].total_results > (page * rows_per_page)){
           page += 1;
           updating = true;
@@ -195,15 +195,15 @@ function PerformancesWindow(mode, schedule_page, title){
             var rows = [];
             for (var i = 0; i < performances.length; i++){
               row = createRow(performances[i]);
-              rows.push(row);              
-            }            
+              rows.push(row);
+            }
             endUpdate(rows);
           });
         }
       }
 
-      function endUpdate(rows){                
-        updating = false;        
+      function endUpdate(rows){
+        updating = false;
         table.appendRow(rows);
         table.deleteRow(lastRow);
         lastRow += rows_per_page;
@@ -216,7 +216,7 @@ function PerformancesWindow(mode, schedule_page, title){
       self.open();
       spinner.hide();
     };
-   
+
 
     function loadNext(){
       app.openWindow(self, schedule_title, 'performances', [mode, schedule_page + 1, schedule_title]);
@@ -226,9 +226,9 @@ function PerformancesWindow(mode, schedule_page, title){
       app.openWindow(self, schedule_title, 'performances', [mode, schedule_page - 1, schedule_title]);
     }
 
-    function loadPerformance(e, islongclick) {      
+    function loadPerformance(e, islongclick) {
       app.openWindow(self, 'Performance', 'performance', [e.source.performance.id]);
-    }    
+    }
 
     self.add(spinner);
     spinner.show();
@@ -238,11 +238,11 @@ function PerformancesWindow(mode, schedule_page, title){
     if(mode == 'next'){
       url = Ti.App.api_url + 'my_schedule?schedule_page=' + schedule_page + '&';
     }
-    else if(mode == 'nearby'){      
+    else if(mode == 'nearby'){
       url = Ti.App.api_url + 'performances/7?lat=' + lat + '&lng=' + lng + '&distance=1&';
     }
     else if(mode == 'schedule'){
-      url = Ti.App.api_url + 'my_schedule?email=' + Ti.App.currentUser.email + '&password=' + Ti.App.userPassword + '&schedule_page=' + schedule_page + '&';
+      url = Ti.App.api_url + 'my_schedule?guid=' + Ti.App.currentUser.guid + '&schedule_page=' + schedule_page + '&';
     }
     else{
       url = Ti.App.api_url + 'performances/7?project_id=' + (mode.id || mode) + '&';
