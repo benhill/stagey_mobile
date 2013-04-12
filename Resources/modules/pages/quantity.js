@@ -40,8 +40,8 @@ function QuantityWindow(performance_id, pwycPrice){
 
       self.add(titleView);
 
-      var data = [];      
-      for(i=0; i<8; i++){        
+      var data = [];
+      for(i=0; i<8; i++){
         i > 0 ? plural = 's' : plural = ''
         data[i] = Ti.UI.createPickerRow({value:i+1, title:(i+1) +' Ticket' + plural + ' x $' + app.formatCurrency(cost)});
       }
@@ -49,7 +49,7 @@ function QuantityWindow(performance_id, pwycPrice){
       var quantityLabel = Ti.UI.createLabel(perfStyles.quantityLabel);
 
       if(Ti.Platform.name == 'iPhone OS'){
-        quantityLabel.text = data[0].title;        
+        quantityLabel.text = data[0].title;
 
         var quantityButton = Ti.UI.createButton(perfStyles.quantityButton);
         self.add(quantityButton);
@@ -61,14 +61,14 @@ function QuantityWindow(performance_id, pwycPrice){
 
       var selectObj = require('modules/common/select_box');
       quantPicker = new selectObj(quantityLabel, quantityButton, data);
-      
+
       if(Ti.Platform.name != 'iPhone OS'){
         quantView = Ti.UI.createView();
         quantView.height = Ti.UI.SIZE;
         quantView.width = Ti.UI.SIZE;
         quantView.top = 80;
         quantView.add(quantPicker);
-        
+
         self.add(quantView);
       }
       else{
@@ -83,17 +83,17 @@ function QuantityWindow(performance_id, pwycPrice){
       }
 
       var buttonView = Ti.UI.createView(perfStyles.buttonView);
-      
-      payButton = Ti.UI.createButton(perfStyles.payButton);      
+
+      payButton = Ti.UI.createButton(perfStyles.payButton);
       buttonView.add(payButton);
-      self.add(buttonView);      
+      self.add(buttonView);
 
       payButton.addEventListener('click', function(e){
         if(Ti.Platform.name == 'iPhone OS'){
           if(!quantityLabel.value){quantity = 1}else{quantity = quantityLabel.value}
         }
         else{quantity = quantPicker.value;}
-        var cartObj = require('modules/models/cart');        
+        var cartObj = require('modules/models/cart');
 
         new cartObj(Ti.App.currentUser.id).add_to_cart(performance.id, quantity, pwycPrice, function(e){
           if(e.cart_total > 0){
@@ -105,7 +105,7 @@ function QuantityWindow(performance_id, pwycPrice){
                   app.openWindow(self, 'PWYC', 'pwyc', [performance.id]);
                 }
                 else if(result.success){
-                  alert('Discount Code Applied');
+                  alert('Discount Code Applied:\nTickets are now $' + result.ticket_price + ' each.');
                   loadPayWindow();
                 }
                 else{
@@ -126,7 +126,7 @@ function QuantityWindow(performance_id, pwycPrice){
           }
 
         });
-      });      
+      });
 	  })
   }
 
