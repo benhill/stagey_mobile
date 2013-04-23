@@ -49,7 +49,7 @@ function OrderWindow(cc_num, cc_fname, cc_lname, csv, expiry_month, expiry_year,
       self.add(detailsView);
 
       var table = Ti.UI.createTableView(orderStyles.table);
-      var tableData = [];    
+      var tableData = [];
 
       for(i=0; i < e.length; i++){
         cart_item = e[i]
@@ -58,7 +58,7 @@ function OrderWindow(cc_num, cc_fname, cc_lname, csv, expiry_month, expiry_year,
 
         var projectThumb = Ti.UI.createImageView(orderStyles.projectThumb);
         projectThumb.image = cart_item.project_thumbnail;
-        row.add(projectThumb);            
+        row.add(projectThumb);
 
         var title;
         (cart_item.project_title.length >= 30) ? title = cart_item.project_title.substr(0,30) + "..." : title = cart_item.project_title;
@@ -79,8 +79,8 @@ function OrderWindow(cc_num, cc_fname, cc_lname, csv, expiry_month, expiry_year,
       }
 
       table.setData(tableData);
-      self.add(table);    
-      
+      self.add(table);
+
       var buttonView = Ti.UI.createView(orderStyles.buttonView);
 
       payButton = Ti.UI.createButton(orderStyles.payButton);
@@ -91,7 +91,7 @@ function OrderWindow(cc_num, cc_fname, cc_lname, csv, expiry_month, expiry_year,
       self.add(buttonView);
 
       self.remove(spinner);
-    
+
       payButton.addEventListener('click', function(e){
 
         buttonView.remove(payButton);
@@ -109,7 +109,7 @@ function OrderWindow(cc_num, cc_fname, cc_lname, csv, expiry_month, expiry_year,
             buttonView.remove(spinner);
             buttonView.add(payButton);
           }
-          else{            
+          else{
             app.openWindow(self, 'Receipt', 'receipt', [e.sale_id]);
             buttonView.remove(spinner);
             buttonView.add(payButton);

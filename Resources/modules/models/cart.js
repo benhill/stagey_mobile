@@ -12,16 +12,16 @@ Cart.prototype.add_to_cart = function(performance_id, quantity, pwyc_price, call
     timeout:app.timeout
   });
 
-  xhr.onload = function(){    
+  xhr.onload = function(){
     callback(JSON.parse(this.responseText));
   };
 
-  xhr.onerror = function(e){ 
+  xhr.onerror = function(e){
     app.throwError(this, e);
   };
 
   xhr.open('GET', url);
-  xhr.send();  
+  xhr.send();
 };
 
 Cart.prototype.get = function(callback) {
@@ -35,12 +35,12 @@ Cart.prototype.get = function(callback) {
     callback(JSON.parse(this.responseText).contents);
   };
 
-  xhr.onerror = function(e){ 
+  xhr.onerror = function(e){
     app.throwError(this, e);
   };
 
   xhr.open('GET', url);
-  xhr.send();  
+  xhr.send();
 };
 
 Cart.prototype.apply_discount_code = function(code_name, callback) {
@@ -50,14 +50,14 @@ Cart.prototype.apply_discount_code = function(code_name, callback) {
     timeout:app.timeout
   });
 
-  xhr.onload = function(){    
+  xhr.onload = function(){
     callback(JSON.parse(this.responseText));
   };
 
-  xhr.onerror = function(e){ 
+  xhr.onerror = function(e){
     app.throwError(this, e);
   };
-  
+
   try{
     xhr.open('GET', url);
     xhr.send();}
@@ -74,11 +74,11 @@ Cart.prototype.purchase = function(cc_first_name, cc_last_name, cc_number, cc_mo
     timeout:app.timeout
   });
 
-  xhr.onload = function(){    
+  xhr.onload = function(){
     callback(JSON.parse(this.responseText));
   };
 
-  xhr.onerror = function(e){ 
+  xhr.onerror = function(e){
     app.throwError(this, e);
   };
 
@@ -87,5 +87,5 @@ Cart.prototype.purchase = function(cc_first_name, cc_last_name, cc_number, cc_mo
     xhr.send();}
   catch(e){};
 };
- 
+
 module.exports = Cart;

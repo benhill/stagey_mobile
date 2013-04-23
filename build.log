@@ -1,10 +1,114 @@
 Logfile initialized
 [INFO] logfile = /src/stagey_mobile/build.log
-[DEBUG] /Users/benhill/Library/Application Support/Titanium/mobilesdk/osx/3.0.2.GA/android/builder.py distribute Fringe 2013 /Users/benhill/android-sdk-macosx /src/stagey_mobile com.hff.mobile /Users/benhill/Dropbox/BenHill/Stagey/Certs/AndroidKey/AndroidKey Elsinore1 stagey-key /Users/benhill/Dropbox/Public/Android
+[DEBUG] /Users/benhill/Library/Application Support/Titanium/mobilesdk/osx/3.0.2.GA/android/builder.py install Fringe 2013 /Users/benhill/android-sdk-macosx /src/stagey_mobile com.hff.mobile 6
 [INFO] Titanium SDK version: 3.0.2 (02/15/13 19:02 5a77fe7)
+[DEBUG] Waiting for device to be ready ...
+[TRACE] adb devices returned 1 devices/emulators
+[DEBUG] Device connected... (waited 0 seconds)
+[DEBUG] waited 0.021877 seconds on emulator to get ready
+[DEBUG] com.hff.mobile installed? False
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
-[TRACE] COPYING MODIFIED FILE: /src/stagey_mobile/Resources/android/appicon.png => /src/stagey_mobile/build/android/bin/assets/Resources/appicon.png
+[INFO] Detected change in tiapp.xml, or assets deleted. Forcing full re-build...
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/android/appicon.png => /src/stagey_mobile/build/android/bin/assets/Resources/appicon.png
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/android/Default.png => /src/stagey_mobile/build/android/bin/assets/Resources/Default.png
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/app.js => /src/stagey_mobile/build/android/bin/assets/Resources/app.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/common/button_bar.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/common/button_bar.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/common/header.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/common/header.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/common/login.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/common/login.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/common/map.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/common/map.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/common/select_box.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/common/select_box.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/core.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/core.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/helpers/primitives.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/helpers/primitives.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/models/add_review.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/models/add_review.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/models/add_user.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/models/add_user.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/models/alert.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/models/alert.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/models/cart.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/models/cart.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/models/cats.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/models/cats.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/models/feed.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/models/feed.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/models/icons.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/models/icons.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/models/images.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/models/images.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/models/is_favorite.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/models/is_favorite.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/models/make_review_helpful.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/models/make_review_helpful.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/models/map.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/models/map.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/models/mobile_config.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/models/mobile_config.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/models/page.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/models/page.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/models/performance.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/models/performance.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/models/performances.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/models/performances.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/models/project.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/models/project.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/models/projects.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/models/projects.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/models/random_project.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/models/random_project.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/models/review.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/models/review.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/models/reviews.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/models/reviews.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/models/sale.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/models/sale.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/models/search.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/models/search.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/models/user.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/models/user.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/models/users.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/models/users.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/models/venue.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/models/venue.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/models/venue_distance.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/models/venue_distance.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/models/venues.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/models/venues.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/pages/add_user.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/add_user.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/pages/cats.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/cats.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/pages/feed.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/feed.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/pages/gallery.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/gallery.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/pages/image.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/image.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/pages/login.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/login.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/pages/map.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/map.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/pages/me.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/me.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/pages/not_onsale.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/not_onsale.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/pages/order.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/order.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/pages/page.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/page.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/pages/pay.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/pay.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/pages/performance.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/performance.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/pages/performances.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/performances.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/pages/project.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/project.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/pages/project_description.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/project_description.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/pages/projects.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/projects.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/pages/pwyc.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/pwyc.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/pages/quantity.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/quantity.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/pages/receipt.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/receipt.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/pages/review.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/review.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/pages/reviews.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/reviews.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/pages/search.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/search.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/pages/shows.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/shows.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/pages/user.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/user.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/pages/users.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/users.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/pages/venue.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/venue.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/pages/venues.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/pages/venues.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/add_review.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/add_review.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/add_user.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/add_user.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/button_bar.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/button_bar.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/cats.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/cats.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/feed.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/feed.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/gallery.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/gallery.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/header.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/header.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/image.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/image.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/login.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/login.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/map.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/map.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/me.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/me.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/not_onsale.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/not_onsale.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/order.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/order.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/page.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/page.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/pay.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/pay.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/performance.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/performance.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/performances.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/performances.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/project.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/project.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/project_description.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/project_description.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/projects.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/projects.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/pwyc.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/pwyc.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/quantity.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/quantity.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/receipt.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/receipt.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/review.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/review.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/reviews.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/reviews.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/search.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/search.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/select_box.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/select_box.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/shows.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/shows.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/styles.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/styles.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/user.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/user.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/users.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/users.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/venue.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/venue.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/modules/styles/venues.js => /src/stagey_mobile/build/android/bin/assets/Resources/modules/styles/venues.js
+[TRACE] COPYING CREATED FILE: /src/stagey_mobile/Resources/Sharers.plist => /src/stagey_mobile/build/android/bin/assets/Resources/Sharers.plist
 [TRACE] Generating Java Classes
 [DEBUG] Processing Android resource drawables
 [TRACE] COPYING FILE: /src/stagey_mobile/Resources/android/images/res-long-land-hdpi/bg.png => /src/stagey_mobile/build/android/res/drawable-long-land-hdpi/bg_348a87abc5.png
@@ -27,22 +131,120 @@ Logfile initialized
 [TRACE] COPYING FILE: /src/stagey_mobile/Resources/android/images/res-notlong-port-ldpi/Default.png => /src/stagey_mobile/build/android/res/drawable-notlong-port-ldpi/default_d44e27d97b.png
 [TRACE] COPYING FILE: /src/stagey_mobile/Resources/android/images/res-notlong-port-mdpi/bg.png => /src/stagey_mobile/build/android/res/drawable-notlong-port-mdpi/bg_348a87abc5.png
 [TRACE] COPYING FILE: /src/stagey_mobile/Resources/android/images/res-notlong-port-mdpi/Default.png => /src/stagey_mobile/build/android/res/drawable-notlong-port-mdpi/default_d44e27d97b.png
+[DEBUG] app stylesheet => /src/stagey_mobile/build/android/gen/com/hff/mobile/ApplicationStylesheet.java
 [DEBUG] copying app icon: /src/stagey_mobile/build/android/bin/assets/Resources/appicon.png
 [DEBUG] generating theme.xml
 [DEBUG] found splash screen at /src/stagey_mobile/build/android/bin/assets/Resources/default.png
 [TRACE] Writing out AndroidManifest.xml
-[DEBUG] adding /src/stagey_mobile/build/android/gen/com/hff/mobile/AssetCryptImpl.java to javac build list
+[DEBUG] adding /src/stagey_mobile/build/android/gen/com/hff/mobile/ApplicationStylesheet.java to javac build list
 [DEBUG] adding /src/stagey_mobile/build/android/gen/com/hff/mobile/Fringe2013Activity.java to javac build list
 [DEBUG] adding /src/stagey_mobile/build/android/gen/com/hff/mobile/Fringe2013AppInfo.java to javac build list
 [DEBUG] adding /src/stagey_mobile/build/android/gen/com/hff/mobile/Fringe2013Application.java to javac build list
 [DEBUG] adding /src/stagey_mobile/build/android/gen/com/hff/mobile/R.java to javac build list
-[DEBUG] Building Java Sources: "/src/stagey_mobile/build/android/gen/com/hff/mobile/AssetCryptImpl.java" "/src/stagey_mobile/build/android/gen/com/hff/mobile/Fringe2013Activity.java" "/src/stagey_mobile/build/android/gen/com/hff/mobile/Fringe2013AppInfo.java" "/src/stagey_mobile/build/android/gen/com/hff/mobile/Fringe2013Application.java" "/src/stagey_mobile/build/android/gen/com/hff/mobile/R.java"
+[DEBUG] Building Java Sources: "/src/stagey_mobile/build/android/gen/com/hff/mobile/ApplicationStylesheet.java" "/src/stagey_mobile/build/android/gen/com/hff/mobile/Fringe2013Activity.java" "/src/stagey_mobile/build/android/gen/com/hff/mobile/Fringe2013AppInfo.java" "/src/stagey_mobile/build/android/gen/com/hff/mobile/Fringe2013Application.java" "/src/stagey_mobile/build/android/gen/com/hff/mobile/R.java"
 [INFO] Compiling Android Resources... This could take some time
 [DEBUG] Android classes.dex built
 [DEBUG] creating unsigned apk: /src/stagey_mobile/build/android/bin/app-unsigned.apk
+[DEBUG] from resource zip => assets/Resources/modules/common/button_bar.js
+[DEBUG] from resource zip => assets/Resources/modules/common/header.js
+[DEBUG] from resource zip => assets/Resources/modules/common/login.js
+[DEBUG] from resource zip => assets/Resources/modules/common/map.js
+[DEBUG] from resource zip => assets/Resources/modules/common/select_box.js
+[DEBUG] from resource zip => assets/Resources/modules/helpers/primitives.js
+[DEBUG] from resource zip => assets/Resources/modules/models/add_review.js
+[DEBUG] from resource zip => assets/Resources/modules/models/add_user.js
+[DEBUG] from resource zip => assets/Resources/modules/models/alert.js
+[DEBUG] from resource zip => assets/Resources/modules/models/cart.js
+[DEBUG] from resource zip => assets/Resources/modules/models/cats.js
+[DEBUG] from resource zip => assets/Resources/modules/models/feed.js
+[DEBUG] from resource zip => assets/Resources/modules/models/icons.js
+[DEBUG] from resource zip => assets/Resources/modules/models/images.js
+[DEBUG] from resource zip => assets/Resources/modules/models/is_favorite.js
+[DEBUG] from resource zip => assets/Resources/modules/models/make_review_helpful.js
+[DEBUG] from resource zip => assets/Resources/modules/models/map.js
+[DEBUG] from resource zip => assets/Resources/modules/models/mobile_config.js
+[DEBUG] from resource zip => assets/Resources/modules/models/page.js
+[DEBUG] from resource zip => assets/Resources/modules/models/performance.js
+[DEBUG] from resource zip => assets/Resources/modules/models/performances.js
+[DEBUG] from resource zip => assets/Resources/modules/models/project.js
+[DEBUG] from resource zip => assets/Resources/modules/models/projects.js
+[DEBUG] from resource zip => assets/Resources/modules/models/random_project.js
+[DEBUG] from resource zip => assets/Resources/modules/models/review.js
+[DEBUG] from resource zip => assets/Resources/modules/models/reviews.js
+[DEBUG] from resource zip => assets/Resources/modules/models/sale.js
+[DEBUG] from resource zip => assets/Resources/modules/models/search.js
+[DEBUG] from resource zip => assets/Resources/modules/models/user.js
+[DEBUG] from resource zip => assets/Resources/modules/models/users.js
+[DEBUG] from resource zip => assets/Resources/modules/models/venue.js
+[DEBUG] from resource zip => assets/Resources/modules/models/venue_distance.js
+[DEBUG] from resource zip => assets/Resources/modules/models/venues.js
+[DEBUG] from resource zip => assets/Resources/modules/pages/add_user.js
+[DEBUG] from resource zip => assets/Resources/modules/pages/cats.js
+[DEBUG] from resource zip => assets/Resources/modules/pages/feed.js
+[DEBUG] from resource zip => assets/Resources/modules/pages/gallery.js
+[DEBUG] from resource zip => assets/Resources/modules/pages/image.js
+[DEBUG] from resource zip => assets/Resources/modules/pages/login.js
+[DEBUG] from resource zip => assets/Resources/modules/pages/map.js
+[DEBUG] from resource zip => assets/Resources/modules/pages/me.js
+[DEBUG] from resource zip => assets/Resources/modules/pages/not_onsale.js
+[DEBUG] from resource zip => assets/Resources/modules/pages/order.js
+[DEBUG] from resource zip => assets/Resources/modules/pages/page.js
+[DEBUG] from resource zip => assets/Resources/modules/pages/pay.js
+[DEBUG] from resource zip => assets/Resources/modules/pages/performance.js
+[DEBUG] from resource zip => assets/Resources/modules/pages/performances.js
+[DEBUG] from resource zip => assets/Resources/modules/pages/project.js
+[DEBUG] from resource zip => assets/Resources/modules/pages/project_description.js
+[DEBUG] from resource zip => assets/Resources/modules/pages/projects.js
+[DEBUG] from resource zip => assets/Resources/modules/pages/pwyc.js
+[DEBUG] from resource zip => assets/Resources/modules/pages/quantity.js
+[DEBUG] from resource zip => assets/Resources/modules/pages/receipt.js
+[DEBUG] from resource zip => assets/Resources/modules/pages/review.js
+[DEBUG] from resource zip => assets/Resources/modules/pages/reviews.js
+[DEBUG] from resource zip => assets/Resources/modules/pages/search.js
+[DEBUG] from resource zip => assets/Resources/modules/pages/shows.js
+[DEBUG] from resource zip => assets/Resources/modules/pages/user.js
+[DEBUG] from resource zip => assets/Resources/modules/pages/users.js
+[DEBUG] from resource zip => assets/Resources/modules/pages/venue.js
+[DEBUG] from resource zip => assets/Resources/modules/pages/venues.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/add_review.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/add_user.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/button_bar.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/cats.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/feed.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/gallery.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/header.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/image.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/login.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/map.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/me.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/not_onsale.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/order.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/page.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/pay.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/performance.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/performances.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/project.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/project_description.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/projects.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/pwyc.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/quantity.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/receipt.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/review.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/reviews.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/search.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/select_box.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/shows.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/styles.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/user.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/users.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/venue.js
+[DEBUG] from resource zip => assets/Resources/modules/styles/venues.js
+[DEBUG] from resource zip => assets/Resources/modules/core.js
 [DEBUG] from resource zip => assets/Resources/Default.png
 [DEBUG] from resource zip => assets/Resources/Sharers.plist
+[DEBUG] from resource zip => assets/Resources/app.js
 [DEBUG] from resource zip => assets/Resources/appicon.png
+[DEBUG] from resource zip => assets/Resources/ti.cloud.js
 [DEBUG] from resource zip => assets/app.json
 [DEBUG] from resource zip => assets/index.json
 [DEBUG] from resource zip => assets/tiapp.xml
@@ -95,3 +297,9 @@ Logfile initialized
 [DEBUG] from JAR /Users/benhill/Library/Application Support/Titanium/mobilesdk/osx/3.0.2.GA/android/modules/titanium-ui.jar => ti/modules/titanium/ui/widget/webview/polling.js
 [DEBUG] from JAR /Users/benhill/Library/Application Support/Titanium/mobilesdk/osx/3.0.2.GA/android/modules/titanium-ui.jar => ti/modules/titanium/ui/widget/webview/polling.min.js
 [DEBUG] installing native SDK libs
+[DEBUG] Waiting for device to be ready ...
+[TRACE] adb devices returned 1 devices/emulators
+[DEBUG] Device connected... (waited 0 seconds)
+[DEBUG] waited 0.022802 seconds on emulator to get ready
+[INFO] Installing application on device
+[INFO] Application installed. Launch from drawer on Home Screen

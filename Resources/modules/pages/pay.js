@@ -8,7 +8,7 @@ function PayWindow(){
   self.load = function(){
 
     var titleView = Ti.UI.createView(styles.titleView);
-    titleView.top = 50;    
+    titleView.top = 50;
 
     var titleLabel = Ti.UI.createLabel(styles.titleLabel);
     titleLabel.text = 'Your Credit Card';
@@ -16,7 +16,7 @@ function PayWindow(){
     titleView.add(titleLabel);
 
     self.add(titleView);
-    
+
     var fNameText = Ti.UI.createTextField(payStyles.fNameText);
     self.add(fNameText);
     app.addKeyboardToolbar(fNameText);
@@ -28,10 +28,10 @@ function PayWindow(){
     var cardText = Ti.UI.createTextField(payStyles.cardText);
     self.add(cardText);
     app.addKeyboardToolbar(cardText);
-    
+
     var csvText = Ti.UI.createTextField(payStyles.csvText);
     self.add(csvText);
-    app.addKeyboardToolbar(csvText);    
+    app.addKeyboardToolbar(csvText);
 
     if(Ti.Platform.name == 'iPhone OS'){
 
@@ -41,10 +41,10 @@ function PayWindow(){
       csvText.addEventListener('change', function(e){
         if(e.value.length == 3){
           e.source.blur();
-        }      
+        }
       })
-            
-      var expiryButton = Ti.UI.createButton(payStyles.expiryButton);    
+
+      var expiryButton = Ti.UI.createButton(payStyles.expiryButton);
       self.add(expiryButton);
 
       expiryButton.addEventListener('click', function(e){
@@ -54,11 +54,11 @@ function PayWindow(){
         csvText.blur();
         payButton.show();
       })
-    }    
+    }
 
     var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     var data_1 = [];
-    for(i=0; i < months.length; i++){              
+    for(i=0; i < months.length; i++){
       data_1[i] = Ti.UI.createPickerRow({value:i+1, title:months[i]});
     }
 
@@ -66,14 +66,14 @@ function PayWindow(){
     years = [];
     for(i=0; i < 12; i++){
       years[i] = String(year+i);
-    }    
+    }
     var data_2 = [];
     for(i=0; i < years.length; i++){
       data_2[i] = Ti.UI.createPickerRow({value:years[i], title:years[i]});
     }
-        
+
     var monthObj = require('modules/common/select_box');
-    monthPicker = new monthObj(expiryLabel, expiryButton, data_1, data_2);        
+    monthPicker = new monthObj(expiryLabel, expiryButton, data_1, data_2);
     self.add(monthPicker);
 
     var payButton = Ti.UI.createButton(payStyles.payButton);
@@ -82,15 +82,15 @@ function PayWindow(){
       monthPicker.top = 200;
       monthPicker.left = 20;
 
-      var yearObj = require('modules/common/select_box');      
-      yearPicker = new yearObj(expiryLabel, expiryButton, data_2);      
+      var yearObj = require('modules/common/select_box');
+      yearPicker = new yearObj(expiryLabel, expiryButton, data_2);
       self.add(yearPicker);
       yearPicker.top = 200;
       yearPicker.right = 20;
     }
-    else{payButton.hide();}        
+    else{payButton.hide();}
 
-    self.add(payButton);        
+    self.add(payButton);
 
     payButton.addEventListener('click', function(e){
       if(Ti.Platform.name == 'iPhone OS'){
