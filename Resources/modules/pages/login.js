@@ -1,14 +1,14 @@
 function LoginWindow(return_win){
 
-  var app = require('modules/core');  
+  var app = require('modules/core');
   var styles = require('modules/styles/styles');
   var meStyles = require('modules/styles/me');
-  var self = Ti.UI.createWindow(styles.defaultWindow);  
-  var wrapper = Ti.UI.createView(meStyles.wrapper);  
+  var self = Ti.UI.createWindow(styles.defaultWindow);
+  var wrapper = Ti.UI.createView(meStyles.wrapper);
 
   self.load = function(){
     var loginObj = require('modules/common/login');
-    wrapper.add(new loginObj(return_win));
+    wrapper.add(new loginObj(return_win, self));
     self.add(wrapper);
   }
 

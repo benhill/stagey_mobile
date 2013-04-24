@@ -1,4 +1,4 @@
-function LoginWindow(return_win){
+function LoginWindow(return_win, current_win){
 
   var app = require('modules/core');
   var styles = require('modules/styles/styles');
@@ -32,7 +32,7 @@ function LoginWindow(return_win){
   self.add(addUserLabel);
 
   addUserLabel.addEventListener('click', function(e){
-    app.openWindow(self, 'Create an Account', 'add_user', [return_win]);
+    app.openWindow(current_win, 'Create an Account', 'add_user', [return_win]);
   });
 
   function loginUser(){

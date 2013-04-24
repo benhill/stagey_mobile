@@ -35,7 +35,7 @@ exports.openWindow = function(currentWindow, title, newWindowName, params){
   if(currentWindow != null && Ti.Platform.name != 'iPhone OS'){
     Ti.App.prevWindow = currentWindow;
     currentWindow.close();
-  }  
+  }
 
   Ti.API.info("loading " + newWindowName);
   Ti.API.info("Available memory: " + Ti.Platform.availableMemory);
@@ -50,7 +50,7 @@ exports.openWindow = function(currentWindow, title, newWindowName, params){
     newWindow.activity.onCreateOptionsMenu = function(e){
       var menu = e.menu;
       var menuItem = menu.add({ title: "My Account" });
-            
+
       menuItem.addEventListener("click", function(e) {
         app.openWindow(newWindow, 'Me', 'me', []);
       });
@@ -63,7 +63,7 @@ exports.openWindow = function(currentWindow, title, newWindowName, params){
     newWindow.addEventListener('android:back', function(e){
       if(newWindow._sourceUrl != "app://modules/pages/shows.js"){
         newWindow.close();
-        currentWindow.open();
+        if(currentWindow){currentWindow.open();}
       }
     });
 
@@ -78,7 +78,7 @@ function openWithWindow(title, newWindow){
   if(Ti.Platform.name != 'iPhone OS'){require_path = '../' + require_path};
   var headerObj = require(require_path);
   newWindow.add(new headerObj(title, newWindow));
-    
+
   newWindow.open();
   newWindow.load();
 }
@@ -92,8 +92,8 @@ exports.openFromWindow = function(newWindow){
   openWithWindow('', newWindow);
 };
 
-exports.addKeyboardToolbar = function(textbox, doneCallback){  
-  
+exports.addKeyboardToolbar = function(textbox, doneCallback){
+
   var flexSpace = Ti.UI.createButton({
     systemButton:Ti.UI.iPhone.SystemButton.FLEXIBLE_SPACE,
     right:0
@@ -111,18 +111,18 @@ exports.addKeyboardToolbar = function(textbox, doneCallback){
     doneButton.activeFld = textbox;
   });
 
-  doneButton.addEventListener('click', function(e) {    
+  doneButton.addEventListener('click', function(e) {
     e.source.activeFld.blur();
     if(doneCallback){doneCallback();};
   });
 };
 
-exports.properties = function() { 
-  return properties; 
+exports.properties = function() {
+  return properties;
 };
 
-exports.property = function(name) { 
-  return properties[name]; 
+exports.property = function(name) {
+  return properties[name];
 };
 
 exports.timeout = 15000;
@@ -130,7 +130,7 @@ exports.timeout = 15000;
 exports.orientationObserverUpdate = function(_event) {
 	// Example of how you can control the current page with global events
 	var type = (_event.source.isLandscape()) ? 'landscape' : 'portrait' ;
-	
+
 	if(currentPage && currentPage.orientationUpdate) {
 		currentPage.orientationUpdate(type);
 	}
@@ -173,7 +173,7 @@ exports.dynamic_scoller = function(e, beginUpdateCallback, updating, lastDistanc
     var total = offset + height;
     var theEnd = e.contentSize.height;
     var distance = theEnd - total;
-    
+
     if (distance < lastDistance){
       var nearEnd = theEnd * .65;
       if (!updating && (total >= nearEnd)){

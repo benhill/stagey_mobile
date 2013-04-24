@@ -1,9 +1,9 @@
 styles = {
- 
+
   email: {
-    color:'#336699', 
-    height:45, 
-    width:300, 
+    color:'#336699',
+    height:45,
+    width:300,
     top:12,
     left:5,
     clearOnEdit:true,
@@ -12,9 +12,9 @@ styles = {
   },
 
   password: {
-    color:'#336699', 
-    height:45, 
-    width:300, 
+    color:'#336699',
+    height:45,
+    width:300,
     top:61,
     left:5,
     clearOnEdit:true,
@@ -30,7 +30,7 @@ styles = {
   },
 
   addUserLabel: {
-    top:165,
+    top:175,
     left:5,
     text:'Create an Account',
     width:Ti.UI.SIZE,
