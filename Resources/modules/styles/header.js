@@ -9,28 +9,13 @@ styles = {
     borderWidth:1
   },
 
-  searchButton: {
-    image:'http://stagey-mobile.s3.amazonaws.com/search_24.png',
-    width:24,
-    height:24,
-    right:15,
-    top:15
-  },
-
-  homeButton: {
-    image:'https://stagey-mobile.s3.amazonaws.com/home_24.png',
-    width:24,
-    height:24,
-    right:95,
-    top:15
-  },
-
-  userButton: {
-    image:'http://stagey-mobile.s3.amazonaws.com/user_24.png',
-    width:24,
-    height:24,
-    right:55,
-    top:14
+  menuButtonView: {
+    width:75,
+    height:30,
+    right:0,
+    top:11,
+    zIndex:50,
+    backgroundImage:'/images/menu.png'
   },
 
   backButton: {
@@ -51,13 +36,93 @@ styles = {
     left:5,
     height:Ti.UI.SIZE,
     width:Ti.UI.SIZE
+  },
+
+  navView: {
+    width:200,
+    height:'100%',
+    backgroundColor:'white',
+    right:-200,
+    zIndex:50,
+    top:50,
+    borderColor:'black',
+    borderWidth:2
+  },
+
+  table: {
+    top:0
+  },
+
+  row: {
+    height:60,
+    className: 'row',
+    objName: 'row',
+    touchEnabled: true
+  },
+
+    wrapper: {
+    height:'100%',
+    width:'100%',
+    top:0
+  },
+
+  logoutButton: {
+    title: 'Logout',
+    bottom:60,
+    right:5,
+    width:185,
+    height:40
+  },
+
+  loginButton: {
+    title: 'Login',
+    bottom:60,
+    right:5,
+    width:185,
+    height:40
+  },
+
+  table: {
+    top:0,
+    bottom:120,
+    width:'100%'
+  },
+
+  row: {
+    height:40,
+    width:'100%'
+  },
+
+  iconLabel: {
+    height:Ti.UI.SIZE,
+    width:300,
+    left:10,
+    top:15,
+    font:{fontSize:'14', fontWeight:'bold'},
+    color:'black'
+  },
+
+  carrotImage: {
+    right:5,
+    top:'40%',
+    font:{fontSize:12, fontWeight:'bold'},
+    height:Titanium.UI.SIZE,
+    width:Titanium.UI.SIZE
   }
 
 }
 
 exports.headerView = styles.headerView;
-exports.searchButton = styles.searchButton;
 exports.backButton = styles.backButton;
 exports.logoImage = styles.logoImage;
-exports.userButton = styles.userButton;
-exports.homeButton = styles.homeButton;
+exports.navView = styles.navView;
+exports.table = styles.table;
+exports.row = styles.row;
+exports.wrapper = styles.wrapper;
+exports.logoutButton = styles.logoutButton;
+exports.loginButton = styles.loginButton;
+exports.table = styles.table;
+exports.row = styles.row;
+exports.iconLabel = styles.iconLabel;
+exports.menuButtonView = styles.menuButtonView;
+exports.carrotImage = styles.carrotImage;

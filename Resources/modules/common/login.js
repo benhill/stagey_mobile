@@ -59,7 +59,7 @@ function LoginWindow(return_win, current_win){
           app.openFromWindow(return_win);
         }
         else{
-          app.openWindow(self, 'Me', 'me', []);
+          app.openWindow(self, 'Home', 'shows', []);
         }
       }
     },

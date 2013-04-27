@@ -54,8 +54,6 @@ styles = {
     borderRadius:10,
     backgroundColor:'black',
     borderColor:'white',
-    borderWidth:1,
-    borderColor:'white',
     borderWidth:1
   },
 

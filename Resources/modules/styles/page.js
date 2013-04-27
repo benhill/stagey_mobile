@@ -15,24 +15,16 @@ styles = {
   titleView: {
     width:'100%',
     height:Ti.UI.SIZE,
-    backgroundColor:'black',    
+    backgroundColor:'black',
     top:50
   },
 
   nameLabel: {
     height:45,
     left:10,
-    top:-7,
+    top:5,
+    bottom:5,
     font:{fontSize:15, fontWeight:'bold'},
-    color:'white'
-  },
-
-  projectLabel: {
-    height:45,  
-    top:11,
-    font:{fontSize:13, fontWeight:'bold'},
-    right:0,
-    left:10,
     color:'white'
   },
 

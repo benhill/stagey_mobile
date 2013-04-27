@@ -1,5 +1,11 @@
 styles = {
 
+  wrapper: {
+    height:'100%',
+    width:'100%',
+    top:50
+  },
+
   email: {
     color:'#336699',
     height:45,
@@ -45,3 +51,4 @@ exports.email = styles.email;
 exports.password = styles.password;
 exports.loginButton = styles.loginButton;
 exports.addUserLabel = styles.addUserLabel;
+exports.wrapper = styles.wrapper;

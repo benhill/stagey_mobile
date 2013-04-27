@@ -19,7 +19,7 @@ function VenuesWindow(){
     var buttonBarObj = require('modules/common/button_bar');
     buttonBarView.add(new buttonBarObj(['LIST', 'MAP'], function(label){
 
-      if(self.children.length > 1){self.remove(contentView)};
+      if(self.children.length > 2){self.remove(contentView)};
 
       contentView = Ti.UI.createView(venueStyles.contentView);      
             
