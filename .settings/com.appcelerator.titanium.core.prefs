@@ -1,8 +1,14 @@
 eclipse.preferences.version=1
+provisioning_profiles/adhoc/DD094CC1-B7DD-4F81-8212-FAB25C8AA8AC/appid=*
+provisioning_profiles/adhoc/DD094CC1-B7DD-4F81-8212-FAB25C8AA8AC/name=HFF Distribution Profile
+provisioning_profiles/adhoc/DD094CC1-B7DD-4F81-8212-FAB25C8AA8AC/uuid=DD094CC1-B7DD-4F81-8212-FAB25C8AA8AC
 provisioning_profiles/development/267DC4C3-1445-4D18-9FA2-C4DA0A4C5A60/appid=*
 provisioning_profiles/development/267DC4C3-1445-4D18-9FA2-C4DA0A4C5A60/filepath=/Users/benhill/Library/MobileDevice/Provisioning Profiles/267DC4C3-1445-4D18-9FA2-C4DA0A4C5A60.mobileprovision
 provisioning_profiles/development/267DC4C3-1445-4D18-9FA2-C4DA0A4C5A60/name=iOS Team Provisioning Profile\: *
 provisioning_profiles/development/267DC4C3-1445-4D18-9FA2-C4DA0A4C5A60/uuid=267DC4C3-1445-4D18-9FA2-C4DA0A4C5A60
+provisioning_profiles/development/3D620A09-277A-4417-8790-B52240492B92/appid=*
+provisioning_profiles/development/3D620A09-277A-4417-8790-B52240492B92/name=HFF Development Profile
+provisioning_profiles/development/3D620A09-277A-4417-8790-B52240492B92/uuid=3D620A09-277A-4417-8790-B52240492B92
 provisioning_profiles/development/5BF84880-3B32-4413-9EFE-CDFE25D0D753/appid=*
 provisioning_profiles/development/5BF84880-3B32-4413-9EFE-CDFE25D0D753/name=HFF Development Profile
 provisioning_profiles/development/5BF84880-3B32-4413-9EFE-CDFE25D0D753/uuid=5BF84880-3B32-4413-9EFE-CDFE25D0D753

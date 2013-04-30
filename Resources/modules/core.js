@@ -125,7 +125,7 @@ exports.property = function(name) {
   return properties[name];
 };
 
-exports.timeout = 15000;
+exports.timeout = 20000;
 
 exports.orientationObserverUpdate = function(_event) {
 	// Example of how you can control the current page with global events

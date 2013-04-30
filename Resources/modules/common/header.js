@@ -3,13 +3,12 @@ function Header(title, window){
   var app = require('modules/core');
   var styles = require('modules/styles/styles');
   var headerStyles = require('modules/styles/header');
-  var spinner = Ti.UI.createActivityIndicator(styles.spinner);
   var headerView = Ti.UI.createView(headerStyles.headerView);
   var navView = Ti.UI.createView(headerStyles.navView);
+  var menuButtonView = Ti.UI.createView(headerStyles.menuButtonView);
 
   if(Ti.Platform.name == 'iPhone OS'){
 
-    var menuButtonView = Ti.UI.createView(headerStyles.menuButtonView);
     menuButtonView.toggle = false;
     headerView.add(menuButtonView);
 
@@ -17,14 +16,12 @@ function Header(title, window){
       loadUser();
     }
     else{
-      var userObj = require('modules/models/user');
-      new userObj(Ti.App.currentUser.id, function(user){
-        loadUser(user);
-      });
-
-      spinner.show();
-      navView.add(spinner);
+      loadUser(Ti.App.currentUser);
     }
+
+    navView.addEventListener('swipe', function(e) {
+      if (e.direction == 'right'){closeNav();};
+    });
 
     window.add(navView);
 
@@ -34,12 +31,7 @@ function Header(title, window){
 
     function loadMenu(e){
       if(e.source.toggle == true){
-        navView.animate({
-          right:-200,
-          duration:400,
-          curve:Ti.UI.ANIMATION_CURVE_EASE_IN_OUT
-        });
-        e.source.toggle = false;
+        closeNav();
       }
       else{
         navView.animate({
@@ -50,9 +42,19 @@ function Header(title, window){
         e.source.toggle = true;
       }
     }
+
+    function closeNav(){
+      navView.animate({
+        right:-200,
+        duration:400,
+        curve:Ti.UI.ANIMATION_CURVE_EASE_IN_OUT
+      });
+      menuButtonView.toggle = false;
+    }
   }
 
   if(window && title != 'Home' && Ti.Platform.name == 'iPhone OS'){
+
     var backButton =  Ti.UI.createLabel(headerStyles.backButton);
     headerView.add(backButton);
 
@@ -90,26 +92,26 @@ function Header(title, window){
 
     var iconObj = require('modules/models/icons');
 
-    var home = new iconObj('HOME', 'iphone/all_shows_48.png', 'shows', null, false);
+    var home = new iconObj('HOME', 'https://stagey-mobile.s3.amazonaws.com/home_24.png', 'shows', null, false, 'Home', 'Home');
     icons.push(home);
 
-    var search = new iconObj('SEARCH', 'iphone/all_shows_48.png', 'search', null, false);
+    var search = new iconObj('SEARCH', 'https://stagey-mobile.s3.amazonaws.com/search_24.png', 'search', null, false);
     icons.push(search);
 
     if(user){
-      var favorites = new iconObj('FAVORITES', 'iphone/all_shows_48.png', 'projects', null, false, 'favorites', 'favorites');
+      var favorites = new iconObj('FAVORITES', 'https://stagey-mobile.s3.amazonaws.com/favorite_24.png', 'projects', null, false, 'favorites', 'favorites');
       icons.push(favorites);
 
-      var schedule = new iconObj('SCHEDULE', 'iphone/all_shows_48.png', 'performances', null, false, 'schedule', 'schedule');
+      var schedule = new iconObj('SCHEDULE', 'https://stagey-mobile.s3.amazonaws.com/schedule_24.png', 'performances', null, false, 'schedule', 'schedule');
       icons.push(schedule);
 
-      var projects = new iconObj('MY SHOWS', '', 'projects', null, false, 'projects', 'my_projects');
+      var projects = new iconObj('MY SHOWS', 'https://stagey-mobile.s3.amazonaws.com/projects_24.png', 'projects', null, false, 'projects', 'my_projects');
       icons.push(projects);
 
-      var reviews = new iconObj('MY REVIEWS', 'iphone/all_shows_48.png', 'reviews', null, false, Ti.App.currentUser.id);
+      var reviews = new iconObj('MY REVIEWS', 'https://stagey-mobile.s3.amazonaws.com/reviews_24.png', 'reviews', null, false, Ti.App.currentUser.id);
       icons.push(reviews);
 
-      var profile = new iconObj('PROFILE', 'iphone/all_shows_48.png', 'user', null, false, user.id, 'user');
+      var profile = new iconObj('PROFILE', 'https://stagey-mobile.s3.amazonaws.com/profile_24.png', 'user', null, false, user.id, 'user');
       icons.push(profile);
     }
 
@@ -119,6 +121,10 @@ function Header(title, window){
 
       var row = Ti.UI.createTableViewRow(headerStyles.row);
       row.icon = icon;
+
+      var iconImage = Ti.UI.createImageView(headerStyles.iconImage);
+      iconImage.image = icon.image;
+      row.add(iconImage);
 
       var iconLabel = Ti.UI.createLabel(headerStyles.iconLabel);
       iconLabel.text = icon.text;
@@ -132,11 +138,17 @@ function Header(title, window){
 
       row.addEventListener('click', function(e){
         icon = e.source.icon;
+        navView.right = -200;
+        menuButtonView.toggle = false;
+        navView
         if(e.source.icon.id == 'schedule'){
           app.openWindow(window, e.source.icon.text, icon.window, [icon.third_param, 1, "My Schedule"]);
         }
         else if(e.source.icon.id == 'my_projects'){
           app.openWindow(window, e.source.icon.text, icon.window, [null, null, null, null, user.id]);
+        }
+        else if(e.source.icon.id == 'Home'){
+          app.openWindow(window, 'Home', icon.window, [null, null, null, null, user.id]);
         }
         else{
           app.openWindow(window, e.source.icon.text, icon.window, [icon.third_param]);
@@ -167,8 +179,6 @@ function Header(title, window){
     }
 
     navView.add(wrapper);
-
-    navView.remove(spinner);
   }
 
   function logout(){

@@ -45,7 +45,7 @@ styles = {
     right:-200,
     zIndex:50,
     top:50,
-    borderColor:'black',
+    borderColor:'gray',
     borderWidth:2
   },
 
@@ -60,7 +60,7 @@ styles = {
     touchEnabled: true
   },
 
-    wrapper: {
+  wrapper: {
     height:'100%',
     width:'100%',
     top:0
@@ -96,14 +96,20 @@ styles = {
   iconLabel: {
     height:Ti.UI.SIZE,
     width:300,
-    left:10,
-    top:15,
+    left:44,
+    top:11,
     font:{fontSize:'14', fontWeight:'bold'},
     color:'black'
   },
 
+  iconImage: {
+    width:20,
+    height:20,
+    left:10
+  },
+
   carrotImage: {
-    right:5,
+    right:10,
     top:'40%',
     font:{fontSize:12, fontWeight:'bold'},
     height:Titanium.UI.SIZE,
@@ -126,3 +132,4 @@ exports.row = styles.row;
 exports.iconLabel = styles.iconLabel;
 exports.menuButtonView = styles.menuButtonView;
 exports.carrotImage = styles.carrotImage;
+exports.iconImage = styles.iconImage;
