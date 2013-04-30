@@ -5,11 +5,11 @@ function Cart(user_id){
 };
 
 Cart.prototype.add_to_cart = function(performance_id, quantity, pwyc_price, callback) {
-  url = Ti.App.api_url + 'add_to_cart?user_id=' + this.user_id + '&performance_id=' + performance_id + '&quantity=' + quantity + '&token=' + Ti.App.token;
+  url = Ti.App.api_url + 'add_to_cart?user_id=' + this.user_id + '&performance_id=' + performance_id + '&quantity=' + quantity;
   if(pwyc_price){url += '&pwyc_price=' + pwyc_price}
 
   var xhr = Ti.Network.createHTTPClient({
-    timeout:app.timeout
+    timeout:app.timeout, enableKeepAlive:false
   });
 
   xhr.onload = function(){
@@ -20,18 +20,18 @@ Cart.prototype.add_to_cart = function(performance_id, quantity, pwyc_price, call
     app.throwError(this, e);
   };
 
-  xhr.open('GET', url);
-  xhr.send();
+  xhr.open('POST', url);
+  xhr.send({'token': Ti.App.token});
 };
 
 Cart.prototype.get = function(callback) {
-  url = Ti.App.api_url + 'cart_contents/' + this.user_id + '?token=' + Ti.App.token;
+  url = Ti.App.api_url + 'cart_contents/' + this.user_id;
 
   var xhr = Ti.Network.createHTTPClient({
-    timeout:app.timeout
+    timeout:app.timeout, enableKeepAlive:false
   });
 
-  xhr.onload = function(){    
+  xhr.onload = function(){
     callback(JSON.parse(this.responseText).contents);
   };
 
@@ -39,15 +39,15 @@ Cart.prototype.get = function(callback) {
     app.throwError(this, e);
   };
 
-  xhr.open('GET', url);
-  xhr.send();
+  xhr.open('POST', url);
+  xhr.send({'token': Ti.App.token});
 };
 
 Cart.prototype.apply_discount_code = function(code_name, callback) {
-  url = Ti.App.api_url + 'apply_discount_code?user_id=' + this.user_id + '&code_name=' + code_name + '&token=' + Ti.App.token;
+  url = Ti.App.api_url + 'apply_discount_code?user_id=' + this.user_id + '&code_name=' + code_name;
 
   var xhr = Ti.Network.createHTTPClient({
-    timeout:app.timeout
+    timeout:app.timeout, enableKeepAlive:false
   });
 
   xhr.onload = function(){
@@ -59,8 +59,8 @@ Cart.prototype.apply_discount_code = function(code_name, callback) {
   };
 
   try{
-    xhr.open('GET', url);
-    xhr.send();}
+    xhr.open('POST', url);
+    xhr.send({'token': Ti.App.token});}
   catch(e){};
 };
 
@@ -68,10 +68,10 @@ Cart.prototype.purchase = function(cc_first_name, cc_last_name, cc_number, cc_mo
   if(Ti.Platform.name == 'iPhone OS'){source = "iphone";}
   else{source = "android"}
 
-  url = Ti.App.api_url + 'purchase_tickets?user_id=' + this.user_id + '&cc_first_name=' + cc_first_name + '&cc_last_name=' + cc_last_name + '&cc_number=' + cc_number + '&cc_month=' + cc_month + '&cc_year=' + cc_year + '&csv=' + csv + '&token=' + Ti.App.token + '&source=' + source + '&subscribe=' + subscribe;
+  url = Ti.App.secure_api_url + 'purchase_tickets?user_id=' + this.user_id + '&source=' + source + '&subscribe=' + subscribe;
 
   var xhr = Ti.Network.createHTTPClient({
-    timeout:app.timeout
+    timeout:app.timeout, enableKeepAlive:false
   });
 
   xhr.onload = function(){
@@ -83,8 +83,8 @@ Cart.prototype.purchase = function(cc_first_name, cc_last_name, cc_number, cc_mo
   };
 
   try{
-    xhr.open('GET', url);
-    xhr.send();}
+    xhr.open('POST', url);
+    xhr.send({ "cc_first_name": cc_first_name, "cc_last_name": cc_last_name, "cc_number": cc_number, "cc_month": cc_month, "cc_year": cc_year, "csv": csv, "token": Ti.App.token});}
   catch(e){};
 };
 

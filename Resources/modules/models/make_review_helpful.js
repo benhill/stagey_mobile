@@ -1,16 +1,16 @@
 var app = require('modules/core');
 
 function MakeReviewHelpful(review_id, user_id, feedback, callback){
- 
+
   var xhr = Ti.Network.createHTTPClient({
-    timeout:app.timeout
+    timeout:app.timeout, enableKeepAlive:false
   });
 
-  xhr.onload = function(){    
+  xhr.onload = function(){
     callback(this.responseText);
   };
 
-  xhr.onerror = function(e){ 
+  xhr.onerror = function(e){
     app.throwError(this, e);
   };
 
@@ -21,5 +21,5 @@ function MakeReviewHelpful(review_id, user_id, feedback, callback){
     xhr.send();}
   catch(e){};
 };
- 
+
 module.exports = MakeReviewHelpful;

@@ -1,16 +1,16 @@
 var app = require('modules/core');
 
 function Page(page_id, callback){
- 
+
   var xhr = Ti.Network.createHTTPClient({
-    timeout:app.timeout
+    timeout:app.timeout, enableKeepAlive:false
   });
 
-  xhr.onload = function(){    
+  xhr.onload = function(){
     callback(JSON.parse(this.responseText));
   };
 
-  xhr.onerror = function(e){ 
+  xhr.onerror = function(e){
     app.throwError(this, e);
   };
 
@@ -21,5 +21,5 @@ function Page(page_id, callback){
     xhr.send();}
   catch(e){};
 };
- 
+
 module.exports = Page;

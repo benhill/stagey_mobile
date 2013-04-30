@@ -37,9 +37,6 @@ exports.openWindow = function(currentWindow, title, newWindowName, params){
     currentWindow.close();
   }
 
-  Ti.API.info("loading " + newWindowName);
-  Ti.API.info("Available memory: " + Ti.Platform.availableMemory);
-
   require_path = 'modules/pages/' + newWindowName;
   if(Ti.Platform.name != 'iPhone OS'){require_path = '../' + require_path};
   var windowObj = require(require_path);

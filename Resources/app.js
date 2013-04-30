@@ -2,8 +2,9 @@ Ti.UI.orientation = Ti.UI.PORTRAIT;
 
 var mobileConfigObj = require('modules/models/mobile_config');
 new mobileConfigObj(function(config){
-  Ti.App.api_url = config.api_url;
-  Ti.App.site_url = config.site_url;
+  Ti.App.api_url = 'http://www.gwahir.com/api/'//config.api_url;
+  Ti.App.secure_api_url = 'http://www.gwahir.com/api/'//config.secure_api_url;
+  Ti.App.site_url = 'http://www.gwahir.com'//config.site_url;
 
   Ti.App.subscription_opt_out = config.subscription_opt_out;
 
@@ -11,7 +12,7 @@ new mobileConfigObj(function(config){
     Ti.App.currentUser = JSON.parse(Ti.App.Properties.getString('currentUser'));
   }
 
-  Ti.App.token = '8kj@!!00990j34Ad'
+  Ti.App.token = '8kj@!!00990j34AdABCDEF87979878!'
   Ti.API.info("module is => " + sharekit);
 
   if(Ti.Platform.name == 'iPhone OS'){

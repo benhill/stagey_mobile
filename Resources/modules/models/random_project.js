@@ -3,7 +3,7 @@ var app = require('modules/core');
 function RandomProject(venue_id, callback){
 
   var xhr = Ti.Network.createHTTPClient({
-    timeout:app.timeout
+    timeout:app.timeout, enableKeepAlive:false
   });
 
   xhr.onload = function(){
@@ -11,7 +11,7 @@ function RandomProject(venue_id, callback){
   };
 
   xhr.onerror = function(e){
-    app.throwError(this, e);
+    //app.throwError(this, e);
   };
 
   var url = Ti.App.api_url + "random_project?venue_id=" + venue_id;

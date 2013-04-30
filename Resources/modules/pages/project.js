@@ -292,7 +292,7 @@ function ProjectWindow(project_id){
 
       if(Ti.App.currentUser){
         var favObj = require('modules/models/is_favorite');
-        new favObj(Ti.App.currentUser.email, project.id, function(is_favorite){
+        new favObj(Ti.App.currentUser.id, project.id, function(is_favorite){
           if(is_favorite){
             var favTextView = iconsView.children[1].children[1];
             var favImgView = iconsView.children[1].children[0];
@@ -312,19 +312,16 @@ function ProjectWindow(project_id){
       onload: function(){
       },
       onerror: function(e) {
-        Ti.API.debug("STATUS: " + this.status);
-        Ti.API.debug("TEXT:   " + this.responseText);
-        Ti.API.debug("ERROR:  " + e.error);
-        alert('There was an error retrieving the remote data. Try again.');
+        app.throwError(this, e);
       },
       timeout:8000
     });
 
     function toggleFavorite(){
       if(Ti.App.currentUser){
-        url = Ti.App.api_url + "toggle_favorite?project_id=" + project_id + "&guid=" + Ti.App.Properties.getString('guid');
-        favXhr.open("GET", url);
-        favXhr.send();
+        url = Ti.App.secure_api_url + "toggle_favorite?project_id=" + project_id;
+        favXhr.open("POST", url);
+        favXhr.send({'guid': Ti.App.Properties.getString('guid')});
       }
       else{
         Ti.App.make_favorite = project_id;

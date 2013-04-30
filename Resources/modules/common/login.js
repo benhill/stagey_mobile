@@ -36,9 +36,9 @@ function LoginWindow(return_win, current_win){
   });
 
   function loginUser(){
-    var url = Ti.App.api_url + "login?email=" + email.value + "&password=" + password.value;
-    xhr.open("GET", url);
-    xhr.send();
+    var url = Ti.App.secure_api_url + "login";
+    xhr.open("POST", url);
+    xhr.send({"email": email.value, "password": password.value});
   }
 
   var xhr = Ti.Network.createHTTPClient({

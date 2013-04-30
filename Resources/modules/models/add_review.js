@@ -1,16 +1,16 @@
 var app = require('modules/core');
 
 function AddReview(project_id, rating, body, callback){
- 
+
   var xhr = Ti.Network.createHTTPClient({
-    timeout:app.timeout
+    timeout:app.timeout, enableKeepAlive:false
   });
 
-  xhr.onload = function(){    
+  xhr.onload = function(){
     callback(JSON.parse(this.responseText));
   };
 
-  xhr.onerror = function(e){ 
+  xhr.onerror = function(e){
     app.throwError(this, e);
   };
 
@@ -20,5 +20,5 @@ function AddReview(project_id, rating, body, callback){
     xhr.send();}
   catch(e){};
 };
- 
+
 module.exports = AddReview;

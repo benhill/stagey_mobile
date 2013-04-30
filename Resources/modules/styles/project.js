@@ -1,10 +1,10 @@
-styles = {	
+styles = {
 
   table: {
     backgroundColor:'#F4F1F1'
   },
 
-  row: {    
+  row: {
   },
 
   projectWrapper: {
@@ -18,7 +18,7 @@ styles = {
     width:'100%',
     height:Ti.UI.SIZE,
     layout:'vertical',
-    backgroundColor:'black',    
+    backgroundColor:'black',
     top:0
   },
 
@@ -51,7 +51,7 @@ styles = {
 
   galleryView: {
     height:Ti.UI.SIZE,
-    width:'100%',    
+    width:'100%',
   },
 
   img: {
@@ -120,7 +120,7 @@ styles = {
 
   reviewUserThumb: {
     width:50,
-    height:50,    
+    height:50,
     left:5,
     top:8,
     borderWidth:1,
@@ -140,7 +140,7 @@ styles = {
   reviewsLabelName: {
     font:{fontSize:12},
     left:65,
-    top:23,    
+    top:23,
     width:230,
     color:'black'
   },
@@ -183,7 +183,7 @@ styles = {
     left:65,
     top:23,
     height:Ti.UI.SIZE,
-    width:250,
+    width:230,
     color:'black'
   },
 
@@ -193,6 +193,7 @@ styles = {
     top:10,
     bottom:10,
     left:5,
+    right:5,
     font:{fontSize:12},
     color:'black'
   }

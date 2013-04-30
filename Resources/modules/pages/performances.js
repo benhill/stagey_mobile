@@ -242,7 +242,7 @@ function PerformancesWindow(mode, schedule_page, title){
       url = Ti.App.api_url + 'performances/7?lat=' + lat + '&lng=' + lng + '&distance=1&';
     }
     else if(mode == 'schedule'){
-      url = Ti.App.api_url + 'my_schedule?guid=' + Ti.App.currentUser.guid + '&schedule_page=' + schedule_page + '&';
+      url = Ti.App.api_url + 'my_schedule?user_id=' + Ti.App.currentUser.id + '&schedule_page=' + schedule_page + '&';
     }
     else{
       url = Ti.App.api_url + 'performances/7?project_id=' + (mode.id || mode) + '&';

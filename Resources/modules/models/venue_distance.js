@@ -1,17 +1,17 @@
 var app = require('modules/core');
 
 function VenueDistance(venue_id, callback){
- 
+
   var xhr = Ti.Network.createHTTPClient({
-    timeout:app.timeout
+    timeout:app.timeout, enableKeepAlive:false
   });
 
-  xhr.onload = function(){    
+  xhr.onload = function(){
     callback(this.responseText);
   };
 
-  xhr.onerror = function(e){ 
-    app.throwError(this, e);
+  xhr.onerror = function(e){
+    //app.throwError(this, e);
   };
 
   Ti.Geolocation.getCurrentPosition(function(e){
@@ -32,5 +32,5 @@ function VenueDistance(venue_id, callback){
   });
 
 };
- 
+
 module.exports = VenueDistance;

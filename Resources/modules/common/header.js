@@ -148,7 +148,7 @@ function Header(title, window){
           app.openWindow(window, e.source.icon.text, icon.window, [null, null, null, null, user.id]);
         }
         else if(e.source.icon.id == 'Home'){
-          app.openWindow(window, 'Home', icon.window, [null, null, null, null, user.id]);
+          app.openWindow(window, 'Home', icon.window, []);
         }
         else{
           app.openWindow(window, e.source.icon.text, icon.window, [icon.third_param]);

@@ -1,4 +1,4 @@
-styles = {    
+styles = {
 
   titleLabel: {
     height:Ti.UI.SIZE,
@@ -20,7 +20,7 @@ styles = {
 
   quantityLabel: {
     top:130,
-    left:10,    
+    left:10,
     width:Ti.UI.SIZE,
     height:Ti.UI.SIZE,
     font:{fontSize:18},
@@ -35,11 +35,11 @@ styles = {
     height:30
   },
 
-  codeText: {    
-    color:'#336699', 
-    height:45, 
-    width:150, 
-    top:180,
+  codeText: {
+    color:'#336699',
+    height:45,
+    width:150,
+    top:160,
     left:10,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,

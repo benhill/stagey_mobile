@@ -1,17 +1,17 @@
 var app = require('modules/core');
 
 function Alert(callback){
- 
+
   var xhr = Ti.Network.createHTTPClient({
-    timeout:app.timeout
+    timeout:app.timeout, enableKeepAlive:false
   });
 
-  xhr.onload = function(){    
+  xhr.onload = function(){
     callback(JSON.parse(this.responseText));
   };
 
   xhr.onerror = function(e){
-    app.throwError(this, e);
+    //app.throwError(this, e);
   };
 
   var url = Ti.App.api_url + "alert"
@@ -20,5 +20,5 @@ function Alert(callback){
     xhr.send();}
   catch(e){};
 };
- 
+
 module.exports = Alert;

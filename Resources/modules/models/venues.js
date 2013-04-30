@@ -1,16 +1,16 @@
 var app = require('modules/core');
 
 function Venues(page, callback){
- 
+
   var xhr = Ti.Network.createHTTPClient({
-    timeout:app.timeout
+    timeout:app.timeout, enableKeepAlive:false
   });
 
-  xhr.onload = function(){    
+  xhr.onload = function(){
     callback(JSON.parse(this.responseText).venues);
   };
 
-  xhr.onerror = function(e){ 
+  xhr.onerror = function(e){
     app.throwError(this, e);
   };
 
@@ -22,5 +22,5 @@ function Venues(page, callback){
     xhr.send();}
   catch(e){};
 };
- 
+
 module.exports = Venues;
