@@ -8,7 +8,7 @@
     <property name="acs-api-key-development" type="string">rc9Whh7eWl2K1MGbzznMI0eEiNJnG71w</property>
     <id>com.hff.mobile</id>
     <name>Fringe 2013</name>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <publisher>Stagey Corp</publisher>
     <url>http://www.hollywoodfringe.org</url>
     <description>not specified</description>

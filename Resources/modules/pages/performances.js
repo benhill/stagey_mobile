@@ -248,8 +248,6 @@ function PerformancesWindow(mode, schedule_page, title){
       url = Ti.App.api_url + 'performances/7?project_id=' + (mode.id || mode) + '&';
     }
 
-    if(Ti.App.currentUser){url += 'user_id=' + Ti.App.currentUser.id};
-
     return url
   }
 

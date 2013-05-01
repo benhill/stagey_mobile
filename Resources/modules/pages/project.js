@@ -331,7 +331,7 @@ function ProjectWindow(project_id){
         newWindow.navBarHidden = true;
 
         var headerObj = require('modules/common/header');
-        newWindow.add(new headerObj());
+        newWindow.add(new headerObj(null, newWindow));
 
         app.openWindow(self, 'Login', 'login', [newWindow])
       }

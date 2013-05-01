@@ -14,7 +14,7 @@ function MobileConfig(callback){
     app.throwError(this, e);
   };
 
-  var url = 'http://staging.hollywoodfringe.org/api/mobile_config/1';
+  var url = 'http://www.hollywoodfringe.org/api/mobile_config/1';
   try{
     xhr.open('GET', url);
     xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
