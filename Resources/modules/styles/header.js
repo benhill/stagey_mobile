@@ -2,7 +2,7 @@ styles = {
 
   headerView: {
     top:0,
-    height:50,
+    height:65,
     width:'100%',
     backgroundColor:'black',
     borderColor:'white',
@@ -13,7 +13,7 @@ styles = {
     width:75,
     height:30,
     right:0,
-    top:11,
+    top:21,
     zIndex:50,
     backgroundImage:'/images/menu.png'
   },
@@ -24,7 +24,7 @@ styles = {
     color:'white',
     width:60,
     height:30,
-    top:10,
+    top:25,
     left:5,
     borderWidth:.5,
     borderColor:'gray',
@@ -32,7 +32,7 @@ styles = {
   },
 
   logoImage: {
-    top:10,
+    top:20,
     left:5,
     height:Ti.UI.SIZE,
     width:Ti.UI.SIZE

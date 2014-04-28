@@ -1,11 +1,11 @@
-styles = {	
+styles = {
 
   table: {
     backgroundColor:'#F4F1F1',
     height:Ti.UI.SIZE
   },
 
-  venueWrapper: {    
+  venueWrapper: {
     top:50,
     left:0,
     height:Ti.UI.SIZE,
@@ -19,7 +19,7 @@ styles = {
     top:10,
     bottom:10,
     left:5,
-    layout:'vertical'    
+    layout:'vertical'
   },
 
   galleryView: {
@@ -81,7 +81,7 @@ styles = {
     width: '75%',
     color:'black'
   },
-  
+
   projectsView: {
     width:320,
     height:60,
@@ -91,7 +91,7 @@ styles = {
 
   projectThumb: {
     width:50,
-    height:50,          
+    height:50,
     left:5,
     top:8,
     borderWidth:1,
@@ -114,20 +114,6 @@ styles = {
     height:Ti.UI.SIZE,
     width:220,
     color:'black'
-  },
-
-  mapView: {
-    mapType: Ti.Map.STANDARD_TYPE,
-    animate:true,
-    regionFit:true,
-    userLocation:false,
-    top:25,
-    height:175
-  },
-
-  annotation: {
-    animate:true,
-    pincolor:Ti.Map.ANNOTATION_RED
   },
 
   carrotImage: {

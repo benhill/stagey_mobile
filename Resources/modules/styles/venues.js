@@ -1,15 +1,15 @@
-styles = {	
+styles = {
 
   buttonBarView: {
-    top:50
+    top:65
   },
 
   contentView: {
     height:Ti.UI.SIZE,
     width: Ti.UI.SIZE,
-    top:90
+    top:105
   },
-  
+
   table: {
     top:0
   },

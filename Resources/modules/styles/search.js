@@ -2,7 +2,7 @@ styles = {
 
   searchField: {
     height:40,
-    top:55,
+    top:75,
     left:5,
     width:'85%',
     borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
@@ -14,7 +14,7 @@ styles = {
   searchButton: {
     width:24,
     height:24,
-    top:65,
+    top:85,
     left:285
   },
 

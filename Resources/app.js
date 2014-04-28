@@ -1,18 +1,18 @@
 Ti.UI.orientation = Ti.UI.PORTRAIT;
 
-var mobileConfigObj = require('modules/models/mobile_config');
-new mobileConfigObj(function(config){
-  Ti.App.api_url = config.api_url;
-  Ti.App.secure_api_url = config.secure_api_url;
-  Ti.App.site_url = config.site_url;
+//var mobileConfigObj = require('modules/models/mobile_config');
+//new mobileConfigObj(function(config){
+  Ti.App.api_url = "http://www.shelob.com/api/";
+  Ti.App.secure_api_url = "http://www.shelob.com/api/";
+  Ti.App.site_url = "http://www.shelob.com/";
 
-  Ti.App.subscription_opt_out = config.subscription_opt_out;
+  //Ti.App.subscription_opt_out = config.subscription_opt_out;
 
   if(Ti.App.Properties.getString('currentUser')){
     Ti.App.currentUser = JSON.parse(Ti.App.Properties.getString('currentUser'));
   }
 
-  Ti.App.token = '8kj@!!00990j34AdABCDEF87979878!'
+  Ti.App.token = '8kj@!!00990j34AdABCDEF87979878!';
   Ti.API.info("module is => " + sharekit);
 
   if(Ti.Platform.name == 'iPhone OS'){
@@ -64,4 +64,4 @@ new mobileConfigObj(function(config){
   Ti.Geolocation.purpose = "Receive User Location";
 
   require('modules/core').openWindow(null, 'Home', 'shows', []);
-});
+//});

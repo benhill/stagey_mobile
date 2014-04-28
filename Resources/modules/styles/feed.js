@@ -1,7 +1,7 @@
 styles = {
 
   table: {
-    top:50
+    top:65
   },
 
   row: {
@@ -18,20 +18,20 @@ styles = {
     borderRadius:2
   },
 
-  imageView: {    
-    //width: 320, 
+  imageView: {
+    //width: 320,
     height:150
   },
 
-  baseImage: {    
-    width:512, 
+  baseImage: {
+    width:512,
     height:512,
     left:-100,
     top:-150
   },
 
   cropView: {
-    width:320, 
+    width:320,
     height:125
   },
 
@@ -72,22 +72,22 @@ styles = {
     top:'40%',
     font:{fontSize:12, fontWeight:'bold'},
     height:Titanium.UI.SIZE,
-    width:Titanium.UI.SIZE,    
+    width:Titanium.UI.SIZE,
     zIndex:1000
   },
 
   moreLabel: {
     text:"LOAD MORE",
     height:Ti.UI.SIZE,
-    width:Ti.UI.SIZE,            
-    top:20,        
+    width:Ti.UI.SIZE,
+    top:20,
     left:100,
     font:{fontSize:14, fontWeight:'bold'}
   },
 
   spinner: {
     width:50,
-    height:50,      
+    height:50,
     message: 'loading...',
     color: 'black',
     style: Titanium.UI.iPhone.ActivityIndicatorStyle.DARK
@@ -98,7 +98,7 @@ styles = {
     height:3,
     bottom:0,
     backgroundColor:'black'
-  }  
+  }
 }
 
 exports.table = styles.table;

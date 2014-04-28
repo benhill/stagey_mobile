@@ -30,7 +30,7 @@ function ProjectWindow(project_id){
       var projectWrapper = Ti.UI.createView(projectStyles.projectWrapper);
 
       var titleView = Ti.UI.createView(styles.titleView);
-      titleView.top = 0;
+      titleView.top = 15;
 
       var titleLabel = Ti.UI.createLabel(styles.titleLabel);
       titleLabel.text = project.title.toUpperCase();

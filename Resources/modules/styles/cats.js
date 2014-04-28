@@ -1,7 +1,7 @@
 styles = {
 
   table:{
-    top:50
+    top:70
   },
 
   row: {
@@ -17,7 +17,7 @@ styles = {
     left:10,
     top:10,
     color:'#000',
-    touchEnabled:false    
+    touchEnabled:false
   },
 
   carrotImage: {
@@ -25,7 +25,7 @@ styles = {
     top:'40%',
     font:{fontSize:12, fontWeight:'bold'},
     height:Titanium.UI.SIZE,
-    width:Titanium.UI.SIZE    
+    width:Titanium.UI.SIZE
   }
 
 };

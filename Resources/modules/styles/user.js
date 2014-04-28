@@ -8,13 +8,13 @@ styles = {
     verticalBounce:true,
     showVerticalScrollIndicator:true,
     height:Ti.UI.SIZE,
-    top:220
+    top:240
 	},
 
   nameView: {
     width:Ti.UI.SIZE,
     height:Ti.UI.SIZE,
-    top:55
+    top:75
   },
 
   wrapper: {
@@ -23,7 +23,7 @@ styles = {
     top:0
   },
 
-  image: {    
+  image: {
     width:45,
     height:45,
     left:10,
@@ -39,8 +39,8 @@ styles = {
     top:10,
     font:{fontSize:'15', fontWeight:'bold'},
     color:'black'
-  },  
-  
+  },
+
   profile: {
     height:Ti.UI.SIZE,
     width:300,
@@ -52,7 +52,7 @@ styles = {
   },
 
   table: {
-    top:110,
+    top:130,
     height:Ti.UI.SIZE,
     borderColor:'black',
     borderWidth:1
@@ -62,7 +62,7 @@ styles = {
     height:50
   },
 
-  iconLabel: {    
+  iconLabel: {
     height:Ti.UI.SIZE,
     width:300,
     left:10,

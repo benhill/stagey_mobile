@@ -1,4 +1,4 @@
-styles = {	
+styles = {
 
   mapWrapper: {
     width:Ti.UI.SIZE,
@@ -6,7 +6,6 @@ styles = {
   },
 
   mapView: {
-    mapType:Ti.Map.STANDARD_TYPE,
     animate:true,
     regionFit:true,
     userLocation:false,
@@ -21,8 +20,7 @@ styles = {
   },
 
   annotation: {
-    animate:true,
-    pincolor:Ti.Map.ANNOTATION_RED
+    animate:true
   }
 
 };

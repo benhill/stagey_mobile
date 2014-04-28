@@ -1,13 +1,13 @@
-styles = {	
+styles = {
 
-  table: {    
+  table: {
   },
 
   titleView: {
     width:'100%',
     height:50,
-    backgroundColor:'black',    
-    top:50
+    backgroundColor:'black',
+    top:65
   },
 
   titleLabel: {
@@ -25,7 +25,7 @@ styles = {
     height:'100%',
     width:80
   },
-  
+
   previousLabel: {
     height:Titanium.UI.SIZE,
     width:Titanium.UI.SIZE,
@@ -46,7 +46,7 @@ styles = {
     backgroundColor:'white'
   },
 
-  nextLabel: {    
+  nextLabel: {
     height:Titanium.UI.SIZE,
     width:Titanium.UI.SIZE,
     font:{fontSize:14},
@@ -74,10 +74,10 @@ styles = {
   dateTimeInfo: {
     height:Ti.UI.SIZE,
     width:240,
-    top:25, 
+    top:25,
     left:60,
     font:{fontSize:12},
-    color:'black'    
+    color:'black'
   },
 
   venueInfo: {
@@ -86,7 +86,7 @@ styles = {
     top:42,
     left:60,
     font:{fontSize:12},
-    color:'black'    
+    color:'black'
   },
 
   descriptionLabel: {
@@ -107,8 +107,8 @@ styles = {
   moreLabel: {
     text:"LOAD MORE",
     height:Ti.UI.SIZE,
-    width:Ti.UI.SIZE,            
-    top:20,        
+    width:Ti.UI.SIZE,
+    top:20,
     left:100,
     font:{fontSize:14, fontWeight:'bold'},
     color:'black'
@@ -116,7 +116,7 @@ styles = {
 
   spinner: {
     width:50,
-    height:50,      
+    height:50,
     message: 'loading...',
     color: 'black',
     style: Titanium.UI.iPhone.ActivityIndicatorStyle.DARK

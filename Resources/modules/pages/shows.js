@@ -28,7 +28,7 @@ function ShowsWindow(){
     var iconsView = Ti.UI.createView(showStyles.iconsView);
     iconsView.height = 340;
 
-    if(Ti.Platform.name == 'iPhone OS'){iconsView.top = 60}else{iconsView.top = 80;};
+    if(Ti.Platform.name == 'iPhone OS'){iconsView.top = 80}else{iconsView.top = 80;};
 
     var venues = new Icon('Venues', 'http://stagey-mobile.s3.amazonaws.com/icon_venues.png', 'venues', null, false, null, 'nearby');
     icons.push(venues);

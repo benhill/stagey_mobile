@@ -6,27 +6,28 @@ function MapWindow(venue, window, callback){
   var annotations = [];
   var coordinates;
   var mapWrapper = Ti.UI.createView(mapStyles.mapWrapper);
+  var Map = require('ti.map');
 
   function add_view(){
-    var mapView = Ti.Map.createView(mapStyles.mapView);
+    var mapView = Map.createView(mapStyles.mapView);
     mapView.annotations = annotations;
     mapView.region = coordinates;
-    mapWrapper.add(mapView);    
+    mapWrapper.add(mapView);
   }
 
-  function createAnnotation(venue){  
+  function createAnnotation(venue){
     var viewButton = Ti.UI.createButton(mapStyles.viewButton);
 
     viewButton.addEventListener('click', function(e){
       app.openWindow(window, 'Venue', 'venue', [venue.id]);
     });
 
-    var annotation = Ti.Map.createAnnotation(mapStyles.annotation);
+    var annotation = Map.createAnnotation(mapStyles.annotation);
     annotation.latitude = venue.lat;
     annotation.longitude = venue.lng;
     annotation.title = venue.name;
     annotation.subtitle = venue.address;
-    annotation.leftView = viewButton;    
+    annotation.leftView = viewButton;
 
     return annotation;
   }
@@ -35,7 +36,7 @@ function MapWindow(venue, window, callback){
     annotations.push(createAnnotation(venue));
     coordinates = {latitude:venue.lat, longitude:venue.lng, latitudeDelta:0.01, longitudeDelta:0.01};
     callback();
-    add_view();  
+    add_view();
   }
   else {
     var venuesObj = require('modules/models/venues');
@@ -51,8 +52,8 @@ function MapWindow(venue, window, callback){
       coordinates = {latitude:'34.090643', longitude:'-118.332067', latitudeDelta:0.027, longitudeDelta:0.027};
       callback();
       add_view();
-    });    
-  }  
+    });
+  }
 
   return mapWrapper;
 }

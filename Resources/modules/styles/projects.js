@@ -1,7 +1,7 @@
 styles = {
 
   table: {
-    top:50
+    top:65
   },
 
   projectThumb: {
@@ -42,19 +42,19 @@ styles = {
   moreLabel: {
     text:"LOAD MORE",
     height:Ti.UI.SIZE,
-    width:Ti.UI.SIZE,            
-    top:20,        
+    width:Ti.UI.SIZE,
+    top:20,
     left:100,
     font:{fontSize:14, fontWeight:'bold'},
     color:'black'
   },
 
-  projectWindow: {    
+  projectWindow: {
   },
 
   spinner: {
     width:50,
-    height:50,      
+    height:50,
     message: 'loading...',
     color: 'black',
     style: Titanium.UI.iPhone.ActivityIndicatorStyle.DARK

@@ -4,12 +4,12 @@ styles = {
     layout:'vertical',
     width:'100%',
     height:Ti.UI.SIZE,
-    top:50
+    top:65
   },
 
 	perfLabel: {
     width:'100%',
-    height:Ti.UI.SIZE,    
+    height:Ti.UI.SIZE,
     font:{fontSize:'16', fontWeight:'bold'},
     left:15,
     color:'black'

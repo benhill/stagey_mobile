@@ -115,7 +115,7 @@ function PerformancesWindow(mode, schedule_page, title){
 
       }
 
-      mode == 'schedule' || mode == 'next' ? table.top = 100 : table.top = 50;
+      mode == 'schedule' || mode == 'next' ? table.top = 120 : table.top = 70;
 
       var tableData = [];
       var total_results = performances[0].total_results;
