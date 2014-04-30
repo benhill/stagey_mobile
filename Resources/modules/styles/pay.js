@@ -1,10 +1,10 @@
 styles = {
 
 	fNameText: {
-    color:'#336699', 
-    height:45, 
-    width:150, 
-    top:100,
+    color:'#336699',
+    height:45,
+    width:150,
+    top:120,
     left:5,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
@@ -12,21 +12,21 @@ styles = {
 	},
 
   lNameText: {
-    color:'#336699', 
-    height:45, 
+    color:'#336699',
+    height:45,
     width:150,
-    top:100,
+    top:120,
     left:160,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
     hintText: 'Last Name'
   },
 
-  cardText: {    
-    color:'#336699', 
-    height:45, 
-    width:200, 
-    top:150,
+  cardText: {
+    color:'#336699',
+    height:45,
+    width:200,
+    top:170,
     left:5,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
@@ -35,28 +35,28 @@ styles = {
     passwordMask:true,
   },
 
-  csvText: {    
-    color:'#336699', 
-    height:45, 
-    width:75, 
-    top:150,
+  csvText: {
+    color:'#336699',
+    height:45,
+    width:75,
+    top:170,
     right:10,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
     hintText: 'CSV',
     keyboardType:Ti.UI.KEYBOARD_NUMBER_PAD,
     passwordMask:true,
-  },  
+  },
 
   expiryButton: {
     title:'Set Expiry Date',
-    top:200,
+    top:220,
     width:150,
     left:10
   },
 
   expiryLabel: {
-    top:208,
+    top:228,
     left:170,
     text:'no date selected',
     width:Ti.UI.SIZE,
@@ -70,7 +70,7 @@ styles = {
     bottom:5,
     width:300,
     height:50
-  },  
+  },
 
   pickerContainer1: {
     height:Ti.UI.SIZE

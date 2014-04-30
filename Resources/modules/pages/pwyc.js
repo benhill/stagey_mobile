@@ -2,7 +2,7 @@ function PwycWindow(performance_id){
 
   var app = require('modules/core');
   var styles = require('modules/styles/styles');
-  var pwycStyles = require('modules/styles/pwyc');  
+  var pwycStyles = require('modules/styles/pwyc');
   var self = Ti.UI.createWindow(styles.defaultWindow);
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
 
@@ -12,7 +12,7 @@ function PwycWindow(performance_id){
     self.add(spinner);
 
 	  var titleView = Ti.UI.createView(styles.titleView);
-    titleView.top = 50;
+    titleView.top = 65;
 
     var perfObj = require('modules/models/performance');
     var url = Ti.App.api_url + "performance/" + performance_id + "?user_id=" + (Ti.App.currentUser ? Ti.App.currentUser.id : '');
@@ -32,7 +32,7 @@ function PwycWindow(performance_id){
 
       self.add(titleView);
 
-  	  var pwycLabel = Ti.UI.createLabel(pwycStyles.pwycLabel);        
+  	  var pwycLabel = Ti.UI.createLabel(pwycStyles.pwycLabel);
   	  self.add(pwycLabel);
 
   	  var dollarLabel = Ti.UI.createLabel(pwycStyles.dollarLabel);
@@ -49,7 +49,7 @@ function PwycWindow(performance_id){
       self.remove(spinner);
 
   	  quantButton.addEventListener('click', function(e){
-  	    app.openWindow(self, 'Performance', 'quantity', [performance.id, pwycText.value]);        
+  	    app.openWindow(self, 'Performance', 'quantity', [performance.id, pwycText.value]);
   	  })
 
   	  function addKeyboardToolbar(textbox){

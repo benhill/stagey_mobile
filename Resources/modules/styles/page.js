@@ -8,7 +8,7 @@ styles = {
     verticalBounce:true,
     showVerticalScrollIndicator:true,
     height:'75%',
-    top:50,
+    top:65,
     left:0
   },
 
@@ -16,7 +16,6 @@ styles = {
     width:'100%',
     height:Ti.UI.SIZE,
     backgroundColor:'black',
-    top:50
   },
 
   nameLabel: {

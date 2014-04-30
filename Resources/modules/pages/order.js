@@ -16,7 +16,7 @@ function OrderWindow(cc_num, cc_fname, cc_lname, csv, expiry_month, expiry_year,
     new cartObj(Ti.App.currentUser.id).get(function(e){
 
       var titleView = Ti.UI.createView(styles.titleView);
-      titleView.top = 50;
+      titleView.top = 65;
 
       var titleLabel = Ti.UI.createLabel(styles.titleLabel);
       titleLabel.text = 'Review Your Order';

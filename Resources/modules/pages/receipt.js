@@ -10,12 +10,12 @@ function ReceiptWindow(sale_id){
 
     spinner.show();
     self.add(spinner);
-    
+
     var saleObj = require('modules/models/sale');
     new saleObj(sale_id, function(sale){
 
       var titleView = Ti.UI.createView(styles.titleView);
-      titleView.top = 50;      
+      titleView.top = 65;
 
       var titleLabel = Ti.UI.createLabel(styles.titleLabel);
       titleLabel.text = 'Your Order is Complete';
@@ -41,7 +41,7 @@ function ReceiptWindow(sale_id){
       self.add(detailsView);
 
       var table = Ti.UI.createTableView(receiptStyles.table);
-      var tableData = [];    
+      var tableData = [];
 
       for(i=0; i < sale.tickets.length; i++){
         ticket = sale.tickets[i]
@@ -50,7 +50,7 @@ function ReceiptWindow(sale_id){
 
         var projectThumb = Ti.UI.createImageView(receiptStyles.projectThumb);
         projectThumb.image = ticket.project_thumbnail
-        row.add(projectThumb);            
+        row.add(projectThumb);
 
         var title;
         (ticket.project_title.length >= 30) ? title = ticket.project_title.substr(0,30) + "..." : title = ticket.project_title;

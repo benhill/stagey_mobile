@@ -1,9 +1,9 @@
 styles= {
 
   detailsView: {
-    top:90,
+    top:110,
     left:0,
-    height:100,
+    height:120,
     layout:'absolute'
   },
 
@@ -35,7 +35,7 @@ styles= {
   },
 
   table: {
-    top:145,
+    top:165,
     bottom:60,
     borderColor:'gray',
     borderWidth:1

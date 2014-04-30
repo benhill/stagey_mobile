@@ -1,7 +1,7 @@
 styles = {
 
   detailsView: {
-    top:90,
+    top:110,
     left:0,
     height:130,
     layout:'absolute'
@@ -54,7 +54,7 @@ styles = {
   },
 
   table: {
-    top:175,
+    top:195,
     bottom:60,
     borderColor:'gray',
     borderWidth:1
@@ -85,20 +85,20 @@ styles = {
 
   projectInfo: {
     height:Ti.UI.SIZE,
-    top:27,       
+    top:27,
     left:60,
     font:{fontSize:12},
     width:240,
     color:'black'
   },
-  
+
   buttonView: {
     height:Ti.UI.SIZE,
     width:Ti.UI.SIZE,
     bottom:5
   },
 
-  payButton: {    
+  payButton: {
     width:300,
     height:50
   }

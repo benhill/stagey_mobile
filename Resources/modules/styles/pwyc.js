@@ -1,8 +1,8 @@
 styles = {
 
 	pwycLabel: {
-    top:120,
-    left:10,    
+    top:140,
+    left:10,
     width:Ti.UI.SIZE,
     height:Ti.UI.SIZE,
     font:{fontSize:16},
@@ -11,18 +11,18 @@ styles = {
   },
 
   dollarLabel: {
-    top:170,
-    left:10,    
+    top:190,
+    left:10,
     width:Ti.UI.SIZE,
     height:Ti.UI.SIZE,
     font:{fontSize:18, fontWeight:'bold'},
     text:"$"
   },
 
-  pwycText: {    
-    height:45, 
+  pwycText: {
+    height:45,
     width:80,
-    top:165,
+    top:185,
     left:25,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,

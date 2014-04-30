@@ -1,7 +1,7 @@
-styles = {	
+styles = {
 
   table: {
-    top:110
+    top:150
   },
 
   row: {
@@ -11,16 +11,16 @@ styles = {
     touchEnabled: true
   },
 
-  imageLabel: {    
+  imageLabel: {
     width:45,
     height:45,
     left:5,
     top:10,
     borderColor:'black',
     borderWidth:1
-  },  
+  },
 
-  nameLabel: {    
+  nameLabel: {
     height:Ti.UI.SIZE,
     width:Ti.UI.SIZE,
     left:60,
@@ -29,7 +29,7 @@ styles = {
     color: 'black',
   },
 
-  date: {    
+  date: {
     height:Ti.UI.SIZE,
     left:60,
     top:25,
@@ -43,7 +43,7 @@ styles = {
     top:42,
     left:60,
     font:{fontSize:12},
-    color:'black'    
+    color:'black'
   },
 
   blurb: {
@@ -54,10 +54,10 @@ styles = {
     font:{fontSize:'13'},
     color: 'black',
   },
-  
+
   spinner: {
     width:50,
-    height:50,      
+    height:50,
     message: 'loading...',
     color: 'black',
     style: Titanium.UI.iPhone.ActivityIndicatorStyle.DARK

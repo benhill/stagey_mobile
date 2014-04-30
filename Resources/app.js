@@ -2,9 +2,9 @@ Ti.UI.orientation = Ti.UI.PORTRAIT;
 
 //var mobileConfigObj = require('modules/models/mobile_config');
 //new mobileConfigObj(function(config){
-  Ti.App.api_url = "http://www.shelob.com/api/";
-  Ti.App.secure_api_url = "http://www.shelob.com/api/";
-  Ti.App.site_url = "http://www.shelob.com/";
+  Ti.App.api_url = "http://staging.hollywoodfringe.org/api/";
+  Ti.App.secure_api_url = "http://staging.hollywoodfringe.org/api/";
+  Ti.App.site_url = "http://staging.hollywoodfringe.org/";
 
   //Ti.App.subscription_opt_out = config.subscription_opt_out;
 

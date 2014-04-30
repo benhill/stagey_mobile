@@ -21,7 +21,6 @@ function PageWindow(page_id){
   function loadPage(page){
 
     var titleView = Ti.UI.createView(styles.titleView);
-    titleView.top = 0;
     titleView.layout = 'absolute';
     titleView.zIndex = 1000;
 

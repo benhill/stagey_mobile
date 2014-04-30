@@ -25,7 +25,7 @@ function QuantityWindow(performance_id, pwycPrice){
       pwycPrice ? cost = pwycPrice : cost = performance.cost;
 
       var titleView = Ti.UI.createView(styles.titleView);
-      titleView.top = 50;
+      titleView.top = 65;
 
 	    (performance.project_title.length >= 25) ? title = performance.project_title.substr(0,25) + "..." : title = performance.project_title;
 

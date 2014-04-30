@@ -8,7 +8,7 @@ function PayWindow(){
   self.load = function(){
 
     var titleView = Ti.UI.createView(styles.titleView);
-    titleView.top = 50;
+    titleView.top = 65;
 
     var titleLabel = Ti.UI.createLabel(styles.titleLabel);
     titleLabel.text = 'Your Credit Card';
