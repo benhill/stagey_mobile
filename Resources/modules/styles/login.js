@@ -3,7 +3,7 @@ styles = {
   wrapper: {
     height:'100%',
     width:'100%',
-    top:50
+    top:70
   },
 
   email: {

@@ -5,7 +5,7 @@ function ReviewWindow(review_id){
   var reviewStyles = require('modules/styles/review');
   var self = Ti.UI.createWindow(styles.defaultWindow);
   var reviewScroll = Ti.UI.createScrollView(reviewStyles.reviewScroll);
-  var wrapper = Ti.UI.createView(reviewStyles.wrapper);  
+  var wrapper = Ti.UI.createView(reviewStyles.wrapper);
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
 
   self.load = function(){
@@ -21,10 +21,10 @@ function ReviewWindow(review_id){
   function loadReview(review){
 
     var titleView = Ti.UI.createView(styles.titleView);
-    titleView.top = 0;
+    titleView.top = 15;
     titleView.layout = 'absolute';
     titleView.zIndex = 1000;
-        
+
     var image = Ti.UI.createImageView(reviewStyles.image);
     image.image = review.reviewer_image_url;
     titleView.add(image);
@@ -43,7 +43,7 @@ function ReviewWindow(review_id){
     info.text = '';
     if(review.rating_text){info.text += 'Rating:' + review.rating_text + ' \u00B7 '};
     info.text += review.time_passed + ' ago';
-    titleView.add(info);    
+    titleView.add(info);
 
     titleView.addEventListener('click', function(e){
       if(!review.anonymous){app.openWindow(self, 'User', 'user', [review.fringe_user_id]);}
@@ -60,7 +60,7 @@ function ReviewWindow(review_id){
     wrapper.add(bodyWrapper);
 
     var buttonsWrapper = Ti.UI.createView(reviewStyles.buttonsWrapper)
-    
+
     var helpful =  Ti.UI.createButton(reviewStyles.helpful);
     if(Ti.App.currentUser){buttonsWrapper.add(helpful);}
 
@@ -83,7 +83,7 @@ function ReviewWindow(review_id){
     });
 
     self.add(buttonsWrapper);
-    
+
     reviewScroll.add(wrapper);
 
     self.add(reviewScroll);

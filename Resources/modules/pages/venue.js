@@ -26,7 +26,7 @@ function VenueWindow(venue_id){
     var venueWrapper = Titanium.UI.createView(venueStyles.venueWrapper);
 
     var titleView = Ti.UI.createView(styles.titleView);
-    titleView.top = 0;
+    titleView.top = 15;
 
     var titleLabel = Ti.UI.createLabel(styles.titleLabel);
     titleLabel.width = '95%';

@@ -1,7 +1,7 @@
 styles = {
 
   table: {
-    top:150
+    top:130
   },
 
   row: {

@@ -3,7 +3,7 @@ styles = {
   emailLabel: {
     height:45,
     width:305,
-    top:60,
+    top:80,
     left:5,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
@@ -13,7 +13,7 @@ styles = {
   firstNameLabel: {
     height:45,
     width:150,
-    top:115,
+    top:135,
     left:5,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
@@ -23,7 +23,7 @@ styles = {
   lastNameLabel: {
     height:45,
     width:150,
-    top:115,
+    top:135,
     left:165,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,
@@ -33,7 +33,7 @@ styles = {
   passwordLabel: {
     height:45,
     width:305,
-    top:170,
+    top:190,
     left:5,
     clearOnEdit:true,
     borderStyle:Ti.UI.INPUT_BORDERSTYLE_ROUNDED,

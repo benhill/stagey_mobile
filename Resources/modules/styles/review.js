@@ -24,7 +24,7 @@ styles = {
   titleView: {
     width:'100%',
     height:Ti.UI.SIZE,
-    backgroundColor:'black',    
+    backgroundColor:'black',
     top:50
   },
 
@@ -37,7 +37,7 @@ styles = {
   },
 
   projectLabel: {
-    height:45,  
+    height:45,
     top:11,
     font:{fontSize:12, fontWeight:'bold'},
     right:0,
@@ -97,7 +97,7 @@ styles = {
 
   bodyWrapper: {
     height:Ti.UI.SIZE,
-    top:75,
+    top:90,
     left:0,
     layout:'vertical'
   },
