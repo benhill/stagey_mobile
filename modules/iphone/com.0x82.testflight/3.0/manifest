@@ -2,7 +2,7 @@
 # this is your module manifest and used by Titanium
 # during compilation, packaging, distribution, etc.
 #
-version: 1.6
+version: 3.0
 description: Titanium wrapper of the Testflight SDK
 author: Ruben Fonseca
 license: MIT

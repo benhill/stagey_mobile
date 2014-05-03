@@ -12,21 +12,28 @@
 </code></pre>
 <p>The testflight variable is a reference to the Module object.</p>
 <h2>Reference</h2>
-<h3>testflight.takeOff(teamToken, [options])</h3>
+<h3>testflight.takeOff(appToken, [options])</h3>
 <p>This should be the first function you should call to initialize the module. It
 starts a TestFlight session, setups the crash handler, and sends pending
 notifications to the server.</p>
-<p>It accepts a single argument <em>teamToken</em>, with your TestFlight team token. You
-can obtain that token at https://testflightapp.com/dashboard/team/edit</p>
+<p><strong>It no longer accepts a Team Token</strong></p>
+<p>It accepts a single argument <em>appToken</em>. This will be the application token for the current
+application. The token for this application can be retrived by going to
+https://testflightapp.com/dashboard/applications/ .</p>
 <p>It also accepts an optional object that allows you to define advanced options:</p>
 <ul>
-<li>testflight.ATTACH_BACKTRACE_TO_FEEDBACK - attaches the current backtrace, with symbols, to the feedback.</li>
-<li>testflight.DISABLE_IN_APP_UPDATES - the in application update screen will not be displayed</li>
+<li>testflight.DISABLE_IN_APP_UPDATES - the in application update screen will not be displayed. Defaults to <code>false</code>.</li>
+<li>testflight.LOG_ON_CHECKPOINT - Because logging is synchronous, if you have a high preformance app, you might want to turn this off. Defauts to <code>true</code>.</li>
+<li>testflight.LOG_TO_CONSOLE - Prints remote logs to Apple System Log. Defaults to <code>true</code>.</li>
+<li>testflight.LOG_TO_STDERR - Sends remote logs to STDERR when debugger is attached. Defaults to <code>true</code>.</li>
+<li>testflight.REPORT_CRASHES - If set to <code>false</code>, crash handlers are never installed. Defaults to <code>true</code>.</li>
+<li>testflight.SEND_LOG_ONLY_ON_CRASH - Setting to <code>true</code> stops remote logs from being sent when sessions end. They would only be sent in the event of a crash. Defaults to <code>false</code>.</li>
+<li>testflight.SESSION_KEEP_ALIVE_TIMEOUT - This is the amount of time a user can leave the app for and still continue the same session when they come back. If they are away from the app for longer, a new session is created when they come back. Must be a number. Change to 0 to turn off. Defaults to 30.</li>
+<li>testflight.FLUSH_SECONDS_INTERVAL - Defaults to 60. Set to a number. 0 turns off the flush timer. 30 seconds is the minimum flush interval.</li>
 </ul>
 <p>Example:</p>
 <pre><code>var options = {};
-options[testflight.ATTACH_BACKTRACE_TO_FEEDBACK] = true;
-options[testflight.DISABLE_IN_APP_UPDATES] = true;
+options[testflight.DISABLE_IN_APP_UPDATES] = false;
 
 testflight.takeOff('token', options);
 </code></pre>
@@ -34,9 +41,6 @@ testflight.takeOff('token', options);
 <p>Track when a user has passed a checkppint after the flight has taken off. Eg. passed
 level 1, posted hight score, etc.</p>
 <p>It accepts a single argument <em>checkPointName</em> with the String name of the checkpoint.</p>
-<h3>testflight.openFeedbackView()</h3>
-<p>Opens a feedback window that is not attached to a checkpoint. You should just call it
-with no arguments. The windows open modally.</p>
 <h3>testflight.addCustomEnvironmentInformation(hashOptions)</h3>
 <p>Add custom environment information. If you want to track a user name from your application you
 can add it here.</p>
@@ -45,13 +49,6 @@ you want to set on your environment.</p>
 <h3>testflight.submitFeedback(text)</h3>
 <p>Sends a custom feedback to the server without showing the feedback view. Accepts a single parameter
 which should be a String with the text to send to the testflight server.</p>
-<h3>testflight.setDeviceIdentifier(string)</h3>
-<p>The module no longer obtains the device unique identifier. This method should only
-be used during testing so that you can identify a testers test data with them.
-If you do not provide the identifier you will still see all session data, with
-checkpoints and logs, but the data will be anonymized.  It is recommended that
-you only use this method during testing. </p>
-<p><em>TL;DR:</em> Using this method on production could make you app fail the approval process!</p>
 <h2>Usage</h2>
 <p>Please check the examples/app.js for the full API demonstration.</p>
 <h2>Author</h2>

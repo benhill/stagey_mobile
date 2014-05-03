@@ -3,7 +3,7 @@ styles = {
   galleryScroll: {
     contentWidth:'95%',
     contentHeight:1100,
-    top:55,
+    top:70,
     left:0,
     height:800,
     showVerticalScrollIndicator:true,

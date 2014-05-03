@@ -3,14 +3,14 @@ styles = {
 	imageScroll: {
     contentWidth:'95%',
     contentHeight:1100,
-    top:50,
+    top:65,
     left:0,
     height:800,
     showVerticalScrollIndicator:true,
     showHorizontalScrollIndicator:true
   },
 
-  objectImage: {    
+  objectImage: {
     top:0,
     width:'100%',
     height:Ti.UI.SIZE

@@ -1,7 +1,7 @@
 styles = {
 
   table: {
-    top:50
+    top:65
   },
 
   row: {
@@ -11,7 +11,7 @@ styles = {
     touchEnabled: true
   },
 
-  image: {  	
+  image: {
     height:45,
     width:45,
     left:5,
@@ -20,7 +20,7 @@ styles = {
     borderWidth:1
   },
 
-  nameLabel: {    
+  nameLabel: {
     width:'100%',
     height:45,
     left:60,

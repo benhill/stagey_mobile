@@ -93,7 +93,7 @@ styles = {
 
   iconView: {
     width:100,
-    height:50,
+    height:60,
     layout:'vertical'
   },
 

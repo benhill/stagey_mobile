@@ -3,15 +3,6 @@ var window = Ti.UI.createWindow({
 	backgroundColor:'white'
 });
 
-var feedback_button = Ti.UI.createButton({
-  title: 'Show feedback',
-  left: 10,
-  right: 10,
-  top: 10,
-  height: 40
-});
-window.add(feedback_button);
-
 var checkpoint_button = Ti.UI.createButton({
   title: 'Mark checkpoint',
   left: 10,
@@ -35,20 +26,23 @@ window.open();
 var testflight = require('com.0x82.testflight');
 Ti.API.info("module is => " + testflight);
 
-// WARNING: ONLY USE THIS ON DEVELOPMENT! DON'T GO TO THE APP STORE WITH THIS LINE!!
+// WARNING: ONLY USE THIS ON DEVELOPMENT! 
+// DON'T GO TO THE APP STORE WITH THIS LINE!!
 testflight.setDeviceIdenifier(Ti.Platform.id);
 
-testflight.takeOff('817d95cf45bb95e2951df299da2339fb_NDU2NjcyMDEyLTAzLTExIDEwOjQ5OjA2LjMyNjc0NQ');
+options = {};
+options[testflight.DISABLE_IN_APP_UPDATES] = false;
+options[testflight.LOG_TO_CONSOLE] = true;
+options[testflight.LOG_TO_STDERR] = true;
+options[testflight.REPORT_CRASHES] = true;
+
+testflight.takeOff('4caa214b-adda-48eb-8381-e334ea9bf4f6', options);
 testflight.addCustomEnvironmentInformation({
   username: 'username',
   session_id: '123123123123123',
   other_example: 'other_value'
 });
 
-feedback_button.addEventListener('click', function(e) {
-  Ti.API.warn("Open Feedback View");
-  testflight.openFeedbackView();
-});
 checkpoint_button.addEventListener('click', function(e) {
   Ti.API.warn("Checkpoing");
   testflight.passCheckpoint("CHECKPOINT 1");
