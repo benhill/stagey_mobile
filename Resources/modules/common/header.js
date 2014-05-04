@@ -7,53 +7,56 @@ function Header(title, window){
   var navView = Ti.UI.createView(headerStyles.navView);
   var menuButtonView = Ti.UI.createView(headerStyles.menuButtonView);
 
-  if(Ti.Platform.name == 'iPhone OS'){
+  menuButtonView.toggle = false;
+  headerView.add(menuButtonView);
 
-    menuButtonView.toggle = false;
-    headerView.add(menuButtonView);
+  if(Ti.App.currentUser == null){
+    loadUser();
+  }
+  else{
+    loadUser(Ti.App.currentUser);
+  }
 
-    if(Ti.App.currentUser == null){
-      loadUser();
+  navView.addEventListener('swipe', function(e) {
+    if (e.direction == 'right'){closeNav();};
+  });
+
+  window.add(navView);
+
+  menuButtonView.addEventListener('click', function(e){
+    loadMenu(e);
+  });
+
+  function loadMenu(e){
+    if(e.source.toggle == true){
+      closeNav();
     }
     else{
-      loadUser(Ti.App.currentUser);
-    }
-
-    navView.addEventListener('swipe', function(e) {
-      if (e.direction == 'right'){closeNav();};
-    });
-
-    window.add(navView);
-
-    menuButtonView.addEventListener('click', function(e){
-      loadMenu(e);
-    });
-
-    function loadMenu(e){
-      if(e.source.toggle == true){
-        closeNav();
-      }
-      else{
+      if(Ti.Platform.name == 'iPhone OS'){
         navView.animate({
           right:0,
           duration:400,
           curve:Ti.UI.ANIMATION_CURVE_EASE_IN_OUT
         });
-        e.source.toggle = true;
       }
+      else{navView.right = 0;}
+      e.source.toggle = true;
     }
+  }
 
-    function closeNav(){
+  function closeNav(){
+    if(Ti.Platform.name == 'iPhone OS'){
       navView.animate({
         right:-200,
         duration:400,
         curve:Ti.UI.ANIMATION_CURVE_EASE_IN_OUT
       });
-      menuButtonView.toggle = false;
     }
+    else{navView.right = -200;}
+    menuButtonView.toggle = false;
   }
 
-  if(window && title != 'Home' && Ti.Platform.name == 'iPhone OS'){
+  if(window && title != 'Home'){
 
     var backButton =  Ti.UI.createLabel(headerStyles.backButton);
     headerView.add(backButton);

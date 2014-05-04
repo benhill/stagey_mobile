@@ -2,16 +2,16 @@ if(Ti.Platform.name != 'iPhone OS'){var app = require('modules/core');}
 
 var primitives   = require('modules/helpers/primitives'),
   properties   = {},    // Any app-wide properties
-	plugins      = {},    // Any plugins added to the app
-	currentPage  = null  // Reference to the current page module
+  plugins      = {},    // Any plugins added to the app
+  currentPage  = null  // Reference to the current page module
 
 exports.addProperty = function(name, value) {
-	properties[name] = value;
+  properties[name] = value;
 };
 
 exports.loadPage = function(name, params) {
-	currentPage = require(properties.pages + '/' + name);
-	currentPage.load(exports, params);
+  currentPage = require(properties.pages + '/' + name);
+  currentPage.load(exports, params);
 };
 
 exports.formatCurrency = function(num) {
@@ -31,12 +31,6 @@ exports.throwError = function(me, e) {
 };
 
 exports.openWindow = function(currentWindow, title, newWindowName, params){
-
-  if(currentWindow != null && Ti.Platform.name != 'iPhone OS'){
-    Ti.App.prevWindow = currentWindow;
-    currentWindow.close();
-  }
-
   require_path = 'modules/pages/' + newWindowName;
   if(Ti.Platform.name != 'iPhone OS'){require_path = '../' + require_path};
   var windowObj = require(require_path);
@@ -125,12 +119,12 @@ exports.property = function(name) {
 exports.timeout = 20000;
 
 exports.orientationObserverUpdate = function(_event) {
-	// Example of how you can control the current page with global events
-	var type = (_event.source.isLandscape()) ? 'landscape' : 'portrait' ;
+  // Example of how you can control the current page with global events
+  var type = (_event.source.isLandscape()) ? 'landscape' : 'portrait' ;
 
-	if(currentPage && currentPage.orientationUpdate) {
-		currentPage.orientationUpdate(type);
-	}
+  if(currentPage && currentPage.orientationUpdate) {
+    currentPage.orientationUpdate(type);
+  }
 };
 
 exports.toTitleCase = function toTitleCase(str){
@@ -138,29 +132,29 @@ exports.toTitleCase = function toTitleCase(str){
 }
 
 exports.getOrientation = function(o) {
-	switch (o) {
-		case Titanium.UI.PORTRAIT: {
-			return 'portrait';
-		}
-		case Titanium.UI.UPSIDE_PORTRAIT: {
-			return 'upside portrait';
-		}
-		case Titanium.UI.LANDSCAPE_LEFT: {
-			return 'landscape left';
-		}
-		case Titanium.UI.LANDSCAPE_RIGHT: {
-			return 'landscape right';
-		}
-		case Titanium.UI.FACE_UP: {
-			return 'face up';
-		}
-		case Titanium.UI.FACE_DOWN: {
-			return 'face down';
-		}
-		case Titanium.UI.UNKNOWN: {
-			return 'unknown';
-		}
-	}
+  switch (o) {
+    case Titanium.UI.PORTRAIT: {
+      return 'portrait';
+    }
+    case Titanium.UI.UPSIDE_PORTRAIT: {
+      return 'upside portrait';
+    }
+    case Titanium.UI.LANDSCAPE_LEFT: {
+      return 'landscape left';
+    }
+    case Titanium.UI.LANDSCAPE_RIGHT: {
+      return 'landscape right';
+    }
+    case Titanium.UI.FACE_UP: {
+      return 'face up';
+    }
+    case Titanium.UI.FACE_DOWN: {
+      return 'face down';
+    }
+    case Titanium.UI.UNKNOWN: {
+      return 'unknown';
+    }
+  }
 };
 
 exports.dynamic_scoller = function(e, beginUpdateCallback, updating, lastDistance, page){

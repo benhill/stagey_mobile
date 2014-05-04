@@ -7,23 +7,23 @@ function VenuesWindow(){
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
   var venuesTab = Titanium.UI.currentTab;
   var contentView;
-  var table;  
-  var rows_per_page = 9  
+  var table;
+  var rows_per_page = 9
   var lastDistance = 0;
   var updating = false;
 
   self.load = function(){
 
     var buttonBarView = Ti.UI.createView(venueStyles.buttonBarView);
-    
+
     var buttonBarObj = require('modules/common/button_bar');
     buttonBarView.add(new buttonBarObj(['LIST', 'MAP'], function(label){
 
       if(self.children.length > 2){self.remove(contentView)};
 
-      contentView = Ti.UI.createView(venueStyles.contentView);      
-            
-      if(label == 'LIST'){        
+      contentView = Ti.UI.createView(venueStyles.contentView);
+
+      if(label == 'LIST'){
         loadVenues();
       }
       else if(label == 'MAP'){
@@ -31,7 +31,9 @@ function VenuesWindow(){
       }
     }));
 
-    self.add(buttonBarView);
+    //Hiding venue issue. https://jira.appcelerator.org/browse/TIMOB-16510
+    if(Ti.Platform.name == 'iPhone OS'){self.add(buttonBarView);}
+    else{contentView.top = 75;}
 
     function loadMap(){
       self.add(spinner);
@@ -41,9 +43,9 @@ function VenuesWindow(){
       contentView.add(new mapObj(null, self, function(){
         spinner.hide();
       }));
-      self.add(contentView);      
+      self.add(contentView);
     }
-      
+
     function loadVenues(){
       var page = 1
       var lastRow = rows_per_page;
@@ -54,9 +56,9 @@ function VenuesWindow(){
       table = Ti.UI.createTableView(venueStyles.table);
       var tableData = [];
       var venuesObj = require(app.resdir + 'modules/models/venues');
-      new venuesObj(page, function(venues){      
+      new venuesObj(page, function(venues){
         for (i = 0; i < venues.length; i++) {
-          row = createRow(venues[i]);          
+          row = createRow(venues[i]);
           tableData.push(row);
         }
 
@@ -65,28 +67,28 @@ function VenuesWindow(){
         self.add(contentView);
         spinner.hide();
 
-        var loadingRow = Ti.UI.createTableViewRow({title:"Loading...", color:'black'});   
-      
-        function beginUpdate(){          
+        var loadingRow = Ti.UI.createTableViewRow({title:"Loading...", color:'black'});
+
+        function beginUpdate(){
           if(venues[0].total_results > (page * rows_per_page)){
             page += 1;
             updating = true;
 
             table.appendRow(loadingRow);
-            
+
             new venuesObj(page, function(venues){
               var rows = [];
               for (var i = 0; i < venues.length; i++){
                 row = createRow(venues[i]);
-                rows.push(row);              
-              }            
+                rows.push(row);
+              }
               endUpdate(rows);
             });
           }
         }
 
-        function endUpdate(rows){                
-          updating = false;        
+        function endUpdate(rows){
+          updating = false;
           table.appendRow(rows);
           table.deleteRow(lastRow);
           lastRow += rows_per_page;
@@ -103,7 +105,7 @@ function VenuesWindow(){
     }
 
     function createRow(venue){
-      var row = Ti.UI.createTableViewRow(venueStyles.row);      
+      var row = Ti.UI.createTableViewRow(venueStyles.row);
       row.venue_id = venue.id;
 
       var venueThumb = Titanium.UI.createImageView(venueStyles.venueThumb);
@@ -133,10 +135,10 @@ function VenuesWindow(){
       return row;
     }
 
-    function openVenue(e, islongclick) { 
+    function openVenue(e, islongclick) {
       app.openWindow(self, 'Venue', 'venue', [e.source.venue_id]);
     }
-        
+
   }
 
   return self;
