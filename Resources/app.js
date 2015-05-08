@@ -15,7 +15,8 @@ new mobileConfigObj(function(config){
   Ti.App.token = '8kj@!!00990j34AdABCDEF87979878!';
   Ti.API.info("module is => " + sharekit);
 
-  if(Ti.Platform.name == 'iPhone OS'){
+  //if(Ti.Platform.name == 'iPhone OS'){
+  if(1==2){
 
     var sharekit = require('com.0x82.sharekit');
 

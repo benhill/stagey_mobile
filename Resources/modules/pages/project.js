@@ -6,7 +6,7 @@ function ProjectWindow(project_id){
   var self = Ti.UI.createWindow(styles.defaultWindow);
   var projectObj = require('modules/models/project');
   var spinner = Ti.UI.createActivityIndicator(styles.spinner);
-  if(Ti.Platform.name == 'iPhone OS'){var sharekit = require('com.0x82.sharekit');}
+  //if(Ti.Platform.name == 'iPhone OS'){var sharekit = require('com.0x82.sharekit');}
   var Icon = require('modules/models/icons');
   var reviewObj = require('modules/models/review');
   var json, project, iconsView;
@@ -142,7 +142,9 @@ function ProjectWindow(project_id){
         var favTextView = iconsView.children[1].children[1];
         var favImgView = iconsView.children[1].children[0];
         if(e.source.icon.id == 'Share'){
-          if(Ti.Platform.name == 'iPhone OS'){
+          //Must add back sharing capability
+          if(1==2){
+          //if(Ti.Platform.name == 'iPhone OS'){
             //MOVE MESSAGE TO APP CONFIG!!
             sharekit.share({
               title:'I am checking out this show at the Fringe! #hff13',

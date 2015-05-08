@@ -7,8 +7,8 @@
     <property name="acs-oauth-key-development" type="string">ofZ73xchWubaCrpsZXjTogrZNR87qnMC</property>
     <property name="acs-api-key-development" type="string">rc9Whh7eWl2K1MGbzznMI0eEiNJnG71w</property>
     <id>com.hff.mobile</id>
-    <name>Fringe 2014</name>
-    <version>1.0.3</version>
+    <name>Fringe</name>
+    <version>1.0.4.3</version>
     <publisher>Stagey Corp</publisher>
     <url>http://www.hollywoodfringe.org</url>
     <description>not specified</description>
@@ -74,5 +74,5 @@
         <target device="iphone">true</target>
         <target device="mobileweb">false</target>
     </deployment-targets>
-    <sdk-version>3.2.3.GA</sdk-version>
+    <sdk-version>3.5.1.GA</sdk-version>
 </ti:app>
